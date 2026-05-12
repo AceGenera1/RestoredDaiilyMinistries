@@ -1,201 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lessons from a Disciple | Restored Daily Ministries</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lessons from a Disciple | Restored Daily Ministries</title>
 <style>
 :root{
-  --cream:#F7F3EA;
-  --soft:#FFFBF2;
-  --navy:#1E2F4A;
-  --navy-dark:#122238;
-  --gold:#C9A44C;
-  --gold-light:#E5C97A;
-  --sky:#EAF3F7;
-  --text:#2E2E2E;
-  --white:#FFFFFF;
+  --cream:#F7F3EA;--soft:#FFFBF2;--navy:#1E2F4A;--navy-dark:#122238;--gold:#C9A44C;--gold-light:#E5C97A;--sky:#EAF3F7;--text:#2E2E2E;--white:#fff;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(to bottom,var(--soft),var(--cream));
-  color:var(--text);
-  line-height:1.7;
-}
-a{color:inherit}
-.site-header{
-  background:linear-gradient(135deg,var(--navy),var(--navy-dark));
-  border-bottom:4px solid var(--gold);
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
-.nav{
-  max-width:1180px;
-  margin:0 auto;
-  padding:12px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  color:white;
-  text-decoration:none;
-  min-width:230px;
-}
-.brand img{
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  object-fit:cover;
-  background:white;
-  border:2px solid var(--gold);
-}
-.brand span{
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:1.08rem;
-  letter-spacing:.06em;
-  font-weight:bold;
-  line-height:1.12;
-}
-.menu-toggle{display:none}
-.menu-button{display:none;color:white;font-weight:800;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 14px;cursor:pointer}
-.menu{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:16px;
-  flex-wrap:wrap;
-}
-.menu a{
-  color:white;
-  text-decoration:none;
-  font-weight:700;
-  font-size:.93rem;
-  white-space:nowrap;
-}
-.menu a:hover,.menu a.active{color:var(--gold-light)}
-.hero{
-  padding:58px 20px 64px;
-  text-align:center;
-  background:
-    radial-gradient(circle at top center, rgba(229,201,122,.30), transparent 28rem),
-    linear-gradient(rgba(247,243,234,.86),rgba(247,243,234,.96));
-}
-.hero-logo{
-  width:min(420px,92%);
-  height:auto;
-  display:block;
-  margin:0 auto 26px;
-  filter:drop-shadow(0 14px 28px rgba(30,47,74,.14));
-}
-.hero-kicker{
-  color:var(--gold);
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:clamp(1.2rem,4vw,2rem);
-  max-width:860px;
-  margin:0 auto;
-  line-height:1.35;
-}
-.hero-small{
-  padding:56px 20px 46px;
-  text-align:center;
-  background:linear-gradient(rgba(247,243,234,.9),rgba(247,243,234,.98));
-}
-.hero-small h1,.section-title{
-  font-family:Georgia,'Times New Roman',serif;
-  color:var(--navy);
-  font-size:clamp(2.15rem,6vw,4rem);
-  line-height:1.12;
-  margin:0 0 16px;
-}
-.hero-small p,.section-intro{
-  max-width:850px;
-  margin:0 auto 28px;
-  font-size:1.08rem;
-}
-.btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-block;padding:13px 24px;border-radius:999px;text-decoration:none;font-weight:800;border:2px solid var(--navy);transition:.2s ease}
-.btn-primary{background:var(--navy);color:white}
-.btn-primary:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)}
-.btn-secondary{background:transparent;color:var(--navy);border-color:var(--gold)}
-.btn-secondary:hover{background:var(--gold-light)}
-section{padding:60px 20px}
-.container{max-width:1120px;margin:0 auto}
-.mission-card,.content-card{
-  background:rgba(255,255,255,.88);
-  border:1px solid rgba(201,164,76,.28);
-  border-radius:26px;
-  box-shadow:0 14px 36px rgba(30,47,74,.10);
-  padding:34px;
-}
-.mission-card p,.content-card p{font-size:1.1rem;margin:0 0 18px}.mission-card p:last-child,.content-card p:last-child{margin-bottom:0}
-.highlight{color:var(--navy);font-weight:800}
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:30px}
-.card{background:white;border-radius:24px;padding:28px;box-shadow:0 12px 30px rgba(30,47,74,.09);border:1px solid rgba(201,164,76,.24)}
-.card h2,.card h3{color:var(--navy);font-family:Georgia,'Times New Roman',serif;margin:0 0 10px;font-size:1.5rem;line-height:1.25}.card p{margin:0 0 16px}.card p:last-child{margin-bottom:0}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(to bottom,var(--soft),var(--cream));color:var(--text);line-height:1.7} a{color:inherit}
+.site-header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));border-bottom:4px solid var(--gold);position:sticky;top:0;z-index:1000}
+.nav{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;min-width:230px}
+.brand img{width:64px;height:auto;display:block;background:rgba(255,251,242,.96);border:2px solid var(--gold);border-radius:14px;padding:4px;box-shadow:0 5px 14px rgba(0,0,0,.18)}
+.brand span{font-family:Georgia,'Times New Roman',serif;font-size:1.08rem;letter-spacing:.06em;font-weight:bold;line-height:1.12}
+.menu-toggle{display:none} .menu-button{display:none;color:#fff;font-weight:800;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 14px;cursor:pointer}
+.menu{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap} .menu a{color:#fff;text-decoration:none;font-weight:700;font-size:.93rem;white-space:nowrap} .menu a:hover,.menu a.active{color:var(--gold-light)}
+.hero{padding:54px 20px 60px;text-align:center;background:radial-gradient(circle at top center,rgba(229,201,122,.30),transparent 28rem),linear-gradient(rgba(247,243,234,.86),rgba(247,243,234,.96))}
+.logo-frame{width:min(460px,92%);margin:0 auto 26px;padding:12px;background:linear-gradient(135deg,#fffdf7,#f4ead3);border:3px solid var(--gold);border-radius:28px;box-shadow:0 18px 38px rgba(30,47,74,.16), inset 0 0 0 1px rgba(255,255,255,.75)}
+.logo-frame img{width:100%;height:auto;display:block;border-radius:20px}
+.hero-kicker{color:var(--gold);font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.25rem,4vw,2rem);max-width:860px;margin:0 auto;line-height:1.35;font-weight:700}
+.hero-small{padding:56px 20px 46px;text-align:center;background:linear-gradient(rgba(247,243,234,.9),rgba(247,243,234,.98))}
+.hero-small h1,.section-title{font-family:Georgia,'Times New Roman',serif;color:var(--navy);font-size:clamp(2.05rem,6vw,3.8rem);line-height:1.12;margin:0 0 16px}
+.hero-small p,.section-intro{max-width:850px;margin:0 auto 28px;font-size:1.08rem}
+.btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px} .btn{display:inline-block;padding:13px 24px;border-radius:999px;text-decoration:none;font-weight:800;border:2px solid var(--navy);transition:.2s ease} .btn-primary{background:var(--navy);color:#fff} .btn-primary:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-dark)} .btn-secondary{background:transparent;color:var(--navy);border-color:var(--gold)} .btn-secondary:hover{background:var(--gold-light)}
+section{padding:60px 20px} .container{max-width:1120px;margin:0 auto} .mission-card,.content-card{background:rgba(255,255,255,.88);border:1px solid rgba(201,164,76,.28);border-radius:26px;box-shadow:0 14px 36px rgba(30,47,74,.10);padding:34px}
+.mission-card p,.content-card p{font-size:1.1rem;margin:0 0 18px} .mission-card p:last-child,.content-card p:last-child{margin-bottom:0} .highlight{color:var(--navy);font-weight:800}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:30px} .card{background:#fff;border-radius:24px;padding:28px;box-shadow:0 12px 30px rgba(30,47,74,.09);border:1px solid rgba(201,164,76,.24)} .card h2,.card h3{color:var(--navy);font-family:Georgia,'Times New Roman',serif;margin:0 0 10px;font-size:1.5rem;line-height:1.25} .card p{margin:0 0 16px} .card p:last-child{margin-bottom:0}
 .tag{display:inline-block;background:rgba(201,164,76,.15);border:1px solid rgba(201,164,76,.28);border-radius:999px;padding:6px 12px;color:var(--navy);font-size:.82rem;font-weight:800;margin-bottom:16px}
 .soft-section{background:linear-gradient(135deg,rgba(234,243,247,.72),rgba(255,255,255,.45));border-top:1px solid rgba(201,164,76,.18);border-bottom:1px solid rgba(201,164,76,.18)}
-.quote{background:white;border-left:6px solid var(--gold);padding:24px;border-radius:18px;margin-top:30px;font-family:Georgia,'Times New Roman',serif;color:var(--navy);font-size:1.15rem;box-shadow:0 10px 24px rgba(30,47,74,.08)}
-.placeholder{background:rgba(234,243,247,.72);border:1px dashed rgba(30,47,74,.35);border-radius:20px;padding:24px;color:var(--navy)}
-footer{background:var(--navy-dark);color:white;text-align:center;padding:42px 20px;border-top:4px solid var(--gold)}
-footer img{width:78px;border-radius:50%;border:2px solid var(--gold);background:white;margin-bottom:12px}footer p{margin:8px 0}
-@media(max-width:900px){
-  .nav{align-items:flex-start}.menu-button{display:inline-block}.menu{display:none;width:100%;padding-top:14px;justify-content:center}.menu-toggle:checked ~ .menu{display:flex}.nav{flex-wrap:wrap}.brand{min-width:auto}.menu a{font-size:.96rem}.hero{padding-top:46px}.hero-logo{width:min(360px,92%)}
-}
-@media(max-width:560px){
-  .nav{display:grid;grid-template-columns:1fr auto;align-items:center}.brand span{font-size:.95rem}.brand img{width:46px;height:46px}.menu{grid-column:1/-1;gap:12px 16px}.hero-logo{width:min(330px,94%)}.mission-card,.content-card,.card{padding:24px}section{padding:48px 20px}
-}
-
+.quote{background:#fff;border-left:6px solid var(--gold);padding:24px;border-radius:18px;margin-top:30px;font-family:Georgia,'Times New Roman',serif;color:var(--navy);font-size:1.15rem;box-shadow:0 10px 24px rgba(30,47,74,.08)} .placeholder{background:rgba(234,243,247,.72);border:1px dashed rgba(30,47,74,.35);border-radius:20px;padding:24px;color:var(--navy)}
+footer{background:var(--navy-dark);color:#fff;text-align:center;padding:34px 20px 28px;border-top:4px solid var(--gold);margin-top:30px} footer p{margin:7px 0} .copyright{font-size:.92rem;color:rgba(255,255,255,.78);margin-top:16px}
+@media(max-width:900px){.nav{align-items:flex-start;flex-wrap:wrap}.menu-button{display:inline-block}.menu{display:none;width:100%;padding-top:14px;justify-content:center}.menu-toggle:checked ~ .menu{display:flex}.brand{min-width:auto}.menu a{font-size:.96rem}.hero{padding-top:44px}.logo-frame{width:min(390px,92%);padding:10px}}
+@media(max-width:560px){.nav{display:grid;grid-template-columns:1fr auto;align-items:center}.brand span{font-size:.95rem}.brand img{width:58px}.menu{grid-column:1/-1;gap:12px 16px}.logo-frame{width:min(350px,94%)}.mission-card,.content-card,.card{padding:24px}section{padding:48px 20px}}
 </style>
-</head>
-<body>
-<header class="site-header">
-  <div class="nav">
-    <a class="brand" href="index.html">
-      <img src="https://raw.githubusercontent.com/AceGenera1/RestoredDaiilyMinistries/fff737d69d2054922e9a849d30215cb61b4c6d52/logo.png" alt="Restored Daily Ministries logo">
-      <span>RESTORED DAILY<br>MINISTRIES</span>
-    </a>
-    <input class="menu-toggle" id="menu-toggle" type="checkbox">
-    <label class="menu-button" for="menu-toggle">Menu</label>
-    <nav class="menu" aria-label="Main navigation">
-      <a class="" href="index.html">Home</a>
-      <a class="" href="mission.html">Mission</a>
-      <a class="" href="devotionals.html">Devotionals</a>
-      <a class="active" href="disciple.html">Lessons from a Disciple</a>
-      <a class="" href="preaching.html">Live Preaching</a>
-      <a class="" href="podcast.html">Podcast</a>
-      <a class="" href="prayer.html">Prayer</a>
-    </nav>
-  </div>
-</header>
-<main>
-<section class="hero-small">
-  <h1>Lessons from a Disciple</h1>
-  <p>A daily journal of walking with Jesus Christ.</p>
-</section>
-<section>
-  <div class="container">
-    <div class="mission-card">
-      <p>Lessons from a Disciple is a daily journal of walking with Jesus Christ.</p>
-      <p>These writings are not from someone who has everything figured out, but from a disciple learning day by day through Scripture, prayer, conviction, failure, grace, and the leading of the Holy Spirit.</p>
-      <p>My prayer is that these reflections encourage believers, strengthen faith, and point hearts toward the Lord Jesus Christ.</p>
-    </div>
-  </div>
-</section>
-</main>
-<footer>
-  <img src="https://raw.githubusercontent.com/AceGenera1/RestoredDaiilyMinistries/fff737d69d2054922e9a849d30215cb61b4c6d52/logo.png" alt="Restored Daily Ministries logo">
-  <p><strong>Restored Daily Ministries</strong></p>
-  <p>Hope • Love • Peace in Christ Jesus</p>
-  <p>Daily Biblical Encouragement for a World in Need of Christ</p>
-</footer>
-</body>
-</html>
+</head><body><header class="site-header"><div class="nav"><a class="brand" href="index.html"><img src="https://raw.githubusercontent.com/AceGenera1/RestoredDaiilyMinistries/fff737d69d2054922e9a849d30215cb61b4c6d52/logo.png" alt="Restored Daily Ministries logo"><span>RESTORED DAILY<br>MINISTRIES</span></a><input class="menu-toggle" id="menu-toggle" type="checkbox"><label class="menu-button" for="menu-toggle">Menu</label><nav class="menu" aria-label="Main navigation"><a class="" href="index.html">Home</a>
+<a class="" href="mission.html">Mission</a>
+<a class="" href="devotionals.html">Devotionals</a>
+<a class="active" href="disciple.html">Lessons from a Disciple</a>
+<a class="" href="preaching.html">Live Preaching</a>
+<a class="" href="podcast.html">Podcast</a>
+<a class="" href="prayer.html">Prayer</a></nav></div></header><main><section class="hero-small"><h1>Lessons from a Disciple</h1><p>A daily journal of walking with Jesus Christ.</p></section><section><div class="container"><div class="content-card"><p>Lessons from a Disciple is a daily journal of walking with Jesus Christ.</p><p>These writings are not from someone who has everything figured out, but from a disciple learning day by day through Scripture, prayer, conviction, failure, grace, and the leading of the Holy Spirit.</p><p>My prayer is that these reflections encourage believers, strengthen faith, and point hearts toward the Lord Jesus Christ.</p><div class="placeholder">Lessons archive integration will be added in a future phase.</div></div></div></section></main><footer><p><strong>Restored Daily Ministries</strong></p><p>Hope • Love • Peace in Christ Jesus</p><p>Daily Biblical Encouragement for a World in Need of Christ</p><p class="copyright">© 2026 Restored Daily Ministries. All rights reserved.</p></footer></body></html>
