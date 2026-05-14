@@ -291,7 +291,7 @@ a{color:inherit}
 </footer>
 
 <script>
-const ARCHIVE_API_URL = https://script.google.com/macros/library/d/19tpuQszpPj1LFHJKeH6WYmc8pI5b07zpQ72o0CoH5FvA8zpjSJLa7W1o/1;
+const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 
 let allDevotionals = [];
 
@@ -335,7 +335,7 @@ function renderArchive(items){
     const card = document.createElement("article");
     card.className = "devotional-card";
 
-    const date = formatDate(item.dateArchived);
+    const date = formatDate(item.dateArchived || item.date);
     const subject = escapeHtml(item.subject || "Untitled Devotional");
     const excerpt = escapeHtml(excerptFrom(item.message));
     const url = `devotional.html?id=${encodeURIComponent(item.id || index)}`;
@@ -367,31 +367,26 @@ function applySearch(){
   renderArchive(filtered);
 }
 
-async function loadArchive(){
+function loadArchiveJsonp(){
   const status = document.getElementById("archiveStatus");
 
-  if(!ARCHIVE_API_URL || ARCHIVE_API_URL.includes("PASTE_YOUR")){
-    status.className = "error";
-    status.textContent = "Archive connection is ready. Add your Google Apps Script Web App URL inside devotional.html.";
-    return;
-  }
-
-  try{
-    const response = await fetch(ARCHIVE_API_URL);
-    if(!response.ok) throw new Error("Unable to load archive.");
-    const data = await response.json();
-
+  window.handleDevotionalArchive = function(data){
     allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
     renderArchive(allDevotionals);
-  }catch(error){
+  };
+
+  const script = document.createElement("script");
+  script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive";
+  script.onerror = function(){
     status.className = "error";
     status.textContent = "The devotional archive could not be loaded right now.";
-    console.error(error);
-  }
+  };
+
+  document.body.appendChild(script);
 }
 
 document.getElementById("archiveSearch").addEventListener("input", applySearch);
-loadArchive();
+loadArchiveJsonp();
 </script>
 </body>
 </html>
