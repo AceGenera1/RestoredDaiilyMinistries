@@ -291,7 +291,7 @@ a{color:inherit}
 </footer>
 
 <script>
-const ARCHIVE_API_URL = https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec;
+const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 
 let allDevotionals = [];
 
@@ -306,13 +306,13 @@ function escapeHtml(value){
 
 function excerptFrom(message){
   const text = String(message || "").replace(/\s+/g, " ").trim();
-  return text.length > 190 ? text.slice(0,190) + "..." : text;
+  return text.length > 220 ? text.slice(0,220) + "..." : text;
 }
 
 function formatDate(value){
   if(!value) return "";
   const d = new Date(value);
-  if(Number.isNaN(d.getTime())) return value;
+  if(Number.isNaN(d.getTime())) return String(value || "");
   return d.toLocaleDateString(undefined, { year:"numeric", month:"long", day:"numeric" });
 }
 
@@ -322,7 +322,7 @@ function renderArchive(items){
 
   grid.innerHTML = "";
 
-  if(!items.length){
+  if(!items || !items.length){
     status.className = "empty";
     status.textContent = "No devotionals found yet.";
     status.style.display = "block";
@@ -359,34 +359,48 @@ function applySearch(){
     return;
   }
 
-  const filtered = allDevotionals.filter(item => {
-    return String(item.subject || "").toLowerCase().includes(q) ||
-           String(item.message || "").toLowerCase().includes(q);
-  });
+  const filtered = allDevotionals.filter(item =>
+    String(item.subject || "").toLowerCase().includes(q) ||
+    String(item.message || "").toLowerCase().includes(q)
+  );
 
   renderArchive(filtered);
 }
 
-function loadArchiveJsonp(){
+function loadArchive(){
   const status = document.getElementById("archiveStatus");
 
   window.handleDevotionalArchive = function(data){
+    if(!data || data.success === false){
+      status.className = "error";
+      status.textContent = data && data.error ? data.error : "The devotional archive could not be loaded right now.";
+      return;
+    }
+
     allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
     renderArchive(allDevotionals);
   };
 
   const script = document.createElement("script");
-  script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive";
+  script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive&v=" + Date.now();
+
   script.onerror = function(){
     status.className = "error";
     status.textContent = "The devotional archive could not be loaded right now.";
   };
 
+  setTimeout(function(){
+    if(status && status.textContent === "Loading devotionals..."){
+      status.className = "error";
+      status.innerHTML = "The archive is still loading. Please confirm the Apps Script Web App URL opens with <strong>?callback=handleDevotionalArchive</strong> at the end.";
+    }
+  }, 8000);
+
   document.body.appendChild(script);
 }
 
 document.getElementById("archiveSearch").addEventListener("input", applySearch);
-loadArchiveJsonp();
+loadArchive();
 </script>
 </body>
 </html>
