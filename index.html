@@ -100,18 +100,18 @@
     }
 
     .page-hero {
-      min-height: 430px;
+      min-height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 82px 22px;
+      padding: 92px 22px;
       background-image:
-        linear-gradient(rgba(16, 26, 46, 0.28), rgba(16, 26, 46, 0.62)),
+        linear-gradient(rgba(16, 26, 46, 0.28), rgba(16, 26, 46, 0.58)),
         url('hero-background.png');
       background-size: cover;
       background-repeat: no-repeat;
-      background-position: 78% center;
+      background-position: 84% 34%;
       border-bottom: 1px solid rgba(215, 168, 79, 0.30);
     }
 
@@ -281,13 +281,25 @@
       border-top: 1px solid rgba(248, 217, 135, 0.34);
     }
 
-    .site-footer img {
-      width: 120px;
-      max-width: 44vw;
-      height: auto;
-      object-fit: contain;
-      display: block;
+    /* Footer profile logo crop */
+    .footer-profile-wrap {
+      width: 112px;
+      height: 112px;
       margin: 0 auto 14px auto;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 22px;
+      background: transparent;
+    }
+
+    .footer-profile-wrap img {
+      width: 138px;
+      height: 138px;
+      object-fit: cover;
+      transform: scale(1.12);
+      display: block;
     }
 
     .site-footer .tagline {
@@ -301,6 +313,14 @@
     .site-footer p {
       color: #D7DFEF;
       margin: 8px 0 0;
+    }
+
+    @media (max-width: 900px) {
+      .page-hero {
+        min-height: 420px;
+        padding: 72px 18px;
+        background-position: 78% 30%;
+      }
     }
 
     @media (max-width: 760px) {
@@ -333,13 +353,23 @@
       }
 
       .page-hero {
-        min-height: 380px;
-        padding: 60px 16px;
-        background-position: 72% center;
+        min-height: 360px;
+        padding: 54px 16px;
+        background-position: 72% 24%;
       }
 
       .section {
         padding: 62px 16px;
+      }
+
+      .footer-profile-wrap {
+        width: 98px;
+        height: 98px;
+      }
+
+      .footer-profile-wrap img {
+        width: 122px;
+        height: 122px;
       }
     }
   </style>
@@ -508,7 +538,9 @@
   </main>
 
   <footer class="site-footer">
-    <img src="logo.png" alt="Restored Daily Ministries logo">
+    <div class="footer-profile-wrap">
+      <img src="profile-logo.png" alt="Restored Daily Ministries profile logo">
+    </div>
 
     <div class="tagline">
       Restored by Grace • Renewed Daily • Sent on Mission
