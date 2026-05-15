@@ -238,6 +238,39 @@ a{color:inherit}
   .nav a{font-size:13px;padding:8px 11px}
   .section{padding:62px 16px}
 }
+
+.single-devotional{
+  max-width:900px;
+  margin:46px auto 0;
+  background:linear-gradient(180deg,rgba(255,255,255,.97),rgba(255,248,234,.95));
+  border:1px solid rgba(215,168,79,.38);
+  border-radius:30px;
+  padding:38px;
+  box-shadow:0 22px 52px rgba(28,45,74,.13);
+}
+.single-devotional h3{
+  font-family:Georgia,'Times New Roman',serif;
+  color:var(--royal);
+  font-size:clamp(36px,6vw,58px);
+  line-height:1.08;
+  margin:0 0 18px;
+}
+.single-devotional .full-message{
+  color:var(--text);
+  font-size:19px;
+  line-height:1.85;
+}
+.back-link{
+  display:inline-flex;
+  margin-bottom:24px;
+  padding:11px 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#FFE39A,#D7A84F);
+  color:var(--deep);
+  text-decoration:none;
+  font-weight:900;
+}
+
 </style>
 </head>
 
@@ -316,6 +349,11 @@ function formatDate(value){
   return d.toLocaleDateString(undefined, { year:"numeric", month:"long", day:"numeric" });
 }
 
+function getSelectedId(){
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id");
+}
+
 function renderArchive(items){
   const grid = document.getElementById("archiveGrid");
   const status = document.getElementById("archiveStatus");
@@ -351,6 +389,32 @@ function renderArchive(items){
   });
 }
 
+function renderSingleDevotional(item){
+  const grid = document.getElementById("archiveGrid");
+  const status = document.getElementById("archiveStatus");
+  const searchBox = document.querySelector(".archive-tools");
+  const pageTitle = document.querySelector(".section-title");
+  const pageText = document.querySelector(".section-text");
+
+  if(searchBox) searchBox.style.display = "none";
+  if(status) status.style.display = "none";
+  if(pageTitle) pageTitle.textContent = "Devotional";
+  if(pageText) pageText.textContent = "Read the full devotional below.";
+
+  const date = formatDate(item.dateArchived || item.date);
+  const subject = escapeHtml(item.subject || "Untitled Devotional");
+  const message = escapeHtml(item.message || "").replace(/\n/g, "<br>");
+
+  grid.innerHTML = `
+    <article class="single-devotional">
+      <a class="back-link" href="devotional.html">← Back to Archive</a>
+      ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
+      <h3>${subject}</h3>
+      <div class="full-message">${message}</div>
+    </article>
+  `;
+}
+
 function applySearch(){
   const q = document.getElementById("archiveSearch").value.toLowerCase().trim();
 
@@ -378,6 +442,24 @@ function loadArchive(){
     }
 
     allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
+
+    const selectedId = getSelectedId();
+
+    if(selectedId){
+      const selected = allDevotionals.find((item, index) =>
+        String(item.id || index) === String(selectedId)
+      );
+
+      if(selected){
+        renderSingleDevotional(selected);
+      } else {
+        status.className = "error";
+        status.textContent = "That devotional could not be found.";
+      }
+
+      return;
+    }
+
     renderArchive(allDevotionals);
   };
 
@@ -388,13 +470,6 @@ function loadArchive(){
     status.className = "error";
     status.textContent = "The devotional archive could not be loaded right now.";
   };
-
-  setTimeout(function(){
-    if(status && status.textContent === "Loading devotionals..."){
-      status.className = "error";
-      status.innerHTML = "The archive is still loading. Please confirm the Apps Script Web App URL opens with <strong>?callback=handleDevotionalArchive</strong> at the end.";
-    }
-  }, 8000);
 
   document.body.appendChild(script);
 }
