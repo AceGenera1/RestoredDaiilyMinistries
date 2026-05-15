@@ -108,7 +108,7 @@
       padding: 92px 22px;
       background-image:
         linear-gradient(rgba(16, 26, 46, 0.22), rgba(16, 26, 46, 0.58)),
-        url('hero-background.png');
+        url('./hero-background.png?v=4');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: 82% 34%;
@@ -368,7 +368,7 @@
   <header class="site-header">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
-        <img src="logo.png" alt="Restored Daily Ministries logo">
+        <img src="./logo.png?v=4" alt="Restored Daily Ministries logo">
         <span>RESTORED<br>DAILY MINISTRIES</span>
       </a>
 
@@ -529,7 +529,8 @@
   <footer class="site-footer">
     <img
       class="footer-profile-logo"
-      src="profile-logo.png"
+      src="./profile-logo-transparent.png?v=4"
+      onerror="if (!this.dataset.fallback) { this.dataset.fallback='1'; this.src='./profile-logo.png?v=4'; } else { this.style.display='none'; }"
       alt="Restored Daily Ministries profile logo"
     >
 
