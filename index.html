@@ -1,16 +1,467 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Home | Restored Daily Ministries</title>
-<style>
-:root{--mid:#101A2E;--royal:#1C2D4A;--ivory:#FFF8EA;--sky:#EEF7FF;--aqua:#EAF4F1;--gold:#D7A84F;--light:#F8D987;--text:#22304A}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,var(--sky),var(--ivory) 48%,var(--aqua));color:var(--text);line-height:1.7}a{color:inherit}
-.site-header{position:sticky;top:0;z-index:50;background:rgba(16,26,46,.94);border-bottom:1px solid rgba(248,217,135,.38);backdrop-filter:blur(12px)}
-.nav-wrap{max-width:1240px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand img{width:58px;height:58px;object-fit:contain}.brand span{font-family:Georgia,'Times New Roman',serif;font-size:18px;line-height:1.05;letter-spacing:1.6px;font-weight:800;color:var(--ivory)}
-.nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.nav a{text-decoration:none;font-weight:800;font-size:14px;color:var(--ivory);padding:10px 15px;border-radius:999px;border:2px solid rgba(248,217,135,.45);background:rgba(255,255,255,.06)}.nav a:hover{background:rgba(248,217,135,.22);color:var(--light)}
-.page-hero{min-height:330px;display:flex;align-items:center;justify-content:center;text-align:center;padding:72px 22px;background:linear-gradient(rgba(16,26,46,.36),rgba(16,26,46,.72)),url('hero-background.jpg') center/cover no-repeat;border-bottom:1px solid rgba(215,168,79,.30)}.page-hero h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(46px,8vw,86px);line-height:1.05;color:var(--ivory);text-shadow:0 7px 24px rgba(0,0,0,.45);margin:0 0 14px}.page-hero p{max-width:820px;margin:0 auto;font-size:clamp(18px,2.7vw,24px);color:var(--ivory);font-weight:700;text-shadow:0 4px 14px rgba(0,0,0,.45)}
-.section{padding:78px 22px}.container{max-width:1160px;margin:0 auto}.section-title{text-align:center;font-family:Georgia,'Times New Roman',serif;color:var(--royal);font-size:clamp(38px,7vw,64px);line-height:1.1;margin:0 0 18px}.section-text{max-width:900px;margin:0 auto;text-align:center;font-size:clamp(18px,3vw,22px);color:#2B394F}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:28px;margin-top:44px;align-items:stretch}.card{background:linear-gradient(180deg,rgba(255,255,255,.97),rgba(255,248,234,.94));border:1px solid rgba(215,168,79,.35);border-radius:28px;padding:32px;box-shadow:0 20px 45px rgba(28,45,74,.12);min-height:300px;display:flex;flex-direction:column}.card .tag{align-self:flex-start;display:inline-block;color:#8A621D;background:rgba(248,217,135,.36);border:1px solid rgba(215,168,79,.55);padding:9px 16px;border-radius:999px;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:18px}.card h3{font-family:Georgia,'Times New Roman',serif;color:var(--royal);font-size:clamp(28px,3.4vw,38px);line-height:1.1;margin:0 0 16px;word-break:normal;overflow-wrap:normal}.card p{color:#2B394F;font-size:18px;margin:0}a.card{text-decoration:none}.pathway-card{min-height:330px}.pathway-card h3{font-size:clamp(27px,3vw,36px)}
-.content-box{max-width:950px;margin:34px auto 0;padding:36px;border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,248,234,.94));border:1px solid rgba(215,168,79,.34);box-shadow:0 20px 45px rgba(28,45,74,.10)}.content-box p{font-size:19px;color:#2B394F;margin:0 0 18px}.quote{max-width:900px;margin:42px auto;text-align:center;color:#B7832D;font-family:Georgia,'Times New Roman',serif;font-size:clamp(32px,5vw,56px);line-height:1.12;font-style:italic}
-.btns{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:17px 30px;border-radius:999px;text-decoration:none;font-weight:900;font-size:16px}.btn-primary{background:linear-gradient(135deg,#FFE39A,#D7A84F);color:var(--mid);border:2px solid var(--gold);box-shadow:0 14px 28px rgba(215,168,79,.26)}.btn-secondary{background:#fff;color:#8A621D;border:2px solid rgba(183,131,45,.70)}
-.site-footer{padding:42px 22px;text-align:center;background:linear-gradient(180deg,#101A2E,#09111F);border-top:1px solid rgba(248,217,135,.34)}.site-footer img{width:120px;max-width:44vw;height:auto;object-fit:contain;margin-bottom:14px}.site-footer .tagline{color:var(--light);text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:900}.site-footer p{color:#D7DFEF;margin:8px 0 0}
-@media(max-width:760px){.cards{grid-template-columns:1fr}.nav-wrap{flex-direction:column;gap:12px;padding:13px 12px}.brand img{width:54px;height:54px}.brand span{font-size:16px}.nav{gap:8px}.nav a{font-size:13px;padding:8px 11px}.page-hero{min-height:300px;padding:60px 16px}.section{padding:62px 16px}.content-box{padding:25px}}
-</style>
-</head><body><header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><img src="logo.png" alt="Restored Daily Ministries logo"><span>RESTORED<br>DAILY MINISTRIES</span></a><nav class="nav"><a href="index.html">Home</a><a href="mission.html">Mission</a><a href="devotional.html">Devotionals</a><a href="disciple.html">Lessons</a><a href="preaching.html">Live Preaching</a><a href="podcast.html">Podcast</a><a href="prayer.html">Prayer</a></nav></div></header><main><section class="page-hero"><div><h1>Restored Daily Ministries</h1><p>Restored by Grace. Renewed Daily. Sent on Mission.</p></div></section><section class="section"><div class="container"><h2 class="section-title">You Are Not Who You Were</h2><p class="section-text">Restored Daily Ministries exists for people who have felt forgotten, disqualified, or too broken to be used by God — including those walking through disability, addiction, recovery, grief, hardship, limitation, and spiritual battles.</p><div class="quote">You are who He restores.</div><div class="cards"><div class="card"><div class="tag">Christ Sees You</div><h3>Disability Does Not Disqualify You</h3><p>You are not forgotten. You belong here.</p></div><div class="card"><div class="tag">Christ Will Restore You</div><h3>When You Fully Surrender</h3><p>When you fully surrender your life to Christ Jesus, the restoration process begins. No life is too broken, too far gone, or beyond the reach of His grace.</p></div><div class="card"><div class="tag">Christ Desires To Use You</div><h3>Your Past Does Not Cancel Your Purpose</h3><p>No matter what you’ve done, where you’ve been, or who you are — Christ Jesus still desires to use surrendered lives for His glory.</p></div><div class="card"><div class="tag">Christ Wants To Send You</div><h3>Be A Light In A Dark World</h3><p>Christ sends His people into a broken world to carry truth, hope, love, and the Gospel through the power of the Holy Spirit.</p></div></div></div></section><section class="section"><div class="container"><h2 class="section-title">Ministry Pathways</h2><p class="section-text">Resources to strengthen your faith and walk with Christ daily.</p><div class="cards"><a class="card pathway-card" href="devotional.html"><div class="tag">Daily Encouragement</div><h3>Devotionals</h3><p>Biblical encouragement written to strengthen hearts and point people back to Jesus Christ.</p></a><a class="card pathway-card" href="disciple.html"><div class="tag">Walking with Christ</div><h3>Lessons from a Disciple</h3><p>A daily journal of learning to follow Jesus through Scripture, prayer, conviction, failure, grace, and the Holy Spirit.</p></a><a class="card pathway-card" href="preaching.html"><div class="tag">Live Teaching</div><h3>Live Preaching</h3><p>Christ-centered preaching, Bible teaching, Scripture reading, and live encouragement.</p></a><a class="card pathway-card" href="podcast.html"><div class="tag">Audio Ministry</div><h3>Podcast</h3><p>Audio encouragement for daily faith, restoration, and spiritual growth in Christ.</p></a><a class="card pathway-card" href="prayer.html"><div class="tag">Prayer</div><h3>Prayer Requests</h3><p>You are not alone. We would be honored to pray with you.</p></a></div></div></section><section class="section"><div class="container"><h2 class="section-title">Behold, I Am Making All Things New</h2><p class="section-text">In Christ Jesus, your story is not over. Your condition does not cancel your calling. Your past does not disqualify your purpose. The Lord still restores, strengthens, sends, and uses surrendered lives for His glory.</p><div class="btns"><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSceK96Ej2bTmfD5cw1meETV3xc5FdE7IYJJissh-7v45SOWMw/viewform" target="_blank">Submit a Prayer Request</a><a class="btn btn-secondary" href="mission.html">Read the Mission</a></div></div></section></main><footer class="site-footer"><img src="logo.png" alt="Restored Daily Ministries logo"><div class="tagline">Love God. Love People. Change the World.</div><p>© 2026 Restored Daily Ministries • All Glory to Jesus Christ</p></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Restored Daily Ministries</title>
+
+  <style>
+    :root {
+      --navy: #102A43;
+      --deep-navy: #071A2D;
+      --gold: #C9A24D;
+      --soft-gold: #E8D49A;
+      --cream: #F8F1DF;
+      --light-cream: #FFF9EC;
+      --white: #FFFFFF;
+      --text: #1F2933;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+
+    .site-header {
+      background: var(--deep-navy);
+      color: var(--white);
+      padding: 16px 24px;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .header-inner {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .header-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      letter-spacing: 1px;
+      color: var(--white);
+    }
+
+    .header-subtitle {
+      font-size: 0.95rem;
+      color: var(--soft-gold);
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 75vh;
+      background:
+        linear-gradient(
+          rgba(7, 26, 45, 0.62),
+          rgba(7, 26, 45, 0.42)
+        ),
+        url("./hero-background.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      background: rgba(7, 26, 45, 0.72);
+      border: 2px solid rgba(201, 162, 77, 0.8);
+      border-radius: 24px;
+      padding: 42px 28px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(3px);
+    }
+
+    .hero-logo {
+      width: 160px;
+      max-width: 45vw;
+      margin: 0 auto 20px auto;
+      display: block;
+      border-radius: 50%;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 6vw, 4rem);
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.1rem, 3vw, 1.7rem);
+      color: var(--soft-gold);
+      font-weight: normal;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 720px;
+      margin: 0 auto;
+      color: #fff7df;
+    }
+
+    .hero-buttons {
+      margin-top: 28px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--gold);
+      color: var(--deep-navy);
+      border: 2px solid var(--gold);
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--soft-gold);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    /* Sections */
+
+    .section {
+      padding: 70px 24px;
+    }
+
+    .section-inner {
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    .section-card {
+      background: var(--light-cream);
+      border: 2px solid rgba(201, 162, 77, 0.35);
+      border-radius: 24px;
+      padding: 36px 28px;
+      box-shadow: 0 12px 30px rgba(16, 42, 67, 0.12);
+    }
+
+    .section h2 {
+      color: var(--navy);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .gold-line {
+      width: 90px;
+      height: 4px;
+      background: var(--gold);
+      margin: 0 auto 26px auto;
+      border-radius: 999px;
+    }
+
+    .section p {
+      font-size: 1.08rem;
+      margin-bottom: 16px;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .mission-box {
+      background: var(--white);
+      border: 1px solid rgba(201, 162, 77, 0.45);
+      border-radius: 18px;
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(16, 42, 67, 0.08);
+    }
+
+    .mission-box h3 {
+      color: var(--navy);
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .mission-box p {
+      font-size: 0.98rem;
+      margin-bottom: 0;
+    }
+
+    .dark-section {
+      background: var(--deep-navy);
+      color: var(--white);
+    }
+
+    .dark-section h2 {
+      color: var(--white);
+    }
+
+    .dark-section p {
+      color: #F7EFD8;
+    }
+
+    .dark-section .section-card {
+      background: rgba(255, 249, 236, 0.08);
+      border-color: rgba(232, 212, 154, 0.45);
+    }
+
+    /* Footer */
+
+    .site-footer {
+      background: var(--deep-navy);
+      color: var(--white);
+      text-align: center;
+      padding: 50px 24px 36px;
+      border-top: 4px solid var(--gold);
+    }
+
+    .footer-logo {
+      width: 150px;
+      max-width: 45vw;
+      display: block;
+      margin: 0 auto 18px auto;
+      border-radius: 50%;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .footer-title {
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .footer-tagline {
+      color: var(--soft-gold);
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+
+    .footer-note {
+      font-size: 0.92rem;
+      color: #D9E2EC;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 800px) {
+      .hero {
+        min-height: 70vh;
+        padding: 60px 18px;
+      }
+
+      .hero-content {
+        padding: 32px 20px;
+      }
+
+      .hero-logo {
+        width: 125px;
+      }
+
+      .mission-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 52px 18px;
+      }
+
+      .section-card {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+
+    <header class="site-header">
+      <div class="header-inner">
+        <div>
+          <div class="header-title">Restored Daily Ministries</div>
+          <div class="header-subtitle">Restored by Grace • Renewed Daily • Sent on Mission</div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="hero">
+        <div class="hero-content">
+          <img
+            src="./profile-logo.png"
+            alt="Restored Daily Ministries Logo"
+            class="hero-logo"
+          />
+
+          <h1>Restored Daily Ministries</h1>
+
+          <h2>Christ Our Hope. Scripture Our Foundation. Mission Our Calling.</h2>
+
+          <p>
+            Restored Daily Ministries exists to point people to Jesus Christ through Scripture,
+            daily encouragement, restoration, and hope for those who have felt forgotten,
+            broken, disqualified, or too far gone.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#about" class="button button-primary">About the Ministry</a>
+            <a href="#mission" class="button button-secondary">Our Mission</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-inner">
+          <div class="section-card">
+            <h2>About Restored Daily</h2>
+            <div class="gold-line"></div>
+
+            <p>
+              Restored Daily Ministries is a Christ-centered ministry built around the truth
+              that no life is too broken for the grace of God. Through devotionals, Bible teaching,
+              encouragement, prayer, and testimony, this ministry exists to help people walk with
+              Jesus one day at a time.
+            </p>
+
+            <p>
+              The heart behind Restored Daily is simple: people can be restored by grace,
+              renewed daily through God’s Word, and sent on mission with purpose in Christ Jesus.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark-section" id="mission">
+        <div class="section-inner">
+          <div class="section-card">
+            <h2>The Heart of the Ministry</h2>
+            <div class="gold-line"></div>
+
+            <p>
+              Restored Daily Ministries is especially for those who have felt forgotten,
+              disqualified, limited, written off, or too broken to be used by God.
+              In Christ Jesus, your story is not over.
+            </p>
+
+            <div class="mission-grid">
+              <div class="mission-box">
+                <h3>Restoration</h3>
+                <p>God restores what feels broken and brings new life through Jesus Christ.</p>
+              </div>
+
+              <div class="mission-box">
+                <h3>Encouragement</h3>
+                <p>Daily truth and hope for people walking through real life and real battles.</p>
+              </div>
+
+              <div class="mission-box">
+                <h3>Scripture</h3>
+                <p>Teaching and encouragement rooted in the Word of God.</p>
+              </div>
+
+              <div class="mission-box">
+                <h3>Mission</h3>
+                <p>Restored people are sent forward to love, serve, and point others to Christ.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="content">
+        <div class="section-inner">
+          <div class="section-card">
+            <h2>Devotionals & Journey Through the Bible</h2>
+            <div class="gold-line"></div>
+
+            <p>
+              Through devotional videos, podcast messages, and Bible teaching, Restored Daily
+              Ministries seeks to help people grow in faith, understand Scripture, and find
+              daily strength in Christ.
+            </p>
+
+            <p>
+              Whether you are new to the Bible, returning to faith, walking through recovery,
+              facing hardship, or simply hungry for more of God’s Word, you are welcome here.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <img
+        src="./profile-logo.png"
+        alt="Restored Daily Ministries Logo"
+        class="footer-logo"
+      />
+
+      <div class="footer-title">Restored Daily Ministries</div>
+
+      <div class="footer-tagline">
+        Restored by Grace • Renewed Daily • Sent on Mission
+      </div>
+
+      <div class="footer-note">
+        Christ Our Hope • Restoration • Encouragement • Scripture • Mission
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
+
