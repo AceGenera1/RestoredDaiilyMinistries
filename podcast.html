@@ -1,28 +1,509 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Podcast | Restored Daily Ministries</title>
-<style>
-:root{--deep:#101A2E;--earth:#1F4F46;--card:#F9F2E4;--cream:#FFF8EA;--gold:#D7A84F;--lightgold:#F8D987;--amber:#F2C76E;}
-*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at 50% 0%,rgba(248,217,135,.30),transparent 34%),linear-gradient(180deg,#EEF7FF 0%,#FFF8EA 34%,#EAF4F1 68%,#101A2E 100%);color:var(--cream);line-height:1.7} a{color:inherit}
-.site-header{position:sticky;top:0;z-index:50;background:rgba(16,26,46,.92);border-bottom:1px solid rgba(214,170,99,.34);backdrop-filter:blur(12px)}
-.nav-wrap{max-width:1220px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:13px;text-decoration:none}.brand img{width:68px;height:68px;object-fit:contain;filter:drop-shadow(0 5px 12px rgba(0,0,0,.5))}
-.brand span{font-family:Georgia,'Times New Roman',serif;font-weight:800;font-size:20px;letter-spacing:2px;line-height:1.05}
-.nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.nav a{text-decoration:none;font-weight:800;font-size:14px;padding:10px 14px;border-radius:999px;border:1px solid rgba(214,170,99,.22);background:rgba(255,244,222,.04);transition:.25s}.nav a:hover{background:rgba(214,170,99,.18);box-shadow:0 0 18px rgba(214,170,99,.18)}
-.hero{min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:78px 20px;background:linear-gradient(rgba(16,26,46,.12),rgba(16,26,46,.56)),url('hero-background.jpg') center/cover no-repeat;border-bottom:1px solid rgba(214,170,99,.30)}
-.hero-inner{width:100%;max-width:1020px;margin:auto}.hero-logo{width:min(560px,90vw);max-height:330px;object-fit:contain;display:block;margin:0 auto 22px;background:transparent;box-shadow:none;filter:drop-shadow(0 18px 35px rgba(0,0,0,.55))}
-.kicker{color:var(--lightgold);text-transform:uppercase;letter-spacing:2.5px;font-weight:900;margin:6px auto 16px}
-h1,h2,h3{font-family:Georgia,'Times New Roman',serif;margin:0;line-height:1.1}.hero h1{font-size:clamp(48px,10vw,104px);letter-spacing:6px;color:#fff5dd;text-shadow:0 8px 28px rgba(0,0,0,.55)}.hero h2{color:var(--lightgold);font-size:clamp(25px,4vw,44px);max-width:870px;margin:20px auto 10px}
-.scripture{font-family:Georgia,'Times New Roman',serif;font-size:clamp(21px,3vw,32px);font-style:italic;color:#fff0ce;margin:22px auto 0}
-.btns{display:flex;justify-content:center;align-items:center;gap:15px;flex-wrap:wrap;margin-top:32px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 26px;border-radius:999px;text-decoration:none;font-weight:900;border:2px solid rgba(214,170,99,.72);transition:.25s}.btn-primary{color:#101A2E;background:linear-gradient(135deg,#FFE39A,#D7A84F);color:#13233F;font-weight:700;box-shadow:0 12px 32px rgba(198,122,61,.23)}.btn-secondary{color:var(--cream);background:rgba(255,244,222,.08)}.btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.3),0 0 22px rgba(214,170,99,.22)}
-.page-hero{padding:92px 22px 65px;text-align:center;background:linear-gradient(rgba(16,26,46,.28),rgba(16,26,46,.70)),url('hero-background.jpg') center/cover no-repeat;border-bottom:1px solid rgba(214,170,99,.25)}.page-hero h1{font-size:clamp(44px,8vw,82px)}.page-hero p{max-width:850px;margin:18px auto 0;font-size:clamp(18px,3vw,23px);color:#F7EEDB}
-.section{padding:82px 22px;background:linear-gradient(180deg,#F7FBFF 0%,#FFF8EA 100%);color:#13233F}.section.light{background:linear-gradient(180deg,#FFF8EA 0%,#EEF7FF 52%,#EAF4F1 100%);color:#13233F}.container{max-width:1160px;margin:0 auto}.section-title{text-align:center;font-size:clamp(38px,7vw,66px);color:#13233F;margin-bottom:18px}.section-text{max-width:900px;margin:0 auto;text-align:center;font-size:clamp(18px,3vw,22px);color:#2B394F}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:24px;margin-top:46px}.card{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,248,234,.88));border:1px solid rgba(214,170,99,.42);border-radius:28px;padding:31px;box-shadow:0 24px 56px rgba(0,0,0,.24)}a.card{display:block;text-decoration:none}.card .tag{display:inline-block;color:var(--lightgold);border:1px solid rgba(214,170,99,.42);padding:7px 13px;border-radius:999px;font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:1.4px;margin-bottom:18px;background:rgba(255,244,222,.055)}.card h3{color:#13233F;font-size:clamp(29px,4vw,40px);margin-bottom:14px}.card p{margin:0 0 12px;color:#2B394F;font-size:18px}
-.content-box{max-width:960px;margin:34px auto 0;padding:34px;border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,248,234,.88));border:1px solid rgba(214,170,99,.36);box-shadow:0 22px 58px rgba(0,0,0,.22)}.content-box p{color:#2B394F;font-size:19px}
-.quote{max-width:900px;margin:45px auto;text-align:center;color:#B7832D;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:clamp(30px,5vw,54px);line-height:1.12}
-.site-footer{padding:42px 22px;text-align:center;background:linear-gradient(180deg,#101A2E,#09111F);border-top:1px solid rgba(214,170,99,.32)}.site-footer img{width:130px;max-width:45vw;height:auto;object-fit:contain;margin-bottom:14px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.5))}.site-footer .tagline{color:var(--lightgold);text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:900}.site-footer p{color:#D7DFEF;margin:8px 0 0}
-@media(max-width:760px){.nav-wrap{flex-direction:column;gap:12px;padding:13px 12px}.brand img{width:58px;height:58px}.brand span{font-size:17px}.nav{gap:8px}.nav a{font-size:13px;padding:8px 11px}.hero{min-height:86vh;padding:60px 15px}.hero-logo{width:min(420px,88vw)}.section{padding:62px 16px}.content-box{padding:24px}}
-</style>
-</head><body>
-<header class="site-header"><div class="nav-wrap"><a class="brand" href="index.html"><img src="logo.png" alt="Restored Daily Ministries logo"><span>RESTORED<br>DAILY MINISTRIES</span></a><nav class="nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="mission.html">Mission</a><a href="devotional.html">Devotionals</a><a href="disciple.html">Lessons</a><a href="preaching.html">Live Preaching</a><a href="podcast.html">Podcast</a><a href="prayer.html">Prayer</a></nav></div></header>
-<main><section class="page-hero"><h1>Podcast</h1><p>Audio encouragement for daily faith, restoration, and spiritual growth in Christ.</p></section><section class="section light"><div class="container"><h2 class="section-title">Restored Daily Podcast</h2><p class="section-text">The podcast remains an outreach tool, but the ministry website is becoming the main home base for the content, archive, and engagement.</p><div class="content-box" style="text-align:center;"><h3>Listen to the Podcast</h3><p>Podcast episodes can be linked here now, and later we can embed an audio player or pull from the RSS feed automatically.</p><div class="btns"><a class="btn btn-primary" href="https://rss.com/podcasts/restored-daily/" target="_blank" rel="noopener">Open Podcast</a></div></div></div></section></main>
-<footer class="site-footer"><img src="logo.png" alt="Restored Daily Ministries logo"><div class="tagline">Love God. Love People. Change the World.</div><p>© 2026 Restored Daily Ministries • All Glory to Jesus Christ</p></footer>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podcast | Restored Daily Ministries</title>
+
+  <style>
+    :root {
+      --deep: #101A2E;
+      --earth: #1F4F46;
+      --card: #F9F2E4;
+      --cream: #FFF8EA;
+      --gold: #D7A84F;
+      --lightgold: #F8D987;
+      --amber: #F2C76E;
+      --royal: #13233F;
+      --text: #2B394F;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(248, 217, 135, 0.30), transparent 34%),
+        linear-gradient(180deg, #EEF7FF 0%, #FFF8EA 34%, #EAF4F1 68%, #101A2E 100%);
+      color: var(--cream);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(16, 26, 46, 0.96);
+      border-bottom: 1px solid rgba(248, 217, 135, 0.34);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 34px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+
+    .brand-emblem {
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+      display: block;
+      background: transparent;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    }
+
+    .brand-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-main {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--cream);
+      font-size: clamp(30px, 2.5vw, 46px);
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--gold);
+      font-size: clamp(16px, 1.2vw, 22px);
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-sub::before,
+    .brand-sub::after {
+      content: "";
+      width: 50px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+      flex: 0 0 auto;
+    }
+
+    .brand-sub::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12.5px;
+      color: var(--cream);
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 2px solid rgba(248, 217, 135, 0.44);
+      background: rgba(255, 255, 255, 0.05);
+      transition: 0.2s ease;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: rgba(248, 217, 135, 0.18);
+      color: var(--lightgold);
+      box-shadow: 0 0 18px rgba(214, 170, 99, 0.18);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .page-hero {
+      min-height: 460px;
+      padding: 100px 22px 88px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(16, 26, 46, 0.24), rgba(16, 26, 46, 0.66)),
+        url('./hero-background.png?v=18') 82% 26% / cover no-repeat;
+      border-bottom: 1px solid rgba(214, 170, 99, 0.25);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(44px, 8vw, 82px);
+      color: #fff5dd;
+      text-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    .page-hero p {
+      max-width: 850px;
+      margin: 18px auto 0;
+      font-size: clamp(18px, 3vw, 23px);
+      color: #F7EEDB;
+      font-weight: 700;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    }
+
+    .section {
+      padding: 82px 22px;
+      background: linear-gradient(180deg, #F7FBFF 0%, #FFF8EA 100%);
+      color: #13233F;
+    }
+
+    .section.light {
+      background: linear-gradient(180deg, #FFF8EA 0%, #EEF7FF 52%, #EAF4F1 100%);
+      color: #13233F;
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(38px, 7vw, 66px);
+      color: #13233F;
+      margin-bottom: 18px;
+    }
+
+    .section-text {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: clamp(18px, 3vw, 22px);
+      color: #2B394F;
+    }
+
+    .content-box {
+      max-width: 960px;
+      margin: 34px auto 0;
+      padding: 34px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 248, 234, 0.88));
+      border: 1px solid rgba(214, 170, 99, 0.36);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.12);
+      text-align: center;
+    }
+
+    .content-box h3 {
+      color: #13233F;
+      font-size: clamp(29px, 4vw, 40px);
+      margin-bottom: 14px;
+    }
+
+    .content-box p {
+      color: #2B394F;
+      font-size: 19px;
+      margin: 0;
+    }
+
+    .btns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 2px solid rgba(214, 170, 99, 0.72);
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #FFE39A, #D7A84F);
+      color: #13233F;
+      font-weight: 900;
+      box-shadow: 0 12px 32px rgba(198, 122, 61, 0.23);
+    }
+
+    .btn-secondary {
+      color: var(--cream);
+      background: rgba(255, 244, 222, 0.08);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3), 0 0 22px rgba(214, 170, 99, 0.22);
+    }
+
+    .site-footer {
+      padding: 42px 22px;
+      text-align: center;
+      background: linear-gradient(180deg, #101A2E, #09111F);
+      border-top: 1px solid rgba(248, 217, 135, 0.34);
+    }
+
+    .footer-profile-logo {
+      width: 145px;
+      max-width: 48vw;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 16px auto;
+      background: transparent;
+    }
+
+    .site-footer .tagline {
+      color: var(--lightgold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .site-footer p {
+      color: #D7DFEF;
+      margin: 8px 0 0;
+    }
+
+    @media (max-width: 1180px) {
+      .nav-wrap {
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+        padding: 14px 16px;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+      }
+
+      .nav a {
+        font-size: 13px;
+        padding: 8px 14px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page-hero {
+        min-height: 430px;
+        padding: 80px 18px 58px;
+        background-position: 76% 30%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-wrap {
+        gap: 14px;
+        padding: 16px 12px 14px;
+      }
+
+      .brand {
+        gap: 10px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .brand-emblem {
+        width: 74px;
+        height: 74px;
+      }
+
+      .brand-main {
+        font-size: 26px;
+        letter-spacing: 1px;
+      }
+
+      .brand-sub {
+        justify-content: center;
+        margin-top: 6px;
+        font-size: 15px;
+        letter-spacing: 4px;
+        gap: 8px;
+      }
+
+      .brand-sub::before,
+      .brand-sub::after {
+        width: 28px;
+        height: 2px;
+      }
+
+      .nav {
+        gap: 10px 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav a {
+        font-size: 13px;
+        padding: 10px 16px;
+        min-width: 132px;
+        text-align: center;
+      }
+
+      .page-hero {
+        min-height: 470px;
+        padding: 70px 16px 52px;
+        background-position: 70% 28%;
+      }
+
+      .section {
+        padding: 62px 16px;
+      }
+
+      .content-box {
+        padding: 24px;
+      }
+
+      .footer-profile-logo {
+        width: 135px;
+        max-width: 50vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-main {
+        font-size: 24px;
+      }
+
+      .brand-sub {
+        font-size: 14px;
+        letter-spacing: 3px;
+      }
+
+      .nav a {
+        min-width: 128px;
+        padding: 10px 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
+        <img
+          class="brand-emblem"
+          src="./profile-logo.png?v=18"
+          alt="Restored Daily Ministries emblem"
+        >
+
+        <div class="brand-wordmark">
+          <div class="brand-main">Restored Daily</div>
+          <div class="brand-sub">Ministries</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="mission.html">Mission</a>
+        <a href="devotional.html">Devotionals</a>
+        <a href="disciple.html">Lessons</a>
+        <a href="preaching.html">Live Preaching</a>
+        <a class="active" href="podcast.html">Podcast</a>
+        <a href="prayer.html">Prayer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1>Podcast</h1>
+      <p>Audio encouragement for daily faith, restoration, and spiritual growth in Christ.</p>
+    </section>
+
+    <section class="section light">
+      <div class="container">
+        <h2 class="section-title">Restored Daily Podcast</h2>
+
+        <p class="section-text">
+          The podcast remains an outreach tool, but the ministry website is becoming the main
+          home base for the content, archive, and engagement.
+        </p>
+
+        <div class="content-box">
+          <h3>Listen to the Podcast</h3>
+
+          <p>
+            Podcast episodes can be linked here now, and later we can embed an audio player
+            or pull from the RSS feed automatically.
+          </p>
+
+          <div class="btns">
+            <a
+              class="btn btn-primary"
+              href="https://rss.com/podcasts/restored-daily/"
+              target="_blank"
+              rel="noopener"
+            >
+              Open Podcast
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img
+      class="footer-profile-logo"
+      src="./profile-logo.png?v=18"
+      alt="Restored Daily Ministries profile logo"
+    >
+
+    <div class="tagline">
+      Restored by Grace • Renewed Daily • Sent on Mission
+    </div>
+
+    <p>© 2026 Restored Daily Ministries • All Glory to Jesus Christ</p>
+  </footer>
+</body>
+</html>
