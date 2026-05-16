@@ -49,30 +49,23 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 22px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
       text-decoration: none;
+      flex: 0 0 auto;
     }
 
-    .brand img {
-      width: 58px;
-      height: 58px;
+    .header-logo {
+      width: 360px;
+      max-width: 42vw;
+      height: auto;
+      max-height: 76px;
       object-fit: contain;
       display: block;
-    }
-
-    .brand span {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 18px;
-      line-height: 1.05;
-      letter-spacing: 1.6px;
-      font-weight: 800;
-      color: var(--ivory);
     }
 
     .nav {
@@ -108,7 +101,7 @@
       padding: 92px 22px;
       background-image:
         linear-gradient(rgba(16, 26, 46, 0.22), rgba(16, 26, 46, 0.58)),
-        url('./hero-background.png?v=7');
+        url('./hero-background.png?v=8');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: 82% 34%;
@@ -302,6 +295,19 @@
       margin: 8px 0 0;
     }
 
+    @media (max-width: 1050px) {
+      .nav-wrap {
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .header-logo {
+        width: 390px;
+        max-width: 78vw;
+      }
+    }
+
     @media (max-width: 900px) {
       .page-hero {
         min-height: 430px;
@@ -316,18 +322,14 @@
       }
 
       .nav-wrap {
-        flex-direction: column;
         gap: 12px;
         padding: 13px 12px;
       }
 
-      .brand img {
-        width: 54px;
-        height: 54px;
-      }
-
-      .brand span {
-        font-size: 16px;
+      .header-logo {
+        width: 340px;
+        max-width: 82vw;
+        max-height: 90px;
       }
 
       .nav {
@@ -366,8 +368,11 @@
   <header class="site-header">
     <div class="nav-wrap">
       <a class="brand" href="index.html">
-        <img src="./logo.png?v=7" alt="Restored Daily Ministries logo">
-        <span>RESTORED<br>DAILY MINISTRIES</span>
+        <img
+          class="header-logo"
+          src="./header-logo.png?v=1"
+          alt="Restored Daily Ministries"
+        >
       </a>
 
       <nav class="nav">
@@ -527,7 +532,7 @@
   <footer class="site-footer">
     <img
       class="footer-profile-logo"
-      src="./profile-logo.png?v=7"
+      src="./profile-logo.png?v=8"
       alt="Restored Daily Ministries profile logo"
     >
 
