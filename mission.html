@@ -26,7 +26,7 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at 50% 0%, rgba(248, 217, 135, .30), transparent 34%),
+        radial-gradient(circle at 50% 0%, rgba(248, 217, 135, 0.30), transparent 34%),
         linear-gradient(180deg, #EEF7FF 0%, #FFF8EA 34%, #EAF4F1 68%, #101A2E 100%);
       color: var(--cream);
       line-height: 1.7;
@@ -157,18 +157,23 @@
     }
 
     .page-hero {
-      padding: 92px 22px 65px;
+      min-height: 390px;
+      padding: 90px 22px 78px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       background:
-        linear-gradient(rgba(16, 26, 46, .28), rgba(16, 26, 46, .70)),
-        url('./hero-background.png?v=12') center / cover no-repeat;
-      border-bottom: 1px solid rgba(214, 170, 99, .25);
+        linear-gradient(rgba(16, 26, 46, 0.24), rgba(16, 26, 46, 0.66)),
+        url('./hero-background.png?v=13') 82% 40% / cover no-repeat;
+      border-bottom: 1px solid rgba(214, 170, 99, 0.25);
     }
 
     .page-hero h1 {
       font-size: clamp(44px, 8vw, 82px);
       color: #fff5dd;
-      text-shadow: 0 8px 28px rgba(0, 0, 0, .55);
+      text-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
     }
 
     .page-hero p {
@@ -177,7 +182,7 @@
       font-size: clamp(18px, 3vw, 23px);
       color: #F7EEDB;
       font-weight: 700;
-      text-shadow: 0 4px 14px rgba(0, 0, 0, .45);
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
     }
 
     .section {
@@ -221,11 +226,11 @@
     .card {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 248, 234, .88));
-      border: 1px solid rgba(214, 170, 99, .42);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 248, 234, 0.88));
+      border: 1px solid rgba(214, 170, 99, 0.42);
       border-radius: 28px;
       padding: 31px;
-      box-shadow: 0 24px 56px rgba(0, 0, 0, .24);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.24);
     }
 
     a.card {
@@ -236,7 +241,7 @@
     .card .tag {
       display: inline-block;
       color: #8A621D;
-      border: 1px solid rgba(214, 170, 99, .42);
+      border: 1px solid rgba(214, 170, 99, 0.42);
       padding: 7px 13px;
       border-radius: 999px;
       font-size: 13px;
@@ -244,7 +249,7 @@
       text-transform: uppercase;
       letter-spacing: 1.4px;
       margin-bottom: 18px;
-      background: rgba(248, 217, 135, .30);
+      background: rgba(248, 217, 135, 0.30);
     }
 
     .card h3 {
@@ -264,14 +269,19 @@
       margin: 34px auto 0;
       padding: 34px;
       border-radius: 30px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 248, 234, .88));
-      border: 1px solid rgba(214, 170, 99, .36);
-      box-shadow: 0 22px 58px rgba(0, 0, 0, .12);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 248, 234, 0.88));
+      border: 1px solid rgba(214, 170, 99, 0.36);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.12);
     }
 
     .content-box p {
       color: #2B394F;
       font-size: 19px;
+      margin: 0 0 18px;
+    }
+
+    .content-box p:last-child {
+      margin-bottom: 0;
     }
 
     .quote {
@@ -341,6 +351,7 @@
 
     @media (max-width: 900px) {
       .page-hero {
+        min-height: 430px;
         padding: 80px 18px 58px;
         background-position: 76% 30%;
       }
@@ -396,6 +407,7 @@
       }
 
       .page-hero {
+        min-height: 470px;
         padding: 70px 16px 52px;
         background-position: 70% 28%;
       }
@@ -438,7 +450,7 @@
       <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
         <img
           class="brand-emblem"
-          src="./profile-logo.png?v=12"
+          src="./profile-logo.png?v=13"
           alt="Restored Daily Ministries emblem"
         >
 
@@ -495,7 +507,7 @@
   <footer class="site-footer">
     <img
       class="footer-profile-logo"
-      src="./profile-logo.png?v=12"
+      src="./profile-logo.png?v=13"
       alt="Restored Daily Ministries profile logo"
     >
 
