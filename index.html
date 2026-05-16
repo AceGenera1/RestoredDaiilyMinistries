@@ -38,21 +38,20 @@
       top: 0;
       z-index: 50;
       background: rgba(16, 26, 46, 0.96);
-      border-bottom: 1px solid rgba(248, 217, 135, 0.38);
+      border-bottom: 1px solid rgba(248, 217, 135, 0.34);
       backdrop-filter: blur(12px);
     }
 
     .nav-wrap {
-      max-width: 1240px;
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 14px 22px;
+      padding: 12px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 22px;
+      gap: 18px;
     }
 
-    /* NEW HEADER LOGO BUILT IN HTML — NO WHITE IMAGE BACKGROUND */
     .brand {
       display: flex;
       align-items: center;
@@ -62,8 +61,8 @@
     }
 
     .brand-emblem {
-      width: 74px;
-      height: 74px;
+      width: 86px;
+      height: 86px;
       object-fit: contain;
       display: block;
       background: transparent;
@@ -79,25 +78,24 @@
     .brand-main {
       font-family: Georgia, 'Times New Roman', serif;
       color: var(--ivory);
-      font-size: clamp(28px, 3vw, 42px);
+      font-size: clamp(30px, 2.5vw, 46px);
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
       white-space: nowrap;
     }
 
     .brand-sub {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 12px;
       margin-top: 8px;
       font-family: Georgia, 'Times New Roman', serif;
       color: var(--gold);
-      font-size: clamp(15px, 1.4vw, 22px);
+      font-size: clamp(16px, 1.2vw, 22px);
       font-weight: 700;
-      letter-spacing: 7px;
+      letter-spacing: 6px;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -105,11 +103,11 @@
     .brand-sub::before,
     .brand-sub::after {
       content: "";
-      width: 58px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--gold));
+      width: 50px;
+      height: 2px;
       border-radius: 999px;
-      display: block;
+      background: linear-gradient(90deg, transparent, var(--gold));
+      flex: 0 0 auto;
     }
 
     .brand-sub::after {
@@ -118,25 +116,29 @@
 
     .nav {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px 10px;
+      max-width: 700px;
     }
 
     .nav a {
       text-decoration: none;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--ivory);
-      padding: 10px 15px;
+      padding: 8px 14px;
       border-radius: 999px;
-      border: 2px solid rgba(248, 217, 135, 0.45);
-      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(248, 217, 135, 0.44);
+      background: rgba(255, 255, 255, 0.05);
       transition: 0.2s ease;
+      line-height: 1.1;
+      white-space: nowrap;
     }
 
     .nav a:hover {
-      background: rgba(248, 217, 135, 0.22);
+      background: rgba(248, 217, 135, 0.18);
       color: var(--light);
     }
 
@@ -343,23 +345,21 @@
       margin: 8px 0 0;
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1180px) {
       .nav-wrap {
         flex-direction: column;
         justify-content: center;
-        gap: 16px;
+        gap: 14px;
+        padding: 14px 16px;
       }
 
       .brand {
         justify-content: center;
       }
 
-      .brand-main {
-        font-size: clamp(30px, 6vw, 46px);
-      }
-
-      .brand-sub {
-        font-size: clamp(15px, 3vw, 22px);
+      .nav {
+        justify-content: center;
+        max-width: 100%;
       }
     }
 
@@ -377,44 +377,51 @@
       }
 
       .nav-wrap {
-        gap: 18px;
-        padding: 18px 12px 16px;
+        gap: 14px;
+        padding: 16px 12px 14px;
       }
 
       .brand {
         gap: 10px;
+        flex-direction: column;
+        text-align: center;
       }
 
       .brand-emblem {
-        width: 70px;
-        height: 70px;
+        width: 74px;
+        height: 74px;
       }
 
       .brand-main {
-        font-size: clamp(26px, 8vw, 34px);
+        font-size: 26px;
         letter-spacing: 1px;
       }
 
       .brand-sub {
+        justify-content: center;
         margin-top: 6px;
-        font-size: clamp(13px, 4vw, 18px);
-        letter-spacing: 5px;
+        font-size: 15px;
+        letter-spacing: 4px;
         gap: 8px;
       }
 
       .brand-sub::before,
       .brand-sub::after {
-        width: 32px;
+        width: 28px;
         height: 2px;
       }
 
       .nav {
-        gap: 8px;
+        gap: 10px 10px;
+        width: 100%;
+        justify-content: center;
       }
 
       .nav a {
         font-size: 13px;
-        padding: 8px 11px;
+        padding: 10px 16px;
+        min-width: 132px;
+        text-align: center;
       }
 
       .page-hero {
@@ -439,23 +446,18 @@
     }
 
     @media (max-width: 480px) {
-      .brand {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .brand-emblem {
-        width: 74px;
-        height: 74px;
-      }
-
       .brand-main {
-        font-size: 28px;
+        font-size: 24px;
       }
 
       .brand-sub {
-        font-size: 15px;
-        letter-spacing: 4px;
+        font-size: 14px;
+        letter-spacing: 3px;
+      }
+
+      .nav a {
+        min-width: 128px;
+        padding: 10px 14px;
       }
     }
   </style>
