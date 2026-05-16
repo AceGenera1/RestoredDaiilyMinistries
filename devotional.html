@@ -1,481 +1,699 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Devotionals | Restored Daily Ministries</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devotionals | Restored Daily Ministries</title>
 
-<style>
-:root{
-  --deep:#101A2E;
-  --royal:#13233F;
-  --cream:#FFF8EA;
-  --gold:#D7A84F;
-  --lightgold:#F8D987;
-  --sky:#EEF7FF;
-  --aqua:#EAF4F1;
-  --text:#2B394F;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(180deg,#EEF7FF 0%,#FFF8EA 48%,#EAF4F1 100%);
-  color:var(--text);
-  line-height:1.7;
-}
-a{color:inherit}
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(16,26,46,.94);
-  border-bottom:1px solid rgba(248,217,135,.38);
-  backdrop-filter:blur(12px);
-}
-.nav-wrap{
-  max-width:1220px;
-  margin:0 auto;
-  padding:14px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  text-decoration:none;
-}
-.brand img{
-  width:68px;
-  height:68px;
-  object-fit:contain;
-  filter:drop-shadow(0 5px 12px rgba(0,0,0,.35));
-}
-.brand span{
-  font-family:Georgia,'Times New Roman',serif;
-  font-weight:800;
-  font-size:20px;
-  letter-spacing:2px;
-  line-height:1.05;
-  color:var(--cream);
-}
-.nav{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-.nav a{
-  text-decoration:none;
-  font-weight:800;
-  font-size:14px;
-  padding:10px 14px;
-  border-radius:999px;
-  border:2px solid rgba(248,217,135,.45);
-  background:rgba(255,255,255,.06);
-  color:var(--cream);
-  transition:.25s;
-}
-.nav a:hover{
-  background:rgba(248,217,135,.22);
-  color:var(--lightgold);
-}
-.page-hero{
-  padding:92px 22px 65px;
-  text-align:center;
-  background:
-    linear-gradient(rgba(16,26,46,.28),rgba(16,26,46,.70)),
-    url('hero-background.jpg') center/cover no-repeat;
-  border-bottom:1px solid rgba(214,170,99,.25);
-}
-.page-hero h1{
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:clamp(44px,8vw,82px);
-  color:var(--cream);
-  margin:0;
-  line-height:1.1;
-  text-shadow:0 7px 24px rgba(0,0,0,.45);
-}
-.page-hero p{
-  max-width:850px;
-  margin:18px auto 0;
-  font-size:clamp(18px,3vw,23px);
-  color:#F7EEDB;
-  font-weight:700;
-  text-shadow:0 4px 14px rgba(0,0,0,.45);
-}
-.section{
-  padding:82px 22px;
-}
-.container{
-  max-width:1160px;
-  margin:0 auto;
-}
-.section-title{
-  text-align:center;
-  font-family:Georgia,'Times New Roman',serif;
-  font-size:clamp(38px,7vw,66px);
-  color:var(--royal);
-  margin:0 0 18px;
-  line-height:1.1;
-}
-.section-text{
-  max-width:900px;
-  margin:0 auto;
-  text-align:center;
-  font-size:clamp(18px,3vw,22px);
-  color:var(--text);
-}
-.archive-tools{
-  max-width:900px;
-  margin:34px auto 0;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.search-input{
-  width:min(100%,520px);
-  padding:15px 18px;
-  border-radius:999px;
-  border:2px solid rgba(215,168,79,.45);
-  background:#fff;
-  color:var(--royal);
-  font-size:16px;
-}
-.archive-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:24px;
-  margin-top:46px;
-}
-.devotional-card{
-  background:linear-gradient(180deg,rgba(255,255,255,.97),rgba(255,248,234,.94));
-  border:1px solid rgba(215,168,79,.35);
-  border-radius:28px;
-  padding:30px;
-  box-shadow:0 20px 45px rgba(28,45,74,.12);
-}
-.devotional-date{
-  color:#8A621D;
-  background:rgba(248,217,135,.36);
-  border:1px solid rgba(215,168,79,.55);
-  padding:7px 13px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  display:inline-block;
-  margin-bottom:15px;
-}
-.devotional-card h3{
-  font-family:Georgia,'Times New Roman',serif;
-  color:var(--royal);
-  font-size:clamp(27px,3vw,36px);
-  line-height:1.1;
-  margin:0 0 14px;
-}
-.devotional-card p{
-  color:var(--text);
-  font-size:17px;
-  margin:0 0 18px;
-}
-.read-more{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:11px 18px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#FFE39A,#D7A84F);
-  color:var(--deep);
-  text-decoration:none;
-  font-weight:900;
-}
-.loading,.empty,.error{
-  max-width:850px;
-  margin:34px auto 0;
-  text-align:center;
-  padding:24px;
-  border-radius:24px;
-  background:rgba(255,255,255,.85);
-  border:1px solid rgba(215,168,79,.32);
-  color:var(--text);
-}
-.site-footer{
-  padding:42px 22px;
-  text-align:center;
-  background:linear-gradient(180deg,#101A2E,#09111F);
-  border-top:1px solid rgba(214,170,99,.32);
-}
-.site-footer img{
-  width:130px;
-  max-width:45vw;
-  height:auto;
-  object-fit:contain;
-  margin-bottom:14px;
-  filter:drop-shadow(0 8px 16px rgba(0,0,0,.5));
-}
-.site-footer .tagline{
-  color:var(--lightgold);
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:13px;
-  font-weight:900;
-}
-.site-footer p{
-  color:#D7DFEF;
-  margin:8px 0 0;
-}
-@media(max-width:760px){
-  .nav-wrap{flex-direction:column;gap:12px;padding:13px 12px}
-  .brand img{width:58px;height:58px}
-  .brand span{font-size:17px}
-  .nav{gap:8px}
-  .nav a{font-size:13px;padding:8px 11px}
-  .section{padding:62px 16px}
-}
+  <style>
+    :root {
+      --deep: #101A2E;
+      --royal: #13233F;
+      --cream: #FFF8EA;
+      --gold: #D7A84F;
+      --lightgold: #F8D987;
+      --sky: #EEF7FF;
+      --aqua: #EAF4F1;
+      --text: #2B394F;
+    }
 
-.single-devotional{
-  max-width:900px;
-  margin:46px auto 0;
-  background:linear-gradient(180deg,rgba(255,255,255,.97),rgba(255,248,234,.95));
-  border:1px solid rgba(215,168,79,.38);
-  border-radius:30px;
-  padding:38px;
-  box-shadow:0 22px 52px rgba(28,45,74,.13);
-}
-.single-devotional h3{
-  font-family:Georgia,'Times New Roman',serif;
-  color:var(--royal);
-  font-size:clamp(36px,6vw,58px);
-  line-height:1.08;
-  margin:0 0 18px;
-}
-.single-devotional .full-message{
-  color:var(--text);
-  font-size:19px;
-  line-height:1.85;
-}
-.back-link{
-  display:inline-flex;
-  margin-bottom:24px;
-  padding:11px 18px;
-  border-radius:999px;
-  background:linear-gradient(135deg,#FFE39A,#D7A84F);
-  color:var(--deep);
-  text-decoration:none;
-  font-weight:900;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-</style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #EEF7FF 0%, #FFF8EA 48%, #EAF4F1 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(16, 26, 46, 0.96);
+      border-bottom: 1px solid rgba(248, 217, 135, 0.34);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 34px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+
+    .brand-emblem {
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+      display: block;
+      background: transparent;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    }
+
+    .brand-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-main {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--cream);
+      font-size: clamp(30px, 2.5vw, 46px);
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--gold);
+      font-size: clamp(16px, 1.2vw, 22px);
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-sub::before,
+    .brand-sub::after {
+      content: "";
+      width: 50px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+      flex: 0 0 auto;
+    }
+
+    .brand-sub::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12.5px;
+      color: var(--cream);
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 2px solid rgba(248, 217, 135, 0.44);
+      background: rgba(255, 255, 255, 0.05);
+      transition: 0.2s ease;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: rgba(248, 217, 135, 0.18);
+      color: var(--lightgold);
+      box-shadow: 0 0 18px rgba(214, 170, 99, 0.18);
+    }
+
+    .page-hero {
+      min-height: 460px;
+      padding: 100px 22px 88px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(16, 26, 46, 0.24), rgba(16, 26, 46, 0.66)),
+        url('./hero-background.png?v=15') 82% 26% / cover no-repeat;
+      border-bottom: 1px solid rgba(214, 170, 99, 0.25);
+    }
+
+    .page-hero h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(44px, 8vw, 82px);
+      color: var(--cream);
+      margin: 0;
+      line-height: 1.1;
+      text-shadow: 0 7px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .page-hero p {
+      max-width: 850px;
+      margin: 18px auto 0;
+      font-size: clamp(18px, 3vw, 23px);
+      color: #F7EEDB;
+      font-weight: 700;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    }
+
+    .section {
+      padding: 82px 22px;
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(38px, 7vw, 66px);
+      color: var(--royal);
+      margin: 0 0 18px;
+      line-height: 1.1;
+    }
+
+    .section-text {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: clamp(18px, 3vw, 22px);
+      color: var(--text);
+    }
+
+    .archive-tools {
+      max-width: 900px;
+      margin: 34px auto 0;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .search-input {
+      width: min(100%, 520px);
+      padding: 15px 18px;
+      border-radius: 999px;
+      border: 2px solid rgba(215, 168, 79, 0.45);
+      background: #fff;
+      color: var(--royal);
+      font-size: 16px;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 46px;
+    }
+
+    .devotional-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.94));
+      border: 1px solid rgba(215, 168, 79, 0.35);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
+    }
+
+    .devotional-date {
+      color: #8A621D;
+      background: rgba(248, 217, 135, 0.36);
+      border: 1px solid rgba(215, 168, 79, 0.55);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .devotional-card h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--royal);
+      font-size: clamp(27px, 3vw, 36px);
+      line-height: 1.1;
+      margin: 0 0 14px;
+    }
+
+    .devotional-card p {
+      color: var(--text);
+      font-size: 17px;
+      margin: 0 0 18px;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #FFE39A, #D7A84F);
+      color: var(--deep);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .loading,
+    .empty,
+    .error {
+      max-width: 850px;
+      margin: 34px auto 0;
+      text-align: center;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(215, 168, 79, 0.32);
+      color: var(--text);
+    }
+
+    .single-devotional {
+      max-width: 900px;
+      margin: 46px auto 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.95));
+      border: 1px solid rgba(215, 168, 79, 0.38);
+      border-radius: 30px;
+      padding: 38px;
+      box-shadow: 0 22px 52px rgba(28, 45, 74, 0.13);
+    }
+
+    .single-devotional h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--royal);
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.08;
+      margin: 0 0 18px;
+    }
+
+    .single-devotional .full-message {
+      color: var(--text);
+      font-size: 19px;
+      line-height: 1.85;
+    }
+
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 24px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #FFE39A, #D7A84F);
+      color: var(--deep);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .site-footer {
+      padding: 42px 22px;
+      text-align: center;
+      background: linear-gradient(180deg, #101A2E, #09111F);
+      border-top: 1px solid rgba(248, 217, 135, 0.34);
+    }
+
+    .footer-profile-logo {
+      width: 145px;
+      max-width: 48vw;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 16px auto;
+      background: transparent;
+    }
+
+    .site-footer .tagline {
+      color: var(--lightgold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .site-footer p {
+      color: #D7DFEF;
+      margin: 8px 0 0;
+    }
+
+    @media (max-width: 1180px) {
+      .nav-wrap {
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+        padding: 14px 16px;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+      }
+
+      .nav a {
+        font-size: 13px;
+        padding: 8px 14px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page-hero {
+        min-height: 430px;
+        padding: 80px 18px 58px;
+        background-position: 76% 30%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-wrap {
+        gap: 14px;
+        padding: 16px 12px 14px;
+      }
+
+      .brand {
+        gap: 10px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .brand-emblem {
+        width: 74px;
+        height: 74px;
+      }
+
+      .brand-main {
+        font-size: 26px;
+        letter-spacing: 1px;
+      }
+
+      .brand-sub {
+        justify-content: center;
+        margin-top: 6px;
+        font-size: 15px;
+        letter-spacing: 4px;
+        gap: 8px;
+      }
+
+      .brand-sub::before,
+      .brand-sub::after {
+        width: 28px;
+        height: 2px;
+      }
+
+      .nav {
+        gap: 10px 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav a {
+        font-size: 13px;
+        padding: 10px 16px;
+        min-width: 132px;
+        text-align: center;
+      }
+
+      .page-hero {
+        min-height: 470px;
+        padding: 70px 16px 52px;
+        background-position: 70% 28%;
+      }
+
+      .section {
+        padding: 62px 16px;
+      }
+
+      .single-devotional {
+        padding: 26px;
+      }
+
+      .footer-profile-logo {
+        width: 135px;
+        max-width: 50vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-main {
+        font-size: 24px;
+      }
+
+      .brand-sub {
+        font-size: 14px;
+        letter-spacing: 3px;
+      }
+
+      .nav a {
+        min-width: 128px;
+        padding: 10px 14px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<header class="site-header">
-  <div class="nav-wrap">
-    <a class="brand" href="index.html">
-      <img src="logo.png" alt="Restored Daily Ministries logo">
-      <span>RESTORED<br>DAILY MINISTRIES</span>
-    </a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="mission.html">Mission</a>
-      <a href="devotional.html">Devotionals</a>
-      <a href="disciple.html">Lessons</a>
-      <a href="preaching.html">Live Preaching</a>
-      <a href="podcast.html">Podcast</a>
-      <a href="prayer.html">Prayer</a>
-    </nav>
-  </div>
-</header>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
+        <img
+          class="brand-emblem"
+          src="./profile-logo.png?v=15"
+          alt="Restored Daily Ministries emblem"
+        >
 
-<main>
-  <section class="page-hero">
-    <h1>Devotionals</h1>
-    <p>Daily biblical encouragement for a world in need of Christ.</p>
-  </section>
+        <div class="brand-wordmark">
+          <div class="brand-main">Restored Daily</div>
+          <div class="brand-sub">Ministries</div>
+        </div>
+      </a>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Devotional Archive</h2>
-      <p class="section-text">
-        Read biblical encouragement written to strengthen hearts, build faith,
-        and point people back to Jesus Christ one day at a time.
-      </p>
-
-      <div class="archive-tools">
-        <input id="archiveSearch" class="search-input" type="search" placeholder="Search devotionals...">
-      </div>
-
-      <div id="archiveStatus" class="loading">Loading devotionals...</div>
-      <div id="archiveGrid" class="archive-grid" aria-live="polite"></div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="mission.html">Mission</a>
+        <a class="active" href="devotional.html">Devotionals</a>
+        <a href="disciple.html">Lessons</a>
+        <a href="preaching.html">Live Preaching</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="prayer.html">Prayer</a>
+      </nav>
     </div>
-  </section>
-</main>
+  </header>
 
-<footer class="site-footer">
-  <img src="logo.png" alt="Restored Daily Ministries logo">
-  <div class="tagline">Love God. Love People. Change the World.</div>
-  <p>© 2026 Restored Daily Ministries • All Glory to Jesus Christ</p>
-</footer>
+  <main>
+    <section class="page-hero">
+      <h1>Devotionals</h1>
+      <p>Daily biblical encouragement for a world in need of Christ.</p>
+    </section>
 
-<script>
-const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Devotional Archive</h2>
 
-let allDevotionals = [];
+        <p class="section-text">
+          Read biblical encouragement written to strengthen hearts, build faith,
+          and point people back to Jesus Christ one day at a time.
+        </p>
 
-function escapeHtml(value){
-  return String(value || "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
+        <div class="archive-tools">
+          <input id="archiveSearch" class="search-input" type="search" placeholder="Search devotionals...">
+        </div>
 
-function excerptFrom(message){
-  const text = String(message || "").replace(/\s+/g, " ").trim();
-  return text.length > 220 ? text.slice(0,220) + "..." : text;
-}
+        <div id="archiveStatus" class="loading">Loading devotionals...</div>
+        <div id="archiveGrid" class="archive-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
 
-function formatDate(value){
-  if(!value) return "";
-  const d = new Date(value);
-  if(Number.isNaN(d.getTime())) return String(value || "");
-  return d.toLocaleDateString(undefined, { year:"numeric", month:"long", day:"numeric" });
-}
+  <footer class="site-footer">
+    <img
+      class="footer-profile-logo"
+      src="./profile-logo.png?v=15"
+      alt="Restored Daily Ministries profile logo"
+    >
 
-function getSelectedId(){
-  const params = new URLSearchParams(window.location.search);
-  return params.get("id");
-}
+    <div class="tagline">
+      Restored by Grace • Renewed Daily • Sent on Mission
+    </div>
 
-function renderArchive(items){
-  const grid = document.getElementById("archiveGrid");
-  const status = document.getElementById("archiveStatus");
+    <p>© 2026 Restored Daily Ministries • All Glory to Jesus Christ</p>
+  </footer>
 
-  grid.innerHTML = "";
+  <script>
+    const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 
-  if(!items || !items.length){
-    status.className = "empty";
-    status.textContent = "No devotionals found yet.";
-    status.style.display = "block";
-    return;
-  }
+    let allDevotionals = [];
 
-  status.style.display = "none";
-
-  items.forEach((item, index) => {
-    const card = document.createElement("article");
-    card.className = "devotional-card";
-
-    const date = formatDate(item.dateArchived || item.date);
-    const subject = escapeHtml(item.subject || "Untitled Devotional");
-    const excerpt = escapeHtml(excerptFrom(item.message));
-    const url = `devotional.html?id=${encodeURIComponent(item.id || index)}`;
-
-    card.innerHTML = `
-      ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
-      <h3>${subject}</h3>
-      <p>${excerpt}</p>
-      <a class="read-more" href="${url}">Read More</a>
-    `;
-
-    grid.appendChild(card);
-  });
-}
-
-function renderSingleDevotional(item){
-  const grid = document.getElementById("archiveGrid");
-  const status = document.getElementById("archiveStatus");
-  const searchBox = document.querySelector(".archive-tools");
-  const pageTitle = document.querySelector(".section-title");
-  const pageText = document.querySelector(".section-text");
-
-  if(searchBox) searchBox.style.display = "none";
-  if(status) status.style.display = "none";
-  if(pageTitle) pageTitle.textContent = "Devotional";
-  if(pageText) pageText.textContent = "Read the full devotional below.";
-
-  const date = formatDate(item.dateArchived || item.date);
-  const subject = escapeHtml(item.subject || "Untitled Devotional");
-  const message = escapeHtml(item.message || "").replace(/\n/g, "<br>");
-
-  grid.innerHTML = `
-    <article class="single-devotional">
-      <a class="back-link" href="devotional.html">← Back to Archive</a>
-      ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
-      <h3>${subject}</h3>
-      <div class="full-message">${message}</div>
-    </article>
-  `;
-}
-
-function applySearch(){
-  const q = document.getElementById("archiveSearch").value.toLowerCase().trim();
-
-  if(!q){
-    renderArchive(allDevotionals);
-    return;
-  }
-
-  const filtered = allDevotionals.filter(item =>
-    String(item.subject || "").toLowerCase().includes(q) ||
-    String(item.message || "").toLowerCase().includes(q)
-  );
-
-  renderArchive(filtered);
-}
-
-function loadArchive(){
-  const status = document.getElementById("archiveStatus");
-
-  window.handleDevotionalArchive = function(data){
-    if(!data || data.success === false){
-      status.className = "error";
-      status.textContent = data && data.error ? data.error : "The devotional archive could not be loaded right now.";
-      return;
+    function escapeHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
-    allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
+    function excerptFrom(message) {
+      const text = String(message || "").replace(/\s+/g, " ").trim();
+      return text.length > 220 ? text.slice(0, 220) + "..." : text;
+    }
 
-    const selectedId = getSelectedId();
+    function formatDate(value) {
+      if (!value) return "";
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return String(value || "");
+      return d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+    }
 
-    if(selectedId){
-      const selected = allDevotionals.find((item, index) =>
-        String(item.id || index) === String(selectedId)
-      );
+    function getSelectedId() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id");
+    }
 
-      if(selected){
-        renderSingleDevotional(selected);
-      } else {
-        status.className = "error";
-        status.textContent = "That devotional could not be found.";
+    function renderArchive(items) {
+      const grid = document.getElementById("archiveGrid");
+      const status = document.getElementById("archiveStatus");
+
+      grid.innerHTML = "";
+
+      if (!items || !items.length) {
+        status.className = "empty";
+        status.textContent = "No devotionals found yet.";
+        status.style.display = "block";
+        return;
       }
 
-      return;
+      status.style.display = "none";
+
+      items.forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "devotional-card";
+
+        const date = formatDate(item.dateArchived || item.date);
+        const subject = escapeHtml(item.subject || "Untitled Devotional");
+        const excerpt = escapeHtml(excerptFrom(item.message));
+        const url = `devotional.html?id=${encodeURIComponent(item.id || index)}`;
+
+        card.innerHTML = `
+          ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
+          <h3>${subject}</h3>
+          <p>${excerpt}</p>
+          <a class="read-more" href="${url}">Read More</a>
+        `;
+
+        grid.appendChild(card);
+      });
     }
 
-    renderArchive(allDevotionals);
-  };
+    function renderSingleDevotional(item) {
+      const grid = document.getElementById("archiveGrid");
+      const status = document.getElementById("archiveStatus");
+      const searchBox = document.querySelector(".archive-tools");
+      const pageTitle = document.querySelector(".section-title");
+      const pageText = document.querySelector(".section-text");
 
-  const script = document.createElement("script");
-  script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive&v=" + Date.now();
+      if (searchBox) searchBox.style.display = "none";
+      if (status) status.style.display = "none";
+      if (pageTitle) pageTitle.textContent = "Devotional";
+      if (pageText) pageText.textContent = "Read the full devotional below.";
 
-  script.onerror = function(){
-    status.className = "error";
-    status.textContent = "The devotional archive could not be loaded right now.";
-  };
+      const date = formatDate(item.dateArchived || item.date);
+      const subject = escapeHtml(item.subject || "Untitled Devotional");
+      const message = escapeHtml(item.message || "").replace(/\n/g, "<br>");
 
-  document.body.appendChild(script);
-}
+      grid.innerHTML = `
+        <article class="single-devotional">
+          <a class="back-link" href="devotional.html">← Back to Archive</a>
+          ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
+          <h3>${subject}</h3>
+          <div class="full-message">${message}</div>
+        </article>
+      `;
+    }
 
-document.getElementById("archiveSearch").addEventListener("input", applySearch);
-loadArchive();
-</script>
+    function applySearch() {
+      const q = document.getElementById("archiveSearch").value.toLowerCase().trim();
+
+      if (!q) {
+        renderArchive(allDevotionals);
+        return;
+      }
+
+      const filtered = allDevotionals.filter(item =>
+        String(item.subject || "").toLowerCase().includes(q) ||
+        String(item.message || "").toLowerCase().includes(q)
+      );
+
+      renderArchive(filtered);
+    }
+
+    function loadArchive() {
+      const status = document.getElementById("archiveStatus");
+
+      window.handleDevotionalArchive = function(data) {
+        if (!data || data.success === false) {
+          status.className = "error";
+          status.textContent = data && data.error ? data.error : "The devotional archive could not be loaded right now.";
+          return;
+        }
+
+        allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
+
+        const selectedId = getSelectedId();
+
+        if (selectedId) {
+          const selected = allDevotionals.find((item, index) =>
+            String(item.id || index) === String(selectedId)
+          );
+
+          if (selected) {
+            renderSingleDevotional(selected);
+          } else {
+            status.className = "error";
+            status.textContent = "That devotional could not be found.";
+          }
+
+          return;
+        }
+
+        renderArchive(allDevotionals);
+      };
+
+      const script = document.createElement("script");
+      script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive&v=" + Date.now();
+
+      script.onerror = function() {
+        status.className = "error";
+        status.textContent = "The devotional archive could not be loaded right now.";
+      };
+
+      document.body.appendChild(script);
+    }
+
+    document.getElementById("archiveSearch").addEventListener("input", applySearch);
+    loadArchive();
+  </script>
 </body>
 </html>
