@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Preaching | Restored Daily Ministries</title>
+  <title>Preaching & Bible Teaching | Restored Daily Ministries</title>
 
   <style>
     :root {
@@ -166,18 +166,18 @@
       text-align: center;
       background:
         linear-gradient(rgba(16, 26, 46, 0.24), rgba(16, 26, 46, 0.66)),
-        url('./hero-background.png?v=17') 82% 26% / cover no-repeat;
+        url('./hero-background.png?v=25') 82% 26% / cover no-repeat;
       border-bottom: 1px solid rgba(214, 170, 99, 0.25);
     }
 
     .page-hero h1 {
-      font-size: clamp(44px, 8vw, 82px);
+      font-size: clamp(42px, 8vw, 82px);
       color: #fff5dd;
       text-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
     }
 
     .page-hero p {
-      max-width: 850px;
+      max-width: 900px;
       margin: 18px auto 0;
       font-size: clamp(18px, 3vw, 23px);
       color: #F7EEDB;
@@ -209,7 +209,7 @@
     }
 
     .section-text {
-      max-width: 900px;
+      max-width: 940px;
       margin: 0 auto;
       text-align: center;
       font-size: clamp(18px, 3vw, 22px);
@@ -217,13 +217,14 @@
     }
 
     .content-box {
-      max-width: 960px;
+      max-width: 980px;
       margin: 34px auto 0;
-      padding: 34px;
+      padding: 36px;
       border-radius: 30px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 248, 234, 0.88));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 234, 0.90));
       border: 1px solid rgba(214, 170, 99, 0.36);
       box-shadow: 0 22px 58px rgba(0, 0, 0, 0.12);
+      text-align: center;
     }
 
     .content-box h3 {
@@ -235,6 +236,47 @@
     .content-box p {
       color: #2B394F;
       font-size: 19px;
+      margin: 0;
+    }
+
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 24px;
+      margin-top: 42px;
+    }
+
+    .teaching-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 18px 42px rgba(28, 45, 74, 0.11);
+    }
+
+    .teaching-card .tag {
+      display: inline-block;
+      color: #8A621D;
+      background: rgba(248, 217, 135, 0.36);
+      border: 1px solid rgba(215, 168, 79, 0.55);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .teaching-card h3 {
+      color: var(--royal);
+      font-size: clamp(26px, 3vw, 34px);
+      margin-bottom: 12px;
+    }
+
+    .teaching-card p {
+      color: var(--text);
+      font-size: 18px;
       margin: 0;
     }
 
@@ -360,7 +402,7 @@
       }
 
       .content-box {
-        padding: 24px;
+        padding: 26px;
       }
 
       .footer-profile-logo {
@@ -393,7 +435,7 @@
       <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
         <img
           class="brand-emblem"
-          src="./profile-logo.png?v=17"
+          src="./profile-logo.png?v=25"
           alt="Restored Daily Ministries emblem"
         >
 
@@ -408,7 +450,7 @@
         <a href="mission.html">Mission</a>
         <a href="devotional.html">Devotionals</a>
         <a href="disciple.html">Lessons</a>
-        <a class="active" href="preaching.html">Live Preaching</a>
+        <a class="active" href="preaching.html">Preaching</a>
         <a href="podcast.html">Podcast</a>
         <a href="prayer.html">Prayer</a>
       </nav>
@@ -417,25 +459,55 @@
 
   <main>
     <section class="page-hero">
-      <h1>Live Preaching</h1>
-      <p>Christ-centered preaching, Bible teaching, Scripture reading, and live encouragement.</p>
+      <h1>Preaching & Bible Teaching</h1>
+      <p>Christ-centered sermons, Bible teaching, Scripture reading, and messages of encouragement rooted in the Word of God.</p>
     </section>
 
     <section class="section light">
       <div class="container">
-        <h2 class="section-title">Live Ministry Hub</h2>
+        <h2 class="section-title">Sermons, Messages & Bible Teaching</h2>
 
         <p class="section-text">
-          This page will become the home for livestreams, archived teachings, Bible readings,
-          recovery encouragement, and live ministry events.
+          Restored Daily Ministries shares Christ-centered preaching and Bible teaching to point hearts back to Jesus Christ,
+          strengthen faith, and help people walk in restoration through the power of the Holy Spirit.
         </p>
 
         <div class="content-box">
-          <h3>Future Livestream Integration</h3>
+          <h3>Recorded Teaching Archive</h3>
           <p>
-            The goal is to keep the Restored Daily Ministries website as the main platform,
-            while using YouTube, Facebook, and other platforms as outreach roads that lead people back here.
+            This page will become the home for recorded sermons, Bible teaching, Scripture readings,
+            and messages of encouragement. These teachings may include full sermons, short Bible messages,
+            teaching series, and future live sessions if the Lord leads.
           </p>
+        </div>
+
+        <div class="teaching-grid">
+          <div class="teaching-card">
+            <div class="tag">Sermons</div>
+            <h3>Preaching the Word</h3>
+            <p>
+              Christ-centered messages shared to call hearts to repentance, restoration, surrender,
+              and deeper faith in Jesus Christ.
+            </p>
+          </div>
+
+          <div class="teaching-card">
+            <div class="tag">Bible Teaching</div>
+            <h3>Growing in Truth</h3>
+            <p>
+              Scripture-based teaching to help believers understand the Word of God and walk daily
+              by the power of the Holy Spirit.
+            </p>
+          </div>
+
+          <div class="teaching-card">
+            <div class="tag">Encouragement</div>
+            <h3>Strength for the Journey</h3>
+            <p>
+              Messages of hope, prayer, and biblical encouragement for those walking through hardship,
+              recovery, limitation, grief, and spiritual battles.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -444,7 +516,7 @@
   <footer class="site-footer">
     <img
       class="footer-profile-logo"
-      src="./profile-logo.png?v=17"
+      src="./profile-logo.png?v=25"
       alt="Restored Daily Ministries profile logo"
     >
 
