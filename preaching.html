@@ -166,7 +166,7 @@
       text-align: center;
       background:
         linear-gradient(rgba(16, 26, 46, 0.24), rgba(16, 26, 46, 0.66)),
-        url('./hero-background.png?v=25') 82% 26% / cover no-repeat;
+        url('./hero-background.png?v=26') 82% 26% / cover no-repeat;
       border-bottom: 1px solid rgba(214, 170, 99, 0.25);
     }
 
@@ -177,7 +177,7 @@
     }
 
     .page-hero p {
-      max-width: 900px;
+      max-width: 940px;
       margin: 18px auto 0;
       font-size: clamp(18px, 3vw, 23px);
       color: #F7EEDB;
@@ -278,6 +278,84 @@
       color: var(--text);
       font-size: 18px;
       margin: 0;
+    }
+
+    .video-section {
+      margin-top: 70px;
+    }
+
+    .video-card {
+      max-width: 1050px;
+      margin: 34px auto 0;
+      padding: 30px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+      border: 1px solid rgba(215, 168, 79, 0.36);
+      box-shadow: 0 22px 58px rgba(28, 45, 74, 0.13);
+    }
+
+    .video-card h3 {
+      color: var(--royal);
+      font-size: clamp(30px, 5vw, 48px);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .video-card p {
+      max-width: 850px;
+      margin: 0 auto 26px;
+      text-align: center;
+      color: var(--text);
+      font-size: 18px;
+    }
+
+    .youtube-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(215, 168, 79, 0.42);
+      box-shadow: 0 18px 44px rgba(16, 26, 46, 0.16);
+      background: #101A2E;
+    }
+
+    .youtube-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .btns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 2px solid rgba(214, 170, 99, 0.72);
+      transition: 0.25s;
+      background: linear-gradient(135deg, #FFE39A, #D7A84F);
+      color: #13233F;
+      box-shadow: 0 12px 28px rgba(215, 168, 79, 0.20);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18), 0 0 22px rgba(214, 170, 99, 0.22);
     }
 
     .site-footer {
@@ -401,8 +479,9 @@
         padding: 62px 16px;
       }
 
-      .content-box {
-        padding: 26px;
+      .content-box,
+      .video-card {
+        padding: 24px;
       }
 
       .footer-profile-logo {
@@ -425,6 +504,15 @@
         min-width: 128px;
         padding: 10px 14px;
       }
+
+      .video-card {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .youtube-embed {
+        border-radius: 18px;
+      }
     }
   </style>
 </head>
@@ -435,7 +523,7 @@
       <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
         <img
           class="brand-emblem"
-          src="./profile-logo.png?v=25"
+          src="./profile-logo.png?v=26"
           alt="Restored Daily Ministries emblem"
         >
 
@@ -460,53 +548,110 @@
   <main>
     <section class="page-hero">
       <h1>Preaching & Bible Teaching</h1>
-      <p>Christ-centered sermons, Bible teaching, Scripture reading, and messages of encouragement rooted in the Word of God.</p>
+      <p>Christ-centered sermons, devotional videos, Bible teaching, Scripture reading, and messages of encouragement rooted in the Word of God.</p>
     </section>
 
     <section class="section light">
       <div class="container">
-        <h2 class="section-title">Sermons, Messages & Bible Teaching</h2>
+        <h2 class="section-title">Video Ministry Hub</h2>
 
         <p class="section-text">
-          Restored Daily Ministries shares Christ-centered preaching and Bible teaching to point hearts back to Jesus Christ,
-          strengthen faith, and help people walk in restoration through the power of the Holy Spirit.
+          This page is the video teaching home for Restored Daily Ministries. Here you can watch
+          devotional videos, Bible teaching, preaching messages, Scripture readings, and Journey Through
+          the Bible content — all shared to point hearts back to Jesus Christ and help people grow in the Word of God.
         </p>
 
         <div class="content-box">
           <h3>Recorded Teaching Archive</h3>
           <p>
-            This page will become the home for recorded sermons, Bible teaching, Scripture readings,
-            and messages of encouragement. These teachings may include full sermons, short Bible messages,
-            teaching series, and future live sessions if the Lord leads.
+            The written devotionals remain in the Devotionals section, while this page gathers the video side
+            of the ministry: devotional videos, Through the Bible studies, teaching messages, and preaching
+            content as the Lord leads.
           </p>
         </div>
 
         <div class="teaching-grid">
           <div class="teaching-card">
-            <div class="tag">Sermons</div>
-            <h3>Preaching the Word</h3>
+            <div class="tag">Devotional Videos</div>
+            <h3>Faith for Today</h3>
             <p>
-              Christ-centered messages shared to call hearts to repentance, restoration, surrender,
-              and deeper faith in Jesus Christ.
+              Video encouragement connected to the daily devotional rhythm, shared to strengthen hearts
+              and point people back to Jesus Christ.
             </p>
           </div>
 
           <div class="teaching-card">
-            <div class="tag">Bible Teaching</div>
-            <h3>Growing in Truth</h3>
+            <div class="tag">Through the Bible</div>
+            <h3>Walking Through the Word</h3>
             <p>
-              Scripture-based teaching to help believers understand the Word of God and walk daily
-              by the power of the Holy Spirit.
+              Scripture reading and Bible study videos created to help people grow chapter by chapter
+              in the Word of God.
             </p>
           </div>
 
           <div class="teaching-card">
-            <div class="tag">Encouragement</div>
-            <h3>Strength for the Journey</h3>
+            <div class="tag">Preaching & Teaching</div>
+            <h3>Rooted in Christ</h3>
             <p>
-              Messages of hope, prayer, and biblical encouragement for those walking through hardship,
-              recovery, limitation, grief, and spiritual battles.
+              Christ-centered messages shared to encourage surrender, restoration, holiness,
+              and daily life through the power of the Holy Spirit.
             </p>
+          </div>
+        </div>
+
+        <div class="video-section">
+          <div class="video-card">
+            <h3>Devotional Videos</h3>
+            <p>
+              Watch devotional video messages and encouragement from Restored Daily Ministries.
+            </p>
+
+            <div class="youtube-embed">
+              <iframe
+                src="https://www.youtube.com/embed/videoseries?list=PLT8GK7CnpbCxAwgKYu5h-Kh2kE6HD2Vp-"
+                title="Restored Daily Devotional Videos Playlist"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <div class="btns">
+              <a
+                class="btn"
+                href="https://www.youtube.com/playlist?list=PLT8GK7CnpbCxAwgKYu5h-Kh2kE6HD2Vp-"
+                target="_blank"
+                rel="noopener"
+              >
+                Open Devotional Videos on YouTube
+              </a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <h3>Through the Bible</h3>
+            <p>
+              Journey through Scripture with Bible reading, teaching, and reflection videos.
+            </p>
+
+            <div class="youtube-embed">
+              <iframe
+                src="https://www.youtube.com/embed/videoseries?list=PLT8GK7CnpbCyisJ3HM2Jn9Pi5JSEmGG4h"
+                title="Restored Daily Through the Bible Playlist"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <div class="btns">
+              <a
+                class="btn"
+                href="https://www.youtube.com/playlist?list=PLT8GK7CnpbCyisJ3HM2Jn9Pi5JSEmGG4h"
+                target="_blank"
+                rel="noopener"
+              >
+                Open Through the Bible on YouTube
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -516,7 +661,7 @@
   <footer class="site-footer">
     <img
       class="footer-profile-logo"
-      src="./profile-logo.png?v=25"
+      src="./profile-logo.png?v=26"
       alt="Restored Daily Ministries profile logo"
     >
 
