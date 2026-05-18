@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rights & Use | Restored Daily Ministries</title>
+
+  <style>
+    :root {
+      --deep: #101A2E;
+      --earth: #1F4F46;
+      --card: #F9F2E4;
+      --cream: #FFF8EA;
+      --gold: #D7A84F;
+      --lightgold: #F8D987;
+      --amber: #F2C76E;
+      --royal: #13233F;
+      --text: #2B394F;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(248, 217, 135, 0.30), transparent 34%),
+        linear-gradient(180deg, #EEF7FF 0%, #FFF8EA 34%, #EAF4F1 68%, #101A2E 100%);
+      color: var(--cream);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(16, 26, 46, 0.96);
+      border-bottom: 1px solid rgba(248, 217, 135, 0.34);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 34px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      flex: 0 0 auto;
+    }
+
+    .brand-emblem {
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+      display: block;
+      background: transparent;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    }
+
+    .brand-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-main {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--cream);
+      font-size: clamp(30px, 2.5vw, 46px);
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--gold);
+      font-size: clamp(16px, 1.2vw, 22px);
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-sub::before,
+    .brand-sub::after {
+      content: "";
+      width: 50px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+      flex: 0 0 auto;
+    }
+
+    .brand-sub::after {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .nav a {
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12.5px;
+      color: var(--cream);
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 2px solid rgba(248, 217, 135, 0.44);
+      background: rgba(255, 255, 255, 0.05);
+      transition: 0.2s ease;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: rgba(248, 217, 135, 0.18);
+      color: var(--lightgold);
+      box-shadow: 0 0 18px rgba(214, 170, 99, 0.18);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .page-hero {
+      min-height: 460px;
+      padding: 100px 22px 88px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(16, 26, 46, 0.24), rgba(16, 26, 46, 0.66)),
+        url('./hero-background.png?v=28') 82% 26% / cover no-repeat;
+      border-bottom: 1px solid rgba(214, 170, 99, 0.25);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(44px, 8vw, 82px);
+      color: #fff5dd;
+      text-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    .page-hero p {
+      max-width: 850px;
+      margin: 18px auto 0;
+      font-size: clamp(18px, 3vw, 23px);
+      color: #F7EEDB;
+      font-weight: 700;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    }
+
+    .section {
+      padding: 82px 22px;
+      background: linear-gradient(180deg, #FFF8EA 0%, #EEF7FF 52%, #EAF4F1 100%);
+      color: #13233F;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(38px, 7vw, 66px);
+      color: #13233F;
+      margin-bottom: 18px;
+    }
+
+    .section-text {
+      max-width: 900px;
+      margin: 0 auto 34px;
+      text-align: center;
+      font-size: clamp(18px, 3vw, 22px);
+      color: #2B394F;
+    }
+
+    .content-box {
+      max-width: 980px;
+      margin: 34px auto 0;
+      padding: 38px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 234, 0.91));
+      border: 1px solid rgba(214, 170, 99, 0.36);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.12);
+    }
+
+    .content-box h3 {
+      color: #13233F;
+      font-size: clamp(28px, 4vw, 40px);
+      margin: 28px 0 12px;
+    }
+
+    .content-box h3:first-child {
+      margin-top: 0;
+    }
+
+    .content-box p,
+    .content-box li {
+      color: #2B394F;
+      font-size: 19px;
+    }
+
+    .content-box p {
+      margin: 0 0 18px;
+    }
+
+    .content-box ul {
+      margin: 0 0 18px 22px;
+      padding: 0;
+    }
+
+    .content-box strong {
+      color: #13233F;
+    }
+
+    .note-box {
+      margin-top: 28px;
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(248, 217, 135, 0.22);
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      color: #2B394F;
+      font-size: 18px;
+    }
+
+    .site-footer {
+      padding: 42px 22px;
+      text-align: center;
+      background: linear-gradient(180deg, #101A2E, #09111F);
+      border-top: 1px solid rgba(248, 217, 135, 0.34);
+    }
+
+    .footer-profile-logo {
+      width: 145px;
+      max-width: 48vw;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 16px auto;
+      background: transparent;
+    }
+
+    .site-footer .tagline {
+      color: var(--lightgold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .site-footer p {
+      color: #D7DFEF;
+      margin: 8px 0 0;
+    }
+
+    .footer-links {
+      margin-top: 12px;
+      color: #D7DFEF;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: var(--lightgold);
+      text-decoration: underline;
+      font-weight: 800;
+    }
+
+    @media (max-width: 1180px) {
+      .nav-wrap {
+        flex-direction: column;
+        justify-content: center;
+        gap: 14px;
+        padding: 14px 16px;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+      }
+
+      .nav a {
+        font-size: 13px;
+        padding: 8px 14px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page-hero {
+        min-height: 430px;
+        padding: 80px 18px 58px;
+        background-position: 76% 30%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-wrap {
+        gap: 14px;
+        padding: 16px 12px 14px;
+      }
+
+      .brand {
+        gap: 10px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .brand-emblem {
+        width: 74px;
+        height: 74px;
+      }
+
+      .brand-main {
+        font-size: 26px;
+        letter-spacing: 1px;
+      }
+
+      .brand-sub {
+        justify-content: center;
+        margin-top: 6px;
+        font-size: 15px;
+        letter-spacing: 4px;
+        gap: 8px;
+      }
+
+      .brand-sub::before,
+      .brand-sub::after {
+        width: 28px;
+        height: 2px;
+      }
+
+      .nav {
+        gap: 10px 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav a {
+        font-size: 13px;
+        padding: 10px 16px;
+        min-width: 132px;
+        text-align: center;
+      }
+
+      .page-hero {
+        min-height: 470px;
+        padding: 70px 16px 52px;
+        background-position: 70% 28%;
+      }
+
+      .section {
+        padding: 62px 16px;
+      }
+
+      .content-box {
+        padding: 26px;
+      }
+
+      .footer-profile-logo {
+        width: 135px;
+        max-width: 50vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-main {
+        font-size: 24px;
+      }
+
+      .brand-sub {
+        font-size: 14px;
+        letter-spacing: 3px;
+      }
+
+      .nav a {
+        min-width: 128px;
+        padding: 10px 14px;
+      }
+
+      .content-box p,
+      .content-box li {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
+        <img
+          class="brand-emblem"
+          src="./profile-logo.png?v=28"
+          alt="Restored Daily Ministries emblem"
+        >
+
+        <div class="brand-wordmark">
+          <div class="brand-main">Restored Daily</div>
+          <div class="brand-sub">Ministries</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="mission.html">Mission</a>
+        <a href="devotional.html">Devotionals</a>
+        <a href="disciple.html">Lessons</a>
+        <a href="preaching.html">Preaching</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="prayer.html">Prayer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1>Rights & Use</h1>
+      <p>Stewarding ministry resources faithfully while sharing the hope of Jesus Christ.</p>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Rights & Use</h2>
+
+        <p class="section-text">
+          Restored Daily Ministries™ exists to point people to Jesus Christ. We want these resources to be shared
+          for encouragement and ministry, while also protecting the original materials from misuse.
+        </p>
+
+        <div class="content-box">
+          <h3>Ministry Name & Branding</h3>
+          <p>
+            <strong>Restored Daily Ministries™</strong>, including the ministry name, visual identity, ministry logo,
+            original graphics, and related branding, is used and maintained by Restored Daily Ministries.
+          </p>
+
+          <h3>Original Content</h3>
+          <p>
+            Unless otherwise noted, original written devotionals, journal entries, website wording, podcast materials,
+            video messages, graphics, and other original ministry resources created for Restored Daily Ministries are
+            protected by copyright from the moment they are created and fixed in a tangible form.
+          </p>
+
+          <h3>Sharing Our Content</h3>
+          <p>
+            You are welcome to share links to our website, devotional archive, podcast episodes, YouTube videos,
+            prayer form, and ministry resources for encouragement, outreach, and ministry purposes.
+          </p>
+
+          <h3>Please Do Not</h3>
+          <ul>
+            <li>Copy, repost, sell, or redistribute full materials as your own.</li>
+            <li>Modify, rebrand, or remove Restored Daily Ministries identification from original resources.</li>
+            <li>Use the ministry name, logo, or materials in a way that suggests endorsement, partnership, or ownership without permission.</li>
+            <li>Use written, audio, video, or visual materials for commercial purposes without written permission.</li>
+          </ul>
+
+          <h3>Third-Party Materials</h3>
+          <p>
+            Scripture quotations, embedded YouTube content, podcast platform features, third-party platform logos,
+            and any other third-party materials remain the property of their respective owners and are used according
+            to their applicable terms, permissions, or licenses.
+          </p>
+
+          <h3>Permission Requests</h3>
+          <p>
+            For permission to use Restored Daily Ministries materials beyond sharing a link, please contact us through
+            the ministry website or official ministry channels.
+          </p>
+
+          <div class="note-box">
+            Our desire is for the Gospel of Jesus Christ to go forth freely, while also stewarding the ministry
+            materials faithfully, respectfully, and responsibly.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img
+      class="footer-profile-logo"
+      src="./profile-logo.png?v=28"
+      alt="Restored Daily Ministries profile logo"
+    >
+
+    <div class="tagline">
+      Restored by Grace • Renewed Daily • Sent on Mission
+    </div>
+
+    <p>
+      © 2026 Restored Daily Ministries™ • All rights reserved.
+      <br>
+      All Glory to Jesus Christ
+    </p>
+
+    <div class="footer-links">
+      <a href="rights.html">Rights & Use</a>
+    </div>
+  </footer>
+</body>
+</html>
