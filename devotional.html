@@ -155,7 +155,7 @@
       text-align: center;
       background:
         linear-gradient(rgba(16, 26, 46, 0.24), rgba(16, 26, 46, 0.66)),
-        url('./hero-background.png?v=25') 82% 26% / cover no-repeat;
+        url('./hero-background.png?v=29') 82% 26% / cover no-repeat;
       border-bottom: 1px solid rgba(214, 170, 99, 0.25);
     }
 
@@ -405,16 +405,16 @@
     }
 
     .footer-links {
-  margin-top: 12px;
-  color: #D7DFEF;
-  font-size: 14px;
-}
+      margin-top: 12px;
+      color: #D7DFEF;
+      font-size: 14px;
+    }
 
-.footer-links a {
-  color: var(--lightgold);
-  text-decoration: underline;
-  font-weight: 800;
-}
+    .footer-links a {
+      color: var(--lightgold);
+      text-decoration: underline;
+      font-weight: 800;
+    }
 
     @media (max-width: 1180px) {
       .nav-wrap {
@@ -542,7 +542,7 @@
       <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
         <img
           class="brand-emblem"
-          src="./profile-logo.png?v=25"
+          src="./profile-logo.png?v=29"
           alt="Restored Daily Ministries emblem"
         >
 
@@ -552,16 +552,16 @@
         </div>
       </a>
 
-  <nav class="nav" aria-label="Main navigation">
-  <a class="active" href="index.html">Home</a>
-  <a href="mission.html">Mission</a>
-  <a href="devotional.html">Devotionals</a>
-  <a href="disciple.html">Lessons</a>
-  <a href="preaching.html">Preaching</a>
-  <a href="podcast.html">Podcast</a>
-  <a href="prayer.html">Prayer</a>
-  <a href="contact.html">Contact Us</a>
-</nav>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="mission.html">Mission</a>
+        <a class="active" href="devotional.html">Devotionals</a>
+        <a href="disciple.html">Lessons</a>
+        <a href="preaching.html">Preaching</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="prayer.html">Prayer</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
     </div>
   </header>
 
@@ -595,9 +595,9 @@
 
     <section class="section archive-section">
       <div class="container">
-        <h2 class="section-title">Devotional Archive</h2>
+        <h2 id="archiveTitle" class="section-title">Devotional Archive</h2>
 
-        <p class="section-text">
+        <p id="archiveText" class="section-text">
           Read biblical encouragement written to strengthen hearts, build faith,
           and point people back to Jesus Christ one day at a time.
         </p>
@@ -615,13 +615,26 @@
   <footer class="site-footer">
     <img
       class="footer-profile-logo"
-      src="./profile-logo.png?v=25"
+      src="./profile-logo.png?v=29"
       alt="Restored Daily Ministries profile logo"
     >
 
     <div class="tagline">
       Restored by Grace • Renewed Daily • Sent on Mission
     </div>
+
+    <p>
+      © 2026 Restored Daily Ministries™ • All rights reserved.
+      <br>
+      All Glory to Jesus Christ
+    </p>
+
+    <div class="footer-links">
+      <a href="contact.html">Contact Us</a>
+      <span> • </span>
+      <a href="rights.html">Rights & Use</a>
+    </div>
+  </footer>
 
   <script>
     const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
@@ -693,8 +706,8 @@
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
       const searchBox = document.querySelector(".archive-tools");
-      const pageTitle = document.querySelector(".section-title");
-      const pageText = document.querySelector(".section-text");
+      const pageTitle = document.getElementById("archiveTitle");
+      const pageText = document.getElementById("archiveText");
 
       if (searchBox) searchBox.style.display = "none";
       if (status) status.style.display = "none";
@@ -776,31 +789,6 @@
 
     document.getElementById("archiveSearch").addEventListener("input", applySearch);
     loadArchive();
-
-    <footer class="site-footer">
-  <img
-    class="footer-profile-logo"
-    src="./profile-logo.png?v=29"
-    alt="Restored Daily Ministries profile logo"
-  >
-
-  <div class="tagline">
-    Restored by Grace • Renewed Daily • Sent on Mission
-  </div>
-
-  <p>
-    © 2026 Restored Daily Ministries™ • All rights reserved.
-    <br>
-    All Glory to Jesus Christ
-  </p>
-
-  <div class="footer-links">
-    <a href="contact.html">Contact Us</a>
-    <span> • </span>
-    <a href="rights.html">Rights & Use</a>
-  </div>
-</footer>
-
   </script>
 </body>
 </html>
