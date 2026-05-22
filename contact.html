@@ -6,6 +6,7 @@
   <title>Contact Us | Restored Daily Ministries</title>
 
   <style>
+
     :root {
       --deep: #101A2E;
       --earth: #1F4F46;
@@ -16,10 +17,18 @@
       --amber: #F2C76E;
       --royal: #13233F;
       --text: #2B394F;
+      --sky: #EEF7FF;
+      --aqua: #EAF4F1;
+      --paper: #FFF9EC;
+      --softline: rgba(215, 168, 79, 0.18);
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -28,7 +37,7 @@
       background:
         radial-gradient(circle at 50% 0%, rgba(248, 217, 135, 0.30), transparent 34%),
         linear-gradient(180deg, #EEF7FF 0%, #FFF8EA 34%, #EAF4F1 68%, #101A2E 100%);
-      color: var(--cream);
+      color: var(--text);
       line-height: 1.7;
     }
 
@@ -51,8 +60,9 @@
       padding: 12px 22px;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      gap: 34px;
+      justify-content: space-between;
+      gap: 22px;
+      position: relative;
     }
 
     .brand {
@@ -60,28 +70,31 @@
       align-items: center;
       gap: 14px;
       text-decoration: none;
-      flex: 0 0 auto;
+      flex: 0 1 auto;
+      min-width: 0;
     }
 
     .brand-emblem {
-      width: 88px;
-      height: 88px;
+      width: 82px;
+      height: 82px;
       object-fit: contain;
       display: block;
       background: transparent;
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+      flex: 0 0 auto;
     }
 
     .brand-wordmark {
       display: flex;
       flex-direction: column;
       line-height: 1;
+      min-width: 0;
     }
 
     .brand-main {
       font-family: Georgia, 'Times New Roman', serif;
       color: var(--cream);
-      font-size: clamp(30px, 2.5vw, 46px);
+      font-size: clamp(28px, 2.45vw, 44px);
       font-weight: 700;
       letter-spacing: 1.2px;
       text-transform: uppercase;
@@ -96,7 +109,7 @@
       margin-top: 8px;
       font-family: Georgia, 'Times New Roman', serif;
       color: var(--gold);
-      font-size: clamp(16px, 1.2vw, 22px);
+      font-size: clamp(15px, 1.15vw, 21px);
       font-weight: 700;
       letter-spacing: 6px;
       text-transform: uppercase;
@@ -106,7 +119,7 @@
     .brand-sub::before,
     .brand-sub::after {
       content: "";
-      width: 50px;
+      width: 46px;
       height: 2px;
       border-radius: 999px;
       background: linear-gradient(90deg, transparent, var(--gold));
@@ -117,35 +130,95 @@
       background: linear-gradient(90deg, var(--gold), transparent);
     }
 
-    .nav {
+    .nav-control {
+      position: relative;
+      flex: 0 0 auto;
       display: flex;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
+      justify-content: flex-end;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      flex: 1 1 auto;
-      min-width: 0;
-    }
-
-    .nav a {
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 12.5px;
-      color: var(--cream);
-      padding: 8px 12px;
+      justify-content: center;
+      gap: 10px;
+      border: 2px solid rgba(248, 217, 135, 0.62);
       border-radius: 999px;
-      border: 2px solid rgba(248, 217, 135, 0.44);
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--cream);
+      padding: 11px 18px;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      cursor: pointer;
       transition: 0.2s ease;
-      line-height: 1.1;
-      white-space: nowrap;
     }
 
-    .nav a:hover,
-    .nav a.active {
+    .menu-toggle:hover,
+    .nav-control.is-open .menu-toggle {
       background: rgba(248, 217, 135, 0.18);
       color: var(--lightgold);
       box-shadow: 0 0 18px rgba(214, 170, 99, 0.18);
+    }
+
+    .menu-icon {
+      width: 18px;
+      height: 12px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-icon span {
+      display: block;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      width: 270px;
+      padding: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(248, 217, 135, 0.42);
+      background: linear-gradient(180deg, rgba(16, 26, 46, 0.98), rgba(9, 17, 31, 0.98));
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+      display: grid;
+      gap: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: 0.2s ease;
+    }
+
+    .nav-control.is-open .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .dropdown-menu a {
+      text-decoration: none;
+      color: var(--cream);
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 14px;
+      border: 1px solid rgba(248, 217, 135, 0.18);
+      background: rgba(255, 255, 255, 0.04);
+      transition: 0.2s ease;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a.active {
+      color: var(--lightgold);
+      background: rgba(248, 217, 135, 0.16);
+      border-color: rgba(248, 217, 135, 0.48);
     }
 
     h1,
@@ -166,18 +239,19 @@
       text-align: center;
       background:
         linear-gradient(rgba(16, 26, 46, 0.24), rgba(16, 26, 46, 0.66)),
-        url('./hero-background.png?v=29') 82% 26% / cover no-repeat;
+        url('./hero-background.png?v=31') 82% 26% / cover no-repeat;
       border-bottom: 1px solid rgba(214, 170, 99, 0.25);
     }
 
     .page-hero h1 {
-      font-size: clamp(44px, 8vw, 82px);
+      max-width: 1100px;
+      font-size: clamp(42px, 8vw, 82px);
       color: #fff5dd;
       text-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
     }
 
     .page-hero p {
-      max-width: 850px;
+      max-width: 920px;
       margin: 18px auto 0;
       font-size: clamp(18px, 3vw, 23px);
       color: #F7EEDB;
@@ -189,6 +263,10 @@
       padding: 82px 22px;
       background: linear-gradient(180deg, #FFF8EA 0%, #EEF7FF 52%, #EAF4F1 100%);
       color: #13233F;
+    }
+
+    .section.alt {
+      background: linear-gradient(180deg, #F7FBFF 0%, #FFF8EA 100%);
     }
 
     .container {
@@ -204,14 +282,18 @@
     }
 
     .section-text {
-      max-width: 900px;
+      max-width: 930px;
       margin: 0 auto;
       text-align: center;
       font-size: clamp(18px, 3vw, 22px);
       color: #2B394F;
     }
 
-    .contact-box {
+    .content-box,
+    .signup-box,
+    .community-box,
+    .contact-box,
+    .video-card {
       max-width: 980px;
       margin: 34px auto 0;
       padding: 38px;
@@ -222,26 +304,93 @@
       text-align: center;
     }
 
-    .contact-box h3 {
+    .content-box h3,
+    .signup-box h3,
+    .community-box h3,
+    .contact-box h3,
+    .video-card h3 {
       color: #13233F;
       font-size: clamp(29px, 4vw, 42px);
       margin-bottom: 14px;
     }
 
-    .contact-box p {
+    .content-box p,
+    .signup-box p,
+    .community-box p,
+    .contact-box p,
+    .video-card p {
       color: #2B394F;
       font-size: 19px;
       margin: 0 auto 18px;
-      max-width: 850px;
+      max-width: 900px;
     }
 
-    .contact-email {
-      display: inline-flex;
-      margin: 10px auto 0;
+    .cards,
+    .info-grid,
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 24px;
+      margin-top: 42px;
+    }
+
+    .card,
+    .info-card,
+    .teaching-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 18px 42px rgba(28, 45, 74, 0.11);
+      text-align: left;
+    }
+
+    a.card {
+      display: block;
+      text-decoration: none;
+    }
+
+    .card .tag,
+    .info-card .tag,
+    .teaching-card .tag {
+      display: inline-block;
       color: #8A621D;
+      background: rgba(248, 217, 135, 0.36);
+      border: 1px solid rgba(215, 168, 79, 0.55);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
       font-weight: 900;
-      text-decoration: underline;
-      word-break: break-word;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .card h3,
+    .info-card h3,
+    .teaching-card h3 {
+      color: var(--royal);
+      font-size: clamp(25px, 3vw, 34px);
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .info-card p,
+    .teaching-card p {
+      color: var(--text);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .quote {
+      max-width: 900px;
+      margin: 42px auto;
+      text-align: center;
+      color: #B7832D;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.12;
+      font-style: italic;
     }
 
     .btns {
@@ -263,6 +412,7 @@
       font-weight: 900;
       border: 2px solid rgba(214, 170, 99, 0.72);
       transition: 0.25s;
+      text-align: center;
     }
 
     .btn-primary {
@@ -283,46 +433,16 @@
       box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18), 0 0 22px rgba(214, 170, 99, 0.22);
     }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-      gap: 24px;
-      margin-top: 42px;
-    }
-
-    .info-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+    .note-box {
+      max-width: 980px;
+      margin: 42px auto 0;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(248, 217, 135, 0.22);
       border: 1px solid rgba(215, 168, 79, 0.34);
-      border-radius: 26px;
-      padding: 28px;
-      box-shadow: 0 18px 42px rgba(28, 45, 74, 0.11);
-      text-align: left;
-    }
-
-    .info-card .tag {
-      display: inline-block;
-      color: #8A621D;
-      background: rgba(248, 217, 135, 0.36);
-      border: 1px solid rgba(215, 168, 79, 0.55);
-      padding: 7px 13px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
-    }
-
-    .info-card h3 {
-      color: var(--royal);
-      font-size: clamp(25px, 3vw, 34px);
-      margin-bottom: 12px;
-    }
-
-    .info-card p {
-      color: var(--text);
+      color: #2B394F;
       font-size: 18px;
-      margin: 0;
+      text-align: center;
     }
 
     .site-footer {
@@ -367,30 +487,6 @@
       font-weight: 800;
     }
 
-    @media (max-width: 1180px) {
-      .nav-wrap {
-        flex-direction: column;
-        justify-content: center;
-        gap: 14px;
-        padding: 14px 16px;
-      }
-
-      .brand {
-        justify-content: center;
-      }
-
-      .nav {
-        justify-content: center;
-        flex-wrap: wrap;
-        max-width: 100%;
-      }
-
-      .nav a {
-        font-size: 13px;
-        padding: 8px 14px;
-      }
-    }
-
     @media (max-width: 900px) {
       .page-hero {
         min-height: 430px;
@@ -401,51 +497,44 @@
 
     @media (max-width: 760px) {
       .nav-wrap {
-        gap: 14px;
-        padding: 16px 12px 14px;
+        gap: 12px;
+        padding: 12px 12px;
       }
 
       .brand {
-        gap: 10px;
-        flex-direction: column;
-        text-align: center;
+        gap: 9px;
       }
 
       .brand-emblem {
-        width: 74px;
-        height: 74px;
+        width: 58px;
+        height: 58px;
       }
 
       .brand-main {
-        font-size: 26px;
-        letter-spacing: 1px;
+        font-size: 22px;
+        letter-spacing: 0.7px;
       }
 
       .brand-sub {
-        justify-content: center;
-        margin-top: 6px;
-        font-size: 15px;
-        letter-spacing: 4px;
-        gap: 8px;
+        margin-top: 5px;
+        font-size: 12px;
+        letter-spacing: 2.7px;
+        gap: 6px;
       }
 
       .brand-sub::before,
       .brand-sub::after {
-        width: 28px;
+        width: 18px;
         height: 2px;
       }
 
-      .nav {
-        gap: 10px 10px;
-        width: 100%;
-        justify-content: center;
+      .menu-toggle {
+        padding: 9px 13px;
+        font-size: 13px;
       }
 
-      .nav a {
-        font-size: 13px;
-        padding: 10px 16px;
-        min-width: 132px;
-        text-align: center;
+      .dropdown-menu {
+        width: min(86vw, 300px);
       }
 
       .page-hero {
@@ -458,7 +547,11 @@
         padding: 62px 16px;
       }
 
-      .contact-box {
+      .content-box,
+      .signup-box,
+      .community-box,
+      .contact-box,
+      .video-card {
         padding: 26px;
       }
 
@@ -470,19 +563,44 @@
 
     @media (max-width: 480px) {
       .brand-main {
-        font-size: 24px;
+        font-size: 19px;
       }
 
       .brand-sub {
-        font-size: 14px;
-        letter-spacing: 3px;
+        font-size: 10.5px;
+        letter-spacing: 2px;
       }
 
-      .nav a {
-        min-width: 128px;
-        padding: 10px 14px;
+      .brand-emblem {
+        width: 52px;
+        height: 52px;
+      }
+
+      .menu-toggle {
+        padding: 9px 11px;
+      }
+
+      .menu-toggle-text {
+        display: none;
+      }
+
+      .cards,
+      .info-grid,
+      .teaching-grid {
+        grid-template-columns: 1fr;
       }
     }
+
+
+    .contact-email {
+      display: inline-flex;
+      margin: 10px auto 0;
+      color: #8A621D;
+      font-weight: 900;
+      text-decoration: underline;
+      word-break: break-word;
+    }
+
   </style>
 </head>
 
@@ -492,7 +610,7 @@
       <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
         <img
           class="brand-emblem"
-          src="./profile-logo.png?v=29"
+          src="./profile-logo.png?v=31"
           alt="Restored Daily Ministries emblem"
         >
 
@@ -502,20 +620,30 @@
         </div>
       </a>
 
-      <nav class="nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="mission.html">Mission</a>
-        <a href="devotional.html">Devotionals</a>
-        <a href="disciple.html">Lessons</a>
-        <a href="preaching.html">Preaching</a>
-        <a href="podcast.html">Podcast</a>
-        <a href="prayer.html">Prayer</a>
-        <a class="active" href="contact.html">Contact Us</a>
-      </nav>
+      <div class="nav-control">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteDropdownMenu">
+          <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="menu-toggle-text">Menu</span>
+        </button>
+
+        <nav id="siteDropdownMenu" class="dropdown-menu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="mission.html">Mission</a>
+          <a href="devotional.html">Devotionals</a>
+          <a href="disciple.html">Lessons</a>
+          <a href="preaching.html">Preaching</a>
+          <a href="podcast.html">Podcast</a>
+          <a href="prayer.html">Prayer</a>
+          <a href="membership.html">Community</a>
+          <a class="active" aria-current="page" href="contact.html">Contact Us</a>
+          <a href="rights.html">Rights & Use</a>
+        </nav>
+      </div>
     </div>
   </header>
 
   <main>
+
     <section class="page-hero">
       <h1>Contact Us</h1>
       <p>We’d love to hear from you.</p>
@@ -547,12 +675,7 @@
           </a>
 
           <div class="btns">
-            <a
-              class="btn btn-primary"
-              href="https://docs.google.com/forms/d/e/1FAIpQLScPHu6F8XnzGMHW72bHoUDwutCIgdmbGK31cliS0OXLBCiyIg/viewform"
-              target="_blank"
-              rel="noopener"
-            >
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScPHu6F8XnzGMHW72bHoUDwutCIgdmbGK31cliS0OXLBCiyIg/viewform" target="_blank" rel="noopener">
               Open Contact Form
             </a>
 
@@ -592,12 +715,13 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
     <img
       class="footer-profile-logo"
-      src="./profile-logo.png?v=29"
+      src="./profile-logo.png?v=31"
       alt="Restored Daily Ministries profile logo"
     >
 
@@ -617,5 +741,51 @@
       <a href="rights.html">Rights & Use</a>
     </div>
   </footer>
+
+
+  <script>
+    function initRestoredDailyMenu() {
+      const navControl = document.querySelector(".nav-control");
+      const menuButton = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("siteDropdownMenu");
+
+      if (!navControl || !menuButton || !menu) return;
+
+      function closeMenu() {
+        navControl.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+      }
+
+      function toggleMenu() {
+        const isOpen = navControl.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      }
+
+      menuButton.addEventListener("click", function(event) {
+        event.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener("click", function(event) {
+        if (!navControl.contains(event.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+      });
+
+      menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
+    }
+
+    initRestoredDailyMenu();
+  </script>
+
+
 </body>
 </html>
