@@ -251,6 +251,9 @@
       font-size: clamp(38px, 7vw, 66px);
       color: var(--royal);
       margin-bottom: 18px;
+      font-variant-ligatures: none;
+      font-feature-settings: "liga" 0, "clig" 0;
+      letter-spacing: 0.2px;
     }
 
     .section-text {
@@ -298,18 +301,20 @@
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-      gap: 24px;
-      margin-top: 44px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      margin: 44px auto 0;
+      max-width: 980px;
     }
 
     .card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
       border: 1px solid rgba(215, 168, 79, 0.34);
       border-radius: 26px;
-      padding: 28px;
+      padding: 32px;
       box-shadow: 0 18px 42px rgba(28, 45, 74, 0.11);
       text-align: left;
+      min-width: 0;
     }
 
     .card .tag {
@@ -323,13 +328,20 @@
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      max-width: 100%;
+      white-space: normal;
     }
 
     .card h3 {
       color: var(--royal);
-      font-size: clamp(25px, 3vw, 34px);
-      margin-bottom: 12px;
+      font-size: clamp(28px, 3vw, 37px);
+      margin-bottom: 14px;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      font-variant-ligatures: none;
+      font-feature-settings: "liga" 0, "clig" 0;
     }
 
     .card p {
@@ -340,18 +352,20 @@
 
     .clip-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 26px;
-      margin-top: 44px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      margin: 44px auto 0;
+      max-width: 1060px;
     }
 
     .clip-card {
       border-radius: 30px;
-      padding: 28px;
+      padding: 30px;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
       border: 1px solid rgba(215, 168, 79, 0.36);
       box-shadow: 0 22px 58px rgba(28, 45, 74, 0.13);
       text-align: center;
+      min-width: 0;
     }
 
     .clip-placeholder {
@@ -375,6 +389,8 @@
       color: var(--royal);
       font-size: clamp(28px, 4vw, 40px);
       margin-bottom: 12px;
+      font-variant-ligatures: none;
+      font-feature-settings: "liga" 0, "clig" 0;
     }
 
     .clip-card p {
@@ -403,6 +419,7 @@
       font-weight: 900;
       border: 2px solid rgba(214, 170, 99, 0.72);
       transition: 0.25s ease;
+      text-align: center;
     }
 
     .btn-primary {
@@ -437,7 +454,10 @@
     .reflection-box h3 {
       color: var(--lightgold);
       font-size: clamp(30px, 5vw, 46px);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      font-variant-ligatures: none;
+      font-feature-settings: "liga" 0, "clig" 0;
+      letter-spacing: 0.5px;
     }
 
     .reflection-box p {
@@ -487,6 +507,14 @@
       color: var(--lightgold);
       text-decoration: underline;
       font-weight: 800;
+    }
+
+    @media (max-width: 900px) {
+      .cards,
+      .clip-grid {
+        grid-template-columns: 1fr;
+        max-width: 620px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -541,12 +569,9 @@
 
       .feature-box,
       .reflection-box,
-      .clip-card {
+      .clip-card,
+      .card {
         padding: 25px;
-      }
-
-      .clip-grid {
-        grid-template-columns: 1fr;
       }
 
       .clip-placeholder {
@@ -576,6 +601,10 @@
 
       .menu-button span.label {
         display: none;
+      }
+
+      .card h3 {
+        font-size: 30px;
       }
     }
   </style>
@@ -679,6 +708,20 @@
           Start your week in the Spirit instead of in the flesh — staying calm,
           walking in wisdom, and remembering that you are victoriously blessed in Christ.
         </p>
+
+        <div class="feature-box">
+          <h3>Every Monday on the Community Hub</h3>
+          <p>
+            Instead of simply sending another email, this weekly encouragement will live here on the website.
+            Members will be invited back each Monday to receive encouragement, pray with the community,
+            watch featured clips, and reflect on what the Lord is teaching us.
+          </p>
+
+          <p>
+            The daily devotional email can include a simple reminder and link, but the Community Hub
+            will be the main home for <strong>Looking Up and Thinking Above</strong>.
+          </p>
+        </div>
 
         <div class="cards">
           <div class="card">
