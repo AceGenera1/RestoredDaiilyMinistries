@@ -265,7 +265,7 @@
     }
 
     .feature-box {
-      max-width: 1000px;
+      max-width: 980px;
       margin: 34px auto 0;
       padding: 38px;
       border-radius: 30px;
@@ -288,15 +288,50 @@
       font-size: 19px;
     }
 
-    .gold-quote {
-      max-width: 900px;
-      margin: 34px auto 0;
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin: 44px auto 0;
+      max-width: 1060px;
+    }
+
+    .action-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: 0 18px 42px rgba(28, 45, 74, 0.11);
       text-align: center;
-      color: #B7832D;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-style: italic;
-      font-size: clamp(28px, 5vw, 50px);
-      line-height: 1.15;
+      min-width: 0;
+    }
+
+    .action-card .tag {
+      display: inline-block;
+      color: #8A621D;
+      background: rgba(248, 217, 135, 0.36);
+      border: 1px solid rgba(215, 168, 79, 0.55);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .action-card h3 {
+      color: var(--royal);
+      font-size: clamp(28px, 3vw, 36px);
+      margin-bottom: 14px;
+      font-variant-ligatures: none;
+      font-feature-settings: "liga" 0, "clig" 0;
+    }
+
+    .action-card p {
+      color: var(--text);
+      font-size: 18px;
+      margin: 0 0 22px;
     }
 
     .cards {
@@ -350,54 +385,38 @@
       margin: 0;
     }
 
-    .clip-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
-      margin: 44px auto 0;
-      max-width: 1060px;
-    }
-
-    .clip-card {
+    .reflection-box {
+      max-width: 940px;
+      margin: 38px auto 0;
+      padding: 36px;
       border-radius: 30px;
-      padding: 30px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
-      border: 1px solid rgba(215, 168, 79, 0.36);
-      box-shadow: 0 22px 58px rgba(28, 45, 74, 0.13);
+      background: linear-gradient(180deg, rgba(19, 35, 63, 0.96), rgba(16, 26, 46, 0.98));
+      border: 1px solid rgba(248, 217, 135, 0.34);
+      box-shadow: 0 24px 58px rgba(16, 26, 46, 0.18);
       text-align: center;
-      min-width: 0;
-    }
-
-    .clip-placeholder {
-      min-height: 260px;
-      border-radius: 24px;
-      background:
-        linear-gradient(rgba(16, 26, 46, 0.42), rgba(16, 26, 46, 0.74)),
-        url('./hero-background.png?v=29') 72% 30% / cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
       color: var(--cream);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(28px, 5vw, 42px);
-      text-shadow: 0 5px 18px rgba(0, 0, 0, 0.45);
-      margin-bottom: 22px;
     }
 
-    .clip-card h3 {
-      color: var(--royal);
-      font-size: clamp(28px, 4vw, 40px);
-      margin-bottom: 12px;
+    .reflection-box h3 {
+      color: var(--lightgold);
+      font-size: clamp(30px, 5vw, 46px);
+      margin-bottom: 16px;
       font-variant-ligatures: none;
       font-feature-settings: "liga" 0, "clig" 0;
+      letter-spacing: 0.5px;
     }
 
-    .clip-card p {
-      color: var(--text);
-      font-size: 18px;
-      margin: 0 auto 20px;
-      max-width: 500px;
+    .reflection-box p {
+      max-width: 820px;
+      margin: 0 auto 18px;
+      color: #D7DFEF;
+      font-size: 19px;
+    }
+
+    .reflection-box .btn-secondary {
+      background: transparent;
+      color: var(--lightgold);
+      border-color: rgba(248, 217, 135, 0.70);
     }
 
     .btns {
@@ -439,38 +458,24 @@
       box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18), 0 0 22px rgba(214, 170, 99, 0.22);
     }
 
-    .reflection-box {
-      max-width: 940px;
-      margin: 38px auto 0;
-      padding: 36px;
-      border-radius: 30px;
-      background: linear-gradient(180deg, rgba(19, 35, 63, 0.96), rgba(16, 26, 46, 0.98));
-      border: 1px solid rgba(248, 217, 135, 0.34);
-      box-shadow: 0 24px 58px rgba(16, 26, 46, 0.18);
+    .quiet-note {
+      max-width: 880px;
+      margin: 34px auto 0;
       text-align: center;
-      color: var(--cream);
+      color: #5B667A;
+      font-size: 17px;
+      font-style: italic;
     }
 
-    .reflection-box h3 {
-      color: var(--lightgold);
-      font-size: clamp(30px, 5vw, 46px);
-      margin-bottom: 16px;
-      font-variant-ligatures: none;
-      font-feature-settings: "liga" 0, "clig" 0;
-      letter-spacing: 0.5px;
-    }
-
-    .reflection-box p {
-      max-width: 820px;
-      margin: 0 auto 18px;
-      color: #D7DFEF;
-      font-size: 19px;
-    }
-
-    .reflection-box .btn-secondary {
-      background: transparent;
-      color: var(--lightgold);
-      border-color: rgba(248, 217, 135, 0.70);
+    .gold-quote {
+      max-width: 900px;
+      margin: 34px auto 0;
+      text-align: center;
+      color: #B7832D;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-style: italic;
+      font-size: clamp(28px, 5vw, 50px);
+      line-height: 1.15;
     }
 
     .site-footer {
@@ -515,9 +520,13 @@
       font-weight: 800;
     }
 
-    @media (max-width: 900px) {
-      .cards,
-      .clip-grid {
+    @media (max-width: 1000px) {
+      .action-grid {
+        grid-template-columns: 1fr;
+        max-width: 620px;
+      }
+
+      .cards {
         grid-template-columns: 1fr;
         max-width: 620px;
       }
@@ -575,13 +584,9 @@
 
       .feature-box,
       .reflection-box,
-      .clip-card,
+      .action-card,
       .card {
         padding: 25px;
-      }
-
-      .clip-placeholder {
-        min-height: 220px;
       }
 
       .footer-profile-logo {
@@ -609,7 +614,8 @@
         display: none;
       }
 
-      .card h3 {
+      .card h3,
+      .action-card h3 {
         font-size: 30px;
       }
     }
@@ -661,34 +667,30 @@
     <section class="page-hero">
       <h1>Restored Daily Community</h1>
       <p>
-        A prayer-centered, Scripture-rooted community for people walking through life with Christ —
-        encouraged weekly, praying together, and staying connected through the ministry.
+        A peaceful place to stay connected through encouragement, prayer, reflection,
+        and the restoring grace of Jesus Christ.
       </p>
     </section>
 
     <section class="section light">
       <div class="container">
-        <h2 class="section-title">Join the Restored Daily Community</h2>
+        <h2 class="section-title">Join. Pray. Reflect. Stay Connected.</h2>
 
         <p class="section-text">
-          Join the Restored Daily Community and receive <strong>Looking Up and Thinking Above</strong> —
-          a weekly Monday encouragement with prayer focus, Scripture encouragement, featured ministry clips,
-          and ways to stay connected in Christ.
+          The Restored Daily Community is not meant to overwhelm you with more noise.
+          It is a simple invitation to walk with us in prayer, encouragement, Scripture,
+          and hope in Christ Jesus.
         </p>
 
-        <div class="feature-box">
-          <h3>You Are Welcome Here</h3>
-          <p>
-            Restored Daily Ministries exists for people who have felt forgotten, disqualified,
-            written off, weary, or too broken to be used by God. In Christ Jesus, your story is not over.
-          </p>
+        <div class="action-grid">
+          <div class="action-card">
+            <div class="tag">Join</div>
+            <h3>Join the Community</h3>
+            <p>
+              Stay connected with Restored Daily Ministries and receive encouragement,
+              updates, and ways to walk with us in Christ.
+            </p>
 
-          <p>
-            This community is not about perfection. It is about walking together in prayer,
-            encouragement, Scripture, and the restoring grace of Jesus Christ.
-          </p>
-
-          <div class="btns">
             <a
               class="btn btn-primary"
               href="https://docs.google.com/forms/d/e/1FAIpQLSdFsR9O30yWf7HhrvCWsEZ_cNnZutavXzUQZyCMpZpJGfcpDQ/viewform"
@@ -697,16 +699,80 @@
             >
               Join the Community
             </a>
+          </div>
 
-            <a class="btn btn-secondary" href="prayer.html">
+          <div class="action-card">
+            <div class="tag">Pray</div>
+            <h3>Submit Prayer</h3>
+            <p>
+              Share what you are walking through and allow the ministry to stand with you
+              in prayer, encouragement, and care.
+            </p>
+
+            <a class="btn btn-primary" href="prayer.html">
               Submit a Prayer Request
             </a>
           </div>
+
+          <div class="action-card">
+            <div class="tag">Reflect</div>
+            <h3>Share a Reflection</h3>
+            <p>
+              Use the weekly reflection form to share where you are spiritually and how
+              we can walk alongside you through prayer and encouragement.
+            </p>
+
+            <a
+              class="btn btn-primary"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdWc1Q0mXLjg8S5QXp4J2oyLJXjdqlIbpqW6VbYFY9-0a1kAg/viewform?usp=dialog"
+              target="_blank"
+              rel="noopener"
+            >
+              Share a Reflection
+            </a>
+          </div>
         </div>
+
+        <p class="quiet-note">
+          The monthly newsletter idea is being held for later as the community grows.
+          For now, we are keeping this simple, peaceful, and sustainable.
+        </p>
       </div>
     </section>
 
     <section class="section sky">
+      <div class="container">
+        <h2 class="section-title">You Are Welcome Here</h2>
+
+        <p class="section-text">
+          Restored Daily Ministries exists for people who have felt forgotten, disqualified,
+          written off, weary, or too broken to be used by God. In Christ Jesus, your story is not over.
+        </p>
+
+        <div class="feature-box">
+          <h3>A Simple Community Invitation</h3>
+
+          <p>
+            This community is not about perfection, performance, or pressure.
+            It is about walking together in prayer, encouragement, Scripture,
+            and the restoring grace of Jesus Christ.
+          </p>
+
+          <p>
+            You do not have to have everything figured out to belong here.
+            You are invited to keep looking to Jesus, take the next faithful step,
+            and be reminded that God is still able to restore, renew, strengthen,
+            and use your life for His glory.
+          </p>
+        </div>
+
+        <div class="gold-quote">
+          Your story is not over in Christ Jesus.
+        </div>
+      </div>
+    </section>
+
+    <section class="section light">
       <div class="container">
         <h2 class="section-title">Looking Up and Thinking Above</h2>
 
@@ -715,157 +781,18 @@
           walking in wisdom, and remembering that you are victoriously blessed in Christ.
         </p>
 
-        <div class="feature-box">
-          <h3>Every Monday on the Community Hub</h3>
-          <p>
-            Instead of simply sending another email, this weekly encouragement will live here on the website.
-            Members will be invited back each Monday to receive encouragement, pray with the community,
-            watch featured clips, and reflect on what the Lord is teaching us.
-          </p>
-
-          <p>
-            The daily devotional email can include a simple reminder and link, but the Community Hub
-            will be the main home for <strong>Looking Up and Thinking Above</strong>.
-          </p>
-        </div>
-
-        <div class="cards">
-          <div class="card">
-            <div class="tag">Monday Encouragement</div>
-            <h3>A Word for the Week</h3>
-            <p>
-              A Scripture-rooted encouragement to help you start the week with your heart lifted,
-              your mind renewed, and your focus fixed on Christ.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="tag">Community Prayer</div>
-            <h3>Praying Together</h3>
-            <p>
-              Shared prayer needs from the Restored Daily Community, only when permission has been given,
-              so we can lift one another up in the body of Christ.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="tag">Featured Clips</div>
-            <h3>See What’s Coming</h3>
-            <p>
-              Each week may include a featured Podcast short and Journey Through the Bible short,
-              giving you a glimpse of the messages being shared that week.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="tag">Reflection</div>
-            <h3>Walk It Out</h3>
-            <p>
-              A weekly reflection question to help you slow down, pray, and respond to what the Lord
-              is teaching you in this season.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section light">
-      <div class="container">
-        <h2 class="section-title">Community Prayer Focus</h2>
-
-        <p class="section-text">
-          Each week, we lift up shared prayer needs from the Restored Daily Community.
-          Prayer requests are only shared publicly if permission is given, and may be shared anonymously
-          for privacy and care.
-        </p>
-
-        <div class="feature-box">
-          <h3>This Week We’re Praying</h3>
-          <p>
-            For those who feel weary, forgotten, discouraged, or disqualified — that they would be reminded
-            of the love, nearness, strength, and restoring grace of Jesus Christ.
-          </p>
-
-          <div class="btns">
-            <a
-              class="btn btn-primary"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSceK96Ej2bTmfD5cw1meETV3xc5FdE7IYJJissh-7v45SOWMw/viewform"
-              target="_blank"
-              rel="noopener"
-            >
-              Submit a Prayer Request
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section sky">
-      <div class="container">
-        <h2 class="section-title">Featured This Week</h2>
-
-        <p class="section-text">
-          Instead of only telling you what’s coming, we want to show you. Each week,
-          featured ministry clips will help you connect with the Podcast and Journey Through the Bible series.
-        </p>
-
-        <div class="clip-grid">
-          <div class="clip-card">
-            <div class="clip-placeholder">Podcast Clip</div>
-            <h3>Featured Podcast Short</h3>
-            <p>
-              A short clip from this week’s Restored Daily Podcast devotional message,
-              pointing hearts back to Scripture, prayer, and hope in Christ.
-            </p>
-
-            <div class="btns">
-              <a class="btn btn-primary" href="podcast.html">
-                Visit Podcast Page
-              </a>
-            </div>
-          </div>
-
-          <div class="clip-card">
-            <div class="clip-placeholder">Journey Through the Bible</div>
-            <h3>Featured Bible Teaching Short</h3>
-            <p>
-              A short clip from Journey Through the Bible, helping us walk through God’s Word
-              one chapter at a time.
-            </p>
-
-            <div class="btns">
-              <a class="btn btn-primary" href="preaching.html">
-                Visit Preaching Page
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="gold-quote">
-          Open the Word. Walk the journey. Live the truth.
-        </div>
-      </div>
-    </section>
-
-    <section class="section light">
-      <div class="container">
-        <h2 class="section-title">Weekly Reflection</h2>
-
-        <p class="section-text">
-          Each week, the Restored Daily Community is invited to reflect, pray,
-          and respond to what the Lord is teaching us.
-        </p>
-
         <div class="reflection-box">
-          <h3>This Week’s Reflection</h3>
+          <h3>Weekly Reflection</h3>
+
           <p>
-            Where is the Lord calling you to stay calm, walk in wisdom,
-            and trust Him instead of reacting in the flesh?
+            The weekly reflection form gives you a private way to share where you are,
+            what you are walking through, and how Restored Daily Ministries can pray with you.
           </p>
 
           <p>
-            Share your weekly reflection privately with Restored Daily Ministries.
-            Reflections or prayer focuses will only be shared with the community if permission is given.
+            Reflections and prayer focuses are handled with care. Nothing is shared publicly
+            unless permission is given, and anything shared may be kept anonymous or first-name only
+            according to your selection.
           </p>
 
           <div class="btns">
@@ -888,7 +815,7 @@
 
     <section class="section sky">
       <div class="container">
-        <h2 class="section-title">Ways to Connect</h2>
+        <h2 class="section-title">Ways to Stay Connected</h2>
 
         <p class="section-text">
           Restored Daily Ministries is here to help you stay encouraged, rooted in Scripture,
