@@ -1,7 +1,7 @@
 const SITE_URL = "https://restoreddailyministries.org";
 const API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec?type=lessons";
 
-const OG_IMAGE = `${SITE_URL}/social-preview-lessons.png?v=1000`;
+const shareUrl = `${SITE_URL}${req.url}`;
 
 function esc(value = "") {
   return String(value)
