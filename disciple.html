@@ -686,8 +686,8 @@
 
        }
 
-    function lessonShareUrl(slug) {
-  return "https://restoreddailyministries.org/api/share-lesson?id=" + encodeURIComponent(slug) + "&fresh=1000";
+  function lessonShareUrl(slug) {
+  return "https://restoreddailyministries.org/api/share-lesson?id=" + encodeURIComponent(slug) + "&fresh=" + Date.now();
 }
     function shareToFacebook(button) {
   const shareUrl = getEntryLink(button);
