@@ -20,8 +20,8 @@ export default async function handler(req, res) {
   const id = String(req.query.id || "").trim();
 
   const targetUrl = `${SITE_URL}/devotional.html#${encodeURIComponent(id)}`;
-  const shareUrl = `${SITE_URL}/api/share-devotional?id=${encodeURIComponent(id)}&v=4`;
-  const ogImage = `${SITE_URL}/social-preview-devotional.png?v=4`;
+  const shareUrl = `${SITE_URL}/api/share-devotional?id=${encodeURIComponent(id)}&v=5`;
+  const ogImage = `${SITE_URL}/social-preview-devotional.png?v=5`;
 
   let title = "Restored Daily Devotional";
   let description = "Daily biblical encouragement from Restored Daily Ministries.";
@@ -61,7 +61,9 @@ export default async function handler(req, res) {
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${ogImage}">
 
-  <meta http-equiv="refresh" content="0;url=${targetUrl}">
+  <script>
+    window.location.replace("${targetUrl}");
+  </script>
 </head>
 <body>
   <p><a href="${targetUrl}">Open devotional</a></p>
