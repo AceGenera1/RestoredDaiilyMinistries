@@ -1,6 +1,6 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 const SITE_URL = "https://restoreddailyministries.org";
-const ogImage = `${SITE_URL}/social-preview-devotional.png?v=3`;
+
 function esc(value = "") {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -11,13 +11,17 @@ function esc(value = "") {
 
 function preview(text = "", limit = 220) {
   const clean = String(text).replace(/\s+/g, " ").trim();
-  return clean.length > limit ? clean.slice(0, limit).replace(/\s+\S*$/, "") + "..." : clean;
+  return clean.length > limit
+    ? clean.slice(0, limit).replace(/\s+\S*$/, "") + "..."
+    : clean;
 }
 
 export default async function handler(req, res) {
   const id = String(req.query.id || "").trim();
+
   const targetUrl = `${SITE_URL}/devotional.html#${encodeURIComponent(id)}`;
-  const ogImage = `${SITE_URL}/social-preview-devotional.png?v=1`;
+  const shareUrl = `${SITE_URL}/api/share-devotional?id=${encodeURIComponent(id)}&v=4`;
+  const ogImage = `${SITE_URL}/social-preview-devotional.png?v=4`;
 
   let title = "Restored Daily Devotional";
   let description = "Daily biblical encouragement from Restored Daily Ministries.";
@@ -40,20 +44,23 @@ export default async function handler(req, res) {
   <meta charset="UTF-8">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
+
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Restored Daily Ministries">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:image" content="${ogImage}">
   <meta property="og:image:secure_url" content="${ogImage}">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-  <meta property="og:url" content="${targetUrl}">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="${shareUrl}">
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${ogImage}">
+
   <meta http-equiv="refresh" content="0;url=${targetUrl}">
 </head>
 <body>
