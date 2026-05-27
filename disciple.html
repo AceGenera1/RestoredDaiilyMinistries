@@ -693,288 +693,329 @@
     </div>
   </footer>
 
- <script>
-  const LESSONS_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
+  <script>
+    function initRestoredDailyMenu() {
+      const navControl = document.querySelector(".nav-control");
+      const menuButton = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("siteDropdownMenu");
 
-  function escapeJournalHtml(value) {
-    return String(value || "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
+      if (!navControl || !menuButton || !menu) return;
 
-  function escapeJournalAttribute(value) {
-    return escapeJournalHtml(value).replaceAll("`", "&#096;");
-  }
-
-  function slugify(value) {
-    return String(value || "")
-      .toLowerCase()
-      .trim()
-      .replace(/['"]/g, "")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "")
-      .slice(0, 90);
-  }
-
-  function formatEntryDate(entry) {
-    const date = String(entry.date || "").trim();
-    const time = String(entry.time || "").trim();
-
-    if (date && time) return `${date} • ${time}`;
-    if (date) return date;
-    if (time) return time;
-
-    return "Journal Entry";
-  }
-
-  function firstWords(value, count) {
-    return String(value || "")
-      .replace(/\s+/g, " ")
-      .trim()
-      .split(" ")
-      .slice(0, count)
-      .join(" ");
-  }
-
-  function getLessonSlug(entry, index) {
-    const existingSlug = entry.slug || entry.shareSlug || entry.anchor || "";
-    if (existingSlug) {
-      const cleanExisting = slugify(existingSlug);
-      return cleanExisting.startsWith("lesson-") ? cleanExisting : "lesson-" + cleanExisting;
-    }
-
-    const stableId = entry.id || entry.rowId || entry.uuid || "";
-    if (stableId) {
-      const cleanId = slugify(stableId);
-      return cleanId.startsWith("lesson-") ? cleanId : "lesson-" + cleanId;
-    }
-
-    const datePart = formatEntryDate(entry);
-    const textPart = firstWords(entry.entry, 8);
-    const fallback = slugify(datePart + "-" + textPart);
-
-    return "lesson-" + (fallback || "entry-" + index);
-  }
-
-  function entryToParagraphs(text) {
-    const clean = String(text || "")
-      .replace(/\r\n/g, "\n")
-      .replace(/\r/g, "\n")
-      .trim();
-
-    if (!clean) return "<p></p>";
-
-    return clean
-      .split(/\n\s*\n+/)
-      .map(part => {
-        const html = escapeJournalHtml(part.trim()).replace(/\n/g, "<br>");
-        return html ? `<p>${html}</p>` : "";
-      })
-      .join("");
-  }
-
-  function getLessonShareTitle(entry) {
-    const date = formatEntryDate(entry);
-    return date && date !== "Journal Entry"
-      ? "Lessons from a Disciple - " + date
-      : "Lessons from a Disciple";
-  }
-
-  function lessonShareUrl(slug) {
-    return "https://restoreddailyministries.org/api/share-lesson?id=" + encodeURIComponent(slug);
-  }
-
-  function renderJournal(entries) {
-    const status = document.getElementById("journalStatus");
-    const stack = document.getElementById("journalStack");
-
-    stack.innerHTML = "";
-
-    if (!entries || !entries.length) {
-      status.textContent = "No journal entries have been published yet.";
-      status.style.display = "block";
-      return;
-    }
-
-    status.style.display = "none";
-
-    entries.forEach((entry, index) => {
-      const article = document.createElement("article");
-      const slug = getLessonSlug(entry, index);
-      const shareTitle = getLessonShareTitle(entry);
-
-      article.className = "journal-entry entry-card";
-      article.id = slug;
-      article.setAttribute("data-share-title", shareTitle);
-
-      article.innerHTML = `
-        <div class="entry-date">${escapeJournalHtml(formatEntryDate(entry))}</div>
-
-        <div class="entry-body">
-          ${entryToParagraphs(entry.entry)}
-        </div>
-
-        <div class="share-box">
-          <p>If this lesson encouraged you, share it with someone who may need this reminder today.</p>
-
-          <div class="share-actions">
-            <button class="share-btn" type="button" onclick="shareEntry(this)">
-              Share This Lesson
-            </button>
-
-            <button class="copy-btn" type="button" onclick="copyEntryLink(this)">
-              Copy Link
-            </button>
-          </div>
-        </div>
-      `;
-
-      stack.appendChild(article);
-    });
-
-    scrollToSharedEntryIfNeeded();
-  }
-
-  function getEntryCard(button) {
-    return button.closest(".entry-card");
-  }
-
-  function getEntryLink(button) {
-    const card = getEntryCard(button);
-
-    if (!card || !card.id) {
-      return window.location.href;
-    }
-
-    return lessonShareUrl(card.id);
-  }
-
-  function getEntryTitle(button) {
-    const card = getEntryCard(button);
-
-    if (!card) {
-      return "Restored Daily Ministries";
-    }
-
-    return card.getAttribute("data-share-title") || "Restored Daily Ministries";
-  }
-
-  async function shareEntry(button) {
-    const shareUrl = getEntryLink(button);
-    const shareTitle = getEntryTitle(button);
-    const shareText = "";
-
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: shareTitle,
-          text: shareText,
-          url: shareUrl
-        });
-      } catch (error) {
-        // User cancelled share; no action needed.
+      function closeMenu() {
+        navControl.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
       }
-    } else {
-      copyToClipboard(shareUrl, button, "Link Copied");
-    }
-  }
 
-  function copyEntryLink(button) {
-    const shareUrl = getEntryLink(button);
-    copyToClipboard(shareUrl, button, "Copied");
-  }
+      function toggleMenu() {
+        const isOpen = navControl.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      }
 
-  function copyToClipboard(text, button, successText) {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(function() {
-        temporarilyChangeButtonText(button, successText);
-      }).catch(function() {
-        fallbackCopy(text, button, successText);
+      menuButton.addEventListener("click", function(event) {
+        event.stopPropagation();
+        toggleMenu();
       });
-    } else {
-      fallbackCopy(text, button, successText);
-    }
-  }
 
-  function fallbackCopy(text, button, successText) {
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    textArea.style.position = "fixed";
-    textArea.style.left = "-999999px";
-    textArea.style.top = "-999999px";
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
+      document.addEventListener("click", function(event) {
+        if (!navControl.contains(event.target)) {
+          closeMenu();
+        }
+      });
 
-    try {
-      document.execCommand("copy");
-      temporarilyChangeButtonText(button, successText);
-    } catch (error) {
-      alert("Copy this link: " + text);
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+      });
+
+      menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
     }
 
-    document.body.removeChild(textArea);
-  }
+    initRestoredDailyMenu();
+  </script>
 
-  function temporarilyChangeButtonText(button, text) {
-    const originalText = button.textContent;
-    button.textContent = text;
+  <script>
+    const LESSONS_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 
-    setTimeout(function() {
-      button.textContent = originalText;
-    }, 1800);
-  }
-
-  function scrollToSharedEntryIfNeeded() {
-    if (!window.location.hash) return;
-
-    const targetId = decodeURIComponent(window.location.hash.replace("#", ""));
-    const target = document.getElementById(targetId);
-
-    if (target) {
-      setTimeout(function() {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }, 300);
+    function escapeJournalHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
-  }
 
-  function loadJournal() {
-    const status = document.getElementById("journalStatus");
+    function escapeJournalAttribute(value) {
+      return escapeJournalHtml(value).replaceAll("`", "&#096;");
+    }
 
-    window.handleLessonsJournal = function(data) {
-      if (!data || data.success === false) {
-        status.textContent = data && data.error
-          ? data.error
-          : "The journal entries could not be loaded right now.";
+    function slugify(value) {
+      return String(value || "")
+        .toLowerCase()
+        .trim()
+        .replace(/['"]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 90);
+    }
+
+    function formatEntryDate(entry) {
+      const date = String(entry.date || "").trim();
+      const time = String(entry.time || "").trim();
+
+      if (date && time) return `${date} • ${time}`;
+      if (date) return date;
+      if (time) return time;
+
+      return "Journal Entry";
+    }
+
+    function firstWords(value, count) {
+      return String(value || "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .split(" ")
+        .slice(0, count)
+        .join(" ");
+    }
+
+    function getLessonSlug(entry, index) {
+      const existingSlug = entry.slug || entry.shareSlug || entry.anchor || "";
+      if (existingSlug) {
+        const cleanExisting = slugify(existingSlug);
+        return cleanExisting.startsWith("lesson-") ? cleanExisting : "lesson-" + cleanExisting;
+      }
+
+      const stableId = entry.id || entry.rowId || entry.uuid || "";
+      if (stableId) {
+        const cleanId = slugify(stableId);
+        return cleanId.startsWith("lesson-") ? cleanId : "lesson-" + cleanId;
+      }
+
+      const datePart = formatEntryDate(entry);
+      const textPart = firstWords(entry.entry, 8);
+      const fallback = slugify(datePart + "-" + textPart);
+
+      return "lesson-" + (fallback || "entry-" + index);
+    }
+
+    function entryToParagraphs(text) {
+      const clean = String(text || "")
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n")
+        .trim();
+
+      if (!clean) return "<p></p>";
+
+      return clean
+        .split(/\n\s*\n+/)
+        .map(part => {
+          const html = escapeJournalHtml(part.trim()).replace(/\n/g, "<br>");
+          return html ? `<p>${html}</p>` : "";
+        })
+        .join("");
+    }
+
+    function getLessonShareTitle(entry) {
+      const date = formatEntryDate(entry);
+      return date && date !== "Journal Entry"
+        ? "Lessons from a Disciple - " + date
+        : "Lessons from a Disciple";
+    }
+
+    function lessonShareUrl(slug) {
+      return "https://restoreddailyministries.org/api/share-lesson?id=" + encodeURIComponent(slug);
+    }
+
+    function renderJournal(entries) {
+      const status = document.getElementById("journalStatus");
+      const stack = document.getElementById("journalStack");
+
+      stack.innerHTML = "";
+
+      if (!entries || !entries.length) {
+        status.textContent = "No journal entries have been published yet.";
         status.style.display = "block";
         return;
       }
 
-      renderJournal(Array.isArray(data.entries) ? data.entries : []);
-    };
+      status.style.display = "none";
 
-    const script = document.createElement("script");
-    script.src = LESSONS_API_URL + "?type=lessons&callback=handleLessonsJournal&v=" + Date.now();
+      entries.forEach((entry, index) => {
+        const article = document.createElement("article");
+        const slug = getLessonSlug(entry, index);
+        const shareTitle = getLessonShareTitle(entry);
 
-    script.onerror = function() {
-      status.textContent = "The journal entries could not be loaded right now.";
-      status.style.display = "block";
-    };
+        article.className = "journal-entry entry-card";
+        article.id = slug;
+        article.setAttribute("data-share-title", shareTitle);
 
-    document.body.appendChild(script);
-  }
+        article.innerHTML = `
+          <div class="entry-date">${escapeJournalHtml(formatEntryDate(entry))}</div>
 
-  window.addEventListener("hashchange", scrollToSharedEntryIfNeeded);
+          <div class="entry-body">
+            ${entryToParagraphs(entry.entry)}
+          </div>
 
-  loadJournal();
-</script>
-  
+          <div class="share-box">
+            <p>If this lesson encouraged you, share it with someone who may need this reminder today.</p>
+
+            <div class="share-actions">
+              <button class="share-btn" type="button" onclick="shareEntry(this)">
+                Share This Lesson
+              </button>
+
+              <button class="copy-btn" type="button" onclick="copyEntryLink(this)">
+                Copy Link
+              </button>
+            </div>
+          </div>
+        `;
+
+        stack.appendChild(article);
+      });
+
+      scrollToSharedEntryIfNeeded();
+    }
+
+    function getEntryCard(button) {
+      return button.closest(".entry-card");
+    }
+
+    function getEntryLink(button) {
+      const card = getEntryCard(button);
+
+      if (!card || !card.id) {
+        return window.location.href;
+      }
+
+      return lessonShareUrl(card.id);
+    }
+
+    function getEntryTitle(button) {
+      const card = getEntryCard(button);
+
+      if (!card) {
+        return "Restored Daily Ministries";
+      }
+
+      return card.getAttribute("data-share-title") || "Restored Daily Ministries";
+    }
+
+    async function shareEntry(button) {
+      const shareUrl = getEntryLink(button);
+      const shareTitle = getEntryTitle(button);
+      const shareText = "";
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: shareUrl
+          });
+        } catch (error) {
+          // User cancelled share; no action needed.
+        }
+      } else {
+        copyToClipboard(shareUrl, button, "Link Copied");
+      }
+    }
+
+    function copyEntryLink(button) {
+      const shareUrl = getEntryLink(button);
+      copyToClipboard(shareUrl, button, "Copied");
+    }
+
+    function copyToClipboard(text, button, successText) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function() {
+          temporarilyChangeButtonText(button, successText);
+        }).catch(function() {
+          fallbackCopy(text, button, successText);
+        });
+      } else {
+        fallbackCopy(text, button, successText);
+      }
+    }
+
+    function fallbackCopy(text, button, successText) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        document.execCommand("copy");
+        temporarilyChangeButtonText(button, successText);
+      } catch (error) {
+        alert("Copy this link: " + text);
+      }
+
+      document.body.removeChild(textArea);
+    }
+
+    function temporarilyChangeButtonText(button, text) {
+      const originalText = button.textContent;
+      button.textContent = text;
+
+      setTimeout(function() {
+        button.textContent = originalText;
+      }, 1800);
+    }
+
+    function scrollToSharedEntryIfNeeded() {
+      if (!window.location.hash) return;
+
+      const targetId = decodeURIComponent(window.location.hash.replace("#", ""));
+      const target = document.getElementById(targetId);
+
+      if (target) {
+        setTimeout(function() {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }, 300);
+      }
+    }
+
+    function loadJournal() {
+      const status = document.getElementById("journalStatus");
+
+      window.handleLessonsJournal = function(data) {
+        if (!data || data.success === false) {
+          status.textContent = data && data.error
+            ? data.error
+            : "The journal entries could not be loaded right now.";
+          status.style.display = "block";
+          return;
+        }
+
+        renderJournal(Array.isArray(data.entries) ? data.entries : []);
+      };
+
+      const script = document.createElement("script");
+      script.src = LESSONS_API_URL + "?type=lessons&callback=handleLessonsJournal&v=" + Date.now();
+
+      script.onerror = function() {
+        status.textContent = "The journal entries could not be loaded right now.";
+        status.style.display = "block";
+      };
+
+      document.body.appendChild(script);
+    }
+
+    window.addEventListener("hashchange", scrollToSharedEntryIfNeeded);
+
+    loadJournal();
+  </script>
 </body>
 </html>
-
