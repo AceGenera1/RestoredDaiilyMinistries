@@ -689,6 +689,14 @@
     function lessonShareUrl(slug) {
   return "https://restoreddailyministries.org/api/share-lesson?id=" + encodeURIComponent(slug) + "&fresh=1000";
 }
+    function shareToFacebook(button) {
+  const shareUrl = getEntryLink(button);
+  window.open(
+    "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl),
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
     function renderJournal(entries) {
       const status = document.getElementById("journalStatus");
       const stack = document.getElementById("journalStack");
