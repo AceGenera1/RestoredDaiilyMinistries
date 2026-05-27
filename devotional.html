@@ -988,53 +988,47 @@
       return "devotional-" + (fallback || "entry-" + index);
     }
 
-    // === NEW: Rich Share Preview URL ===
-    function getSharePreviewUrl(slug) {
-      return ARCHIVE_API_URL + "?type=devotional&id=" + encodeURIComponent(slug);
-    }
+    // === NEW SHARE LOGIC ===
+function getSharePreviewUrl(slug) {
+  const API_BASE = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
+  return API_BASE + "?type=devotional&id=" + encodeURIComponent(slug);
+}
 
-    function getSelectedSlug() {
-      return window.location.hash ? window.location.hash.replace("#", "").trim() : "";
-    }
+function getEntryCard(button) {
+  return button.closest(".single-devotional") || button.closest(".devotional-card") || button.closest(".entry-card");
+}
 
-    function getSelectedId() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get("id");
-    }
+function getEntrySlug(button) {
+  const card = getEntryCard(button);
+  return card ? card.id : "";
+}
 
-    function getEntryCard(button) {
-      return button.closest(".single-devotional") || button.closest(".entry-card");
-    }
+function getEntryTitle(button) {
+  const card = getEntryCard(button);
+  return card ? (card.getAttribute("data-share-title") || "Restored Daily Devotional") : "Restored Daily Ministries";
+}
 
-    function getEntrySlug(button) {
-      const card = getEntryCard(button);
-      return card ? card.id : "";
-    }
+// Updated Share & Copy functions
+async function shareEntry(button) {
+  const slug = getEntrySlug(button);
+  const shareUrl = slug ? getSharePreviewUrl(slug) : window.location.href;
+  const shareTitle = getEntryTitle(button);
+  const shareText = "This encouragement from Restored Daily Ministries may bless you today.";
 
-    function getEntryTitle(button) {
-      const card = getEntryCard(button);
-      return card ? (card.getAttribute("data-share-title") || "Restored Daily Devotional") : "Restored Daily Ministries";
-    }
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: shareTitle, text: shareText, url: shareUrl });
+    } catch (e) {}
+  } else {
+    copyToClipboard(shareUrl, button, "Link Copied");
+  }
+}
 
-    async function shareEntry(button) {
-      const slug = getEntrySlug(button);
-      const shareUrl = slug ? getSharePreviewUrl(slug) : window.location.href;
-      const shareTitle = getEntryTitle(button);
-      const shareText = "This encouragement from Restored Daily Ministries may bless you today.";
-
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: shareTitle,
-            text: shareText,
-            url: shareUrl
-          });
-        } catch (error) {}
-      } else {
-        copyToClipboard(shareUrl, button, "Link Copied");
-      }
-    }
-
+function copyEntryLink(button) {
+  const slug = getEntrySlug(button);
+  const shareUrl = slug ? getSharePreviewUrl(slug) : window.location.href;
+  copyToClipboard(shareUrl, button, "Copied");
+}
     function copyEntryLink(button) {
       const slug = getEntrySlug(button);
       const shareUrl = slug ? getSharePreviewUrl(slug) : window.location.href;
