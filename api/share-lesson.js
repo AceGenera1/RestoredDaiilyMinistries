@@ -29,8 +29,8 @@ export default async function handler(req, res) {
   const id = String(req.query.id || "").trim();
 
   const targetUrl = `${SITE_URL}/disciple.html#${encodeURIComponent(id)}`;
-  const shareUrl = `${SITE_URL}/api/share-lesson?id=${encodeURIComponent(id)}&v=5`;
-  const ogImage = `${SITE_URL}/social-preview-lessons.png?v=5`;
+  const shareUrl = `${SITE_URL}/api/share-lesson?id=${encodeURIComponent(id)}&v=6`;
+  const ogImage = `${SITE_URL}/social-preview-lessons.png?v=6`;
 
   let title = "Lessons from a Disciple";
   let description = "Real reflections, lessons, and encouragement from Restored Daily Ministries.";
