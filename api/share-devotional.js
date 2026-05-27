@@ -1,6 +1,5 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 const SITE_URL = "https://restoreddailyministries.org";
-const OG_IMAGE = `${SITE_URL}/api/og-devotional?id=${encodeURIComponent(id)}`;
 function esc(value = "") {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -15,7 +14,7 @@ function preview(text = "", limit = 220) {
 }
 
 export default async function handler(req, res) {
-  const id = String(req.query.id || "").trim();
+  const OG_IMAGE = `${SITE_URL}/api/og-devotional?id=${encodeURIComponent(id)}&v=2`;
   const targetUrl = `${SITE_URL}/devotional.html#${encodeURIComponent(id)}`;
 
   let title = "Restored Daily Devotional";
