@@ -196,9 +196,9 @@
     }
 
     // ==================== NEW SHARE PREVIEW LOGIC ====================
-    function getSharePreviewUrl(slug) {
-      return ARCHIVE_API_URL + "?type=devotional&id=" + encodeURIComponent(slug);
-    }
+   function getSharePreviewUrl(slug) {
+  return "https://restoreddailyministries.org/api/share-devotional?id=" + encodeURIComponent(slug);
+}
 
     function getEntryCard(button) {
       return button.closest(".single-devotional") || button.closest(".devotional-card") || button.closest(".entry-card");
@@ -218,7 +218,7 @@
       const slug = getEntrySlug(button);
       const shareUrl = slug ? getSharePreviewUrl(slug) : window.location.href;
       const shareTitle = getEntryTitle(button);
-      const shareText = "This encouragement from Restored Daily Ministries may bless you today.";
+      const shareText = "";
 
       if (navigator.share) {
         try { await navigator.share({ title: shareTitle, text: shareText, url: shareUrl }); }
