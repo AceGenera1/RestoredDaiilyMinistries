@@ -1,6 +1,6 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec?type=lessons";
 const SITE_URL = "https://restoreddailyministries.org";
-
+const ogImage = `${SITE_URL}/social-preview-lessons.png?v=2`;
 function esc(value = "") {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -50,6 +50,10 @@ export default async function handler(req, res) {
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:image" content="${ogImage}">
+  <meta property="og:image:secure_url" content="${ogImage}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
   <meta property="og:url" content="${targetUrl}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(title)}">
