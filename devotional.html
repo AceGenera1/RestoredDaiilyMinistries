@@ -998,8 +998,8 @@
       return window.location.hash ? window.location.hash.replace("#", "").trim() : "";
     }
 
-  function devotionalShareUrl(slug) {
-  return "https://restoreddailyministries.org/api/share-devotional?id=" + encodeURIComponent(slug) + "&fresh=1000";
+    function devotionalShareUrl(slug) {
+  return "https://restoreddailyministries.org/api/share-devotional?id=" + encodeURIComponent(slug) + "&fresh=" + Date.now();
 }
 
     function renderArchive(items) {
