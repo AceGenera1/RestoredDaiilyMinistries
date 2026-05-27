@@ -1,7 +1,6 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 const SITE_URL = "https://restoreddailyministries.org";
-const OG_IMAGE = `${SITE_URL}/profile-logo.png?v=31`;
-
+const OG_IMAGE = `${SITE_URL}/api/og-devotional?id=${encodeURIComponent(id)}`;
 function esc(value = "") {
   return String(value)
     .replace(/&/g, "&amp;")
