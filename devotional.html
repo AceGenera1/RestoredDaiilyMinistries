@@ -1050,6 +1050,14 @@
       });
     }
 
+    function shareToFacebook(button) {
+  const shareUrl = getEntryLink(button);
+  window.open(
+    "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl),
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
     function renderSingleDevotional(item, index) {
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
