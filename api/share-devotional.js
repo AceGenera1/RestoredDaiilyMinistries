@@ -1,5 +1,6 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 const SITE_URL = "https://restoreddailyministries.org";
+const OG_IMAGE = `${SITE_URL}/social-preview-devotional.png?v=1`;
 function esc(value = "") {
   return String(value)
     .replace(/&/g, "&amp;")
