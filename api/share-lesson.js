@@ -1,6 +1,5 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec?type=lessons";
 const SITE_URL = "https://restoreddailyministries.org";
-const OG_IMAGE = `${SITE_URL}/api/og-lesson?id=${encodeURIComponent(id)}`;
 
 function esc(value = "") {
   return String(value)
@@ -22,6 +21,7 @@ function titleFrom(entry = "") {
 
 export default async function handler(req, res) {
   const id = String(req.query.id || "").trim();
+  const OG_IMAGE = `${SITE_URL}/api/og-lesson?id=${encodeURIComponent(id)}&v=2`;
   const targetUrl = `${SITE_URL}/disciple.html#${encodeURIComponent(id)}`;
 
   let title = "Lessons from a Disciple";
