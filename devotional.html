@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lessons from a Disciple | Restored Daily Ministries</title>
+  <title>Devotionals | Restored Daily Ministries</title>
 
   <style>
     :root {
@@ -273,10 +273,6 @@
       margin: 0 auto;
     }
 
-    .container.lessons {
-      max-width: 1040px;
-    }
-
     .section-title {
       text-align: center;
       font-size: clamp(38px, 7vw, 66px);
@@ -292,119 +288,335 @@
       color: #2B394F;
     }
 
-    .intro-card {
-      max-width: 940px;
-      margin: 0 auto 46px;
-      padding: 36px;
+    .content-box,
+    .signup-box,
+    .community-box,
+    .contact-box,
+    .video-card {
+      max-width: 980px;
+      margin: 34px auto 0;
+      padding: 38px;
       border-radius: 30px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.94));
-      border: 1px solid rgba(215, 168, 79, 0.36);
-      box-shadow: 0 22px 52px rgba(28, 45, 74, 0.12);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 234, 0.91));
+      border: 1px solid rgba(214, 170, 99, 0.36);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.12);
       text-align: center;
     }
 
-    .intro-card h2 {
-      font-size: clamp(34px, 6vw, 58px);
-      color: var(--royal);
+    .content-box h3,
+    .signup-box h3,
+    .community-box h3,
+    .contact-box h3,
+    .video-card h3 {
+      color: #13233F;
+      font-size: clamp(29px, 4vw, 42px);
+      margin-bottom: 14px;
+    }
+
+    .content-box p,
+    .signup-box p,
+    .community-box p,
+    .contact-box p,
+    .video-card p {
+      color: #2B394F;
+      font-size: 19px;
+      margin: 0 auto 18px;
+      max-width: 900px;
+    }
+
+    .cards,
+    .info-grid,
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 24px;
+      margin-top: 42px;
+    }
+
+    .card,
+    .info-card,
+    .teaching-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 18px 42px rgba(28, 45, 74, 0.11);
+      text-align: left;
+    }
+
+    a.card {
+      display: block;
+      text-decoration: none;
+    }
+
+    .card .tag,
+    .info-card .tag,
+    .teaching-card .tag {
+      display: inline-block;
+      color: #8A621D;
+      background: rgba(248, 217, 135, 0.36);
+      border: 1px solid rgba(215, 168, 79, 0.55);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       margin-bottom: 16px;
     }
 
-    .intro-card p {
-      max-width: 840px;
-      margin: 0 auto;
-      color: var(--text);
-      font-size: clamp(18px, 3vw, 21px);
+    .card h3,
+    .info-card h3,
+    .teaching-card h3 {
+      color: var(--royal);
+      font-size: clamp(25px, 3vw, 34px);
+      margin-bottom: 12px;
     }
 
-    .journal-status {
-      max-width: 860px;
-      margin: 0 auto 34px;
+    .card p,
+    .info-card p,
+    .teaching-card p {
+      color: var(--text);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .quote {
+      max-width: 900px;
+      margin: 42px auto;
+      text-align: center;
+      color: #B7832D;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.12;
+      font-style: italic;
+    }
+
+    .btns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 2px solid rgba(214, 170, 99, 0.72);
+      transition: 0.25s;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #FFE39A, #D7A84F);
+      color: #13233F;
+      font-weight: 900;
+      box-shadow: 0 12px 32px rgba(198, 122, 61, 0.23);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #8A621D;
+      border: 2px solid rgba(183, 131, 45, 0.70);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18), 0 0 22px rgba(214, 170, 99, 0.22);
+    }
+
+    .note-box {
+      max-width: 980px;
+      margin: 42px auto 0;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(248, 217, 135, 0.22);
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      color: #2B394F;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .site-footer {
+      padding: 42px 22px;
+      text-align: center;
+      background: linear-gradient(180deg, #101A2E, #09111F);
+      border-top: 1px solid rgba(248, 217, 135, 0.34);
+    }
+
+    .footer-profile-logo {
+      width: 145px;
+      max-width: 48vw;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 16px auto;
+      background: transparent;
+    }
+
+    .site-footer .tagline {
+      color: var(--lightgold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .site-footer p {
+      color: #D7DFEF;
+      margin: 8px 0 0;
+    }
+
+    .footer-links {
+      margin-top: 12px;
+      color: #D7DFEF;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: var(--lightgold);
+      text-decoration: underline;
+      font-weight: 800;
+    }
+
+    .signup-section {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(248, 217, 135, 0.22), transparent 42%),
+        linear-gradient(180deg, #FFF8EA 0%, #EEF7FF 100%);
+      border-bottom: 1px solid rgba(215, 168, 79, 0.22);
+    }
+
+    .archive-tools {
+      max-width: 900px;
+      margin: 34px auto 0;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .search-input {
+      width: min(100%, 520px);
+      padding: 15px 18px;
+      border-radius: 999px;
+      border: 2px solid rgba(215, 168, 79, 0.45);
+      background: #fff;
+      color: var(--royal);
+      font-size: 16px;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 46px;
+    }
+
+    .devotional-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.94));
+      border: 1px solid rgba(215, 168, 79, 0.35);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
+    }
+
+    .devotional-date {
+      color: #8A621D;
+      background: rgba(248, 217, 135, 0.36);
+      border: 1px solid rgba(215, 168, 79, 0.55);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .devotional-card h3 {
+      color: var(--royal);
+      font-size: clamp(27px, 3vw, 36px);
+      margin: 0 0 14px;
+    }
+
+    .devotional-card p {
+      color: var(--text);
+      font-size: 17px;
+      margin: 0 0 18px;
+    }
+
+    .read-more,
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #FFE39A, #D7A84F);
+      color: var(--deep);
+      text-decoration: none;
+      font-weight: 900;
+      border: 2px solid rgba(215, 168, 79, 0.78);
+      box-shadow: 0 12px 28px rgba(215, 168, 79, 0.20);
+    }
+
+    .loading,
+    .empty,
+    .error {
+      max-width: 850px;
+      margin: 34px auto 0;
       text-align: center;
       padding: 24px;
       border-radius: 24px;
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid rgba(215, 168, 79, 0.32);
       color: var(--text);
-      font-size: 18px;
-      box-shadow: 0 14px 32px rgba(28, 45, 74, 0.08);
     }
 
-    .journal-stack {
-      display: grid;
-      gap: 34px;
-    }
-
-    .journal-entry {
-      position: relative;
-      padding: 38px;
-      border-radius: 24px;
-      background:
-        linear-gradient(90deg, rgba(215, 168, 79, 0.18) 0 1px, transparent 1px) 76px 0 / 1px 100% no-repeat,
-        repeating-linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.78) 0px,
-          rgba(255, 255, 255, 0.78) 31px,
-          var(--softline) 32px
-        ),
-        linear-gradient(180deg, #FFFDF6 0%, var(--paper) 100%);
+    .single-devotional {
+      max-width: 900px;
+      margin: 46px auto 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.95));
       border: 1px solid rgba(215, 168, 79, 0.38);
+      border-radius: 30px;
+      padding: 38px;
       box-shadow: 0 22px 52px rgba(28, 45, 74, 0.13);
-      overflow: hidden;
       scroll-margin-top: 125px;
     }
 
-    .journal-entry::before {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(215, 168, 79, 0.18);
-      border-radius: 18px;
-      pointer-events: none;
-    }
-
-    .journal-entry:target {
+    .single-devotional:target {
       outline: 3px solid rgba(215, 168, 79, 0.72);
       box-shadow:
         0 22px 52px rgba(28, 45, 74, 0.13),
         0 0 0 8px rgba(248, 217, 135, 0.18);
     }
 
-    .entry-date {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 22px;
-      padding: 9px 16px;
-      border-radius: 999px;
-      color: #8A621D;
-      background: rgba(248, 217, 135, 0.45);
-      border: 1px solid rgba(215, 168, 79, 0.58);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .single-devotional h3 {
+      color: var(--royal);
+      font-size: clamp(36px, 6vw, 58px);
+      margin: 0 0 18px;
     }
 
-    .entry-body {
-      position: relative;
-      max-width: 860px;
-      margin: 0 auto;
+    .single-devotional .full-message {
+      color: var(--text);
+      font-size: 19px;
+      line-height: 1.85;
     }
 
-    .entry-body p {
-      margin: 0 0 20px;
-      color: #26334B;
-      font-size: clamp(18px, 2.4vw, 20px);
-      line-height: 1.86;
-    }
-
-    .entry-body p:last-child {
-      margin-bottom: 0;
+    .back-link {
+      margin-bottom: 24px;
     }
 
     .share-box {
-      position: relative;
-      margin: 32px auto 0;
-      max-width: 820px;
+      margin-top: 34px;
       padding: 22px;
       border-radius: 24px;
       background: linear-gradient(180deg, rgba(255, 248, 234, 0.96), rgba(238, 247, 255, 0.92));
@@ -452,48 +664,6 @@
     .copy-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 12px 24px rgba(16, 26, 46, 0.15);
-    }
-
-    .site-footer {
-      padding: 42px 22px;
-      text-align: center;
-      background: linear-gradient(180deg, #101A2E, #09111F);
-      border-top: 1px solid rgba(248, 217, 135, 0.34);
-    }
-
-    .footer-profile-logo {
-      width: 145px;
-      max-width: 48vw;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto 16px auto;
-      background: transparent;
-    }
-
-    .site-footer .tagline {
-      color: var(--lightgold);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .site-footer p {
-      color: #D7DFEF;
-      margin: 8px 0 0;
-    }
-
-    .footer-links {
-      margin-top: 12px;
-      color: #D7DFEF;
-      font-size: 14px;
-    }
-
-    .footer-links a {
-      color: var(--lightgold);
-      text-decoration: underline;
-      font-weight: 800;
     }
 
     @media (max-width: 900px) {
@@ -556,20 +726,13 @@
         padding: 62px 16px;
       }
 
-      .intro-card,
-      .journal-entry {
+      .content-box,
+      .signup-box,
+      .community-box,
+      .contact-box,
+      .video-card,
+      .single-devotional {
         padding: 26px;
-      }
-
-      .journal-entry {
-        background:
-          repeating-linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.78) 0px,
-            rgba(255, 255, 255, 0.78) 31px,
-            var(--softline) 32px
-          ),
-          linear-gradient(180deg, #FFFDF6 0%, var(--paper) 100%);
       }
 
       .footer-profile-logo {
@@ -599,6 +762,16 @@
 
       .menu-toggle-text {
         display: none;
+      }
+
+      .cards,
+      .info-grid,
+      .teaching-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .archive-grid {
+        grid-template-columns: 1fr;
       }
 
       .share-btn,
@@ -634,8 +807,8 @@
         <nav id="siteDropdownMenu" class="dropdown-menu" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="mission.html">Mission</a>
-          <a href="devotional.html">Devotionals</a>
-          <a class="active" aria-current="page" href="disciple.html">Lessons</a>
+          <a class="active" aria-current="page" href="devotional.html">Devotionals</a>
+          <a href="disciple.html">Lessons</a>
           <a href="preaching.html">Preaching</a>
           <a href="podcast.html">Podcast</a>
           <a href="prayer.html">Prayer</a>
@@ -649,22 +822,42 @@
 
   <main>
     <section class="page-hero">
-      <h1>Lessons from a Disciple</h1>
-      <p>A raw journal of walking with Jesus Christ.</p>
+      <h1>Devotionals</h1>
+      <p>Daily biblical encouragement for a world in need of Christ.</p>
     </section>
 
-    <section class="section">
-      <div class="container lessons">
-        <div class="intro-card">
-          <h2>Lessons from a Disciple</h2>
+    <section class="section signup-section">
+      <div class="container">
+        <div class="signup-box">
+          <h2 class="section-title">Receive Daily Devotionals</h2>
+
           <p>
-            These are raw reflections from my walk with Jesus Christ — lessons learned through Scripture,
-            prayer, conviction, weakness, grace, and the daily work of the Holy Spirit.
+            If you would like to receive daily biblical encouragement in your email inbox,
+            you can sign up below and be encouraged through Scripture, prayer, and the hope of Jesus Christ.
           </p>
+
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScM4YPF4aC9jT8NQ_Mb7yXJ8y9BuTtgLMpFiiqv7T7Df6Wf3g/viewform" target="_blank" rel="noopener">
+            Sign Up for Daily Devotionals
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2 class="section-title">Devotional Archive</h2>
+
+        <p class="section-text">
+          Read biblical encouragement written to strengthen hearts, build faith,
+          and point people back to Jesus Christ one day at a time.
+        </p>
+
+        <div class="archive-tools">
+          <input id="archiveSearch" class="search-input" type="search" placeholder="Search devotionals...">
         </div>
 
-        <div id="journalStatus" class="journal-status">Loading journal entries...</div>
-        <div id="journalStack" class="journal-stack" aria-live="polite"></div>
+        <div id="archiveStatus" class="loading">Loading devotionals...</div>
+        <div id="archiveGrid" class="archive-grid" aria-live="polite"></div>
       </div>
     </section>
   </main>
@@ -737,9 +930,11 @@
   </script>
 
   <script>
-    const LESSONS_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
+    const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 
-    function escapeJournalHtml(value) {
+    let allDevotionals = [];
+
+    function escapeHtml(value) {
       return String(value || "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
@@ -748,8 +943,20 @@
         .replaceAll("'", "&#039;");
     }
 
-    function escapeJournalAttribute(value) {
-      return escapeJournalHtml(value).replaceAll("`", "&#096;");
+    function escapeAttribute(value) {
+      return escapeHtml(value).replaceAll("`", "&#096;");
+    }
+
+    function excerptFrom(message) {
+      const text = String(message || "").replace(/\s+/g, " ").trim();
+      return text.length > 220 ? text.slice(0, 220) + "..." : text;
+    }
+
+    function formatDate(value) {
+      if (!value) return "";
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return String(value || "");
+      return d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
     }
 
     function slugify(value) {
@@ -762,110 +969,119 @@
         .slice(0, 90);
     }
 
-    function formatEntryDate(entry) {
-      const date = String(entry.date || "").trim();
-      const time = String(entry.time || "").trim();
-
-      if (date && time) return `${date} • ${time}`;
-      if (date) return date;
-      if (time) return time;
-
-      return "Journal Entry";
-    }
-
-    function firstWords(value, count) {
-      return String(value || "")
-        .replace(/\s+/g, " ")
-        .trim()
-        .split(" ")
-        .slice(0, count)
-        .join(" ");
-    }
-
-    function getLessonSlug(entry, index) {
-      const existingSlug = entry.slug || entry.shareSlug || entry.anchor || "";
+    function getDevotionalSlug(item, index) {
+      const existingSlug = item.slug || item.shareSlug || item.anchor || "";
       if (existingSlug) {
         const cleanExisting = slugify(existingSlug);
-        return cleanExisting.startsWith("lesson-") ? cleanExisting : "lesson-" + cleanExisting;
+        return cleanExisting.startsWith("devotional-") ? cleanExisting : "devotional-" + cleanExisting;
       }
 
-      const stableId = entry.id || entry.rowId || entry.uuid || "";
+      const stableId = item.id || item.rowId || item.uuid || "";
       if (stableId) {
         const cleanId = slugify(stableId);
-        return cleanId.startsWith("lesson-") ? cleanId : "lesson-" + cleanId;
+        return cleanId.startsWith("devotional-") ? cleanId : "devotional-" + cleanId;
       }
 
-      const datePart = formatEntryDate(entry);
-      const textPart = firstWords(entry.entry, 8);
-      const fallback = slugify(datePart + "-" + textPart);
+      const dateValue = item.dateArchived || item.date || "";
+      const subjectValue = item.subject || "untitled-devotional";
+      const fallback = slugify(dateValue + "-" + subjectValue);
 
-      return "lesson-" + (fallback || "entry-" + index);
+      return "devotional-" + (fallback || "entry-" + index);
     }
 
-    function entryToParagraphs(text) {
-      const clean = String(text || "")
-        .replace(/\r\n/g, "\n")
-        .replace(/\r/g, "\n")
-        .trim();
-
-      if (!clean) return "<p></p>";
-
-      return clean
-        .split(/\n\s*\n+/)
-        .map(part => {
-          const html = escapeJournalHtml(part.trim()).replace(/\n/g, "<br>");
-          return html ? `<p>${html}</p>` : "";
-        })
-        .join("");
+    function getSelectedId() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id");
     }
 
-    function getLessonShareTitle(entry) {
-      const date = formatEntryDate(entry);
-      return date && date !== "Journal Entry"
-        ? "Lessons from a Disciple - " + date
-        : "Lessons from a Disciple";
+    function getSelectedSlug() {
+      return window.location.hash ? window.location.hash.replace("#", "").trim() : "";
     }
 
-    function lessonShareUrl(slug) {
-      return window.location.origin + window.location.pathname + "#" + slug;
-    }
+   function devotionalShareUrl(slug) {
+  return "https://restoreddailyministries.org/api/share-devotional?id=" + encodeURIComponent(slug);
+}
 
-    function renderJournal(entries) {
-      const status = document.getElementById("journalStatus");
-      const stack = document.getElementById("journalStack");
+    function renderArchive(items) {
+      const grid = document.getElementById("archiveGrid");
+      const status = document.getElementById("archiveStatus");
+      const searchBox = document.querySelector(".archive-tools");
+      const pageTitle = document.querySelector(".section-title");
+      const pageText = document.querySelector(".section-text");
 
-      stack.innerHTML = "";
+      if (searchBox) searchBox.style.display = "";
+      if (pageTitle) pageTitle.textContent = "Devotional Archive";
+      if (pageText) {
+        pageText.textContent =
+          "Read biblical encouragement written to strengthen hearts, build faith, and point people back to Jesus Christ one day at a time.";
+      }
 
-      if (!entries || !entries.length) {
-        status.textContent = "No journal entries have been published yet.";
+      grid.className = "archive-grid";
+      grid.innerHTML = "";
+
+      if (!items || !items.length) {
+        status.className = "empty";
+        status.textContent = "No devotionals found yet.";
         status.style.display = "block";
         return;
       }
 
       status.style.display = "none";
 
-      entries.forEach((entry, index) => {
-        const article = document.createElement("article");
-        const slug = getLessonSlug(entry, index);
-        const shareTitle = getLessonShareTitle(entry);
+      items.forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "devotional-card";
 
-        article.className = "journal-entry entry-card";
-        article.id = slug;
-        article.setAttribute("data-share-title", shareTitle);
+        const date = formatDate(item.dateArchived || item.date);
+        const subjectRaw = item.subject || "Untitled Devotional";
+        const subject = escapeHtml(subjectRaw);
+        const excerpt = escapeHtml(excerptFrom(item.message));
+        const slug = getDevotionalSlug(item, index);
+        const url = `devotional.html#${encodeURIComponent(slug)}`;
 
-        article.innerHTML = `
-          <div class="entry-date">${escapeJournalHtml(formatEntryDate(entry))}</div>
+        card.innerHTML = `
+          ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
+          <h3>${subject}</h3>
+          <p>${excerpt}</p>
+          <a class="read-more" href="${url}">Read More</a>
+        `;
 
-          <div class="entry-body">
-            ${entryToParagraphs(entry.entry)}
-          </div>
+        grid.appendChild(card);
+      });
+    }
+
+    function renderSingleDevotional(item, index) {
+      const grid = document.getElementById("archiveGrid");
+      const status = document.getElementById("archiveStatus");
+      const searchBox = document.querySelector(".archive-tools");
+      const pageTitle = document.querySelector(".section-title");
+      const pageText = document.querySelector(".section-text");
+
+      if (searchBox) searchBox.style.display = "none";
+      if (status) status.style.display = "none";
+      if (pageTitle) pageTitle.textContent = "Devotional";
+      if (pageText) pageText.textContent = "Read the full devotional below.";
+
+      const date = formatDate(item.dateArchived || item.date);
+      const subjectRaw = item.subject || "Untitled Devotional";
+      const subject = escapeHtml(subjectRaw);
+      const message = escapeHtml(item.message || "").replace(/\n/g, "<br>");
+      const slug = getDevotionalSlug(item, index);
+
+      grid.className = "";
+      grid.innerHTML = `
+        <article class="single-devotional entry-card" id="${escapeAttribute(slug)}" data-share-title="${escapeAttribute(subjectRaw)}">
+          <a class="back-link" href="devotional.html">← Back to Archive</a>
+          ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
+          <h3>${subject}</h3>
+          <div class="full-message">${message}</div>
 
           <div class="share-box">
-            <p>If this lesson encouraged you, share it with someone who may need this reminder today.</p>
+            <p>If this encouraged you, share it with someone who may need this reminder today.</p>
 
             <div class="share-actions">
               <button class="share-btn" type="button" onclick="shareEntry(this)">
-                Share This Lesson
+                Share This Encouragement
               </button>
 
               <button class="copy-btn" type="button" onclick="copyEntryLink(this)">
@@ -873,12 +1089,86 @@
               </button>
             </div>
           </div>
-        `;
+        </article>
+      `;
 
-        stack.appendChild(article);
-      });
+      setTimeout(function() {
+        const target = document.getElementById(slug);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 200);
+    }
 
-      scrollToSharedEntryIfNeeded();
+    function renderCurrentView() {
+      const selectedSlug = getSelectedSlug();
+      const selectedId = getSelectedId();
+
+      if (selectedSlug) {
+        const decodedSlug = decodeURIComponent(selectedSlug);
+
+        const selectedIndex = allDevotionals.findIndex((item, index) =>
+          getDevotionalSlug(item, index) === decodedSlug
+        );
+
+        if (selectedIndex >= 0) {
+          renderSingleDevotional(allDevotionals[selectedIndex], selectedIndex);
+          return;
+        }
+
+        showDevotionalNotFound();
+        return;
+      }
+
+      if (selectedId) {
+        const selectedIndex = allDevotionals.findIndex((item, index) =>
+          String(item.id || index) === String(selectedId)
+        );
+
+        if (selectedIndex >= 0) {
+          const slug = getDevotionalSlug(allDevotionals[selectedIndex], selectedIndex);
+          history.replaceState(null, "", window.location.pathname + "#" + slug);
+          renderSingleDevotional(allDevotionals[selectedIndex], selectedIndex);
+          return;
+        }
+
+        showDevotionalNotFound();
+        return;
+      }
+
+      renderArchive(allDevotionals);
+    }
+
+    function showDevotionalNotFound() {
+      const status = document.getElementById("archiveStatus");
+      const grid = document.getElementById("archiveGrid");
+      const searchBox = document.querySelector(".archive-tools");
+
+      if (searchBox) searchBox.style.display = "none";
+      if (grid) grid.innerHTML = "";
+
+      status.className = "error";
+      status.textContent = "That devotional could not be found.";
+      status.style.display = "block";
+    }
+
+    function applySearch() {
+      const searchInput = document.getElementById("archiveSearch");
+      if (!searchInput) return;
+
+      const q = searchInput.value.toLowerCase().trim();
+
+      if (!q) {
+        renderArchive(allDevotionals);
+        return;
+      }
+
+      const filtered = allDevotionals.filter(item =>
+        String(item.subject || "").toLowerCase().includes(q) ||
+        String(item.message || "").toLowerCase().includes(q)
+      );
+
+      renderArchive(filtered);
     }
 
     function getEntryCard(button) {
@@ -892,7 +1182,7 @@
         return window.location.href;
       }
 
-      return lessonShareUrl(card.id);
+      return devotionalShareUrl(card.id);
     }
 
     function getEntryTitle(button) {
@@ -908,7 +1198,7 @@
     async function shareEntry(button) {
       const shareUrl = getEntryLink(button);
       const shareTitle = getEntryTitle(button);
-      const shareText = "This lesson from Restored Daily Ministries may bless you today.";
+      const shareText = "";
 
       if (navigator.share) {
         try {
@@ -971,51 +1261,43 @@
       }, 1800);
     }
 
-    function scrollToSharedEntryIfNeeded() {
-      if (!window.location.hash) return;
+    function loadArchive() {
+      const status = document.getElementById("archiveStatus");
 
-      const targetId = decodeURIComponent(window.location.hash.replace("#", ""));
-      const target = document.getElementById(targetId);
-
-      if (target) {
-        setTimeout(function() {
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        }, 300);
-      }
-    }
-
-    function loadJournal() {
-      const status = document.getElementById("journalStatus");
-
-      window.handleLessonsJournal = function(data) {
+      window.handleDevotionalArchive = function(data) {
         if (!data || data.success === false) {
-          status.textContent = data && data.error
-            ? data.error
-            : "The journal entries could not be loaded right now.";
-          status.style.display = "block";
+          status.className = "error";
+          status.textContent = data && data.error ? data.error : "The devotional archive could not be loaded right now.";
           return;
         }
 
-        renderJournal(Array.isArray(data.entries) ? data.entries : []);
+        allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
+        renderCurrentView();
       };
 
       const script = document.createElement("script");
-      script.src = LESSONS_API_URL + "?type=lessons&callback=handleLessonsJournal&v=" + Date.now();
+      script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive&v=" + Date.now();
 
       script.onerror = function() {
-        status.textContent = "The journal entries could not be loaded right now.";
-        status.style.display = "block";
+        status.className = "error";
+        status.textContent = "The devotional archive could not be loaded right now.";
       };
 
       document.body.appendChild(script);
     }
 
-    window.addEventListener("hashchange", scrollToSharedEntryIfNeeded);
+    const archiveSearch = document.getElementById("archiveSearch");
+    if (archiveSearch) {
+      archiveSearch.addEventListener("input", applySearch);
+    }
 
-    loadJournal();
+    window.addEventListener("hashchange", function() {
+      if (allDevotionals.length) {
+        renderCurrentView();
+      }
+    });
+
+    loadArchive();
   </script>
 </body>
 </html>
