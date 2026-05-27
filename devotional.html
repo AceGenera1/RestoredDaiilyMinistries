@@ -885,367 +885,419 @@
       <a href="rights.html">Rights & Use</a>
     </div>
   </footer>
-<script>
-  function initRestoredDailyMenu() {
-    const navControl = document.querySelector(".nav-control");
-    const menuButton = document.querySelector(".menu-toggle");
-    const menu = document.getElementById("siteDropdownMenu");
 
-    if (!navControl || !menuButton || !menu) return;
+  <script>
+    function initRestoredDailyMenu() {
+      const navControl = document.querySelector(".nav-control");
+      const menuButton = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("siteDropdownMenu");
 
-    function closeMenu() {
-      navControl.classList.remove("is-open");
-      menuButton.setAttribute("aria-expanded", "false");
-    }
+      if (!navControl || !menuButton || !menu) return;
 
-    function toggleMenu() {
-      const isOpen = navControl.classList.toggle("is-open");
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-    }
+      function closeMenu() {
+        navControl.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+      }
 
-    menuButton.addEventListener("click", function(event) {
-      event.stopPropagation();
-      toggleMenu();
-    });
+      function toggleMenu() {
+        const isOpen = navControl.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      }
 
-    document.addEventListener("click", function(event) {
-      if (!navControl.contains(event.target)) closeMenu();
-    });
-
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") closeMenu();
-    });
-
-    menu.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", closeMenu);
-    });
-  }
-
-  initRestoredDailyMenu();
-
-  const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
-
-  let allDevotionals = [];
-
-  function escapeHtml(value) {
-    return String(value || "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-
-  function escapeAttribute(value) {
-    return escapeHtml(value).replaceAll("`", "&#096;");
-  }
-
-  function excerptFrom(message) {
-    const text = String(message || "").replace(/\s+/g, " ").trim();
-    return text.length > 220 ? text.slice(0, 220) + "..." : text;
-  }
-
-  function formatDate(value) {
-    if (!value) return "";
-    const d = new Date(value);
-    if (Number.isNaN(d.getTime())) return String(value || "");
-    return d.toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    });
-  }
-
-  function slugify(value) {
-    return String(value || "")
-      .toLowerCase()
-      .trim()
-      .replace(/['"]/g, "")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "")
-      .slice(0, 90);
-  }
-
-  function getDevotionalSlug(item, index) {
-    const existingSlug = item.slug || item.shareSlug || item.anchor || "";
-    if (existingSlug) {
-      const cleanExisting = slugify(existingSlug);
-      return cleanExisting.startsWith("devotional-") ? cleanExisting : "devotional-" + cleanExisting;
-    }
-
-    const stableId = item.id || item.rowId || item.uuid || "";
-    if (stableId) {
-      const cleanId = slugify(stableId);
-      return cleanId.startsWith("devotional-") ? cleanId : "devotional-" + cleanId;
-    }
-
-    const dateValue = item.dateArchived || item.date || "";
-    const subjectValue = item.subject || "untitled-devotional";
-    const fallback = slugify(dateValue + "-" + subjectValue);
-
-    return "devotional-" + (fallback || "entry-" + index);
-  }
-
-  function getSharePreviewUrl(slug) {
-    return ARCHIVE_API_URL + "?type=devotional&id=" + encodeURIComponent(slug);
-  }
-
-  function getAnchorUrl(slug) {
-    return window.location.origin + window.location.pathname + "#" + encodeURIComponent(slug);
-  }
-
-  function getEntryCard(button) {
-    return button.closest(".single-devotional") || button.closest(".devotional-card");
-  }
-
-  function getEntrySlug(button) {
-    const card = getEntryCard(button);
-    return card ? card.id : "";
-  }
-
-  function getEntryTitle(button) {
-    const card = getEntryCard(button);
-    return card ? (card.getAttribute("data-share-title") || "Restored Daily Devotional") : "Restored Daily Devotional";
-  }
-
-  async function shareEntry(button) {
-    const slug = getEntrySlug(button);
-    const shareUrl = slug ? getSharePreviewUrl(slug) : window.location.href;
-    const shareTitle = getEntryTitle(button);
-    const shareText = "This encouragement from Restored Daily Ministries may bless you today.";
-
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: shareTitle,
-          text: shareText,
-          url: shareUrl
-        });
-      } catch (e) {}
-    } else {
-      copyToClipboard(shareUrl, button, "Link Copied");
-    }
-  }
-
-  function copyEntryLink(button) {
-    const slug = getEntrySlug(button);
-    const shareUrl = slug ? getSharePreviewUrl(slug) : window.location.href;
-    copyToClipboard(shareUrl, button, "Copied");
-  }
-
-  function copyToClipboard(text, button, successText) {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(() => {
-        temporarilyChangeButtonText(button, successText);
-      }).catch(() => {
-        fallbackCopy(text, button, successText);
+      menuButton.addEventListener("click", function(event) {
+        event.stopPropagation();
+        toggleMenu();
       });
-    } else {
-      fallbackCopy(text, button, successText);
-    }
-  }
 
-  function fallbackCopy(text, button, successText) {
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    textArea.style.position = "fixed";
-    textArea.style.left = "-999999px";
-    textArea.style.top = "-999999px";
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
+      document.addEventListener("click", function(event) {
+        if (!navControl.contains(event.target)) {
+          closeMenu();
+        }
+      });
 
-    try {
-      document.execCommand("copy");
-      temporarilyChangeButtonText(button, successText);
-    } catch (error) {
-      alert("Copy this link: " + text);
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+      });
+
+      menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
     }
 
-    document.body.removeChild(textArea);
-  }
+    initRestoredDailyMenu();
+  </script>
 
-  function temporarilyChangeButtonText(button, text) {
-    const originalText = button.textContent;
-    button.textContent = text;
-    setTimeout(() => {
-      button.textContent = originalText;
-    }, 1800);
-  }
+  <script>
+    const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 
-  function renderArchive(items) {
-    const status = document.getElementById("archiveStatus");
-    const grid = document.getElementById("archiveGrid");
+    let allDevotionals = [];
 
-    if (!grid || !status) return;
-
-    grid.innerHTML = "";
-
-    if (!items.length) {
-      status.className = "empty";
-      status.textContent = "No devotionals were found.";
-      status.style.display = "block";
-      return;
+    function escapeHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
     }
 
-    status.style.display = "none";
+    function escapeAttribute(value) {
+      return escapeHtml(value).replaceAll("`", "&#096;");
+    }
 
-    grid.innerHTML = items.map((item, index) => {
+    function excerptFrom(message) {
+      const text = String(message || "").replace(/\s+/g, " ").trim();
+      return text.length > 220 ? text.slice(0, 220) + "..." : text;
+    }
+
+    function formatDate(value) {
+      if (!value) return "";
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return String(value || "");
+      return d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+    }
+
+    function slugify(value) {
+      return String(value || "")
+        .toLowerCase()
+        .trim()
+        .replace(/['"]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .slice(0, 90);
+    }
+
+    function getDevotionalSlug(item, index) {
+      const existingSlug = item.slug || item.shareSlug || item.anchor || "";
+      if (existingSlug) {
+        const cleanExisting = slugify(existingSlug);
+        return cleanExisting.startsWith("devotional-") ? cleanExisting : "devotional-" + cleanExisting;
+      }
+
+      const stableId = item.id || item.rowId || item.uuid || "";
+      if (stableId) {
+        const cleanId = slugify(stableId);
+        return cleanId.startsWith("devotional-") ? cleanId : "devotional-" + cleanId;
+      }
+
+      const dateValue = item.dateArchived || item.date || "";
+      const subjectValue = item.subject || "untitled-devotional";
+      const fallback = slugify(dateValue + "-" + subjectValue);
+
+      return "devotional-" + (fallback || "entry-" + index);
+    }
+
+    function getSelectedId() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id");
+    }
+
+    function getSelectedSlug() {
+      return window.location.hash ? window.location.hash.replace("#", "").trim() : "";
+    }
+
+   function devotionalShareUrl(slug) {
+  return ARCHIVE_API_URL + "?type=devotional&id=" + encodeURIComponent(slug);
+}
+
+    function renderArchive(items) {
+      const grid = document.getElementById("archiveGrid");
+      const status = document.getElementById("archiveStatus");
+      const searchBox = document.querySelector(".archive-tools");
+      const pageTitle = document.querySelector(".section-title");
+      const pageText = document.querySelector(".section-text");
+
+      if (searchBox) searchBox.style.display = "";
+      if (pageTitle) pageTitle.textContent = "Devotional Archive";
+      if (pageText) {
+        pageText.textContent =
+          "Read biblical encouragement written to strengthen hearts, build faith, and point people back to Jesus Christ one day at a time.";
+      }
+
+      grid.className = "archive-grid";
+      grid.innerHTML = "";
+
+      if (!items || !items.length) {
+        status.className = "empty";
+        status.textContent = "No devotionals found yet.";
+        status.style.display = "block";
+        return;
+      }
+
+      status.style.display = "none";
+
+      items.forEach((item, index) => {
+        const card = document.createElement("article");
+        card.className = "devotional-card";
+
+        const date = formatDate(item.dateArchived || item.date);
+        const subjectRaw = item.subject || "Untitled Devotional";
+        const subject = escapeHtml(subjectRaw);
+        const excerpt = escapeHtml(excerptFrom(item.message));
+        const slug = getDevotionalSlug(item, index);
+        const url = `devotional.html#${encodeURIComponent(slug)}`;
+
+        card.innerHTML = `
+          ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
+          <h3>${subject}</h3>
+          <p>${excerpt}</p>
+          <a class="read-more" href="${url}">Read More</a>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    function renderSingleDevotional(item, index) {
+      const grid = document.getElementById("archiveGrid");
+      const status = document.getElementById("archiveStatus");
+      const searchBox = document.querySelector(".archive-tools");
+      const pageTitle = document.querySelector(".section-title");
+      const pageText = document.querySelector(".section-text");
+
+      if (searchBox) searchBox.style.display = "none";
+      if (status) status.style.display = "none";
+      if (pageTitle) pageTitle.textContent = "Devotional";
+      if (pageText) pageText.textContent = "Read the full devotional below.";
+
+      const date = formatDate(item.dateArchived || item.date);
+      const subjectRaw = item.subject || "Untitled Devotional";
+      const subject = escapeHtml(subjectRaw);
+      const message = escapeHtml(item.message || "").replace(/\n/g, "<br>");
       const slug = getDevotionalSlug(item, index);
-      const title = item.subject || item.title || "Restored Daily Devotional";
-      const date = item.dateArchived || item.date || "";
-      const message = item.message || item.body || item.devotional || "";
-      const excerpt = excerptFrom(message);
 
-      return `
-        <article class="devotional-card" id="${escapeAttribute(slug)}" data-share-title="${escapeAttribute(title)}">
-          <div class="devotional-date">${escapeHtml(formatDate(date))}</div>
-          <h3>${escapeHtml(title)}</h3>
-          <p>${escapeHtml(excerpt)}</p>
+      grid.className = "";
+      grid.innerHTML = `
+        <article class="single-devotional entry-card" id="${escapeAttribute(slug)}" data-share-title="${escapeAttribute(subjectRaw)}">
+          <a class="back-link" href="devotional.html">← Back to Archive</a>
+          ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
+          <h3>${subject}</h3>
+          <div class="full-message">${message}</div>
 
-          <div class="btns">
-            <a class="read-more" href="#${escapeAttribute(slug)}">Read Devotional</a>
+          <div class="share-box">
+            <p>If this encouraged you, share it with someone who may need this reminder today.</p>
+
+            <div class="share-actions">
+              <button class="share-btn" type="button" onclick="shareEntry(this)">
+                Share This Encouragement
+              </button>
+
+              <button class="copy-btn" type="button" onclick="copyEntryLink(this)">
+                Copy Link
+              </button>
+            </div>
           </div>
         </article>
       `;
-    }).join("");
-  }
 
-  function renderSingleDevotional(item, index) {
-    const status = document.getElementById("archiveStatus");
-    const grid = document.getElementById("archiveGrid");
-
-    if (!grid || !status) return;
-
-    const slug = getDevotionalSlug(item, index);
-    const title = item.subject || item.title || "Restored Daily Devotional";
-    const date = item.dateArchived || item.date || "";
-    const message = item.message || item.body || item.devotional || "";
-    const paragraphs = String(message || "")
-      .split(/\n\s*\n/)
-      .map(p => p.trim())
-      .filter(Boolean);
-
-    status.style.display = "none";
-
-    grid.innerHTML = `
-      <article class="single-devotional" id="${escapeAttribute(slug)}" data-share-title="${escapeAttribute(title)}">
-        <a class="back-link" href="devotional.html">← Back to Archive</a>
-
-        <div class="devotional-date">${escapeHtml(formatDate(date))}</div>
-        <h3>${escapeHtml(title)}</h3>
-
-        <div class="full-message">
-          ${
-            paragraphs.length
-              ? paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join("")
-              : `<p>${escapeHtml(message)}</p>`
-          }
-        </div>
-
-        <div class="share-box">
-          <p>Share this devotional encouragement with someone who may need it today.</p>
-          <div class="share-actions">
-            <button class="share-btn" type="button" onclick="shareEntry(this)">Share</button>
-            <button class="copy-btn" type="button" onclick="copyEntryLink(this)">Copy Link</button>
-          </div>
-        </div>
-      </article>
-    `;
-
-    setTimeout(() => {
-      const target = document.getElementById(slug);
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 80);
-  }
-
-  function renderCurrentView() {
-    const hash = decodeURIComponent((window.location.hash || "").replace("#", ""));
-    const status = document.getElementById("archiveStatus");
-
-    if (!allDevotionals.length) {
-      if (status) {
-        status.className = "empty";
-        status.textContent = "No devotionals are available yet.";
-      }
-      return;
+      setTimeout(function() {
+        const target = document.getElementById(slug);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 200);
     }
 
-    if (hash) {
-      const foundIndex = allDevotionals.findIndex((item, index) => getDevotionalSlug(item, index) === hash);
-      if (foundIndex >= 0) {
-        renderSingleDevotional(allDevotionals[foundIndex], foundIndex);
+    function renderCurrentView() {
+      const selectedSlug = getSelectedSlug();
+      const selectedId = getSelectedId();
+
+      if (selectedSlug) {
+        const decodedSlug = decodeURIComponent(selectedSlug);
+
+        const selectedIndex = allDevotionals.findIndex((item, index) =>
+          getDevotionalSlug(item, index) === decodedSlug
+        );
+
+        if (selectedIndex >= 0) {
+          renderSingleDevotional(allDevotionals[selectedIndex], selectedIndex);
+          return;
+        }
+
+        showDevotionalNotFound();
         return;
       }
-    }
 
-    applySearch();
-  }
+      if (selectedId) {
+        const selectedIndex = allDevotionals.findIndex((item, index) =>
+          String(item.id || index) === String(selectedId)
+        );
 
-  function applySearch() {
-    const input = document.getElementById("archiveSearch");
-    const query = input ? input.value.trim().toLowerCase() : "";
+        if (selectedIndex >= 0) {
+          const slug = getDevotionalSlug(allDevotionals[selectedIndex], selectedIndex);
+          history.replaceState(null, "", window.location.pathname + "#" + slug);
+          renderSingleDevotional(allDevotionals[selectedIndex], selectedIndex);
+          return;
+        }
 
-    if (!query) {
+        showDevotionalNotFound();
+        return;
+      }
+
       renderArchive(allDevotionals);
-      return;
     }
 
-    const filtered = allDevotionals.filter(item => {
-      const combined = [
-        item.subject,
-        item.title,
-        item.message,
-        item.body,
-        item.devotional,
-        item.date,
-        item.dateArchived
-      ].join(" ").toLowerCase();
+    function showDevotionalNotFound() {
+      const status = document.getElementById("archiveStatus");
+      const grid = document.getElementById("archiveGrid");
+      const searchBox = document.querySelector(".archive-tools");
 
-      return combined.includes(query);
-    });
+      if (searchBox) searchBox.style.display = "none";
+      if (grid) grid.innerHTML = "";
 
-    renderArchive(filtered);
-  }
+      status.className = "error";
+      status.textContent = "That devotional could not be found.";
+      status.style.display = "block";
+    }
 
-  function loadArchive() {
-    const status = document.getElementById("archiveStatus");
+    function applySearch() {
+      const searchInput = document.getElementById("archiveSearch");
+      if (!searchInput) return;
 
-    window.handleDevotionalArchive = function(data) {
-      if (!data || data.success === false) {
-        status.className = "error";
-        status.textContent = data && data.error ? data.error : "The devotional archive could not be loaded right now.";
+      const q = searchInput.value.toLowerCase().trim();
+
+      if (!q) {
+        renderArchive(allDevotionals);
         return;
       }
 
-      allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
-      renderCurrentView();
-    };
+      const filtered = allDevotionals.filter(item =>
+        String(item.subject || "").toLowerCase().includes(q) ||
+        String(item.message || "").toLowerCase().includes(q)
+      );
 
-    const script = document.createElement("script");
-    script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive&v=" + Date.now();
+      renderArchive(filtered);
+    }
 
-    script.onerror = function() {
-      status.className = "error";
-      status.textContent = "The devotional archive could not be loaded right now.";
-    };
+    function getEntryCard(button) {
+      return button.closest(".entry-card");
+    }
 
-    document.body.appendChild(script);
-  }
+    function getEntryLink(button) {
+      const card = getEntryCard(button);
 
-  const archiveSearch = document.getElementById("archiveSearch");
-  if (archiveSearch) {
-    archiveSearch.addEventListener("input", function() {
-      history.replaceState(null, "", "devotional.html");
-      applySearch();
+      if (!card || !card.id) {
+        return window.location.href;
+      }
+
+      return devotionalShareUrl(card.id);
+    }
+
+    function getEntryTitle(button) {
+      const card = getEntryCard(button);
+
+      if (!card) {
+        return "Restored Daily Ministries";
+      }
+
+      return card.getAttribute("data-share-title") || "Restored Daily Ministries";
+    }
+
+    async function shareEntry(button) {
+      const shareUrl = getEntryLink(button);
+      const shareTitle = getEntryTitle(button);
+      const shareText = "This encouragement from Restored Daily Ministries may bless you today.";
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: shareUrl
+          });
+        } catch (error) {
+          // User cancelled share; no action needed.
+        }
+      } else {
+        copyToClipboard(shareUrl, button, "Link Copied");
+      }
+    }
+
+    function copyEntryLink(button) {
+      const shareUrl = getEntryLink(button);
+      copyToClipboard(shareUrl, button, "Copied");
+    }
+
+    function copyToClipboard(text, button, successText) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function() {
+          temporarilyChangeButtonText(button, successText);
+        }).catch(function() {
+          fallbackCopy(text, button, successText);
+        });
+      } else {
+        fallbackCopy(text, button, successText);
+      }
+    }
+
+    function fallbackCopy(text, button, successText) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        document.execCommand("copy");
+        temporarilyChangeButtonText(button, successText);
+      } catch (error) {
+        alert("Copy this link: " + text);
+      }
+
+      document.body.removeChild(textArea);
+    }
+
+    function temporarilyChangeButtonText(button, text) {
+      const originalText = button.textContent;
+      button.textContent = text;
+
+      setTimeout(function() {
+        button.textContent = originalText;
+      }, 1800);
+    }
+
+    function loadArchive() {
+      const status = document.getElementById("archiveStatus");
+
+      window.handleDevotionalArchive = function(data) {
+        if (!data || data.success === false) {
+          status.className = "error";
+          status.textContent = data && data.error ? data.error : "The devotional archive could not be loaded right now.";
+          return;
+        }
+
+        allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
+        renderCurrentView();
+      };
+
+      const script = document.createElement("script");
+      script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive&v=" + Date.now();
+
+      script.onerror = function() {
+        status.className = "error";
+        status.textContent = "The devotional archive could not be loaded right now.";
+      };
+
+      document.body.appendChild(script);
+    }
+
+    const archiveSearch = document.getElementById("archiveSearch");
+    if (archiveSearch) {
+      archiveSearch.addEventListener("input", applySearch);
+    }
+
+    window.addEventListener("hashchange", function() {
+      if (allDevotionals.length) {
+        renderCurrentView();
+      }
     });
-  }
 
-  window.addEventListener("hashchange", function() {
-    if (allDevotionals.length) renderCurrentView();
-  });
-
-  loadArchive();
-</script>
+    loadArchive();
+  </script>
 </body>
 </html>
