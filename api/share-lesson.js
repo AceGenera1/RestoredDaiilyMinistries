@@ -1,6 +1,6 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec?type=lessons";
 const SITE_URL = "https://restoreddailyministries.org";
-const OG_IMAGE = `${SITE_URL}/social-preview-lessons.png?v=1`;
+
 function esc(value = "") {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -21,8 +21,8 @@ function titleFrom(entry = "") {
 
 export default async function handler(req, res) {
   const id = String(req.query.id || "").trim();
-  const OG_IMAGE = `${SITE_URL}/api/og-lesson?id=${encodeURIComponent(id)}&v=2`;
   const targetUrl = `${SITE_URL}/disciple.html#${encodeURIComponent(id)}`;
+  const ogImage = `${SITE_URL}/social-preview-lessons.png?v=1`;
 
   let title = "Lessons from a Disciple";
   let description = "Real reflections, lessons, and encouragement from Restored Daily Ministries.";
@@ -45,19 +45,16 @@ export default async function handler(req, res) {
   <meta charset="UTF-8">
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
-
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Restored Daily Ministries">
   <meta property="og:title" content="${esc(title)}">
   <meta property="og:description" content="${esc(description)}">
-  <meta property="og:image" content="${OG_IMAGE}">
+  <meta property="og:image" content="${ogImage}">
   <meta property="og:url" content="${targetUrl}">
-
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(description)}">
-  <meta name="twitter:image" content="${OG_IMAGE}">
-
+  <meta name="twitter:image" content="${ogImage}">
   <meta http-equiv="refresh" content="0;url=${targetUrl}">
 </head>
 <body>
