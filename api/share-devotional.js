@@ -1,7 +1,7 @@
 const SITE_URL = "https://restoreddailyministries.org";
 const API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
 
-const shareUrl = `${SITE_URL}${req.url}`;
+const OG_IMAGE = `${SITE_URL}/social-preview-devotional.png?v=1000`;
 
 function esc(value = "") {
   return String(value)
@@ -19,7 +19,7 @@ function preview(text = "", limit = 220) {
 export default async function handler(req, res) {
   const id = String(req.query.id || "").trim();
   const targetUrl = `${SITE_URL}/devotional.html#${encodeURIComponent(id)}`;
-  const shareUrl = `${SITE_URL}/api/share-devotional?id=${encodeURIComponent(id)}&fresh=1000`;
+  const shareUrl = `${SITE_URL}${req.url}`;
 
   let title = "Read Today’s Daily Encouragement";
   let description = "Biblical hope, prayer, and encouragement for your walk with Jesus Christ.";
