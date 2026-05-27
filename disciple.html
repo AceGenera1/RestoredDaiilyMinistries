@@ -745,21 +745,18 @@
       return card.getAttribute("data-share-title") || "Restored Daily Ministries";
     }
     async function shareEntry(button) {
-      const shareUrl = getEntryLink(button);
-      const shareTitle = getEntryTitle(button);
-      const shareText = "";
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: shareTitle,
-            text: shareText,
-            url: shareUrl
-          });
-        } catch (error) {}
-      } else {
-        copyToClipboard(shareUrl, button, "Link Copied");
-      }
-    }
+  const shareUrl = getEntryLink(button);
+
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        url: shareUrl
+      });
+    } catch (error) {}
+  } else {
+    copyToClipboard(shareUrl, button, "Link Copied");
+  }
+}
     function copyEntryLink(button) {
       const shareUrl = getEntryLink(button);
       copyToClipboard(shareUrl, button, "Copied");
