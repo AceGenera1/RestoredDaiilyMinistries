@@ -1,10 +1,11 @@
+Here is the full updated devotional.html with the Back to Archive returning to the same devotional card area added.
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Devotionals | Restored Daily Ministries</title>
-
   <style>
     :root {
       --deep: #101A2E;
@@ -21,15 +22,12 @@
       --paper: #FFF9EC;
       --softline: rgba(215, 168, 79, 0.18);
     }
-
     * {
       box-sizing: border-box;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -39,11 +37,9 @@
       color: var(--text);
       line-height: 1.7;
     }
-
     a {
       color: inherit;
     }
-
     .site-header {
       position: sticky;
       top: 0;
@@ -52,7 +48,6 @@
       border-bottom: 1px solid rgba(248, 217, 135, 0.34);
       backdrop-filter: blur(12px);
     }
-
     .nav-wrap {
       max-width: 1320px;
       margin: 0 auto;
@@ -63,7 +58,6 @@
       gap: 22px;
       position: relative;
     }
-
     .brand {
       display: flex;
       align-items: center;
@@ -72,7 +66,6 @@
       flex: 0 1 auto;
       min-width: 0;
     }
-
     .brand-emblem {
       width: 82px;
       height: 82px;
@@ -82,14 +75,12 @@
       filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
       flex: 0 0 auto;
     }
-
     .brand-wordmark {
       display: flex;
       flex-direction: column;
       line-height: 1;
       min-width: 0;
     }
-
     .brand-main {
       font-family: Georgia, 'Times New Roman', serif;
       color: var(--cream);
@@ -100,7 +91,6 @@
       text-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
       white-space: nowrap;
     }
-
     .brand-sub {
       display: flex;
       align-items: center;
@@ -114,7 +104,6 @@
       text-transform: uppercase;
       white-space: nowrap;
     }
-
     .brand-sub::before,
     .brand-sub::after {
       content: "";
@@ -124,18 +113,15 @@
       background: linear-gradient(90deg, transparent, var(--gold));
       flex: 0 0 auto;
     }
-
     .brand-sub::after {
       background: linear-gradient(90deg, var(--gold), transparent);
     }
-
     .nav-control {
       position: relative;
       flex: 0 0 auto;
       display: flex;
       justify-content: flex-end;
     }
-
     .menu-toggle {
       display: inline-flex;
       align-items: center;
@@ -152,14 +138,12 @@
       cursor: pointer;
       transition: 0.2s ease;
     }
-
     .menu-toggle:hover,
     .nav-control.is-open .menu-toggle {
       background: rgba(248, 217, 135, 0.18);
       color: var(--lightgold);
       box-shadow: 0 0 18px rgba(214, 170, 99, 0.18);
     }
-
     .menu-icon {
       width: 18px;
       height: 12px;
@@ -167,14 +151,12 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
     .menu-icon span {
       display: block;
       height: 2px;
       border-radius: 999px;
       background: currentColor;
     }
-
     .dropdown-menu {
       position: absolute;
       top: calc(100% + 12px);
@@ -193,14 +175,12 @@
       pointer-events: none;
       transition: 0.2s ease;
     }
-
     .nav-control.is-open .dropdown-menu {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
       pointer-events: auto;
     }
-
     .dropdown-menu a {
       text-decoration: none;
       color: var(--cream);
@@ -212,14 +192,12 @@
       background: rgba(255, 255, 255, 0.04);
       transition: 0.2s ease;
     }
-
     .dropdown-menu a:hover,
     .dropdown-menu a.active {
       color: var(--lightgold);
       background: rgba(248, 217, 135, 0.16);
       border-color: rgba(248, 217, 135, 0.48);
     }
-
     h1,
     h2,
     h3 {
@@ -227,7 +205,6 @@
       margin: 0;
       line-height: 1.1;
     }
-
     .page-hero {
       min-height: 460px;
       padding: 100px 22px 88px;
@@ -241,14 +218,12 @@
         url('./hero-background.png?v=31') 82% 26% / cover no-repeat;
       border-bottom: 1px solid rgba(214, 170, 99, 0.25);
     }
-
     .page-hero h1 {
       max-width: 1100px;
       font-size: clamp(42px, 8vw, 82px);
       color: #fff5dd;
       text-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
     }
-
     .page-hero p {
       max-width: 920px;
       margin: 18px auto 0;
@@ -257,29 +232,24 @@
       font-weight: 700;
       text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
     }
-
     .section {
       padding: 82px 22px;
       background: linear-gradient(180deg, #FFF8EA 0%, #EEF7FF 52%, #EAF4F1 100%);
       color: #13233F;
     }
-
     .section.alt {
       background: linear-gradient(180deg, #F7FBFF 0%, #FFF8EA 100%);
     }
-
     .container {
       max-width: 1160px;
       margin: 0 auto;
     }
-
     .section-title {
       text-align: center;
       font-size: clamp(38px, 7vw, 66px);
       color: #13233F;
       margin-bottom: 18px;
     }
-
     .section-text {
       max-width: 930px;
       margin: 0 auto;
@@ -287,7 +257,6 @@
       font-size: clamp(18px, 3vw, 22px);
       color: #2B394F;
     }
-
     .content-box,
     .signup-box,
     .community-box,
@@ -302,7 +271,6 @@
       box-shadow: 0 22px 58px rgba(0, 0, 0, 0.12);
       text-align: center;
     }
-
     .content-box h3,
     .signup-box h3,
     .community-box h3,
@@ -312,7 +280,6 @@
       font-size: clamp(29px, 4vw, 42px);
       margin-bottom: 14px;
     }
-
     .content-box p,
     .signup-box p,
     .community-box p,
@@ -323,7 +290,6 @@
       margin: 0 auto 18px;
       max-width: 900px;
     }
-
     .cards,
     .info-grid,
     .teaching-grid {
@@ -332,7 +298,6 @@
       gap: 24px;
       margin-top: 42px;
     }
-
     .card,
     .info-card,
     .teaching-card {
@@ -343,12 +308,10 @@
       box-shadow: 0 18px 42px rgba(28, 45, 74, 0.11);
       text-align: left;
     }
-
     a.card {
       display: block;
       text-decoration: none;
     }
-
     .card .tag,
     .info-card .tag,
     .teaching-card .tag {
@@ -364,7 +327,6 @@
       letter-spacing: 1px;
       margin-bottom: 16px;
     }
-
     .card h3,
     .info-card h3,
     .teaching-card h3 {
@@ -372,7 +334,6 @@
       font-size: clamp(25px, 3vw, 34px);
       margin-bottom: 12px;
     }
-
     .card p,
     .info-card p,
     .teaching-card p {
@@ -380,7 +341,6 @@
       font-size: 18px;
       margin: 0;
     }
-
     .quote {
       max-width: 900px;
       margin: 42px auto;
@@ -391,7 +351,6 @@
       line-height: 1.12;
       font-style: italic;
     }
-
     .btns {
       display: flex;
       justify-content: center;
@@ -400,7 +359,6 @@
       flex-wrap: wrap;
       margin-top: 32px;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -413,25 +371,21 @@
       transition: 0.25s;
       text-align: center;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #FFE39A, #D7A84F);
       color: #13233F;
       font-weight: 900;
       box-shadow: 0 12px 32px rgba(198, 122, 61, 0.23);
     }
-
     .btn-secondary {
       background: #ffffff;
       color: #8A621D;
       border: 2px solid rgba(183, 131, 45, 0.70);
     }
-
     .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18), 0 0 22px rgba(214, 170, 99, 0.22);
     }
-
     .note-box {
       max-width: 980px;
       margin: 42px auto 0;
@@ -443,14 +397,12 @@
       font-size: 18px;
       text-align: center;
     }
-
     .site-footer {
       padding: 42px 22px;
       text-align: center;
       background: linear-gradient(180deg, #101A2E, #09111F);
       border-top: 1px solid rgba(248, 217, 135, 0.34);
     }
-
     .footer-profile-logo {
       width: 145px;
       max-width: 48vw;
@@ -460,7 +412,6 @@
       margin: 0 auto 16px auto;
       background: transparent;
     }
-
     .site-footer .tagline {
       color: var(--lightgold);
       text-transform: uppercase;
@@ -468,31 +419,26 @@
       font-size: 13px;
       font-weight: 900;
     }
-
     .site-footer p {
       color: #D7DFEF;
       margin: 8px 0 0;
     }
-
     .footer-links {
       margin-top: 12px;
       color: #D7DFEF;
       font-size: 14px;
     }
-
     .footer-links a {
       color: var(--lightgold);
       text-decoration: underline;
       font-weight: 800;
     }
-
     .signup-section {
       background:
         radial-gradient(circle at 50% 0%, rgba(248, 217, 135, 0.22), transparent 42%),
         linear-gradient(180deg, #FFF8EA 0%, #EEF7FF 100%);
       border-bottom: 1px solid rgba(215, 168, 79, 0.22);
     }
-
     .archive-tools {
       max-width: 900px;
       margin: 34px auto 0;
@@ -501,7 +447,6 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-
     .search-input {
       width: min(100%, 520px);
       padding: 15px 18px;
@@ -511,22 +456,20 @@
       color: var(--royal);
       font-size: 16px;
     }
-
     .archive-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
       margin-top: 46px;
     }
-
     .devotional-card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.94));
       border: 1px solid rgba(215, 168, 79, 0.35);
       border-radius: 28px;
       padding: 30px;
       box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
+      scroll-margin-top: 125px;
     }
-
     .devotional-date {
       color: #8A621D;
       background: rgba(248, 217, 135, 0.36);
@@ -540,19 +483,16 @@
       display: inline-block;
       margin-bottom: 15px;
     }
-
     .devotional-card h3 {
       color: var(--royal);
       font-size: clamp(27px, 3vw, 36px);
       margin: 0 0 14px;
     }
-
     .devotional-card p {
       color: var(--text);
       font-size: 17px;
       margin: 0 0 18px;
     }
-
     .read-more,
     .back-link {
       display: inline-flex;
@@ -567,7 +507,6 @@
       border: 2px solid rgba(215, 168, 79, 0.78);
       box-shadow: 0 12px 28px rgba(215, 168, 79, 0.20);
     }
-
     .loading,
     .empty,
     .error {
@@ -580,7 +519,6 @@
       border: 1px solid rgba(215, 168, 79, 0.32);
       color: var(--text);
     }
-
     .single-devotional {
       max-width: 900px;
       margin: 46px auto 0;
@@ -591,30 +529,25 @@
       box-shadow: 0 22px 52px rgba(28, 45, 74, 0.13);
       scroll-margin-top: 125px;
     }
-
     .single-devotional:target {
       outline: 3px solid rgba(215, 168, 79, 0.72);
       box-shadow:
         0 22px 52px rgba(28, 45, 74, 0.13),
         0 0 0 8px rgba(248, 217, 135, 0.18);
     }
-
     .single-devotional h3 {
       color: var(--royal);
       font-size: clamp(36px, 6vw, 58px);
       margin: 0 0 18px;
     }
-
     .single-devotional .full-message {
       color: var(--text);
       font-size: 19px;
       line-height: 1.85;
     }
-
     .back-link {
       margin-bottom: 24px;
     }
-
     .share-box {
       margin-top: 34px;
       padding: 22px;
@@ -623,14 +556,12 @@
       border: 1px solid rgba(215, 168, 79, 0.34);
       text-align: center;
     }
-
     .share-box p {
       margin: 0 0 16px;
       color: #2B394F;
       font-size: 16px;
       font-style: italic;
     }
-
     .share-actions {
       display: flex;
       justify-content: center;
@@ -638,7 +569,6 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-
     .share-btn,
     .copy-btn {
       cursor: pointer;
@@ -649,23 +579,19 @@
       transition: 0.2s ease;
       font-size: 14px;
     }
-
     .share-btn {
       background: linear-gradient(135deg, #FFE39A, #D7A84F);
       color: #13233F;
     }
-
     .copy-btn {
       background: #ffffff;
       color: #8A621D;
     }
-
     .share-btn:hover,
     .copy-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 12px 24px rgba(16, 26, 46, 0.15);
     }
-
     @media (max-width: 900px) {
       .page-hero {
         min-height: 430px;
@@ -673,59 +599,48 @@
         background-position: 76% 30%;
       }
     }
-
     @media (max-width: 760px) {
       .nav-wrap {
         gap: 12px;
         padding: 12px 12px;
       }
-
       .brand {
         gap: 9px;
       }
-
       .brand-emblem {
         width: 58px;
         height: 58px;
       }
-
       .brand-main {
         font-size: 22px;
         letter-spacing: 0.7px;
       }
-
       .brand-sub {
         margin-top: 5px;
         font-size: 12px;
         letter-spacing: 2.7px;
         gap: 6px;
       }
-
       .brand-sub::before,
       .brand-sub::after {
         width: 18px;
         height: 2px;
       }
-
       .menu-toggle {
         padding: 9px 13px;
         font-size: 13px;
       }
-
       .dropdown-menu {
         width: min(86vw, 300px);
       }
-
       .page-hero {
         min-height: 470px;
         padding: 70px 16px 52px;
         background-position: 70% 28%;
       }
-
       .section {
         padding: 62px 16px;
       }
-
       .content-box,
       .signup-box,
       .community-box,
@@ -734,46 +649,37 @@
       .single-devotional {
         padding: 26px;
       }
-
       .footer-profile-logo {
         width: 135px;
         max-width: 50vw;
       }
     }
-
     @media (max-width: 480px) {
       .brand-main {
         font-size: 19px;
       }
-
       .brand-sub {
         font-size: 10.5px;
         letter-spacing: 2px;
       }
-
       .brand-emblem {
         width: 52px;
         height: 52px;
       }
-
       .menu-toggle {
         padding: 9px 11px;
       }
-
       .menu-toggle-text {
         display: none;
       }
-
       .cards,
       .info-grid,
       .teaching-grid {
         grid-template-columns: 1fr;
       }
-
       .archive-grid {
         grid-template-columns: 1fr;
       }
-
       .share-btn,
       .copy-btn {
         width: 100%;
@@ -781,7 +687,6 @@
     }
   </style>
 </head>
-
 <body>
   <header class="site-header">
     <div class="nav-wrap">
@@ -791,19 +696,16 @@
           src="./profile-logo.png?v=31"
           alt="Restored Daily Ministries emblem"
         >
-
         <div class="brand-wordmark">
           <div class="brand-main">Restored Daily</div>
           <div class="brand-sub">Ministries</div>
         </div>
       </a>
-
       <div class="nav-control">
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteDropdownMenu">
           <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
           <span class="menu-toggle-text">Menu</span>
         </button>
-
         <nav id="siteDropdownMenu" class="dropdown-menu" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="mission.html">Mission</a>
@@ -819,121 +721,97 @@
       </div>
     </div>
   </header>
-
   <main>
     <section class="page-hero">
       <h1>Devotionals</h1>
       <p>Daily biblical encouragement for a world in need of Christ.</p>
     </section>
-
     <section class="section signup-section">
       <div class="container">
         <div class="signup-box">
           <h2 class="section-title">Receive Daily Devotionals</h2>
-
           <p>
             If you would like to receive daily biblical encouragement in your email inbox,
             you can sign up below and be encouraged through Scripture, prayer, and the hope of Jesus Christ.
           </p>
-
           <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScM4YPF4aC9jT8NQ_Mb7yXJ8y9BuTtgLMpFiiqv7T7Df6Wf3g/viewform" target="_blank" rel="noopener">
             Sign Up for Daily Devotionals
           </a>
         </div>
       </div>
     </section>
-
     <section class="section alt">
       <div class="container">
         <h2 class="section-title">Devotional Archive</h2>
-
         <p class="section-text">
           Read biblical encouragement written to strengthen hearts, build faith,
           and point people back to Jesus Christ one day at a time.
         </p>
-
         <div class="archive-tools">
           <input id="archiveSearch" class="search-input" type="search" placeholder="Search devotionals...">
         </div>
-
         <div id="archiveStatus" class="loading">Loading devotionals...</div>
         <div id="archiveGrid" class="archive-grid" aria-live="polite"></div>
       </div>
     </section>
   </main>
-
   <footer class="site-footer">
     <img
       class="footer-profile-logo"
       src="./profile-logo.png?v=31"
       alt="Restored Daily Ministries profile logo"
     >
-
     <div class="tagline">
       Restored by Grace • Renewed Daily • Sent on Mission
     </div>
-
     <p>
       © 2026 Restored Daily Ministries™ • All rights reserved.
       <br>
       All Glory to Jesus Christ
     </p>
-
     <div class="footer-links">
       <a href="contact.html">Contact Us</a>
       <span> • </span>
       <a href="rights.html">Rights & Use</a>
     </div>
   </footer>
-
   <script>
     function initRestoredDailyMenu() {
       const navControl = document.querySelector(".nav-control");
       const menuButton = document.querySelector(".menu-toggle");
       const menu = document.getElementById("siteDropdownMenu");
-
       if (!navControl || !menuButton || !menu) return;
-
       function closeMenu() {
         navControl.classList.remove("is-open");
         menuButton.setAttribute("aria-expanded", "false");
       }
-
       function toggleMenu() {
         const isOpen = navControl.classList.toggle("is-open");
         menuButton.setAttribute("aria-expanded", String(isOpen));
       }
-
       menuButton.addEventListener("click", function(event) {
         event.stopPropagation();
         toggleMenu();
       });
-
       document.addEventListener("click", function(event) {
         if (!navControl.contains(event.target)) {
           closeMenu();
         }
       });
-
       document.addEventListener("keydown", function(event) {
         if (event.key === "Escape") {
           closeMenu();
         }
       });
-
       menu.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", closeMenu);
       });
     }
-
     initRestoredDailyMenu();
   </script>
-
   <script>
     const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
-
     let allDevotionals = [];
-
     function escapeHtml(value) {
       return String(value || "")
         .replaceAll("&", "&amp;")
@@ -942,23 +820,19 @@
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
     }
-
     function escapeAttribute(value) {
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
-
     function excerptFrom(message) {
       const text = String(message || "").replace(/\s+/g, " ").trim();
       return text.length > 220 ? text.slice(0, 220) + "..." : text;
     }
-
     function formatDate(value) {
       if (!value) return "";
       const d = new Date(value);
       if (Number.isNaN(d.getTime())) return String(value || "");
       return d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
     }
-
     function slugify(value) {
       return String(value || "")
         .toLowerCase()
@@ -968,138 +842,132 @@
         .replace(/^-+|-+$/g, "")
         .slice(0, 90);
     }
-
     function getDevotionalSlug(item, index) {
       const existingSlug = item.slug || item.shareSlug || item.anchor || "";
       if (existingSlug) {
         const cleanExisting = slugify(existingSlug);
         return cleanExisting.startsWith("devotional-") ? cleanExisting : "devotional-" + cleanExisting;
       }
-
       const stableId = item.id || item.rowId || item.uuid || "";
       if (stableId) {
         const cleanId = slugify(stableId);
         return cleanId.startsWith("devotional-") ? cleanId : "devotional-" + cleanId;
       }
-
       const dateValue = item.dateArchived || item.date || "";
       const subjectValue = item.subject || "untitled-devotional";
       const fallback = slugify(dateValue + "-" + subjectValue);
-
       return "devotional-" + (fallback || "entry-" + index);
     }
-
     function getSelectedId() {
       const params = new URLSearchParams(window.location.search);
       return params.get("id");
     }
-
     function getSelectedSlug() {
       return window.location.hash ? window.location.hash.replace("#", "").trim() : "";
     }
-
+    function getReturnToSlug() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("returnTo") || "";
+    }
     function devotionalShareUrl(slug) {
-  return "https://restoreddailyministries.org/api/share-devotional?id=" + encodeURIComponent(slug) + "&fresh=" + Date.now();
-}
-
+      return "https://restoreddailyministries.org/api/share-devotional?id=" + encodeURIComponent(slug) + "&fresh=" + Date.now();
+    }
     function renderArchive(items) {
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
       const searchBox = document.querySelector(".archive-tools");
       const pageTitle = document.querySelector(".section-title");
       const pageText = document.querySelector(".section-text");
-
       if (searchBox) searchBox.style.display = "";
       if (pageTitle) pageTitle.textContent = "Devotional Archive";
       if (pageText) {
         pageText.textContent =
           "Read biblical encouragement written to strengthen hearts, build faith, and point people back to Jesus Christ one day at a time.";
       }
-
       grid.className = "archive-grid";
       grid.innerHTML = "";
-
       if (!items || !items.length) {
         status.className = "empty";
         status.textContent = "No devotionals found yet.";
         status.style.display = "block";
         return;
       }
-
       status.style.display = "none";
-
       items.forEach((item, index) => {
         const card = document.createElement("article");
-        card.className = "devotional-card";
-
         const date = formatDate(item.dateArchived || item.date);
         const subjectRaw = item.subject || "Untitled Devotional";
         const subject = escapeHtml(subjectRaw);
         const excerpt = escapeHtml(excerptFrom(item.message));
         const slug = getDevotionalSlug(item, index);
         const url = `devotional.html#${encodeURIComponent(slug)}`;
-
+        card.className = "devotional-card";
+        card.id = "archive-" + slug;
         card.innerHTML = `
           ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
           <h3>${subject}</h3>
           <p>${excerpt}</p>
           <a class="read-more" href="${url}">Read More</a>
         `;
-
         grid.appendChild(card);
       });
+      const returnToSlug = getReturnToSlug();
+      if (returnToSlug) {
+        setTimeout(function() {
+          const target = document.getElementById("archive-" + returnToSlug);
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }
+          history.replaceState(null, "", "devotional.html");
+        }, 250);
+      }
     }
-
     function shareToFacebook(button) {
-  const shareUrl = getEntryLink(button);
-  window.open(
-    "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl),
-    "_blank",
-    "noopener,noreferrer"
-  );
-}
+      const shareUrl = getEntryLink(button);
+      window.open(
+        "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl),
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
     function renderSingleDevotional(item, index) {
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
       const searchBox = document.querySelector(".archive-tools");
       const pageTitle = document.querySelector(".section-title");
       const pageText = document.querySelector(".section-text");
-
       if (searchBox) searchBox.style.display = "none";
       if (status) status.style.display = "none";
       if (pageTitle) pageTitle.textContent = "Devotional";
       if (pageText) pageText.textContent = "Read the full devotional below.";
-
       const date = formatDate(item.dateArchived || item.date);
       const subjectRaw = item.subject || "Untitled Devotional";
       const subject = escapeHtml(subjectRaw);
       const message = escapeHtml(item.message || "").replace(/\n/g, "<br>");
       const slug = getDevotionalSlug(item, index);
-
       grid.className = "";
       grid.innerHTML = `
         <article class="single-devotional entry-card" id="${escapeAttribute(slug)}" data-share-title="${escapeAttribute(subjectRaw)}">
-          <a class="back-link" href="devotional.html">← Back to Archive</a>
+          <a class="back-link" href="devotional.html?returnTo=${encodeURIComponent(slug)}">← Back to Archive</a>
           ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
           <h3>${subject}</h3>
           <div class="full-message">${message}</div>
-
           <div class="share-box">
             <p>If this encouraged you, share it with someone who may need this reminder today.</p>
-
             <div class="share-actions">
               <button class="share-btn" type="button" onclick="shareEntry(this)">
-  Share This Encouragement
-</button>
-
-<button class="copy-btn" type="button" onclick="copyEntryLink(this)">
-  Copy Link
-</button>
+                Share This Encouragement
+              </button>
+              <button class="copy-btn" type="button" onclick="copyEntryLink(this)">
+                Copy Link
+              </button>
             </div>
           </div>
         </article>
       `;
-
       setTimeout(function() {
         const target = document.getElementById(slug);
         if (target) {
@@ -1107,121 +975,93 @@
         }
       }, 200);
     }
-
     function renderCurrentView() {
       const selectedSlug = getSelectedSlug();
       const selectedId = getSelectedId();
-
       if (selectedSlug) {
         const decodedSlug = decodeURIComponent(selectedSlug);
-
         const selectedIndex = allDevotionals.findIndex((item, index) =>
           getDevotionalSlug(item, index) === decodedSlug
         );
-
         if (selectedIndex >= 0) {
           renderSingleDevotional(allDevotionals[selectedIndex], selectedIndex);
           return;
         }
-
         showDevotionalNotFound();
         return;
       }
-
       if (selectedId) {
         const selectedIndex = allDevotionals.findIndex((item, index) =>
           String(item.id || index) === String(selectedId)
         );
-
         if (selectedIndex >= 0) {
           const slug = getDevotionalSlug(allDevotionals[selectedIndex], selectedIndex);
           history.replaceState(null, "", window.location.pathname + "#" + slug);
           renderSingleDevotional(allDevotionals[selectedIndex], selectedIndex);
           return;
         }
-
         showDevotionalNotFound();
         return;
       }
-
       renderArchive(allDevotionals);
     }
-
     function showDevotionalNotFound() {
       const status = document.getElementById("archiveStatus");
       const grid = document.getElementById("archiveGrid");
       const searchBox = document.querySelector(".archive-tools");
-
       if (searchBox) searchBox.style.display = "none";
       if (grid) grid.innerHTML = "";
-
       status.className = "error";
       status.textContent = "That devotional could not be found.";
       status.style.display = "block";
     }
-
     function applySearch() {
       const searchInput = document.getElementById("archiveSearch");
       if (!searchInput) return;
-
       const q = searchInput.value.toLowerCase().trim();
-
       if (!q) {
         renderArchive(allDevotionals);
         return;
       }
-
       const filtered = allDevotionals.filter(item =>
         String(item.subject || "").toLowerCase().includes(q) ||
         String(item.message || "").toLowerCase().includes(q)
       );
-
       renderArchive(filtered);
     }
-
     function getEntryCard(button) {
       return button.closest(".entry-card");
     }
-
     function getEntryLink(button) {
       const card = getEntryCard(button);
-
       if (!card || !card.id) {
         return window.location.href;
       }
-
       return devotionalShareUrl(card.id);
     }
-
     function getEntryTitle(button) {
       const card = getEntryCard(button);
-
       if (!card) {
         return "Restored Daily Ministries";
       }
-
       return card.getAttribute("data-share-title") || "Restored Daily Ministries";
     }
-
-   async function shareEntry(button) {
-  const shareUrl = getEntryLink(button);
-
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        url: shareUrl
-      });
-    } catch (error) {}
-  } else {
-    copyToClipboard(shareUrl, button, "Link Copied");
-  }
-}
-
+    async function shareEntry(button) {
+      const shareUrl = getEntryLink(button);
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            url: shareUrl
+          });
+        } catch (error) {}
+      } else {
+        copyToClipboard(shareUrl, button, "Link Copied");
+      }
+    }
     function copyEntryLink(button) {
       const shareUrl = getEntryLink(button);
       copyToClipboard(shareUrl, button, "Copied");
     }
-
     function copyToClipboard(text, button, successText) {
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(function() {
@@ -1233,7 +1073,6 @@
         fallbackCopy(text, button, successText);
       }
     }
-
     function fallbackCopy(text, button, successText) {
       const textArea = document.createElement("textarea");
       textArea.value = text;
@@ -1243,62 +1082,49 @@
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
-
       try {
         document.execCommand("copy");
         temporarilyChangeButtonText(button, successText);
       } catch (error) {
         alert("Copy this link: " + text);
       }
-
       document.body.removeChild(textArea);
     }
-
     function temporarilyChangeButtonText(button, text) {
       const originalText = button.textContent;
       button.textContent = text;
-
       setTimeout(function() {
         button.textContent = originalText;
       }, 1800);
     }
-
     function loadArchive() {
       const status = document.getElementById("archiveStatus");
-
       window.handleDevotionalArchive = function(data) {
         if (!data || data.success === false) {
           status.className = "error";
           status.textContent = data && data.error ? data.error : "The devotional archive could not be loaded right now.";
           return;
         }
-
         allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
         renderCurrentView();
       };
-
       const script = document.createElement("script");
       script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive&v=" + Date.now();
-
       script.onerror = function() {
         status.className = "error";
         status.textContent = "The devotional archive could not be loaded right now.";
       };
-
       document.body.appendChild(script);
     }
-
     const archiveSearch = document.getElementById("archiveSearch");
     if (archiveSearch) {
       archiveSearch.addEventListener("input", applySearch);
     }
-
     window.addEventListener("hashchange", function() {
       if (allDevotionals.length) {
         renderCurrentView();
       }
     });
-
     loadArchive();
   </script>
 </body>
