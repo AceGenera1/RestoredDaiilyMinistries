@@ -488,6 +488,20 @@
       font-size: clamp(27px, 3vw, 36px);
       margin: 0 0 14px;
     }
+
+    .devotional-preview {
+  display: block;
+}
+
+.preview-scripture {
+  display: block;
+}
+
+.preview-thought {
+  display: block;
+  margin-top: 18px;
+}
+    
     .devotional-card p {
       color: var(--text);
       font-size: 17px;
@@ -941,7 +955,7 @@ function excerptFrom(message) {
         const date = formatDate(item.dateArchived || item.date);
         const subjectRaw = item.subject || "Untitled Devotional";
         const subject = escapeHtml(subjectRaw);
-        const excerpt = escapeHtml(excerptFrom(item.message)).replace(/\n/g, "<br>");
+        const excerpt = escapeHtml(excerptFrom(item.message)).replace(/\n\n/g, '</span><span class="preview-thought">').replace(/\n/g, "<br>");
         const slug = getDevotionalSlug(item, index);
         const url = `devotional.html#${encodeURIComponent(slug)}`;
         card.className = "devotional-card";
@@ -949,7 +963,7 @@ function excerptFrom(message) {
         card.innerHTML = `
           ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
           <h3>${subject}</h3>
-          <p>${excerpt}</p>
+         <p class="devotional-preview"><span class="preview-scripture">${excerpt}</span></p>
           <a class="read-more" href="${url}">Read More</a>
         `;
         grid.appendChild(card);
