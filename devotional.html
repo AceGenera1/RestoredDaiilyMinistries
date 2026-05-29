@@ -456,82 +456,57 @@
       color: var(--royal);
       font-size: 16px;
     }
-
-.archive-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 46px;
-  align-items: start;
-}
-
-.devotional-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.94));
-  border: 1px solid rgba(215, 168, 79, 0.35);
-  border-radius: 28px;
-  padding: 30px;
-  box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
-  scroll-margin-top: 125px;
-}
-
-.devotional-date {
-  color: #8A621D;
-  background: rgba(248, 217, 135, 0.36);
-  border: 1px solid rgba(215, 168, 79, 0.55);
-  padding: 7px 13px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: inline-block;
-  width: fit-content;
-  margin-bottom: 15px;
-}
-
-.devotional-card h3 {
-  color: var(--royal);
-  font-size: clamp(27px, 3vw, 36px);
-  margin: 0 0 14px;
-}
-
-.devotional-card p {
-  color: var(--text);
-  font-size: 17px;
-  line-height: 1.65;
-  margin: 0 0 18px;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 8;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.read-more {
-  margin-top: auto;
-}
-
-.read-more,
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  padding: 11px 18px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #FFE39A, #D7A84F);
-  color: var(--deep);
-  text-decoration: none;
-  font-weight: 900;
-  border: 2px solid rgba(215, 168, 79, 0.78);
-  box-shadow: 0 12px 28px rgba(215, 168, 79, 0.20);
-}
-
-@media (max-width: 760px) {
-  .archive-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 46px;
+    }
+    .devotional-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.94));
+      border: 1px solid rgba(215, 168, 79, 0.35);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
+      scroll-margin-top: 125px;
+    }
+    .devotional-date {
+      color: #8A621D;
+      background: rgba(248, 217, 135, 0.36);
+      border: 1px solid rgba(215, 168, 79, 0.55);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .devotional-card h3 {
+      color: var(--royal);
+      font-size: clamp(27px, 3vw, 36px);
+      margin: 0 0 14px;
+    }
+    .devotional-card p {
+      color: var(--text);
+      font-size: 17px;
+      margin: 0 0 18px;
+    }
+    .read-more,
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #FFE39A, #D7A84F);
+      color: var(--deep);
+      text-decoration: none;
+      font-weight: 900;
+      border: 2px solid rgba(215, 168, 79, 0.78);
+      box-shadow: 0 12px 28px rgba(215, 168, 79, 0.20);
+    }
     .loading,
     .empty,
     .error {
@@ -849,45 +824,15 @@
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
     function excerptFrom(message) {
-  const clean = String(message || "")
-    .replace(/\r\n/g, " ")
-    .replace(/\r/g, " ")
-    .replace(/\n/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  const translationMatch = clean.match(/\b(NIV|NLT|ESV|KJV|NKJV|NASB|LSB|CSB|AMP)\b/i);
-
-  if (!translationMatch) {
-    return clean.length > 220
-      ? clean.slice(0, 220).replace(/\s+\S*$/, "") + "..."
-      : clean;
-  }
-
-  const splitPoint = translationMatch.index + translationMatch[0].length;
-  const scripture = clean.slice(0, splitPoint).trim();
-  const thoughtRaw = clean.slice(splitPoint).trim();
-
-  const thought = thoughtRaw.length > 150
-    ? thoughtRaw.slice(0, 150).replace(/\s+\S*$/, "") + "..."
-    : thoughtRaw;
-
-  return scripture + "\n\n" + thought;
-}
-
+      const text = String(message || "").replace(/\s+/g, " ").trim();
+      return text.length > 220 ? text.slice(0, 220) + "..." : text;
+    }
     function formatDate(value) {
-  if (!value) return "";
-
-  const d = new Date(value);
-
-  if (Number.isNaN(d.getTime())) return String(value || "");
-
-  return d.toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-  });
-}
+      if (!value) return "";
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return String(value || "");
+      return d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+    }
     function slugify(value) {
       return String(value || "")
         .toLowerCase()
@@ -948,8 +893,8 @@
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
       const searchBox = document.querySelector(".archive-tools");
-      const pageTitle = document.querySelector(".section.alt .section-title");
-      const pageText = document.querySelector(".section.alt .section-text");
+      const pageTitle = document.querySelector(".section-title");
+      const pageText = document.querySelector(".section-text");
       if (searchBox) searchBox.style.display = "";
       if (pageTitle) pageTitle.textContent = "Devotional Archive";
       if (pageText) {
@@ -970,7 +915,7 @@
         const date = formatDate(item.dateArchived || item.date);
         const subjectRaw = item.subject || "Untitled Devotional";
         const subject = escapeHtml(subjectRaw);
-        const excerpt = escapeHtml(excerptFrom(item.message)).replace(/\n\n/g, '<br><br>').replace(/\n/g, "<br>");
+        const excerpt = escapeHtml(excerptFrom(item.message));
         const slug = getDevotionalSlug(item, index);
         const url = `devotional.html#${encodeURIComponent(slug)}`;
         card.className = "devotional-card";
@@ -1006,8 +951,8 @@
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
       const searchBox = document.querySelector(".archive-tools");
-     const pageTitle = document.querySelector(".section.alt .section-title");
-    const pageText = document.querySelector(".section.alt .section-text");
+      const pageTitle = document.querySelector(".section-title");
+      const pageText = document.querySelector(".section-text");
       if (searchBox) searchBox.style.display = "none";
       if (status) status.style.display = "none";
       if (pageTitle) pageTitle.textContent = "Devotional";
