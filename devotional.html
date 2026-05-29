@@ -872,6 +872,23 @@
     function devotionalShareUrl(slug) {
       return "https://restoreddailyministries.org/api/share-devotional?id=" + encodeURIComponent(slug) + "&fresh=" + Date.now();
     }
+
+    function jumpToElementInstant(element, offset = 140) {
+  if (!element) return;
+
+  const html = document.documentElement;
+  const previousScrollBehavior = html.style.scrollBehavior;
+
+  html.style.scrollBehavior = "auto";
+
+  const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo(0, y);
+
+  setTimeout(function() {
+    html.style.scrollBehavior = previousScrollBehavior;
+  }, 50);
+}
+
     function renderArchive(items) {
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
@@ -916,10 +933,7 @@
         setTimeout(function() {
           const target = document.getElementById("archive-" + returnToSlug);
           if (target) {
-          target.scrollIntoView({
-          behavior: "auto",
-          block: "center"
-          });
+          jumpToElementInstant(target, 170);
           }
           history.replaceState(null, "", "devotional.html");
         }, 250);
@@ -968,12 +982,12 @@
           </div>
         </article>
       `;
-      setTimeout(function() {
-        const target = document.getElementById(slug);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 200);
+       setTimeout(function() {
+  const target = document.getElementById(slug);
+  if (target) {
+    jumpToElementInstant(target, 125);
+  }
+}, 200);
     }
     function renderCurrentView() {
       const selectedSlug = getSelectedSlug();
