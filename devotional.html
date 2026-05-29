@@ -20,8 +20,12 @@
       --paper: #FFF9EC;
       --softline: rgba(215, 168, 79, 0.18);
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -31,7 +35,9 @@
       color: var(--text);
       line-height: 1.7;
     }
-    a { color: inherit; }
+    a {
+      color: inherit;
+    }
     .site-header {
       position: sticky;
       top: 0;
@@ -190,7 +196,9 @@
       background: rgba(248, 217, 135, 0.16);
       border-color: rgba(248, 217, 135, 0.48);
     }
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       font-family: Georgia, 'Times New Roman', serif;
       margin: 0;
       line-height: 1.1;
@@ -280,26 +288,26 @@
       margin: 0 auto 18px;
       max-width: 900px;
     }
-    .cards,
-    .info-grid,
-    .teaching-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 280px));
-      justify-content: center;
-      gap: 22px;
-      margin-top: 38px;
-    }
-    .card,
-    .info-card,
-    .teaching-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
-      border: 1px solid rgba(215, 168, 79, 0.34);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 16px 36px rgba(28, 45, 74, 0.10);
-      text-align: left;
-      min-height: 255px;
-    }
+  .cards,
+.info-grid,
+.teaching-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 280px));
+  justify-content: center;
+  gap: 22px;
+  margin-top: 38px;
+}
+.card,
+.info-card,
+.teaching-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+  border: 1px solid rgba(215, 168, 79, 0.34);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 16px 36px rgba(28, 45, 74, 0.10);
+  text-align: left;
+  min-height: 255px;
+}
     a.card {
       display: block;
       text-decoration: none;
@@ -448,49 +456,43 @@
       color: var(--royal);
       font-size: 16px;
     }
-
     .archive-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 340px));
-  justify-content: center;
-  align-items: start;
-  gap: 24px;
-  margin-top: 46px;
-}
-
-.devotional-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.94));
-  border: 1px solid rgba(215, 168, 79, 0.35);
-  border-radius: 28px;
-  padding: 30px;
-  box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
-  scroll-margin-top: 125px;
-  height: auto;
-  align-self: start;
-}
-
-.devotional-preview {
-  color: var(--text);
-  font-size: 17px;
-  line-height: 1.65;
-  margin: 0 0 18px;
-}
-
-.preview-scripture,
-.preview-thought {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
-
-.preview-scripture {
-  -webkit-line-clamp: 5;
-}
-
-.preview-thought {
-  margin-top: 24px;
-  -webkit-line-clamp: 4;
-}
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 46px;
+    }
+    .devotional-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.94));
+      border: 1px solid rgba(215, 168, 79, 0.35);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
+      scroll-margin-top: 125px;
+    }
+    .devotional-date {
+      color: #8A621D;
+      background: rgba(248, 217, 135, 0.36);
+      border: 1px solid rgba(215, 168, 79, 0.55);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .devotional-card h3 {
+      color: var(--royal);
+      font-size: clamp(27px, 3vw, 36px);
+      margin: 0 0 14px;
+    }
+    .devotional-card p {
+      color: var(--text);
+      font-size: 17px;
+      margin: 0 0 18px;
+    }
     .read-more,
     .back-link {
       display: inline-flex;
@@ -676,8 +678,8 @@
         grid-template-columns: 1fr;
       }
       .archive-grid {
-  grid-template-columns: 1fr;
-}
+        grid-template-columns: 1fr;
+      }
       .share-btn,
       .copy-btn {
         width: 100%;
@@ -689,7 +691,11 @@
   <header class="site-header">
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
-        <img class="brand-emblem" src="./profile-logo.png?v=31" alt="Restored Daily Ministries emblem">
+        <img
+          class="brand-emblem"
+          src="./profile-logo.png?v=31"
+          alt="Restored Daily Ministries emblem"
+        >
         <div class="brand-wordmark">
           <div class="brand-main">Restored Daily</div>
           <div class="brand-sub">Ministries</div>
@@ -750,7 +756,11 @@
     </section>
   </main>
   <footer class="site-footer">
-    <img class="footer-profile-logo" src="./profile-logo.png?v=31" alt="Restored Daily Ministries profile logo">
+    <img
+      class="footer-profile-logo"
+      src="./profile-logo.png?v=31"
+      alt="Restored Daily Ministries profile logo"
+    >
     <div class="tagline">
       Restored by Grace • Renewed Daily • Sent on Mission
     </div>
@@ -784,10 +794,14 @@
         toggleMenu();
       });
       document.addEventListener("click", function(event) {
-        if (!navControl.contains(event.target)) closeMenu();
+        if (!navControl.contains(event.target)) {
+          closeMenu();
+        }
       });
       document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape") closeMenu();
+        if (event.key === "Escape") {
+          closeMenu();
+        }
       });
       menu.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", closeMenu);
@@ -810,26 +824,8 @@
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
     function excerptFrom(message) {
-      const clean = String(message || "")
-        .replace(/\r\n/g, " ")
-        .replace(/\r/g, " ")
-        .replace(/\n/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-      const translationMatch = clean.match(/\b(NIV|NLT|ESV|KJV|NKJV|NASB|LSB|CSB|AMP)\b/i);
-      if (!translationMatch) {
-        return {
-          scripture: clean.length > 190 ? clean.slice(0, 190).replace(/\s+\S*$/, "") + "..." : clean,
-          thought: ""
-        };
-      }
-      const splitPoint = translationMatch.index + translationMatch[0].length;
-      const scripture = clean.slice(0, splitPoint).trim();
-      const thoughtRaw = clean.slice(splitPoint).trim();
-      const thought = thoughtRaw.length > 150
-        ? thoughtRaw.slice(0, 150).replace(/\s+\S*$/, "") + "..."
-        : thoughtRaw;
-      return { scripture, thought };
+      const text = String(message || "").replace(/\s+/g, " ").trim();
+      return text.length > 220 ? text.slice(0, 220) + "..." : text;
     }
     function formatDate(value) {
       if (!value) return "";
@@ -876,17 +872,23 @@
     function devotionalShareUrl(slug) {
       return "https://restoreddailyministries.org/api/share-devotional?id=" + encodeURIComponent(slug) + "&fresh=" + Date.now();
     }
+
     function jumpToElementInstant(element, offset = 140) {
-      if (!element) return;
-      const html = document.documentElement;
-      const previousScrollBehavior = html.style.scrollBehavior;
-      html.style.scrollBehavior = "auto";
-      const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo(0, y);
-      setTimeout(function() {
-        html.style.scrollBehavior = previousScrollBehavior;
-      }, 50);
-    }
+  if (!element) return;
+
+  const html = document.documentElement;
+  const previousScrollBehavior = html.style.scrollBehavior;
+
+  html.style.scrollBehavior = "auto";
+
+  const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo(0, y);
+
+  setTimeout(function() {
+    html.style.scrollBehavior = previousScrollBehavior;
+  }, 50);
+}
+
     function renderArchive(items) {
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
@@ -913,9 +915,7 @@
         const date = formatDate(item.dateArchived || item.date);
         const subjectRaw = item.subject || "Untitled Devotional";
         const subject = escapeHtml(subjectRaw);
-        const excerptParts = excerptFrom(item.message);
-        const scripturePreview = escapeHtml(excerptParts.scripture);
-        const thoughtPreview = escapeHtml(excerptParts.thought);
+        const excerpt = escapeHtml(excerptFrom(item.message));
         const slug = getDevotionalSlug(item, index);
         const url = `devotional.html#${encodeURIComponent(slug)}`;
         card.className = "devotional-card";
@@ -923,10 +923,7 @@
         card.innerHTML = `
           ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
           <h3>${subject}</h3>
-          <div class="devotional-preview">
-            <div class="preview-scripture">${scripturePreview}</div>
-            ${thoughtPreview ? `<div class="preview-thought">${thoughtPreview}</div>` : ""}
-          </div>
+          <p>${excerpt}</p>
           <a class="read-more" href="${url}">Read More</a>
         `;
         grid.appendChild(card);
@@ -935,7 +932,9 @@
       if (returnToSlug) {
         setTimeout(function() {
           const target = document.getElementById("archive-" + returnToSlug);
-          if (target) jumpToElementInstant(target, 170);
+          if (target) {
+          jumpToElementInstant(target, 170);
+          }
           history.replaceState(null, "", "devotional.html");
         }, 250);
       }
@@ -983,10 +982,12 @@
           </div>
         </article>
       `;
-      setTimeout(function() {
-        const target = document.getElementById(slug);
-        if (target) jumpToElementInstant(target, 125);
-      }, 200);
+       setTimeout(function() {
+  const target = document.getElementById(slug);
+  if (target) {
+    jumpToElementInstant(target, 125);
+  }
+}, 200);
     }
     function renderCurrentView() {
       const selectedSlug = getSelectedSlug();
@@ -1047,19 +1048,25 @@
     }
     function getEntryLink(button) {
       const card = getEntryCard(button);
-      if (!card || !card.id) return window.location.href;
+      if (!card || !card.id) {
+        return window.location.href;
+      }
       return devotionalShareUrl(card.id);
     }
     function getEntryTitle(button) {
       const card = getEntryCard(button);
-      if (!card) return "Restored Daily Ministries";
+      if (!card) {
+        return "Restored Daily Ministries";
+      }
       return card.getAttribute("data-share-title") || "Restored Daily Ministries";
     }
     async function shareEntry(button) {
       const shareUrl = getEntryLink(button);
       if (navigator.share) {
         try {
-          await navigator.share({ url: shareUrl });
+          await navigator.share({
+            url: shareUrl
+          });
         } catch (error) {}
       } else {
         copyToClipboard(shareUrl, button, "Link Copied");
@@ -1128,7 +1135,9 @@
       archiveSearch.addEventListener("input", applySearch);
     }
     window.addEventListener("hashchange", function() {
-      if (allDevotionals.length) renderCurrentView();
+      if (allDevotionals.length) {
+        renderCurrentView();
+      }
     });
     loadArchive();
   </script>
