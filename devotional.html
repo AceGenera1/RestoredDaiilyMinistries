@@ -20,12 +20,8 @@
       --paper: #FFF9EC;
       --softline: rgba(215, 168, 79, 0.18);
     }
-    * {
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -35,9 +31,8 @@
       color: var(--text);
       line-height: 1.7;
     }
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
+
     .site-header {
       position: sticky;
       top: 0;
@@ -114,6 +109,7 @@
     .brand-sub::after {
       background: linear-gradient(90deg, var(--gold), transparent);
     }
+
     .nav-control {
       position: relative;
       flex: 0 0 auto;
@@ -196,13 +192,13 @@
       background: rgba(248, 217, 135, 0.16);
       border-color: rgba(248, 217, 135, 0.48);
     }
-    h1,
-    h2,
-    h3 {
+
+    h1, h2, h3 {
       font-family: Georgia, 'Times New Roman', serif;
       margin: 0;
       line-height: 1.1;
     }
+
     .page-hero {
       min-height: 460px;
       padding: 100px 22px 88px;
@@ -230,6 +226,7 @@
       font-weight: 700;
       text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
     }
+
     .section {
       padding: 82px 22px;
       background: linear-gradient(180deg, #FFF8EA 0%, #EEF7FF 52%, #EAF4F1 100%);
@@ -255,6 +252,7 @@
       font-size: clamp(18px, 3vw, 22px);
       color: #2B394F;
     }
+
     .content-box,
     .signup-box,
     .community-box,
@@ -288,26 +286,27 @@
       margin: 0 auto 18px;
       max-width: 900px;
     }
-  .cards,
-.info-grid,
-.teaching-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 280px));
-  justify-content: center;
-  gap: 22px;
-  margin-top: 38px;
-}
-.card,
-.info-card,
-.teaching-card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
-  border: 1px solid rgba(215, 168, 79, 0.34);
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: 0 16px 36px rgba(28, 45, 74, 0.10);
-  text-align: left;
-  min-height: 255px;
-}
+
+    .cards,
+    .info-grid,
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 280px));
+      justify-content: center;
+      gap: 22px;
+      margin-top: 38px;
+    }
+    .card,
+    .info-card,
+    .teaching-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 36px rgba(28, 45, 74, 0.10);
+      text-align: left;
+      min-height: 255px;
+    }
     a.card {
       display: block;
       text-decoration: none;
@@ -341,6 +340,7 @@
       font-size: 18px;
       margin: 0;
     }
+
     .quote {
       max-width: 900px;
       margin: 42px auto;
@@ -351,6 +351,7 @@
       line-height: 1.12;
       font-style: italic;
     }
+
     .btns {
       display: flex;
       justify-content: center;
@@ -386,6 +387,7 @@
       transform: translateY(-2px);
       box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18), 0 0 22px rgba(214, 170, 99, 0.22);
     }
+
     .note-box {
       max-width: 980px;
       margin: 42px auto 0;
@@ -397,6 +399,7 @@
       font-size: 18px;
       text-align: center;
     }
+
     .site-footer {
       padding: 42px 22px;
       text-align: center;
@@ -433,6 +436,7 @@
       text-decoration: underline;
       font-weight: 800;
     }
+
     .signup-section {
       background:
         radial-gradient(circle at 50% 0%, rgba(248, 217, 135, 0.22), transparent 42%),
@@ -456,6 +460,7 @@
       color: var(--royal);
       font-size: 16px;
     }
+
     .archive-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -490,23 +495,19 @@
     }
 
     .devotional-preview {
-  display: block;
-}
-
-.preview-scripture {
-  display: block;
-}
-
-.preview-thought {
-  display: block;
-  margin-top: 18px;
-}
-    
-    .devotional-card p {
       color: var(--text);
       font-size: 17px;
+      line-height: 1.65;
       margin: 0 0 18px;
     }
+    .preview-scripture {
+      display: block;
+    }
+    .preview-thought {
+      display: block;
+      margin-top: 20px;
+    }
+
     .read-more,
     .back-link {
       display: inline-flex;
@@ -521,6 +522,7 @@
       border: 2px solid rgba(215, 168, 79, 0.78);
       box-shadow: 0 12px 28px rgba(215, 168, 79, 0.20);
     }
+
     .loading,
     .empty,
     .error {
@@ -533,6 +535,7 @@
       border: 1px solid rgba(215, 168, 79, 0.32);
       color: var(--text);
     }
+
     .single-devotional {
       max-width: 900px;
       margin: 46px auto 0;
@@ -562,6 +565,7 @@
     .back-link {
       margin-bottom: 24px;
     }
+
     .share-box {
       margin-top: 34px;
       padding: 22px;
@@ -606,6 +610,7 @@
       transform: translateY(-2px);
       box-shadow: 0 12px 24px rgba(16, 26, 46, 0.15);
     }
+
     @media (max-width: 900px) {
       .page-hero {
         min-height: 430px;
@@ -701,25 +706,24 @@
     }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
-        <img
-          class="brand-emblem"
-          src="./profile-logo.png?v=31"
-          alt="Restored Daily Ministries emblem"
-        >
+        <img class="brand-emblem" src="./profile-logo.png?v=31" alt="Restored Daily Ministries emblem">
         <div class="brand-wordmark">
           <div class="brand-main">Restored Daily</div>
           <div class="brand-sub">Ministries</div>
         </div>
       </a>
+
       <div class="nav-control">
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteDropdownMenu">
           <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
           <span class="menu-toggle-text">Menu</span>
         </button>
+
         <nav id="siteDropdownMenu" class="dropdown-menu" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="mission.html">Mission</a>
@@ -735,11 +739,13 @@
       </div>
     </div>
   </header>
+
   <main>
     <section class="page-hero">
       <h1>Devotionals</h1>
       <p>Daily biblical encouragement for a world in need of Christ.</p>
     </section>
+
     <section class="section signup-section">
       <div class="container">
         <div class="signup-box">
@@ -754,6 +760,7 @@
         </div>
       </div>
     </section>
+
     <section class="section alt">
       <div class="container">
         <h2 class="section-title">Devotional Archive</h2>
@@ -761,71 +768,80 @@
           Read biblical encouragement written to strengthen hearts, build faith,
           and point people back to Jesus Christ one day at a time.
         </p>
+
         <div class="archive-tools">
           <input id="archiveSearch" class="search-input" type="search" placeholder="Search devotionals...">
         </div>
+
         <div id="archiveStatus" class="loading">Loading devotionals...</div>
         <div id="archiveGrid" class="archive-grid" aria-live="polite"></div>
       </div>
     </section>
   </main>
+
   <footer class="site-footer">
-    <img
-      class="footer-profile-logo"
-      src="./profile-logo.png?v=31"
-      alt="Restored Daily Ministries profile logo"
-    >
+    <img class="footer-profile-logo" src="./profile-logo.png?v=31" alt="Restored Daily Ministries profile logo">
+
     <div class="tagline">
       Restored by Grace • Renewed Daily • Sent on Mission
     </div>
+
     <p>
       © 2026 Restored Daily Ministries™ • All rights reserved.
       <br>
       All Glory to Jesus Christ
     </p>
+
     <div class="footer-links">
       <a href="contact.html">Contact Us</a>
       <span> • </span>
       <a href="rights.html">Rights & Use</a>
     </div>
   </footer>
+
   <script>
     function initRestoredDailyMenu() {
       const navControl = document.querySelector(".nav-control");
       const menuButton = document.querySelector(".menu-toggle");
       const menu = document.getElementById("siteDropdownMenu");
+
       if (!navControl || !menuButton || !menu) return;
+
       function closeMenu() {
         navControl.classList.remove("is-open");
         menuButton.setAttribute("aria-expanded", "false");
       }
+
       function toggleMenu() {
         const isOpen = navControl.classList.toggle("is-open");
         menuButton.setAttribute("aria-expanded", String(isOpen));
       }
+
       menuButton.addEventListener("click", function(event) {
         event.stopPropagation();
         toggleMenu();
       });
+
       document.addEventListener("click", function(event) {
-        if (!navControl.contains(event.target)) {
-          closeMenu();
-        }
+        if (!navControl.contains(event.target)) closeMenu();
       });
+
       document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape") {
-          closeMenu();
-        }
+        if (event.key === "Escape") closeMenu();
       });
+
       menu.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", closeMenu);
       });
     }
+
     initRestoredDailyMenu();
   </script>
+
   <script>
     const ARCHIVE_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
     let allDevotionals = [];
+
     function escapeHtml(value) {
       return String(value || "")
         .replaceAll("&", "&amp;")
@@ -834,45 +850,50 @@
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
     }
+
     function escapeAttribute(value) {
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
 
-function excerptFrom(message) {
-  const clean = String(message || "")
-    .replace(/\r\n/g, "\n")
-    .replace(/\r/g, "\n")
-    .replace(/\s+/g, " ")
-    .trim();
+    function excerptFrom(message) {
+      const clean = String(message || "")
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n")
+        .replace(/\s+/g, " ")
+        .trim();
 
-  const scriptureRefPattern = /((?:[1-3]\s*)?[A-Za-z]+(?:\s+[A-Za-z]+){0,3}\s+\d+:\d+(?:[-–]\d+)?\s+(?:NIV|NLT|ESV|KJV|NKJV|NASB|LSB|CSB|AMP))/i;
+      const scriptureRefPattern = /((?:[1-3]\s*)?[A-Za-z]+(?:\s+[A-Za-z]+){0,3}\s+\d+:\d+(?:[-–]\d+)?\s+(?:NIV|NLT|ESV|KJV|NKJV|NASB|LSB|CSB|AMP))/i;
+      const match = clean.match(scriptureRefPattern);
 
-  const match = clean.match(scriptureRefPattern);
+      if (!match) {
+        return {
+          scripture: clean.length > 190 ? clean.slice(0, 190).replace(/\s+\S*$/, "") + "..." : clean,
+          thought: ""
+        };
+      }
 
-  if (!match) {
-    return clean.length > 190
-      ? clean.slice(0, 190).replace(/\s+\S*$/, "") + "..."
-      : clean;
-  }
+      const refEnd = match.index + match[0].length;
 
-  const refEnd = match.index + match[0].length;
+      const scripture = clean.slice(0, refEnd).trim();
+      const thoughtRaw = clean.slice(refEnd).trim();
 
-  const scripture = clean.slice(0, refEnd).trim();
-  const thought = clean.slice(refEnd).trim();
+      const thought = thoughtRaw.length > 150
+        ? thoughtRaw.slice(0, 150).replace(/\s+\S*$/, "") + "..."
+        : thoughtRaw;
 
-  const trimmedThought = thought.length > 170
-    ? thought.slice(0, 170).replace(/\s+\S*$/, "") + "..."
-    : thought;
-
-  return scripture + "\n\n" + trimmedThought;
-}
+      return { scripture, thought };
+    }
 
     function formatDate(value) {
       if (!value) return "";
+
       const d = new Date(value);
+
       if (Number.isNaN(d.getTime())) return String(value || "");
+
       return d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
     }
+
     function slugify(value) {
       return String(value || "")
         .toLowerCase()
@@ -882,52 +903,62 @@ function excerptFrom(message) {
         .replace(/^-+|-+$/g, "")
         .slice(0, 90);
     }
+
     function getDevotionalSlug(item, index) {
       const existingSlug = item.slug || item.shareSlug || item.anchor || "";
+
       if (existingSlug) {
         const cleanExisting = slugify(existingSlug);
         return cleanExisting.startsWith("devotional-") ? cleanExisting : "devotional-" + cleanExisting;
       }
+
       const stableId = item.id || item.rowId || item.uuid || "";
+
       if (stableId) {
         const cleanId = slugify(stableId);
         return cleanId.startsWith("devotional-") ? cleanId : "devotional-" + cleanId;
       }
+
       const dateValue = item.dateArchived || item.date || "";
       const subjectValue = item.subject || "untitled-devotional";
       const fallback = slugify(dateValue + "-" + subjectValue);
+
       return "devotional-" + (fallback || "entry-" + index);
     }
+
     function getSelectedId() {
       const params = new URLSearchParams(window.location.search);
       return params.get("id");
     }
+
     function getSelectedSlug() {
       return window.location.hash ? window.location.hash.replace("#", "").trim() : "";
     }
+
     function getReturnToSlug() {
       const params = new URLSearchParams(window.location.search);
       return params.get("returnTo") || "";
     }
+
     function devotionalShareUrl(slug) {
       return "https://restoreddailyministries.org/api/share-devotional?id=" + encodeURIComponent(slug) + "&fresh=" + Date.now();
     }
 
     function jumpToElementInstant(element, offset = 140) {
-  if (!element) return;
+      if (!element) return;
 
-  const html = document.documentElement;
-  const previousScrollBehavior = html.style.scrollBehavior;
+      const html = document.documentElement;
+      const previousScrollBehavior = html.style.scrollBehavior;
 
-  html.style.scrollBehavior = "auto";
+      html.style.scrollBehavior = "auto";
 
-  const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
-  window.scrollTo(0, y);
+      const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo(0, y);
 
-  setTimeout(function() {
-    html.style.scrollBehavior = previousScrollBehavior;
-  }, 50);
-}
+      setTimeout(function() {
+        html.style.scrollBehavior = previousScrollBehavior;
+      }, 50);
+    }
 
     function renderArchive(items) {
       const grid = document.getElementById("archiveGrid");
@@ -935,73 +966,96 @@ function excerptFrom(message) {
       const searchBox = document.querySelector(".archive-tools");
       const pageTitle = document.querySelector(".section-title");
       const pageText = document.querySelector(".section-text");
+
       if (searchBox) searchBox.style.display = "";
       if (pageTitle) pageTitle.textContent = "Devotional Archive";
       if (pageText) {
         pageText.textContent =
           "Read biblical encouragement written to strengthen hearts, build faith, and point people back to Jesus Christ one day at a time.";
       }
+
       grid.className = "archive-grid";
       grid.innerHTML = "";
+
       if (!items || !items.length) {
         status.className = "empty";
         status.textContent = "No devotionals found yet.";
         status.style.display = "block";
         return;
       }
+
       status.style.display = "none";
+
       items.forEach((item, index) => {
         const card = document.createElement("article");
         const date = formatDate(item.dateArchived || item.date);
         const subjectRaw = item.subject || "Untitled Devotional";
         const subject = escapeHtml(subjectRaw);
-        const excerpt = escapeHtml(excerptFrom(item.message)).replace(/\n\n/g, '</span><span class="preview-thought">').replace(/\n/g, "<br>");
+        const excerptParts = excerptFrom(item.message);
+        const scripturePreview = escapeHtml(excerptParts.scripture);
+        const thoughtPreview = escapeHtml(excerptParts.thought);
         const slug = getDevotionalSlug(item, index);
         const url = `devotional.html#${encodeURIComponent(slug)}`;
+
         card.className = "devotional-card";
         card.id = "archive-" + slug;
+
         card.innerHTML = `
           ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
           <h3>${subject}</h3>
-         <p class="devotional-preview"><span class="preview-scripture">${excerpt}</span></p>
+
+          <div class="devotional-preview">
+            <div class="preview-scripture">${scripturePreview}</div>
+            ${thoughtPreview ? `<div class="preview-thought">${thoughtPreview}</div>` : ""}
+          </div>
+
           <a class="read-more" href="${url}">Read More</a>
         `;
+
         grid.appendChild(card);
       });
+
       const returnToSlug = getReturnToSlug();
+
       if (returnToSlug) {
         setTimeout(function() {
           const target = document.getElementById("archive-" + returnToSlug);
-          if (target) {
-          jumpToElementInstant(target, 170);
-          }
+
+          if (target) jumpToElementInstant(target, 170);
+
           history.replaceState(null, "", "devotional.html");
         }, 250);
       }
     }
+
     function shareToFacebook(button) {
       const shareUrl = getEntryLink(button);
+
       window.open(
         "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl),
         "_blank",
         "noopener,noreferrer"
       );
     }
+
     function renderSingleDevotional(item, index) {
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
       const searchBox = document.querySelector(".archive-tools");
       const pageTitle = document.querySelector(".section-title");
       const pageText = document.querySelector(".section-text");
+
       if (searchBox) searchBox.style.display = "none";
       if (status) status.style.display = "none";
       if (pageTitle) pageTitle.textContent = "Devotional";
       if (pageText) pageText.textContent = "Read the full devotional below.";
+
       const date = formatDate(item.dateArchived || item.date);
       const subjectRaw = item.subject || "Untitled Devotional";
       const subject = escapeHtml(subjectRaw);
       const message = escapeHtml(item.message || "").replace(/\n/g, "<br>");
       const slug = getDevotionalSlug(item, index);
+
       grid.className = "";
       grid.innerHTML = `
         <article class="single-devotional entry-card" id="${escapeAttribute(slug)}" data-share-title="${escapeAttribute(subjectRaw)}">
@@ -1009,12 +1063,15 @@ function excerptFrom(message) {
           ${date ? `<div class="devotional-date">${escapeHtml(date)}</div>` : ""}
           <h3>${subject}</h3>
           <div class="full-message">${message}</div>
+
           <div class="share-box">
             <p>If this encouraged you, share it with someone who may need this reminder today.</p>
+
             <div class="share-actions">
               <button class="share-btn" type="button" onclick="shareEntry(this)">
                 Share This Encouragement
               </button>
+
               <button class="copy-btn" type="button" onclick="copyEntryLink(this)">
                 Copy Link
               </button>
@@ -1022,100 +1079,123 @@ function excerptFrom(message) {
           </div>
         </article>
       `;
-       setTimeout(function() {
-  const target = document.getElementById(slug);
-  if (target) {
-    jumpToElementInstant(target, 125);
-  }
-}, 200);
+
+      setTimeout(function() {
+        const target = document.getElementById(slug);
+
+        if (target) jumpToElementInstant(target, 125);
+      }, 200);
     }
+
     function renderCurrentView() {
       const selectedSlug = getSelectedSlug();
       const selectedId = getSelectedId();
+
       if (selectedSlug) {
         const decodedSlug = decodeURIComponent(selectedSlug);
+
         const selectedIndex = allDevotionals.findIndex((item, index) =>
           getDevotionalSlug(item, index) === decodedSlug
         );
+
         if (selectedIndex >= 0) {
           renderSingleDevotional(allDevotionals[selectedIndex], selectedIndex);
           return;
         }
+
         showDevotionalNotFound();
         return;
       }
+
       if (selectedId) {
         const selectedIndex = allDevotionals.findIndex((item, index) =>
           String(item.id || index) === String(selectedId)
         );
+
         if (selectedIndex >= 0) {
           const slug = getDevotionalSlug(allDevotionals[selectedIndex], selectedIndex);
           history.replaceState(null, "", window.location.pathname + "#" + slug);
           renderSingleDevotional(allDevotionals[selectedIndex], selectedIndex);
           return;
         }
+
         showDevotionalNotFound();
         return;
       }
+
       renderArchive(allDevotionals);
     }
+
     function showDevotionalNotFound() {
       const status = document.getElementById("archiveStatus");
       const grid = document.getElementById("archiveGrid");
       const searchBox = document.querySelector(".archive-tools");
+
       if (searchBox) searchBox.style.display = "none";
       if (grid) grid.innerHTML = "";
+
       status.className = "error";
       status.textContent = "That devotional could not be found.";
       status.style.display = "block";
     }
+
     function applySearch() {
       const searchInput = document.getElementById("archiveSearch");
+
       if (!searchInput) return;
+
       const q = searchInput.value.toLowerCase().trim();
+
       if (!q) {
         renderArchive(allDevotionals);
         return;
       }
+
       const filtered = allDevotionals.filter(item =>
         String(item.subject || "").toLowerCase().includes(q) ||
         String(item.message || "").toLowerCase().includes(q)
       );
+
       renderArchive(filtered);
     }
+
     function getEntryCard(button) {
       return button.closest(".entry-card");
     }
+
     function getEntryLink(button) {
       const card = getEntryCard(button);
-      if (!card || !card.id) {
-        return window.location.href;
-      }
+
+      if (!card || !card.id) return window.location.href;
+
       return devotionalShareUrl(card.id);
     }
+
     function getEntryTitle(button) {
       const card = getEntryCard(button);
-      if (!card) {
-        return "Restored Daily Ministries";
-      }
+
+      if (!card) return "Restored Daily Ministries";
+
       return card.getAttribute("data-share-title") || "Restored Daily Ministries";
     }
+
     async function shareEntry(button) {
       const shareUrl = getEntryLink(button);
+
       if (navigator.share) {
         try {
-          await navigator.share({
-            url: shareUrl
-          });
+          await navigator.share({ url: shareUrl });
         } catch (error) {}
       } else {
         copyToClipboard(shareUrl, button, "Link Copied");
       }
     }
+
     function copyEntryLink(button) {
       const shareUrl = getEntryLink(button);
       copyToClipboard(shareUrl, button, "Copied");
     }
+
     function copyToClipboard(text, button, successText) {
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text).then(function() {
@@ -1127,58 +1207,74 @@ function excerptFrom(message) {
         fallbackCopy(text, button, successText);
       }
     }
+
     function fallbackCopy(text, button, successText) {
       const textArea = document.createElement("textarea");
+
       textArea.value = text;
       textArea.style.position = "fixed";
       textArea.style.left = "-999999px";
       textArea.style.top = "-999999px";
+
       document.body.appendChild(textArea);
       textArea.focus();
       textArea.select();
+
       try {
         document.execCommand("copy");
         temporarilyChangeButtonText(button, successText);
       } catch (error) {
         alert("Copy this link: " + text);
       }
+
       document.body.removeChild(textArea);
     }
+
     function temporarilyChangeButtonText(button, text) {
       const originalText = button.textContent;
+
       button.textContent = text;
+
       setTimeout(function() {
         button.textContent = originalText;
       }, 1800);
     }
+
     function loadArchive() {
       const status = document.getElementById("archiveStatus");
+
       window.handleDevotionalArchive = function(data) {
         if (!data || data.success === false) {
           status.className = "error";
           status.textContent = data && data.error ? data.error : "The devotional archive could not be loaded right now.";
           return;
         }
+
         allDevotionals = Array.isArray(data.devotionals) ? data.devotionals : [];
         renderCurrentView();
       };
+
       const script = document.createElement("script");
       script.src = ARCHIVE_API_URL + "?callback=handleDevotionalArchive&v=" + Date.now();
+
       script.onerror = function() {
         status.className = "error";
         status.textContent = "The devotional archive could not be loaded right now.";
       };
+
       document.body.appendChild(script);
     }
+
     const archiveSearch = document.getElementById("archiveSearch");
+
     if (archiveSearch) {
       archiveSearch.addEventListener("input", applySearch);
     }
+
     window.addEventListener("hashchange", function() {
-      if (allDevotionals.length) {
-        renderCurrentView();
-      }
+      if (allDevotionals.length) renderCurrentView();
     });
+
     loadArchive();
   </script>
 </body>
