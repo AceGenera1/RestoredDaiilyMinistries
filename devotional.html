@@ -457,26 +457,22 @@
       font-size: 16px;
     }
 
-    .archive-grid {
-  columns: 3 280px;
-  column-gap: 24px;
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 24px;
   margin-top: 46px;
-}
-
-.devotional-card {
-  display: inline-block;
-  width: 100%;
-  margin: 0 0 24px;
-  break-inside: avoid;
+  align-items: start;
 }
 
 .devotional-card {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(255, 248, 234, 0.94));
   border: 1px solid rgba(215, 168, 79, 0.35);
   border-radius: 28px;
-  padding: 24px;
+  padding: 30px;
   box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
   scroll-margin-top: 125px;
+  height: auto;
 }
     .devotional-date {
       color: #8A621D;
@@ -497,10 +493,13 @@
       margin: 0 0 14px;
     }
     .devotional-card p {
-      color: var(--text);
-      font-size: 17px;
-      margin: 0 0 18px;
-    }
+  color: var(--text);
+  font-size: 17px;
+  margin: 0 0 18px;
+  max-height: 245px;
+  overflow: hidden;
+}
+  
     .read-more,
     .back-link {
       display: inline-flex;
