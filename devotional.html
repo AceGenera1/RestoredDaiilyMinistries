@@ -824,7 +824,7 @@
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
 
-    function excerptFrom(message) {
+function excerptFrom(message) {
   const clean = String(message || "")
     .replace(/\r\n/g, "\n")
     .replace(/\r/g, "\n")
@@ -835,16 +835,25 @@
     .map(part => part.trim())
     .filter(Boolean);
 
-  const scripture = parts[0] || "";
-  const thought = parts.slice(1).join(" ");
+  const firstPart = parts[0] || "";
+  let rest = parts.slice(1).join(" ").trim();
 
-  const trimmedThought = thought.length > 190
-    ? thought.slice(0, 190).replace(/\s+\S*$/, "") + "..."
+  const scriptureRefMatch = rest.match(/^((?:[1-3]\s*)?[A-Za-z]+(?:\s+[A-Za-z]+)?\s+\d+:\d+(?:-\d+)?\s+(?:NIV|NLT|ESV|KJV|NKJV|NASB|LSB|CSB|AMP))\s+(.*)$/);
+
+  let scripture = firstPart;
+  let thought = rest;
+
+  if (scriptureRefMatch) {
+    scripture = firstPart + "\n" + scriptureRefMatch[1];
+    thought = scriptureRefMatch[2];
+  }
+
+  const trimmedThought = thought.length > 170
+    ? thought.slice(0, 170).replace(/\s+\S*$/, "") + "..."
     : thought;
 
   return scripture + "\n\n" + trimmedThought;
 }
-
 
     function formatDate(value) {
       if (!value) return "";
