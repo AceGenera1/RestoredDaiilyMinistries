@@ -462,7 +462,7 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 46px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .devotional-card {
@@ -472,9 +472,6 @@
   padding: 30px;
   box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
   scroll-margin-top: 125px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
 
 .devotional-date {
@@ -503,6 +500,11 @@
   font-size: 17px;
   line-height: 1.65;
   margin: 0 0 18px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .read-more {
