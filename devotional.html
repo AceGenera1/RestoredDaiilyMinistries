@@ -459,10 +459,10 @@
 
 .archive-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 46px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .devotional-card {
@@ -472,8 +472,9 @@
   padding: 30px;
   box-shadow: 0 20px 45px rgba(28, 45, 74, 0.12);
   scroll-margin-top: 125px;
-  height: auto;
-  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .devotional-date {
@@ -488,7 +489,6 @@
   letter-spacing: 1px;
   display: inline-block;
   width: fit-content;
-  max-width: 100%;
   margin-bottom: 15px;
 }
 
@@ -505,11 +505,16 @@
   margin: 0 0 18px;
 }
 
+.read-more {
+  margin-top: auto;
+}
+
 .read-more,
 .back-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: fit-content;
   padding: 11px 18px;
   border-radius: 999px;
   background: linear-gradient(135deg, #FFE39A, #D7A84F);
