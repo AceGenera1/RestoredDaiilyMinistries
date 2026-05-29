@@ -823,7 +823,8 @@
     function escapeAttribute(value) {
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
-  function excerptFrom(message) {
+
+    function excerptFrom(message) {
   const clean = String(message || "")
     .replace(/\r\n/g, "\n")
     .replace(/\r/g, "\n")
@@ -837,14 +838,13 @@
   const scripture = parts[0] || "";
   const thought = parts.slice(1).join(" ");
 
-  const preview = thought
-    ? scripture + "\n\n" + thought
-    : scripture;
+  const trimmedThought = thought.length > 190
+    ? thought.slice(0, 190).replace(/\s+\S*$/, "") + "..."
+    : thought;
 
-  return preview.length > 240
-    ? preview.slice(0, 240).replace(/\s+\S*$/, "") + "..."
-    : preview;
+  return scripture + "\n\n" + trimmedThought;
 }
+
 
     function formatDate(value) {
       if (!value) return "";
