@@ -272,7 +272,6 @@
       const searchBox = document.querySelector(".archive-tools");
       if (searchBox) searchBox.style.display = "none";
       if (status) status.style.display = "none";
-      setArchiveHeader("Devotional", "Read the full devotional below.");
       const date = formatDate(item.dateArchived || item.date);
       const subjectRaw = item.subject || "Untitled Devotional";
       const subject = escapeHtml(subjectRaw);
