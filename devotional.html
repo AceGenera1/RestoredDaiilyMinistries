@@ -825,7 +825,7 @@
     }
     function excerptFrom(message) {
       const text = String(message || "").replace(/\s+/g, " ").trim();
-      return text.length > 220 ? text.slice(0, 220) + "..." : text;
+      return scripture + "\n\n" + trimmedThought;
     }
     function formatDate(value) {
       if (!value) return "";
@@ -915,7 +915,7 @@
         const date = formatDate(item.dateArchived || item.date);
         const subjectRaw = item.subject || "Untitled Devotional";
         const subject = escapeHtml(subjectRaw);
-        const excerpt = escapeHtml(excerptFrom(item.message));
+        const excerpt = escapeHtml(excerptFrom(item.message)).replace(/\n\n/g, '<br><br>').replace(/\n/g, "<br>");
         const slug = getDevotionalSlug(item, index);
         const url = `devotional.html#${encodeURIComponent(slug)}`;
         card.className = "devotional-card";
