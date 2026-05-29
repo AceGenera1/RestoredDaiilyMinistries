@@ -982,7 +982,6 @@
       if (status) status.style.display = "none";
       if (pageTitle) pageTitle.textContent = "Devotional";
       if (pageText) pageText.textContent = "Read the full devotional below.";
-      const date = formatDate(item.dateArchived || item.date);
       const subjectRaw = item.subject || "Untitled Devotional";
       const subject = escapeHtml(subjectRaw);
       const message = escapeHtml(item.message || "").replace(/\n/g, "<br>");
