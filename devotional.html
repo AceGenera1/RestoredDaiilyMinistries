@@ -227,7 +227,6 @@
       const status = document.getElementById("archiveStatus");
       const searchBox = document.querySelector(".archive-tools");
       if (searchBox) searchBox.style.display = "";
-      setArchiveHeader("Devotional Archive", "Read biblical encouragement written to strengthen hearts, build faith, and point people back to Jesus Christ one day at a time.");
       feed.className = "archive-feed";
       feed.innerHTML = "";
       if (!items || !items.length) { status.className = "empty"; status.textContent = "No devotionals found yet."; status.style.display = "block"; return; }
