@@ -489,10 +489,11 @@
       margin: 0 0 14px;
     }
     .devotional-card p {
-      color: var(--text);
-      font-size: 17px;
-      margin: 0 0 18px;
-    }
+  color: var(--text);
+  font-size: 17px;
+  margin: 0 0 18px;
+  white-space: pre-line;
+}
     .read-more,
     .back-link {
       display: inline-flex;
@@ -824,9 +825,31 @@
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
     function excerptFrom(message) {
-      const text = String(message || "").replace(/\s+/g, " ").trim();
-      return text.length > 220 ? text.slice(0, 220) + "..." : text;
-    }
+  const clean = String(message || "")
+    .replace(/\r\n/g, " ")
+    .replace(/\r/g, " ")
+    .replace(/\n/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const translationMatch = clean.match(/\b(NIV|NLT|ESV|KJV|NKJV|NASB|LSB|CSB|AMP)\b/i);
+
+  if (!translationMatch) {
+    return clean.length > 220
+      ? clean.slice(0, 220).replace(/\s+\S*$/, "") + "..."
+      : clean;
+  }
+
+  const splitPoint = translationMatch.index + translationMatch[0].length;
+  const scripture = clean.slice(0, splitPoint).trim();
+  const thoughtRaw = clean.slice(splitPoint).trim();
+
+  const thought = thoughtRaw.length > 150
+    ? thoughtRaw.slice(0, 150).replace(/\s+\S*$/, "") + "..."
+    : thoughtRaw;
+
+  return scripture + "\n\n" + thought;
+}
     function formatDate(value) {
       if (!value) return "";
       const d = new Date(value);
