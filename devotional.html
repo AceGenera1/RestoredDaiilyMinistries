@@ -824,15 +824,31 @@
       return escapeHtml(value).replaceAll("`", "&#096;");
     }
     function excerptFrom(message) {
-      const text = String(message || "").replace(/\s+/g, " ").trim();
-      return scripture + "\n\n" + trimmedThought;
-    }
-    function formatDate(value) {
-      if (!value) return "";
-      const d = new Date(value);
-      if (Number.isNaN(d.getTime())) return String(value || "");
-      return d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
-    }
+  const clean = String(message || "")
+    .replace(/\r\n/g, " ")
+    .replace(/\r/g, " ")
+    .replace(/\n/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const translationMatch = clean.match(/\b(NIV|NLT|ESV|KJV|NKJV|NASB|LSB|CSB|AMP)\b/i);
+
+  if (!translationMatch) {
+    return clean.length > 220
+      ? clean.slice(0, 220).replace(/\s+\S*$/, "") + "..."
+      : clean;
+  }
+
+  const splitPoint = translationMatch.index + translationMatch[0].length;
+  const scripture = clean.slice(0, splitPoint).trim();
+  const thoughtRaw = clean.slice(splitPoint).trim();
+
+  const thought = thoughtRaw.length > 150
+    ? thoughtRaw.slice(0, 150).replace(/\s+\S*$/, "") + "..."
+    : thoughtRaw;
+
+  return scripture + "\n\n" + thought;
+}
     function slugify(value) {
       return String(value || "")
         .toLowerCase()
@@ -893,8 +909,8 @@
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
       const searchBox = document.querySelector(".archive-tools");
-      const pageTitle = document.querySelector(".section-title");
-      const pageText = document.querySelector(".section-text");
+      const pageTitle = document.querySelector(".section.alt .section-title");
+      const pageText = document.querySelector(".section.alt .section-text");
       if (searchBox) searchBox.style.display = "";
       if (pageTitle) pageTitle.textContent = "Devotional Archive";
       if (pageText) {
@@ -951,8 +967,8 @@
       const grid = document.getElementById("archiveGrid");
       const status = document.getElementById("archiveStatus");
       const searchBox = document.querySelector(".archive-tools");
-      const pageTitle = document.querySelector(".section-title");
-      const pageText = document.querySelector(".section-text");
+     const pageTitle = document.querySelector(".section.alt .section-title");
+    const pageText = document.querySelector(".section.alt .section-text");
       if (searchBox) searchBox.style.display = "none";
       if (status) status.style.display = "none";
       if (pageTitle) pageTitle.textContent = "Devotional";
