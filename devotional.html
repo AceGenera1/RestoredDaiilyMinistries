@@ -290,24 +290,26 @@ Here is the full updated devotional.html with the Back to Archive returning to t
       margin: 0 auto 18px;
       max-width: 900px;
     }
-    .cards,
-    .info-grid,
-    .teaching-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-      gap: 24px;
-      margin-top: 42px;
-    }
-    .card,
-    .info-card,
-    .teaching-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
-      border: 1px solid rgba(215, 168, 79, 0.34);
-      border-radius: 26px;
-      padding: 28px;
-      box-shadow: 0 18px 42px rgba(28, 45, 74, 0.11);
-      text-align: left;
-    }
+  .cards,
+.info-grid,
+.teaching-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 280px));
+  justify-content: center;
+  gap: 22px;
+  margin-top: 38px;
+}
+.card,
+.info-card,
+.teaching-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+  border: 1px solid rgba(215, 168, 79, 0.34);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 16px 36px rgba(28, 45, 74, 0.10);
+  text-align: left;
+  min-height: 255px;
+}
     a.card {
       display: block;
       text-decoration: none;
@@ -916,10 +918,10 @@ Here is the full updated devotional.html with the Back to Archive returning to t
         setTimeout(function() {
           const target = document.getElementById("archive-" + returnToSlug);
           if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "center"
-            });
+          target.scrollIntoView({
+          behavior: "auto",
+          block: "center"
+          });
           }
           history.replaceState(null, "", "devotional.html");
         }, 250);
