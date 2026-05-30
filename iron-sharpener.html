@@ -15,7 +15,7 @@ a{color:inherit}
 .hero{background:linear-gradient(90deg,rgba(2,9,19,.96),rgba(6,21,38,.98),rgba(2,9,19,.96));color:#fff;display:grid;grid-template-columns:260px 1fr 300px;gap:24px;align-items:center;padding:22px 28px 20px;border-bottom:2px solid var(--gold);position:relative}
 .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 13% 48%,rgba(244,199,108,.18),transparent 22%),radial-gradient(circle at 50% 10%,rgba(255,255,255,.06),transparent 30%);pointer-events:none}
 .logoWrap{position:relative;z-index:1;display:flex;justify-content:center}
-.logo{width:226px;height:226px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 18px 28px rgba(0,0,0,.45));border:2px solid var(--bright)}
+.logo{ width:226px; height:226px; border-radius:50%; object-fit:contain; object-position:center; padding:10px; background:radial-gradient(circle, #fff7e6 0%, #f3d78b 48%, #061526 100%); filter:drop-shadow(0 18px 28px rgba(0,0,0,.45)); border:2px solid var(--bright);}
 .heroMain{position:relative;z-index:1;text-align:center}
 .eyebrow{letter-spacing:10px;color:var(--bright);font-weight:800;font-size:17px;text-transform:uppercase;margin:0 0 5px}
 h1{font-size:82px;line-height:.9;margin:0;text-transform:uppercase;letter-spacing:2px;text-shadow:0 4px 0 rgba(0,0,0,.35)}
@@ -66,7 +66,7 @@ html.obs .shell{max-width:none;border:0;border-radius:0;box-shadow:none}
 html.obs .controls,html.obs .side,html.obs .footer{display:none!important}
 html.obs .hero{grid-template-columns:180px 1fr;padding:16px 24px}
 html.obs .verseCard{display:none}
-html.obs .logo{width:150px;height:150px}
+html.obs .logo{width:150px; height:150px; object-fit:contain; padding:7px;}
 html.obs h1{font-size:58px}
 html.obs .subtitle{font-size:22px;margin-bottom:10px}
 html.obs .ribbon{display:block;padding:9px}
