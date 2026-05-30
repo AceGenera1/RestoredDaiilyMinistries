@@ -435,6 +435,83 @@
       display: block;
     }
 
+
+    .iron-panel {
+      background:
+        radial-gradient(circle at 12% 0%, rgba(244,199,108,.20), transparent 30%),
+        linear-gradient(180deg, rgba(6,21,38,.98), rgba(8,27,48,.96));
+      color: #fff3cd;
+      border: 2px solid var(--gold);
+      box-shadow: 0 14px 30px rgba(0,0,0,.22);
+    }
+
+    .iron-panel h3 {
+      color: var(--bright);
+      border-bottom: 1px solid var(--gold);
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+
+    .iron-prompts {
+      font: 700 15px Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .iron-prompts p {
+      margin: 0 0 13px;
+    }
+
+    .iron-prompts strong {
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+    }
+
+    .iron-prayer {
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid rgba(215,168,79,.65);
+      border-radius: 10px;
+      color: var(--bright);
+      font: italic 700 15px Georgia, "Times New Roman", serif;
+      text-align: center;
+      background: rgba(0,0,0,.18);
+    }
+
+    html.obs .iron-panel {
+      display: block !important;
+      position: fixed;
+      right: 22px;
+      bottom: 86px;
+      z-index: 9998;
+      width: 360px;
+      max-height: 62vh;
+      overflow: auto;
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    html.obs .iron-panel h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    html.obs .iron-prompts {
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    html.obs .iron-prompts strong {
+      font-size: 13px;
+    }
+
+    html.obs .iron-prayer {
+      font-size: 12px;
+      padding: 9px;
+      margin-top: 10px;
+    }
+
     .footer {
       background: #061526;
       color: #fff3cd;
@@ -499,7 +576,7 @@
 
     html.obs body { padding: 0; background: #061526; }
     html.obs .shell { max-width: none; border: 0; border-radius: 0; box-shadow: none; }
-    html.obs .controls, html.obs .side, html.obs .footer { display: none !important; }
+    html.obs .controls, html.obs .side .panel:not(.iron-panel), html.obs .footer { display: none !important; }
     html.obs .hero { grid-template-columns: 145px 1fr; padding: 12px 18px; }
     html.obs .verse-card { display: none !important; }
     html.obs .logo-wrap { width: 126px; height: 126px; }
@@ -560,7 +637,84 @@
       .ribbon { letter-spacing: 3px; font-size: 13px; }
       .logo-wrap { width: 154px; height: 154px; }
       .logo { width: 148px; height: 148px; }
-      .footer { font-size: 15px; gap: 10px; grid-template-columns: 1fr; }
+  
+    .iron-panel {
+      background:
+        radial-gradient(circle at 12% 0%, rgba(244,199,108,.20), transparent 30%),
+        linear-gradient(180deg, rgba(6,21,38,.98), rgba(8,27,48,.96));
+      color: #fff3cd;
+      border: 2px solid var(--gold);
+      box-shadow: 0 14px 30px rgba(0,0,0,.22);
+    }
+
+    .iron-panel h3 {
+      color: var(--bright);
+      border-bottom: 1px solid var(--gold);
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      text-align: center;
+    }
+
+    .iron-prompts {
+      font: 700 15px Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .iron-prompts p {
+      margin: 0 0 13px;
+    }
+
+    .iron-prompts strong {
+      color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+    }
+
+    .iron-prayer {
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid rgba(215,168,79,.65);
+      border-radius: 10px;
+      color: var(--bright);
+      font: italic 700 15px Georgia, "Times New Roman", serif;
+      text-align: center;
+      background: rgba(0,0,0,.18);
+    }
+
+    html.obs .iron-panel {
+      display: block !important;
+      position: fixed;
+      right: 22px;
+      bottom: 86px;
+      z-index: 9998;
+      width: 360px;
+      max-height: 62vh;
+      overflow: auto;
+      padding: 14px;
+      border-radius: 12px;
+    }
+
+    html.obs .iron-panel h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    html.obs .iron-prompts {
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    html.obs .iron-prompts strong {
+      font-size: 13px;
+    }
+
+    html.obs .iron-prayer {
+      font-size: 12px;
+      padding: 9px;
+      margin-top: 10px;
+    }
+
+    .footer { font-size: 15px; gap: 10px; grid-template-columns: 1fr; }
       .footer .sep { display: none; }
       .tool-grid, .tool-grid.three { grid-template-columns: 1fr; }
     }
@@ -662,6 +816,18 @@
           </div>
           <textarea id="crossRefs"></textarea>
         </div>
+
+        <div class="panel iron-panel">
+          <h3>I.R.O.N. STUDY PROMPTS</h3>
+          <div class="iron-prompts">
+            <p><strong>I — Inspect the Scripture</strong><br>Read carefully and understand the passage in context.</p>
+            <p><strong>R — Reflect Prayerfully</strong><br>Slow down, meditate on the Word, and listen humbly before the Lord.</p>
+            <p><strong>O — Observe God’s Truth</strong><br>What does this reveal about God, Christ, sin, faith, obedience, or grace?</p>
+            <p><strong>N — Next Steps in Obedience</strong><br>How is the Holy Spirit leading you to respond through faith, repentance, action, encouragement, or obedience?</p>
+            <div class="iron-prayer">Ask the Lord for wisdom, discernment, and a willing heart to obey His Word.</div>
+          </div>
+        </div>
+
       </aside>
     </main>
 
