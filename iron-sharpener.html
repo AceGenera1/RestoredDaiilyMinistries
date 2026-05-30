@@ -116,52 +116,19 @@ LOdXkAgYUrZSzznsfICYJcQGM8D643SxZ9y0bkNNNI1IxSUw27qCNJwy6cLzgwJf4d6u96BEiicXRphq
   <footer class="footer">Built for Scripture. Designed for disciples. <span>Iron sharpens iron.</span></footer>
 </div>
 <script>
-const books = [['Genesis',50],['Exodus',40],['Leviticus',27],['Numbers',36],['Deuteronomy',34],['Joshua',24],['Judges',21],['Ruth',4],['1 Samuel',31],['2 Samuel',24],['1 Kings',22],['2 Kings',25],['1 Chronicles',29],['2 Chronicles',36],['Ezra',10],['Nehemiah',13],['Esther',10],['Job',42],['Psalms',150],['Proverbs',31],['Ecclesiastes',12],['Song of Solomon',8],['Isaiah',66],['Jeremiah',52],['Lamentations',5],['Ezekiel',48],['Daniel',12],['Hosea',14],['Joel',3],['Amos',9],['Obadiah',1],['Jonah',4],['Micah',7],['Nahum',3],['Habakkuk',3],['Zephaniah',3],['Haggai',2],['Zechariah',14],['Malachi',4],['Matthew',28],['Mark',16],['Luke',24],['John',21],['Acts',28],['Romans',16],['1 Corinthians',16],['2 Corinthians',13],['Galatians',6],['Ephesians',6],['Philippians',4],['Colossians',4],['1 Thessalonians',5],['2 Thessalonians',3],['1 Timothy',6],['2 Timothy',4],['Titus',3],['Philemon',1],['Hebrews',13],['James',5],['1 Peter',5],['2 Peter',3],['1 John',5],['2 John',1],['3 John',1],['Jude',1],['Revelation',22]];
-const $ = id => document.getElementById(id);
-const bookSel=$('book'), chapSel=$('chapter'), start=$('start'), end=$('end'), range=$('rangeSize'), passage=$('passage'), refTitle=$('refTitle');
-function initBooks(defaultBook='Hebrews', defaultChapter='1'){ books.forEach(([name])=>{const o=document.createElement('option'); o.value=name; o.textContent=name; bookSel.appendChild(o)}); bookSel.value=defaultBook; fillChapters(); chapSel.value=defaultChapter; }
-function fillChapters(){ chapSel.innerHTML=''; const total=(books.find(b=>b[0]===bookSel.value)||books[0])[1]; for(let i=1;i<=total;i++){const o=document.createElement('option'); o.value=i; o.textContent=i; chapSel.appendChild(o)} }
-function currentRef(){ return `${bookSel.value} ${chapSel.value}:${start.value}-${end.value}`; }
-function cleanText(t){ return (t||'').replace(/\s+/g,' ').trim(); }
-function activateVerses(){ document.querySelectorAll('.verse').forEach(v=>v.onclick=()=>v.classList.toggle('active')); }
-async function loadPassage(){ 
-  refTitle.textContent=currentRef().replace(':',' ');
-  passage.innerHTML='<p class="verse">Loading passage…</p>';
-  try {
-    const res=await fetch(`https://bible-api.com/${encodeURIComponent(currentRef())}?translation=web`);
-    if(!res.ok) throw new Error('Scripture source did not respond.');
-    const data=await res.json();
-    if(!data.verses || !data.verses.length) throw new Error('No verses returned.');
-    refTitle.textContent=data.reference.replace(':',' ');
-    passage.innerHTML=data.verses.map(v=>`<p class="verse" data-v="${v.verse}"><span class="vnum">${v.verse}</span>${cleanText(v.text)}</p>`).join('');
-    activateVerses();
-    localStorage.setItem('ironSharpener.lastRef', JSON.stringify({book:bookSel.value, chapter:chapSel.value, start:start.value, end:end.value, range:range.value}));
-  } catch(e) {
-    passage.innerHTML=`<p class="verse">Could not load this passage automatically.</p><p class="verse" style="font-size:18px">You can paste the passage from your WEB PDF into the manual passage box below. ${e.message}</p>`;
-  }
-}
-function shiftRange(dir){ const size=parseInt(range.value,10); let s=parseInt(start.value,10), e=parseInt(end.value,10); if(dir>0){s=e+1;e=s+size-1} else {s=Math.max(1,s-size);e=s+size-1} start.value=s; end.value=e; loadPassage(); }
-function wireCommon(){
-  $('loadBtn').onclick=loadPassage;
-  $('prevBtn').onclick=()=>shiftRange(-1);
-  $('nextBtn').onclick=()=>shiftRange(1);
-  bookSel.onchange=()=>{fillChapters();chapSel.value='1';start.value=1;end.value=range.value;loadPassage();};
-  chapSel.onchange=()=>{start.value=1;end.value=range.value;loadPassage();};
-  range.onchange=()=>{end.value=parseInt(start.value,10)+parseInt(range.value,10)-1;loadPassage();};
-  $('themeBtn').onclick=()=>document.body.classList.toggle('dark');
-  $('obsBtn').onclick=()=>document.documentElement.classList.toggle('obs');
-  $('fsBtn').onclick=()=>{ if(!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); };
-}
-function restoreLast(defaultBook='Hebrews', defaultChapter='1'){ 
-  const saved=JSON.parse(localStorage.getItem('ironSharpener.lastRef')||'null');
-  initBooks(saved?.book||defaultBook, saved?.chapter||defaultChapter);
-  if(saved){ start.value=saved.start||1; end.value=saved.end||5; range.value=saved.range||5; }
-}
-
-restoreLast('Hebrews','1'); wireCommon();
-$('prevBtn2').onclick=()=>shiftRange(-1); $('nextBtn2').onclick=()=>shiftRange(1);
-$('publicNotes').value=localStorage.getItem('ironSharpener.publicNotes')||''; $('publicNotes').oninput=e=>localStorage.setItem('ironSharpener.publicNotes',e.target.value);
-$('crossRefs').value=localStorage.getItem('ironSharpener.crossRefs')||''; $('crossRefs').oninput=e=>localStorage.setItem('ironSharpener.crossRefs',e.target.value);
-loadPassage();
+const books=[['Genesis',50],['Exodus',40],['Leviticus',27],['Numbers',36],['Deuteronomy',34],['Joshua',24],['Judges',21],['Ruth',4],['1 Samuel',31],['2 Samuel',24],['1 Kings',22],['2 Kings',25],['1 Chronicles',29],['2 Chronicles',36],['Ezra',10],['Nehemiah',13],['Esther',10],['Job',42],['Psalms',150],['Proverbs',31],['Ecclesiastes',12],['Song of Solomon',8],['Isaiah',66],['Jeremiah',52],['Lamentations',5],['Ezekiel',48],['Daniel',12],['Hosea',14],['Joel',3],['Amos',9],['Obadiah',1],['Jonah',4],['Micah',7],['Nahum',3],['Habakkuk',3],['Zephaniah',3],['Haggai',2],['Zechariah',14],['Malachi',4],['Matthew',28],['Mark',16],['Luke',24],['John',21],['Acts',28],['Romans',16],['1 Corinthians',16],['2 Corinthians',13],['Galatians',6],['Ephesians',6],['Philippians',4],['Colossians',4],['1 Thessalonians',5],['2 Thessalonians',3],['1 Timothy',6],['2 Timothy',4],['Titus',3],['Philemon',1],['Hebrews',13],['James',5],['1 Peter',5],['2 Peter',3],['1 John',5],['2 John',1],['3 John',1],['Jude',1],['Revelation',22]];
+const $=id=>document.getElementById(id);
+const bookSel=$('book'),chapSel=$('chapter'),start=$('start'),end=$('end'),range=$('rangeSize'),passage=$('passage'),refTitle=$('refTitle');
+function initBooks(defaultBook='Hebrews',defaultChapter='1'){books.forEach(([name])=>{const o=document.createElement('option');o.value=name;o.textContent=name;bookSel.appendChild(o)});bookSel.value=defaultBook;fillChapters();chapSel.value=defaultChapter}
+function fillChapters(){chapSel.innerHTML='';const total=(books.find(b=>b[0]===bookSel.value)||books[0])[1];for(let i=1;i<=total;i++){const o=document.createElement('option');o.value=i;o.textContent=i;chapSel.appendChild(o)}}
+function currentRef(){return`${bookSel.value} ${chapSel.value}:${start.value}-${end.value}`}
+function cleanText(t){return(t||'').replace(/\s+/g,' ').trim()}
+function activateVerses(){document.querySelectorAll('.verse').forEach(v=>v.onclick=()=>v.classList.toggle('active'))}
+async function loadPassage(){refTitle.textContent=currentRef().replace(':',' ');passage.innerHTML='<p class="verse">Loading passage…</p>';try{const res=await fetch(`https://bible-api.com/${encodeURIComponent(currentRef())}?translation=web`);if(!res.ok)throw new Error('Scripture source did not respond.');const data=await res.json();if(!data.verses||!data.verses.length)throw new Error('No verses returned.');refTitle.textContent=data.reference.replace(':',' ');passage.innerHTML=data.verses.map(v=>`<p class="verse" data-v="${v.verse}"><span class="vnum">${v.verse}</span>${cleanText(v.text)}</p>`).join('');activateVerses();localStorage.setItem('ironSharpener.lastRef',JSON.stringify({book:bookSel.value,chapter:chapSel.value,start:start.value,end:end.value,range:range.value}))}catch(e){passage.innerHTML=`<p class="verse">Could not load this passage automatically.</p><p class="verse" style="font-size:18px">You can paste the passage from your WEB PDF into the manual passage box below. ${e.message}</p>`}}
+function shiftRange(dir){const size=parseInt(range.value,10);let s=parseInt(start.value,10),e=parseInt(end.value,10);if(dir>0){s=e+1;e=s+size-1}else{s=Math.max(1,s-size);e=s+size-1}start.value=s;end.value=e;loadPassage()}
+function setObsMode(on){document.documentElement.classList.toggle('obs',on);const btn=$('obsBtn');if(btn)btn.textContent=on?'Leave Focus':'OBS Focus'}
+function wireCommon(){$('loadBtn').onclick=loadPassage;$('prevBtn').onclick=()=>shiftRange(-1);$('nextBtn').onclick=()=>shiftRange(1);bookSel.onchange=()=>{fillChapters();chapSel.value='1';start.value=1;end.value=range.value;loadPassage()};chapSel.onchange=()=>{start.value=1;end.value=range.value;loadPassage()};range.onchange=()=>{end.value=parseInt(start.value,10)+parseInt(range.value,10)-1;loadPassage()};$('themeBtn').onclick=()=>document.body.classList.toggle('dark');$('obsBtn').onclick=()=>setObsMode(!document.documentElement.classList.contains('obs'));$('fsBtn').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen()};document.addEventListener('keydown',e=>{if(e.key==='Escape')setObsMode(false)})}
+function restoreLast(defaultBook='Hebrews',defaultChapter='1'){const saved=JSON.parse(localStorage.getItem('ironSharpener.lastRef')||'null');initBooks(saved?.book||defaultBook,saved?.chapter||defaultChapter);if(saved){start.value=saved.start||1;end.value=saved.end||5;range.value=saved.range||5}}
+restoreLast('Hebrews','1');wireCommon();$('prevBtn2').onclick=()=>shiftRange(-1);$('nextBtn2').onclick=()=>shiftRange(1);$('publicNotes').value=localStorage.getItem('ironSharpener.publicNotes')||'';$('publicNotes').oninput=e=>localStorage.setItem('ironSharpener.publicNotes',e.target.value);$('crossRefs').value=localStorage.getItem('ironSharpener.crossRefs')||'';$('crossRefs').oninput=e=>localStorage.setItem('ironSharpener.crossRefs',e.target.value);loadPassage();
 </script>
 </body></html>
