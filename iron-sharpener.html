@@ -339,6 +339,69 @@
       letter-spacing: 1px;
     }
 
+    .panel-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 0 12px;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 8px;
+    }
+
+    .panel-title h3 {
+      margin: 0;
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .info-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: #061526;
+      color: #fff7e6;
+      font: 800 13px Arial, sans-serif;
+      cursor: help;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,.16);
+      user-select: none;
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 30px;
+      width: 285px;
+      background: #061526;
+      color: #fff7e6;
+      border: 1.5px solid var(--gold);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font: 700 13px Arial, sans-serif;
+      line-height: 1.45;
+      z-index: 20;
+      box-shadow: 0 12px 26px rgba(0,0,0,.28);
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .info-wrap:hover .tooltip,
+    .info-wrap:focus-within .tooltip,
+    .info-wrap.open .tooltip {
+      display: block;
+    }
+
     .panel ul {
       margin: 0 0 12px 22px;
       padding: 0;
@@ -717,12 +780,24 @@
         </div>
 
         <div class="panel">
-          <h3>Personal Notes</h3>
+          <div class="panel-title">
+            <h3>Personal Notes</h3>
+            <span class="info-wrap" tabindex="0">
+              <span class="info-icon">i</span>
+              <span class="tooltip">Use this space for personal observations, teaching thoughts, prayers, applications, outlines, and study reflections.</span>
+            </span>
+          </div>
           <textarea id="publicNotes"></textarea>
         </div>
 
         <div class="panel">
-          <h3>Cross References</h3>
+          <div class="panel-title">
+            <h3>Cross References</h3>
+            <span class="info-wrap" tabindex="0">
+              <span class="info-icon">i</span>
+              <span class="tooltip">Use this space for related Scriptures, parallel passages, prophecy connections, doctrinal support, word-study links, and supporting verses.</span>
+            </span>
+          </div>
           <textarea id="crossRefs"></textarea>
         </div>
       </aside>
@@ -2295,6 +2370,24 @@
       restoreNotes();
       loadPassage();
     }
+
+    document.querySelectorAll(".info-wrap").forEach((item) => {
+      item.addEventListener("click", (event) => {
+        event.stopPropagation();
+        document.querySelectorAll(".info-wrap").forEach((other) => {
+          if (other !== item) {
+            other.classList.remove("open");
+          }
+        });
+        item.classList.toggle("open");
+      });
+    });
+
+    document.addEventListener("click", () => {
+      document.querySelectorAll(".info-wrap").forEach((item) => {
+        item.classList.remove("open");
+      });
+    });
 
     init();
   </script>
