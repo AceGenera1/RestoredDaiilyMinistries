@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Restored Daily Ministries | Iron Sharpener Ministry</title>
   <style>
+
     :root {
       --navy: #061526;
       --deep: #020913;
@@ -294,12 +295,14 @@
     }
 
     .verse.highlighted {
-      background: rgba(244,199,108,.34);
-      outline: 1px solid rgba(215,168,79,.55);
+      background: linear-gradient(90deg, rgba(244,199,108,.58), rgba(244,199,108,.20));
+      border-left: 7px solid var(--gold);
+      outline: 1px solid rgba(215,168,79,.78);
       border-radius: 8px;
-      padding: 6px 10px;
-      margin-left: -10px;
+      padding: 8px 12px;
+      margin-left: -12px;
       margin-right: -10px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.18), 0 4px 14px rgba(215,168,79,.12);
     }
 
     .verse.pointed {
@@ -321,8 +324,8 @@
 
     .scripture.focus-mode .verse.focused {
       opacity: 1;
-      background: rgba(244,199,108,.28);
-      outline: 1px solid rgba(215,168,79,.55);
+      background: rgba(244,199,108,.30);
+      outline: 1px solid rgba(215,168,79,.65);
       border-radius: 8px;
       padding: 6px 10px;
       margin-left: -10px;
@@ -369,6 +372,69 @@
       grid-template-columns: 1fr 1fr 1fr;
     }
 
+    .panel-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 0 12px;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 8px;
+    }
+
+    .panel-title h3 {
+      margin: 0;
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .info-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: #061526;
+      color: #fff7e6;
+      font: 800 13px Arial, sans-serif;
+      cursor: help;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,.16);
+      user-select: none;
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 30px;
+      width: 285px;
+      background: #061526;
+      color: #fff7e6;
+      border: 1.5px solid var(--gold);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font: 700 13px Arial, sans-serif;
+      line-height: 1.45;
+      z-index: 20;
+      box-shadow: 0 12px 26px rgba(0,0,0,.28);
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .info-wrap:hover .tooltip,
+    .info-wrap:focus-within .tooltip,
+    .info-wrap.open .tooltip {
+      display: block;
+    }
+
     .footer {
       background: #061526;
       color: #fff3cd;
@@ -392,6 +458,10 @@
     }
 
     .footer strong { color: #fff; }
+
+    .obs-tool-bar {
+      display: none;
+    }
 
     body.dark {
       --paper: #07172b;
@@ -444,6 +514,27 @@
     html.obs .actions button:not(#obsBtn) { display: none !important; }
     html.obs #obsBtn { display: inline-flex !important; background: #fff7e6 !important; color: #061526 !important; border: 2px solid #d7a84f !important; }
 
+    html.obs .obs-tool-bar {
+      display: flex;
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 9999;
+      gap: 10px;
+      padding: 10px;
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      background: rgba(6,21,38,.96);
+      box-shadow: 0 12px 34px rgba(0,0,0,.38);
+    }
+
+    html.obs .obs-tool-bar button {
+      font-size: 13px;
+      padding: 10px 12px;
+      white-space: nowrap;
+    }
+
     @media (max-width: 1050px) {
       .hero { grid-template-columns: 1fr; text-align: center; }
       .verse-card { display: block; max-width: 520px; margin: 0 auto; }
@@ -473,9 +564,9 @@
       .footer .sep { display: none; }
       .tool-grid, .tool-grid.three { grid-template-columns: 1fr; }
     }
+
   </style>
 </head>
-
 <body>
   <div class="shell">
     <header class="hero">
@@ -487,7 +578,6 @@
         <p class="eyebrow">Restored Daily Ministries</p>
         <h1>Iron Sharpener</h1>
         <p class="subtitle">Ministry teaching, preparation, and live Scripture tools.</p>
-
         <div class="actions">
           <button id="themeBtn" class="secondary">Cream / Dark</button>
           <button id="obsBtn" class="dark-btn">OBS Focus</button>
@@ -502,6 +592,13 @@
     </header>
 
     <div class="ribbon">Prepared in prayer &nbsp; ✦ &nbsp; Taught with clarity &nbsp; ✦ &nbsp; Shared for discipleship</div>
+
+    <div class="obs-tool-bar" aria-label="OBS teaching tools">
+      <button id="obsHighlightTool">Highlight</button>
+      <button id="obsPointerTool">Pointer</button>
+      <button id="obsFocusTool">Focus</button>
+      <button id="obsClearMarks" class="secondary">Clear</button>
+    </div>
 
     <section class="controls">
       <div><label for="book">Book</label><select id="book"></select></div>
@@ -532,7 +629,6 @@
         <div class="source">World English Bible • Public Domain</div>
         <div class="divider"></div>
         <div id="passage"><p class="verse">Loading passage…</p></div>
-
         <div class="nav-row">
           <button id="prevBtn" class="dark-btn">‹ Previous</button>
           <button id="nextBtn" class="dark-btn">Next ›</button>
@@ -554,25 +650,10 @@
           </div>
         </div>
 
-        <div class="panel">
-          <h3>Teaching Notes</h3>
-          <textarea id="teachingNotes" placeholder="Main teaching notes, outline, explanations..."></textarea>
-        </div>
-
-        <div class="panel">
-          <h3>Cross References</h3>
-          <textarea id="crossRefs" placeholder="Supporting Scriptures, parallel passages, prophecy links..."></textarea>
-        </div>
-
-        <div class="panel">
-          <h3>Application & Prayer</h3>
-          <textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea>
-        </div>
-
-        <div class="panel">
-          <h3>Clip / Timestamp Notes</h3>
-          <textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea>
-        </div>
+        <div class="panel"><h3>Teaching Notes</h3><textarea id="teachingNotes" placeholder="Main teaching notes, outline, explanations..."></textarea></div>
+        <div class="panel"><h3>Cross References</h3><textarea id="crossRefs" placeholder="Supporting Scriptures, parallel passages, prophecy links..."></textarea></div>
+        <div class="panel"><h3>Application & Prayer</h3><textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea></div>
+        <div class="panel"><h3>Clip / Timestamp Notes</h3><textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea></div>
       </aside>
     </main>
 
@@ -1908,6 +1989,7 @@
             21
       ]
 };
+    const storagePrefix = "ironSharpenerMinistry";
     const $ = (id) => document.getElementById(id);
 
     const bookSel = $("book");
@@ -1929,6 +2011,42 @@
       const chapterIndex = parseInt(chapSel.value, 10) - 1;
       const counts = verseCounts[bookSel.value];
       return counts ? counts[chapterIndex] : 80;
+    }
+
+    function passageKey() {
+      return `${storagePrefix}.marks.${bookSel.value}.${chapSel.value}.${startSel.value}-${endSel.value}`;
+    }
+
+    function getCurrentMarks() {
+      return {
+        highlighted: Array.from(document.querySelectorAll(".verse.highlighted")).map((verse) => verse.dataset.v),
+        pointed: document.querySelector(".verse.pointed")?.dataset.v || "",
+        focused: document.querySelector(".verse.focused")?.dataset.v || ""
+      };
+    }
+
+    function saveMarks() {
+      localStorage.setItem(passageKey(), JSON.stringify(getCurrentMarks()));
+    }
+
+    function restoreMarks() {
+      const saved = JSON.parse(localStorage.getItem(passageKey()) || "{}");
+      const highlighted = saved.highlighted || [];
+
+      document.querySelectorAll(".verse").forEach((verse) => {
+        if (highlighted.includes(verse.dataset.v)) {
+          verse.classList.add("highlighted");
+        }
+
+        if (saved.pointed === verse.dataset.v) {
+          verse.classList.add("pointed");
+        }
+
+        if (saved.focused === verse.dataset.v) {
+          scriptureBox.classList.add("focus-mode");
+          verse.classList.add("focused");
+        }
+      });
     }
 
     function fillBooks() {
@@ -2012,6 +2130,8 @@
         document.querySelectorAll(".verse.focused").forEach((item) => item.classList.remove("focused"));
         verse.classList.add("focused");
       }
+
+      saveMarks();
     }
 
     function activateVerses() {
@@ -2045,8 +2165,9 @@
         }).join("");
 
         activateVerses();
+        restoreMarks();
 
-        localStorage.setItem("ironSharpenerMinistry.lastRef", JSON.stringify({
+        localStorage.setItem(`${storagePrefix}.lastRef`, JSON.stringify({
           book: bookSel.value,
           chapter: chapSel.value,
           start: startSel.value,
@@ -2088,26 +2209,38 @@
     function setThemeMode(mode) {
       const isDark = mode === "dark";
       document.body.classList.toggle("dark", isDark);
-      localStorage.setItem("ironSharpenerMinistry.theme", isDark ? "dark" : "cream");
+      localStorage.setItem(`${storagePrefix}.theme`, isDark ? "dark" : "cream");
     }
 
     function restoreThemeMode() {
-      const savedTheme = localStorage.getItem("ironSharpenerMinistry.theme") || "cream";
+      const savedTheme = localStorage.getItem(`${storagePrefix}.theme`) || "cream";
       document.body.classList.toggle("dark", savedTheme === "dark");
     }
 
     function saveField(id) {
-      const key = `ironSharpenerMinistry.${id}`;
+      const key = `${storagePrefix}.${id}`;
       $(id).value = localStorage.getItem(key) || "";
       $(id).oninput = (event) => localStorage.setItem(key, event.target.value);
     }
 
     function setTool(toolName) {
       activeTool = toolName;
-      ["highlightTool", "pointerTool", "focusTool"].forEach((id) => $(id).classList.remove("active-tool"));
-      if (toolName === "highlight") $("highlightTool").classList.add("active-tool");
-      if (toolName === "pointer") $("pointerTool").classList.add("active-tool");
-      if (toolName === "focus") $("focusTool").classList.add("active-tool");
+
+      const map = {
+        highlight: ["highlightTool", "obsHighlightTool"],
+        pointer: ["pointerTool", "obsPointerTool"],
+        focus: ["focusTool", "obsFocusTool"]
+      };
+
+      ["highlightTool", "pointerTool", "focusTool", "obsHighlightTool", "obsPointerTool", "obsFocusTool"].forEach((id) => {
+        const button = $(id);
+        if (button) button.classList.remove("active-tool");
+      });
+
+      (map[toolName] || []).forEach((id) => {
+        const button = $(id);
+        if (button) button.classList.add("active-tool");
+      });
     }
 
     function clearMarks() {
@@ -2115,19 +2248,39 @@
       document.querySelectorAll(".verse").forEach((verse) => {
         verse.classList.remove("highlighted", "pointed", "focused");
       });
+      localStorage.removeItem(passageKey());
     }
 
     function copyPassageText() {
       const text = Array.from(document.querySelectorAll(".verse")).map((verse) => verse.innerText).join("\n");
       navigator.clipboard.writeText(`${refTitle.innerText}\n${text}`);
-      $("copyPassage").textContent = "Copied";
-      setTimeout(() => $("copyPassage").textContent = "Copy Passage", 1200);
+
+      if ($("copyPassage")) {
+        $("copyPassage").textContent = "Copied";
+        setTimeout(() => $("copyPassage").textContent = "Copy Passage", 1200);
+      }
+    }
+
+    function initTooltips() {
+      document.querySelectorAll(".info-wrap").forEach((item) => {
+        item.addEventListener("click", (event) => {
+          event.stopPropagation();
+          document.querySelectorAll(".info-wrap").forEach((other) => {
+            if (other !== item) other.classList.remove("open");
+          });
+          item.classList.toggle("open");
+        });
+      });
+
+      document.addEventListener("click", () => {
+        document.querySelectorAll(".info-wrap").forEach((item) => item.classList.remove("open"));
+      });
     }
 
     function init() {
       fillBooks();
 
-      const saved = JSON.parse(localStorage.getItem("ironSharpenerMinistry.lastRef") || "null");
+      const saved = JSON.parse(localStorage.getItem(`${storagePrefix}.lastRef`) || "null");
 
       bookSel.value = saved?.book || "Hebrews";
       fillChapters();
@@ -2181,11 +2334,16 @@
         }
       };
 
-      $("highlightTool").onclick = () => setTool("highlight");
-      $("pointerTool").onclick = () => setTool("pointer");
-      $("focusTool").onclick = () => setTool("focus");
-      $("clearMarks").onclick = clearMarks;
-      $("copyPassage").onclick = copyPassageText;
+      if ($("highlightTool")) $("highlightTool").onclick = () => setTool("highlight");
+      if ($("pointerTool")) $("pointerTool").onclick = () => setTool("pointer");
+      if ($("focusTool")) $("focusTool").onclick = () => setTool("focus");
+      if ($("clearMarks")) $("clearMarks").onclick = clearMarks;
+      if ($("copyPassage")) $("copyPassage").onclick = copyPassageText;
+
+      if ($("obsHighlightTool")) $("obsHighlightTool").onclick = () => setTool("highlight");
+      if ($("obsPointerTool")) $("obsPointerTool").onclick = () => setTool("pointer");
+      if ($("obsFocusTool")) $("obsFocusTool").onclick = () => setTool("focus");
+      if ($("obsClearMarks")) $("obsClearMarks").onclick = clearMarks;
 
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
@@ -2194,12 +2352,14 @@
       });
 
       restoreThemeMode();
-      ["teachingNotes", "crossRefs", "applicationNotes", "clipNotes"].forEach(saveField);
+      saveField("teachingNotes"); saveField("crossRefs"); saveField("applicationNotes"); saveField("clipNotes");
+      initTooltips();
       setTool("highlight");
       loadPassage();
     }
 
     init();
   </script>
+
 </body>
 </html>
