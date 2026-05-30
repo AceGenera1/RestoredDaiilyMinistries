@@ -520,13 +520,16 @@
       left: 50%;
       bottom: 18px;
       transform: translateX(-50%);
-      z-index: 9999;
+      z-index: 10000;
       gap: 10px;
       padding: 10px;
       border: 2px solid var(--gold);
       border-radius: 14px;
       background: rgba(6,21,38,.96);
       box-shadow: 0 12px 34px rgba(0,0,0,.38);
+      max-width: calc(100vw - 28px);
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     html.obs .obs-tool-bar button {
@@ -536,51 +539,28 @@
     }
 
 
-    .obs-iron-btn,
     .iron-panel-wrapper {
       display: none;
     }
 
-    html.obs .obs-iron-btn {
-      display: inline-flex;
-      position: fixed;
-      top: 78px;
-      right: 14px;
-      z-index: 10000;
-      background: linear-gradient(145deg, #f8d987, #d99f31);
-      color: #061526;
-      border: 2px solid var(--gold);
-      border-radius: 14px;
-      padding: 11px 16px;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: .4px;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,.38);
-      transition: transform .22s ease, box-shadow .22s ease;
-    }
-
-    html.obs .obs-iron-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(0,0,0,.46);
-    }
+    
 
     html.obs .iron-panel-wrapper {
       display: block;
       position: fixed;
-      top: 132px;
-      right: 18px;
-      width: 380px;
-      max-height: 72vh;
+      left: 50%;
+      bottom: 86px;
+      width: min(520px, calc(100vw - 28px));
+      max-height: 66vh;
       overflow-y: auto;
       z-index: 9999;
-      transform: translateX(0);
+      transform: translateX(-50%) translateY(0);
       opacity: 1;
-      transition: transform .35s ease, opacity .35s ease;
+      transition: transform .28s ease, opacity .28s ease;
     }
 
     html.obs .iron-panel-wrapper.hidden {
-      transform: translateX(120%);
+      transform: translateX(-50%) translateY(24px);
       opacity: 0;
       pointer-events: none;
     }
@@ -725,11 +705,9 @@
       <button id="obsPointerTool">Pointer</button>
       <button id="obsFocusTool">Focus</button>
       <button id="obsClearMarks" class="secondary">Clear</button>
+      <button id="toggleIronPanel" class="secondary">I.R.O.N.</button>
     </div>
-
-    <button id="toggleIronPanel" class="obs-iron-btn">I.R.O.N. Prompts</button>
-
-    <div id="ironPanelWrapper" class="iron-panel-wrapper hidden">
+<div id="ironPanelWrapper" class="iron-panel-wrapper hidden">
       <div class="obs-iron-panel">
         <h3>I.R.O.N. Study Prompts</h3>
 
