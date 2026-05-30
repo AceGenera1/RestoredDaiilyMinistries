@@ -15,7 +15,7 @@ a{color:inherit}
 .hero{background:linear-gradient(90deg,rgba(2,9,19,.96),rgba(6,21,38,.98),rgba(2,9,19,.96));color:#fff;display:grid;grid-template-columns:260px 1fr 300px;gap:24px;align-items:center;padding:22px 28px 20px;border-bottom:2px solid var(--gold);position:relative}
 .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 13% 48%,rgba(244,199,108,.18),transparent 22%),radial-gradient(circle at 50% 10%,rgba(255,255,255,.06),transparent 30%);pointer-events:none}
 .logoWrap{position:relative;z-index:1;display:flex;justify-content:center}
-.logo{ width:226px; height:226px; border-radius:50%; object-fit:contain; object-position:center; padding:10px; background:radial-gradient(circle, #fff7e6 0%, #f3d78b 48%, #061526 100%); filter:drop-shadow(0 18px 28px rgba(0,0,0,.45)); border:2px solid var(--bright);}
+.logo{width:226px;height:226px;border-radius:50%;object-fit:cover;object-position:center;transform:scale(.82);filter:drop-shadow(0 18px 28px rgba(0,0,0,.45));border:2px solid var(--bright);background:#061526}
 .heroMain{position:relative;z-index:1;text-align:center}
 .eyebrow{letter-spacing:10px;color:var(--bright);font-weight:800;font-size:17px;text-transform:uppercase;margin:0 0 5px}
 h1{font-size:82px;line-height:.9;margin:0;text-transform:uppercase;letter-spacing:2px;text-shadow:0 4px 0 rgba(0,0,0,.35)}
@@ -73,7 +73,7 @@ html.obs .ribbon{display:block;padding:9px}
 html.obs .layout{display:block;padding:0;background:#fff7e6}
 html.obs .scripture{border-radius:0;border-left:0;border-right:0;min-height:calc(100vh - 245px);padding:42px 90px}
 html.obs .verse{font-size:31px;line-height:1.65}
-html.obs .actions{display:none}
+html.obs .actions{display:flex!important;position:fixed;top:16px;right:16px;z-index:9999}html.obs .actions button:not(#obsBtn){display:none!important}html.obs #obsBtn{display:inline-flex!important;background:#fff7e6!important;color:#061526!important;border:2px solid #d7a84f!important}
 @media(max-width:1050px){.hero{grid-template-columns:1fr;text-align:center}.verseCard{display:none}.controls{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1fr}.side{order:2}h1{font-size:56px}.logo{width:190px;height:190px}}
 @media(max-width:650px){body{padding:0}.shell{border-radius:0;border-left:0;border-right:0}.hero{padding:18px 14px}h1{font-size:42px}.subtitle{font-size:20px}.eyebrow{letter-spacing:5px}.controls{grid-template-columns:1fr;padding:16px}.layout{padding:16px}.scripture{padding:26px 24px}.verse{font-size:21px}.ref{font-size:25px}.ribbon{letter-spacing:3px;font-size:12px}.navArrow{display:none}}
 </style>
