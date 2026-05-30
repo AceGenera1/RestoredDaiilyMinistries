@@ -567,6 +567,89 @@
 
   </style>
 </head>
+<style>
+html.obs #ironPromptPanelBtn {
+  display: inline-flex !important;
+}
+
+#ironPromptPanelBtn {
+  display: none;
+}
+
+#ironPromptPanel {
+  display: none;
+}
+
+html.obs #ironPromptPanel.open {
+  display: block;
+  position: fixed;
+  left: 50%;
+  bottom: 92px;
+  transform: translateX(-50%);
+  width: min(540px, calc(100vw - 30px));
+  max-height: 68vh;
+  overflow-y: auto;
+  z-index: 10001;
+  background: linear-gradient(180deg, rgba(6,21,38,.98), rgba(8,27,48,.98));
+  color: #fff3cd;
+  border: 2px solid var(--gold);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 18px 38px rgba(0,0,0,.42);
+}
+
+#ironPromptPanel h3 {
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  color: var(--bright);
+  border-bottom: 1px solid var(--gold);
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+#ironPromptPanel p,
+#ironPromptPanel li {
+  font: 700 13px Arial, sans-serif;
+  line-height: 1.45;
+}
+
+#ironPromptPanel strong {
+  color: #fff;
+}
+</style>
+
+<div id="ironPromptPanel">
+  <h3>I.R.O.N. Study Prompts</h3>
+  <p><strong>I — Inspect the Scripture</strong><br>Read carefully and understand the passage in context.</p>
+  <p><strong>R — Reflect Prayerfully</strong><br>Slow down, meditate on the Word, and listen humbly before the Lord.</p>
+  <p><strong>O — Observe God’s Truth</strong><br>What does this reveal about God, Christ, sin, faith, obedience, or grace?</p>
+  <p><strong>N — Next Steps in Obedience</strong><br>How is the Holy Spirit leading you to respond through faith, repentance, action, encouragement, or obedience?</p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const obsToolbar = document.querySelector(".obs-tool-bar");
+  const panel = document.getElementById("ironPromptPanel");
+
+  if (!obsToolbar || !panel) return;
+
+  const btn = document.createElement("button");
+  btn.id = "ironPromptPanelBtn";
+  btn.type = "button";
+  btn.textContent = "I.R.O.N.";
+  btn.className = "secondary";
+
+  btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    panel.classList.toggle("open");
+  });
+
+  obsToolbar.appendChild(btn);
+});
+</script>
 <body>
   <div class="shell">
     <header class="hero">
