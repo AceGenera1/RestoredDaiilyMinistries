@@ -784,7 +784,7 @@
             <h3>Personal Notes</h3>
             <span class="info-wrap" tabindex="0">
               <span class="info-icon">i</span>
-              <span class="tooltip">Use this space for personal observations, teaching thoughts, prayers, applications, outlines, and study reflections.</span>
+              <span class="tooltip">Use this space for personal observations, teaching thoughts, prayers, applications, outlines, and study reflections. Notes save locally on this device/browser.</span>
             </span>
           </div>
           <textarea id="publicNotes"></textarea>
@@ -795,7 +795,7 @@
             <h3>Cross References</h3>
             <span class="info-wrap" tabindex="0">
               <span class="info-icon">i</span>
-              <span class="tooltip">Use this space for related Scriptures, parallel passages, prophecy connections, doctrinal support, word-study links, and supporting verses.</span>
+              <span class="tooltip">Use this space for related Scriptures, parallel passages, prophecy connections, doctrinal support, word-study links, and supporting verses. Cross references save locally on this device/browser.</span>
             </span>
           </div>
           <textarea id="crossRefs"></textarea>
@@ -2291,6 +2291,17 @@
       $("obsBtn").textContent = on ? "Leave Focus" : "OBS Focus";
     }
 
+    function setThemeMode(mode) {
+      const isDark = mode === "dark";
+      document.body.classList.toggle("dark", isDark);
+      localStorage.setItem("ironSharpener.theme", isDark ? "dark" : "cream");
+    }
+
+    function restoreThemeMode() {
+      const savedTheme = localStorage.getItem("ironSharpener.theme") || "cream";
+      document.body.classList.toggle("dark", savedTheme === "dark");
+    }
+
     function restoreNotes() {
       $("publicNotes").value = localStorage.getItem("ironSharpener.publicNotes") || "";
       $("crossRefs").value = localStorage.getItem("ironSharpener.crossRefs") || "";
@@ -2351,7 +2362,7 @@
       $("loadBtn").onclick = loadPassage;
       $("prevBtn").onclick = () => shiftRange(-1);
       $("nextBtn").onclick = () => shiftRange(1);
-      $("themeBtn").onclick = () => document.body.classList.toggle("dark");
+      $("themeBtn").onclick = () => setThemeMode(document.body.classList.contains("dark") ? "cream" : "dark");
       $("obsBtn").onclick = () => setObsMode(!document.documentElement.classList.contains("obs"));
       $("fsBtn").onclick = () => {
         if (!document.fullscreenElement) {
@@ -2367,6 +2378,7 @@
         }
       });
 
+      restoreThemeMode();
       restoreNotes();
       loadPassage();
     }
