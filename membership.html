@@ -699,6 +699,7 @@
           <a href="iron-sharpener.html">Iron Sharpener</a>
           <a class="active" href="community.html">Community</a>
           <a href="contact.html">Contact Us</a>
+          <a href="rights.html">Rights & Use</a>
         </nav>
       </div>
     </div>
@@ -934,27 +935,46 @@
   </footer>
 
   <script>
-    const menuButton = document.getElementById("menuButton");
-    const dropdown = document.getElementById("mainDropdown");
+    function initRestoredDailyMenu() {
+      const navControl = document.querySelector(".nav-control");
+      const menuButton = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("siteDropdownMenu");
 
-    menuButton.addEventListener("click", function () {
-      const isOpen = dropdown.classList.toggle("open");
-      menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
+      if (!navControl || !menuButton || !menu) return;
 
-    document.addEventListener("click", function (event) {
-      if (!menuButton.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.classList.remove("open");
+      function closeMenu() {
+        navControl.classList.remove("is-open");
         menuButton.setAttribute("aria-expanded", "false");
       }
-    });
 
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        dropdown.classList.remove("open");
-        menuButton.setAttribute("aria-expanded", "false");
+      function toggleMenu() {
+        const isOpen = navControl.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
       }
-    });
+
+      menuButton.addEventListener("click", function(event) {
+        event.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener("click", function(event) {
+        if (!navControl.contains(event.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+      });
+
+      menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
+    }
+
+    initRestoredDailyMenu();
   </script>
 </body>
 </html>
