@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restored Daily Ministries | Iron Sharpener</title>
+  <title>Iron Sharpener | Scripture Study & Teaching Tool</title>
   <style>
 
     :root {
@@ -215,7 +215,7 @@
 
     textarea {
       resize: vertical;
-      min-height: 118px;
+      min-height: 96px;
       line-height: 1.45;
     }
 
@@ -234,7 +234,7 @@
       padding: 30px 48px;
       position: relative;
       box-shadow: 0 10px 30px rgba(70,40,0,.08);
-      min-height: 560px;
+      min-height: 650px;
     }
 
     .ref {
@@ -348,7 +348,7 @@
       background: rgba(255,250,240,.94);
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 18px;
+      padding: 16px;
       box-shadow: 0 8px 22px rgba(70,40,0,.06);
     }
 
@@ -436,259 +436,19 @@
     }
 
 
-    
-    .iron-panel {
-      background:
-        radial-gradient(circle at 12% 0%, rgba(244,199,108,.18), transparent 30%),
-        linear-gradient(180deg, #fffaf0, #fff4dc);
-      color: #10213c;
-      border: 2px solid var(--gold);
-      box-shadow: 0 14px 30px rgba(0,0,0,.10);
-    }
-
-    .iron-panel h3 {
-      color: #8c5b09;
-      border-bottom: 1px solid var(--gold);
-      font-size: 22px;
-      letter-spacing: 1.5px;
-      text-align: center;
-    }
-
-    .iron-prompts {
-      font: 700 15px Arial, sans-serif;
-      line-height: 1.55;
-      color: #17304f;
-    }
-
-    .iron-prompts p {
-      margin: 0 0 13px;
-    }
-
-    .iron-prompts strong {
-      color: #061526;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 17px;
-    }
-
-    .iron-prayer {
-      margin-top: 14px;
-      padding: 12px;
-      border: 1px solid rgba(215,168,79,.65);
-      border-radius: 10px;
-      color: #8c5b09;
-      font: italic 700 15px Georgia, "Times New Roman", serif;
-      text-align: center;
-      background: rgba(244,199,108,.12);
-    }
-
-    body.dark .iron-panel {
-      background:
-        radial-gradient(circle at 12% 0%, rgba(244,199,108,.20), transparent 30%),
-        linear-gradient(180deg, rgba(6,21,38,.98), rgba(8,27,48,.96));
-      color: #fff3cd;
-      box-shadow: 0 14px 30px rgba(0,0,0,.22);
-    }
-
-    body.dark .iron-panel h3 {
-      color: var(--bright);
-    }
-
-    body.dark .iron-prompts {
-      color: #fff3d7;
-    }
-
-    body.dark .iron-prompts strong {
-      color: #fff;
-    }
-
-    body.dark .iron-prayer {
-      background: rgba(0,0,0,.18);
-      color: var(--bright);
-    }
-
-    .response-panel {
-      background: linear-gradient(180deg, #fff9ec, #fff2dc);
-      border: 1px solid rgba(215,168,79,.55);
-    }
-
-    .response-panel h3 {
-      color: #8c5b09;
-    }
-
-    .response-panel p {
-      font: 700 15px Arial, sans-serif;
-      line-height: 1.55;
-      color: #17304f;
-      margin: 0 0 12px;
-    }
-
-    .response-prayer {
-      margin-top: 12px;
-      padding: 12px;
-      border-left: 4px solid var(--gold);
-      background: rgba(244,199,108,.10);
-      border-radius: 8px;
-      font-style: italic;
-      color: #7d5310;
-      line-height: 1.5;
-    }
-
-    body.dark .response-panel {
-      background: linear-gradient(180deg, #10243d, #0c1f36);
-    }
-
-    body.dark .response-panel p {
-      color: #fff3d7;
-    }
-
-    body.dark .response-prayer {
-      background: rgba(0,0,0,.18);
-      color: var(--bright);
-    }
-
-    .study-reminder {
-      background:
-        radial-gradient(circle at top right, rgba(244,199,108,.15), transparent 26%),
-        linear-gradient(180deg, #fffdf6, #fff6e3);
-      border: 1px solid rgba(215,168,79,.55);
-    }
-
-    .study-reminder h3 {
-      color: #8c5b09;
-      text-align: center;
-    }
-
-    .study-reminder ul {
-      margin: 0;
-      padding-left: 18px;
-      line-height: 1.6;
-      color: #17304f;
-      font: 700 15px Arial, sans-serif;
-    }
-
-    .study-reminder li {
-      margin-bottom: 10px;
-    }
-
-    body.dark .study-reminder {
-      background:
-        radial-gradient(circle at top right, rgba(244,199,108,.15), transparent 26%),
-        linear-gradient(180deg, #10243d, #0c1f36);
-    }
-
-    body.dark .study-reminder ul {
-      color: #fff3d7;
-    }
-
-    html.obs .iron-panel {
-      display: block !important;
-      position: fixed;
-      right: 22px;
-      bottom: 86px;
-      z-index: 9998;
-      width: 360px;
-      max-height: 62vh;
-      overflow: auto;
-      padding: 14px;
-      border-radius: 12px;
-    }
-
-    html.obs .iron-panel h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    html.obs .iron-prompts {
-      font-size: 12px;
-      line-height: 1.35;
-    }
-
-    html.obs .iron-prompts strong {
-      font-size: 13px;
-    }
-
-    html.obs .iron-prayer {
-      font-size: 12px;
-      padding: 9px;
-      margin-top: 10px;
-    }
-
-
-
-    .stand-alone-panel {
-      border: 2px solid var(--gold);
-      box-shadow: 0 12px 26px rgba(0,0,0,.14);
-    }
-
-    .response-panel,
-    .study-reminder {
-      min-height: 185px;
-    }
-
-    .iron-panel {
-      min-height: 265px;
-    }
-
-    .side {
-      align-content: start;
-    }
-
-
-    .iron-panel {
-      min-height: 620px;
-      padding: 22px;
-    }
-
-    .iron-panel h3 {
-      margin-bottom: 16px;
-    }
-
-    .iron-prompts {
-      font-size: 16px;
+    .teaching-flow-list {
+      margin: 0 0 0 20px;
+      padding: 0;
       line-height: 1.65;
-    }
-
-    .iron-prompts p {
-      margin-bottom: 16px;
-    }
-
-    .iron-prompts strong {
-      font-size: 18px;
-    }
-
-    .iron-section-divider {
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 22px 0 18px;
-    }
-
-    .inner-section-title {
-      text-align: center;
-      color: #8c5b09;
-      font-size: 22px !important;
-      letter-spacing: 1.3px;
-      border-bottom: 1px solid var(--gold) !important;
-      padding-bottom: 8px !important;
-      margin: 0 0 14px !important;
-    }
-
-    .study-list {
-      margin: 0;
-      padding-left: 20px;
-      line-height: 1.7;
-      font: 700 16px Arial, sans-serif;
+      font: 700 15px Arial, sans-serif;
       color: #17304f;
     }
 
-    .study-list li {
-      margin-bottom: 10px;
+    .teaching-flow-list li {
+      margin-bottom: 7px;
     }
 
-    body.dark .inner-section-title {
-      color: var(--bright);
-    }
-
-    body.dark .study-list {
+    body.dark .teaching-flow-list {
       color: #fff3d7;
     }
 
@@ -696,19 +456,19 @@
       background: #061526;
       color: #fff3cd;
       text-align: center;
-      padding: 16px 22px;
+      padding: 18px;
       border-top: 2px solid var(--gold);
-      font-size: 17px;
-      line-height: 1.35;
+      font-size: 18px;
+      line-height: 1.5;
       display: grid;
       grid-template-columns: 1fr 2px 1fr;
-      gap: 28px;
+      gap: 36px;
       align-items: center;
     }
 
     .footer .sep {
       width: 2px;
-      height: 30px;
+      height: 36px;
       background: var(--gold);
       display: block;
       justify-self: center;
@@ -756,7 +516,7 @@
 
     html.obs body { padding: 0; background: #061526; }
     html.obs .shell { max-width: none; border: 0; border-radius: 0; box-shadow: none; }
-    html.obs .controls, html.obs .side .panel:not(.iron-panel), html.obs .footer { display: none !important; }
+    html.obs .controls, html.obs .side, html.obs .footer { display: none !important; }
     html.obs .hero { grid-template-columns: 145px 1fr; padding: 12px 18px; }
     html.obs .verse-card { display: none !important; }
     html.obs .logo-wrap { width: 126px; height: 126px; }
@@ -818,259 +578,19 @@
       .logo-wrap { width: 154px; height: 154px; }
       .logo { width: 148px; height: 148px; }
   
-    
-    .iron-panel {
-      background:
-        radial-gradient(circle at 12% 0%, rgba(244,199,108,.18), transparent 30%),
-        linear-gradient(180deg, #fffaf0, #fff4dc);
-      color: #10213c;
-      border: 2px solid var(--gold);
-      box-shadow: 0 14px 30px rgba(0,0,0,.10);
-    }
-
-    .iron-panel h3 {
-      color: #8c5b09;
-      border-bottom: 1px solid var(--gold);
-      font-size: 22px;
-      letter-spacing: 1.5px;
-      text-align: center;
-    }
-
-    .iron-prompts {
-      font: 700 15px Arial, sans-serif;
-      line-height: 1.55;
-      color: #17304f;
-    }
-
-    .iron-prompts p {
-      margin: 0 0 13px;
-    }
-
-    .iron-prompts strong {
-      color: #061526;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 17px;
-    }
-
-    .iron-prayer {
-      margin-top: 14px;
-      padding: 12px;
-      border: 1px solid rgba(215,168,79,.65);
-      border-radius: 10px;
-      color: #8c5b09;
-      font: italic 700 15px Georgia, "Times New Roman", serif;
-      text-align: center;
-      background: rgba(244,199,108,.12);
-    }
-
-    body.dark .iron-panel {
-      background:
-        radial-gradient(circle at 12% 0%, rgba(244,199,108,.20), transparent 30%),
-        linear-gradient(180deg, rgba(6,21,38,.98), rgba(8,27,48,.96));
-      color: #fff3cd;
-      box-shadow: 0 14px 30px rgba(0,0,0,.22);
-    }
-
-    body.dark .iron-panel h3 {
-      color: var(--bright);
-    }
-
-    body.dark .iron-prompts {
-      color: #fff3d7;
-    }
-
-    body.dark .iron-prompts strong {
-      color: #fff;
-    }
-
-    body.dark .iron-prayer {
-      background: rgba(0,0,0,.18);
-      color: var(--bright);
-    }
-
-    .response-panel {
-      background: linear-gradient(180deg, #fff9ec, #fff2dc);
-      border: 1px solid rgba(215,168,79,.55);
-    }
-
-    .response-panel h3 {
-      color: #8c5b09;
-    }
-
-    .response-panel p {
-      font: 700 15px Arial, sans-serif;
-      line-height: 1.55;
-      color: #17304f;
-      margin: 0 0 12px;
-    }
-
-    .response-prayer {
-      margin-top: 12px;
-      padding: 12px;
-      border-left: 4px solid var(--gold);
-      background: rgba(244,199,108,.10);
-      border-radius: 8px;
-      font-style: italic;
-      color: #7d5310;
-      line-height: 1.5;
-    }
-
-    body.dark .response-panel {
-      background: linear-gradient(180deg, #10243d, #0c1f36);
-    }
-
-    body.dark .response-panel p {
-      color: #fff3d7;
-    }
-
-    body.dark .response-prayer {
-      background: rgba(0,0,0,.18);
-      color: var(--bright);
-    }
-
-    .study-reminder {
-      background:
-        radial-gradient(circle at top right, rgba(244,199,108,.15), transparent 26%),
-        linear-gradient(180deg, #fffdf6, #fff6e3);
-      border: 1px solid rgba(215,168,79,.55);
-    }
-
-    .study-reminder h3 {
-      color: #8c5b09;
-      text-align: center;
-    }
-
-    .study-reminder ul {
-      margin: 0;
-      padding-left: 18px;
-      line-height: 1.6;
-      color: #17304f;
-      font: 700 15px Arial, sans-serif;
-    }
-
-    .study-reminder li {
-      margin-bottom: 10px;
-    }
-
-    body.dark .study-reminder {
-      background:
-        radial-gradient(circle at top right, rgba(244,199,108,.15), transparent 26%),
-        linear-gradient(180deg, #10243d, #0c1f36);
-    }
-
-    body.dark .study-reminder ul {
-      color: #fff3d7;
-    }
-
-    html.obs .iron-panel {
-      display: block !important;
-      position: fixed;
-      right: 22px;
-      bottom: 86px;
-      z-index: 9998;
-      width: 360px;
-      max-height: 62vh;
-      overflow: auto;
-      padding: 14px;
-      border-radius: 12px;
-    }
-
-    html.obs .iron-panel h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    html.obs .iron-prompts {
-      font-size: 12px;
-      line-height: 1.35;
-    }
-
-    html.obs .iron-prompts strong {
-      font-size: 13px;
-    }
-
-    html.obs .iron-prayer {
-      font-size: 12px;
-      padding: 9px;
-      margin-top: 10px;
-    }
-
-
-
-    .stand-alone-panel {
-      border: 2px solid var(--gold);
-      box-shadow: 0 12px 26px rgba(0,0,0,.14);
-    }
-
-    .response-panel,
-    .study-reminder {
-      min-height: 185px;
-    }
-
-    .iron-panel {
-      min-height: 265px;
-    }
-
-    .side {
-      align-content: start;
-    }
-
-
-    .iron-panel {
-      min-height: 620px;
-      padding: 22px;
-    }
-
-    .iron-panel h3 {
-      margin-bottom: 16px;
-    }
-
-    .iron-prompts {
-      font-size: 16px;
+    .teaching-flow-list {
+      margin: 0 0 0 20px;
+      padding: 0;
       line-height: 1.65;
-    }
-
-    .iron-prompts p {
-      margin-bottom: 16px;
-    }
-
-    .iron-prompts strong {
-      font-size: 18px;
-    }
-
-    .iron-section-divider {
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 22px 0 18px;
-    }
-
-    .inner-section-title {
-      text-align: center;
-      color: #8c5b09;
-      font-size: 22px !important;
-      letter-spacing: 1.3px;
-      border-bottom: 1px solid var(--gold) !important;
-      padding-bottom: 8px !important;
-      margin: 0 0 14px !important;
-    }
-
-    .study-list {
-      margin: 0;
-      padding-left: 20px;
-      line-height: 1.7;
-      font: 700 16px Arial, sans-serif;
+      font: 700 15px Arial, sans-serif;
       color: #17304f;
     }
 
-    .study-list li {
-      margin-bottom: 10px;
+    .teaching-flow-list li {
+      margin-bottom: 7px;
     }
 
-    body.dark .inner-section-title {
-      color: var(--bright);
-    }
-
-    body.dark .study-list {
+    body.dark .teaching-flow-list {
       color: #fff3d7;
     }
 
@@ -1091,7 +611,7 @@
       <div class="hero-main">
         <p class="eyebrow">Restored Daily Ministries</p>
         <h1>Iron Sharpener</h1>
-        <p class="subtitle">Scripture-centered study and discipleship through the Word of God.</p>
+        <p class="subtitle">Scripture study, discipleship, and live teaching tools.</p>
         <div class="actions">
           <button id="themeBtn" class="secondary">Cream / Dark</button>
           <button id="obsBtn" class="dark-btn">OBS Focus</button>
@@ -1105,9 +625,9 @@
       </aside>
     </header>
 
-    <div class="ribbon">Restored by grace &nbsp; ✦ &nbsp; Renewed daily &nbsp; ✦ &nbsp; Sent on mission</div>
+    <div class="ribbon">Prepared in prayer &nbsp; ✦ &nbsp; Taught with clarity &nbsp; ✦ &nbsp; Shared for discipleship</div>
 
-    <div class="obs-tool-bar" aria-label="OBS study tools">
+    <div class="obs-tool-bar" aria-label="OBS teaching tools">
       <button id="obsHighlightTool">Highlight</button>
       <button id="obsPointerTool">Pointer</button>
       <button id="obsFocusTool">Focus</button>
@@ -1151,77 +671,43 @@
 
       <aside class="side">
         <div class="panel">
-          <h3>Live Study Tools</h3>
+          <h3>Live Teaching Tools</h3>
           <div class="tool-grid three">
             <button id="highlightTool">Highlight</button>
             <button id="pointerTool">Pointer</button>
             <button id="focusTool">Focus</button>
           </div>
           <br>
-          <button id="clearMarks" class="secondary">Clear Marks</button>
+          <div class="tool-grid">
+            <button id="clearMarks" class="secondary">Clear Marks</button>
+            <button id="copyPassage" class="secondary">Copy Passage</button>
+          </div>
         </div>
+
 
         <div class="panel">
-          <div class="panel-title">
-            <h3>Personal Notes</h3>
-            <span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this space for personal observations, teaching thoughts, prayers, applications, outlines, and study reflections. Notes save locally on this device/browser.</span></span>
-          </div>
-          <textarea id="publicNotes"></textarea>
+          <h3>Teaching Flow</h3>
+          <ul class="teaching-flow-list">
+            <li>Read slowly and clearly.</li>
+            <li>Teach 3–5 verses at a time.</li>
+            <li>Observe the context carefully.</li>
+            <li>Point people to Christ.</li>
+            <li>Pause and reflect prayerfully.</li>
+            <li>Let Scripture lead the teaching.</li>
+          </ul>
         </div>
 
-        <div class="panel">
-          <div class="panel-title">
-            <h3>Cross References</h3>
-            <span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this space for related Scriptures, parallel passages, prophecy connections, doctrinal support, word-study links, and supporting verses. Cross references save locally on this device/browser.</span></span>
-          </div>
-          <textarea id="crossRefs"></textarea>
-        </div>
-
-        <div class="panel iron-panel">
-          <h3>I.R.O.N. STUDY PROMPTS</h3>
-
-          <div class="iron-prompts">
-            <p><strong>I — Inspect the Scripture</strong><br>Read carefully and understand the passage in context.</p>
-            <p><strong>R — Reflect Prayerfully</strong><br>Slow down, meditate on the Word, and listen humbly before the Lord.</p>
-            <p><strong>O — Observe God’s Truth</strong><br>What does this reveal about God, Christ, sin, faith, obedience, or grace?</p>
-            <p><strong>N — Next Steps in Obedience</strong><br>How is the Holy Spirit leading you to respond through faith, repentance, action, encouragement, or obedience?</p>
-
-            <div class="iron-prayer">Ask the Lord for wisdom, discernment, and a willing heart to obey His Word.</div>
-
-            <div class="iron-section-divider"></div>
-
-            <h3 class="inner-section-title">Prayerful Response</h3>
-            <p><strong>Ask the Lord:</strong></p>
-            <p>• What are You teaching me through this passage?<br>
-            • Is there something I need to repent of, surrender, believe, obey, or share?<br>
-            • How should this change the way I live today?</p>
-
-            <div class="response-prayer">“Lord Jesus, help me not only hear Your Word, but walk in obedience to it.”</div>
-
-            <div class="iron-section-divider"></div>
-
-            <h3 class="inner-section-title">Study Reminder</h3>
-            <ul class="study-list">
-              <li>Read slowly and carefully.</li>
-              <li>Stay rooted in the context of Scripture.</li>
-              <li>Let Scripture interpret Scripture.</li>
-              <li>Pray for wisdom, discernment, and humility.</li>
-              <li>Listen for the guidance of the Holy Spirit through God’s Word.</li>
-            </ul>
-          </div>
-        </div>
-
-
-
-        </div>
-
+        <div class="panel"><h3>Teaching Notes</h3><textarea id="teachingNotes" placeholder="Main teaching notes, outline, explanations..."></textarea></div>
+        <div class="panel"><h3>Cross References</h3><textarea id="crossRefs" placeholder="Supporting Scriptures, parallel passages, prophecy links..."></textarea></div>
+        <div class="panel"><h3>Application & Prayer</h3><textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea></div>
+        <div class="panel"><h3>Clip / Timestamp Notes</h3><textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea></div>
       </aside>
     </main>
 
     <footer class="footer">
       <strong>World English Bible (WEB) scripture text is public domain.</strong>
       <span class="sep"></span>
-      <strong>Iron Sharpener is a Scripture study and discipleship tool created by<br>Restored Daily Ministries.</strong>
+      <strong>Iron Sharpener™ is a Scripture study and teaching tool created by<br>Restored Daily Ministries™.</strong>
     </footer>
   </div>
 
@@ -2550,7 +2036,7 @@
             21
       ]
 };
-    const storagePrefix = "ironSharpener";
+    const storagePrefix = "ironSharpenerUnified";
     const $ = (id) => document.getElementById(id);
 
     const bookSel = $("book");
@@ -2765,6 +2251,11 @@
     function setObsMode(on) {
       document.documentElement.classList.toggle("obs", on);
       $("obsBtn").textContent = on ? "Leave Focus" : "OBS Focus";
+
+      const ironPanel = document.getElementById("ironPromptPanel");
+      if (ironPanel) {
+        ironPanel.classList.remove("open");
+      }
     }
 
     function setThemeMode(mode) {
@@ -2774,8 +2265,12 @@
     }
 
     function restoreThemeMode() {
+      const params = new URLSearchParams(window.location.search);
+      const urlTheme = params.get("theme");
       const savedTheme = localStorage.getItem(`${storagePrefix}.theme`) || "cream";
-      document.body.classList.toggle("dark", savedTheme === "dark");
+      const finalTheme = urlTheme || savedTheme;
+
+      document.body.classList.toggle("dark", finalTheme === "dark");
     }
 
     function saveField(id) {
@@ -2913,7 +2408,7 @@
       });
 
       restoreThemeMode();
-      saveField("publicNotes"); saveField("crossRefs");
+      saveField("teachingNotes"); saveField("crossRefs"); saveField("applicationNotes"); saveField("clipNotes");
       initTooltips();
       setTool("highlight");
       loadPassage();
@@ -2921,6 +2416,142 @@
 
     init();
   </script>
+
+
+<style>
+html.obs #ironPromptPanelBtn {
+  display: inline-flex !important;
+}
+
+#ironPromptPanelBtn {
+  display: none;
+}
+
+#ironPromptPanel {
+  display: none;
+}
+
+html.obs #ironPromptPanel.open {
+  display: block;
+  position: fixed;
+  left: 50%;
+  bottom: 92px;
+  transform: translateX(-50%);
+  width: min(540px, calc(100vw - 30px));
+  max-height: 68vh;
+  overflow-y: auto;
+  z-index: 10001;
+  border: 2px solid var(--gold);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 18px 38px rgba(0,0,0,.42);
+}
+
+html.obs body:not(.dark) #ironPromptPanel {
+  background: linear-gradient(180deg, #fffaf0, #fff4dc) !important;
+  color: #10213c !important;
+}
+
+html.obs body.dark #ironPromptPanel {
+  background: linear-gradient(180deg, rgba(6,21,38,.98), rgba(8,27,48,.98)) !important;
+  color: #fff3cd !important;
+}
+
+#ironPromptPanel h3 {
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gold);
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+}
+
+html.obs body:not(.dark) #ironPromptPanel h3 {
+  color: #8c5b09 !important;
+}
+
+html.obs body.dark #ironPromptPanel h3 {
+  color: var(--bright) !important;
+}
+
+#ironPromptPanel p,
+#ironPromptPanel li {
+  font: 700 13px Arial, sans-serif;
+  line-height: 1.45;
+}
+
+html.obs body:not(.dark) #ironPromptPanel p,
+html.obs body:not(.dark) #ironPromptPanel li {
+  color: #17304f !important;
+}
+
+html.obs body.dark #ironPromptPanel p,
+html.obs body.dark #ironPromptPanel li {
+  color: #fff3d7 !important;
+}
+
+html.obs body:not(.dark) #ironPromptPanel strong {
+  color: #061526 !important;
+}
+
+html.obs body.dark #ironPromptPanel strong {
+  color: #fff !important;
+}
+
+#ironPromptPanel .iron-mini-prayer {
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid rgba(215,168,79,.65);
+  border-radius: 10px;
+  font: italic 700 13px Georgia, "Times New Roman", serif;
+  text-align: center;
+}
+
+html.obs body:not(.dark) #ironPromptPanel .iron-mini-prayer {
+  background: rgba(244,199,108,.13);
+  color: #8c5b09 !important;
+}
+
+html.obs body.dark #ironPromptPanel .iron-mini-prayer {
+  background: rgba(0,0,0,.18);
+  color: var(--bright) !important;
+}
+</style>
+
+<div id="ironPromptPanel">
+  <h3>I.R.O.N. Study Prompts</h3>
+  <p><strong>I — Inspect the Scripture</strong><br>Read carefully and understand the passage in context.</p>
+  <p><strong>R — Reflect Prayerfully</strong><br>Slow down, meditate on the Word, and listen humbly before the Lord.</p>
+  <p><strong>O — Observe God’s Truth</strong><br>What does this reveal about God, Christ, sin, faith, obedience, or grace?</p>
+  <p><strong>N — Next Steps in Obedience</strong><br>How is the Holy Spirit leading you to respond through faith, repentance, action, encouragement, or obedience?</p>
+  <div class="iron-mini-prayer">Ask the Lord for wisdom, discernment, and a willing heart to obey His Word.</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const obsToolbar = document.querySelector(".obs-tool-bar");
+  const panel = document.getElementById("ironPromptPanel");
+
+  if (!obsToolbar || !panel) return;
+
+  if (document.getElementById("ironPromptPanelBtn")) return;
+
+  const btn = document.createElement("button");
+  btn.id = "ironPromptPanelBtn";
+  btn.type = "button";
+  btn.textContent = "I.R.O.N.";
+  btn.className = "secondary";
+
+  btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    panel.classList.toggle("open");
+  });
+
+  obsToolbar.appendChild(btn);
+});
+</script>
 
 </body>
 </html>
