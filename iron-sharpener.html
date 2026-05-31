@@ -1259,6 +1259,46 @@
       border-color: rgba(183,116,16,.55) !important;
     }
 
+
+    /* Dropdown Readability + Refresh Button Cleanup */
+    select {
+      color-scheme: light;
+    }
+
+    select option {
+      background: #fffaf0 !important;
+      color: #061526 !important;
+      font-weight: 800;
+    }
+
+    body.dark select {
+      color-scheme: dark;
+      background: #0d2139 !important;
+      color: #fff7df !important;
+    }
+
+    body.dark select option {
+      background: #0d2139 !important;
+      color: #fff7df !important;
+      font-weight: 800;
+    }
+
+    body.dark select option:checked,
+    body.dark select option:hover {
+      background: #d7a84f !important;
+      color: #061526 !important;
+    }
+
+    body:not(.dark) select option:checked,
+    body:not(.dark) select option:hover {
+      background: #d7a84f !important;
+      color: #061526 !important;
+    }
+
+    #loadBtn {
+      white-space: nowrap;
+    }
+
 </style>
 </head>
 <body>
@@ -1313,7 +1353,7 @@
           <option value="full">Full Chapter</option>
         </select>
       </div>
-      <button id="loadBtn">📖 Load Passage</button>
+      <button id="loadBtn" title="Refresh the current passage if it does not load correctly.">↻ Refresh Passage</button>
     </section>
 
     <main class="layout">
