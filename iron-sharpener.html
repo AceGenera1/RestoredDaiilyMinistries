@@ -824,6 +824,59 @@
       }
     }
 
+
+    /* Word/Phrase Deep Study Markup */
+    .inline-underline {
+      text-decoration: underline;
+      text-decoration-thickness: 4px;
+      text-decoration-color: var(--gold);
+      text-underline-offset: 6px;
+      border-radius: 4px;
+    }
+
+    .inline-circle {
+      display: inline-block;
+      border: 3px solid var(--gold);
+      border-radius: 999px;
+      padding: 0 7px 1px;
+      margin: 0 2px;
+      line-height: 1.15;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.12);
+    }
+
+    .inline-box {
+      display: inline-block;
+      border: 3px solid var(--gold);
+      border-radius: 6px;
+      padding: 0 6px 1px;
+      margin: 0 2px;
+      line-height: 1.15;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.12);
+    }
+
+    body.dark .inline-underline {
+      text-decoration-color: #f8d987;
+    }
+
+    body.dark .inline-circle,
+    body.dark .inline-box {
+      border-color: #f8d987;
+      box-shadow: 0 0 12px rgba(248,217,135,.18);
+    }
+
+    body.dark .scripture.focus-mode .verse.focused {
+      background: linear-gradient(90deg, rgba(248,217,135,.34), rgba(248,217,135,.12));
+      outline: 2px solid rgba(248,217,135,.92);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 0 24px rgba(248,217,135,.22);
+      color: #fff8df;
+    }
+
+    body:not(.dark) .scripture.focus-mode .verse.focused {
+      background: linear-gradient(90deg, rgba(244,199,108,.38), rgba(244,199,108,.13));
+      outline: 2px solid rgba(215,168,79,.78);
+      box-shadow: 0 8px 20px rgba(215,168,79,.12);
+    }
+
     @media (max-width: 1050px) {
       .hero { grid-template-columns: 1fr; text-align: center; }
       .verse-card { display: block; max-width: 520px; margin: 0 auto; }
@@ -991,15 +1044,15 @@
       <div class="tool-section-title">Teaching Marks</div>
       <div class="tool-options">
         <button type="button" class="tool-option" data-tool="pointer"><strong>➤ Pointer</strong><span>Marks one verse with an arrow so viewers know exactly where you are focusing.</span></button>
-        <button type="button" class="tool-option" data-tool="underline"><strong>Underline</strong><span>Underlines a verse to emphasize a phrase, command, promise, or repeated idea.</span></button>
-        <button type="button" class="tool-option" data-tool="circle"><strong>Circle</strong><span>Creates rounded emphasis around a verse to slow attention and make it stand out.</span></button>
-        <button type="button" class="tool-option" data-tool="box"><strong>Box</strong><span>Places a teaching box around a verse for structure, comparison, or major points.</span></button>
+        <button type="button" class="tool-option" data-tool="underline"><strong>Underline</strong><span>Select a word or phrase first to underline only that text, or click a verse to underline the whole verse.</span></button>
+        <button type="button" class="tool-option" data-tool="circle"><strong>Circle</strong><span>Select a word, phrase, or even a single letter first to circle only that text, or click a verse to circle the whole verse.</span></button>
+        <button type="button" class="tool-option" data-tool="box"><strong>Box</strong><span>Select a word or group of words first to box in only that text, or click a verse to box the whole verse.</span></button>
         <button type="button" class="tool-option" data-tool="focus"><strong>Focus</strong><span>Dims the rest of the passage and spotlights one verse for reading or explanation.</span></button>
         <button type="button" class="tool-option" data-tool="erase"><strong>Erase Verse Marks</strong><span>Click a marked verse to remove its highlight, pointer, underline, circle, box, and focus.</span></button>
       </div>
 
       <div class="teacher-pop-note">
-        Choose a tool, then click a verse to apply it. These tools are meant to serve the Word, not distract from it.
+        Choose a tool, then click a verse to apply it. For underline, circle, or box, you can also select a word or phrase first, then click inside that verse to mark only the selected text.
       </div>
     </div>
 
@@ -2369,6 +2422,7 @@
         underlined: [],
         circled: [],
         boxed: [],
+        inlineHtml: {},
         pointed: document.querySelector(".verse.pointed")?.dataset.v || "",
         focused: document.querySelector(".verse.focused")?.dataset.v || ""
       };
@@ -2385,6 +2439,10 @@
         if (verse.classList.contains("underlined")) marks.underlined.push(v);
         if (verse.classList.contains("circled")) marks.circled.push(v);
         if (verse.classList.contains("boxed")) marks.boxed.push(v);
+
+        if (verse.querySelector(".inline-underline, .inline-circle, .inline-box")) {
+          marks.inlineHtml[v] = verse.innerHTML;
+        }
       });
 
       return marks;
@@ -2413,6 +2471,10 @@
         if ((saved.underlined || []).includes(v)) verse.classList.add("underlined");
         if ((saved.circled || []).includes(v)) verse.classList.add("circled");
         if ((saved.boxed || []).includes(v)) verse.classList.add("boxed");
+
+        if (saved.inlineHtml && saved.inlineHtml[v]) {
+          verse.innerHTML = saved.inlineHtml[v];
+        }
 
         if (saved.pointed === v) {
           verse.classList.add("pointed");
@@ -2491,6 +2553,62 @@
       return (text || "").replace(/\s+/g, " ").trim();
     }
 
+    function getSelectionRangeInsideVerse(verse) {
+      const selection = window.getSelection();
+
+      if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
+        return null;
+      }
+
+      const range = selection.getRangeAt(0);
+
+      if (!verse.contains(range.commonAncestorContainer)) {
+        return null;
+      }
+
+      const selectedText = selection.toString().trim();
+      if (!selectedText) {
+        return null;
+      }
+
+      return range;
+    }
+
+    function wrapSelectedTextInVerse(verse, className) {
+      const range = getSelectionRangeInsideVerse(verse);
+
+      if (!range) {
+        return false;
+      }
+
+      const span = document.createElement("span");
+      span.className = className;
+
+      try {
+        range.surroundContents(span);
+      } catch (error) {
+        const contents = range.extractContents();
+        span.appendChild(contents);
+        range.insertNode(span);
+      }
+
+      const selection = window.getSelection();
+      if (selection) selection.removeAllRanges();
+
+      return true;
+    }
+
+    function removeInlineMarksFromVerse(verse) {
+      verse.querySelectorAll(".inline-underline, .inline-circle, .inline-box").forEach((span) => {
+        const parent = span.parentNode;
+        while (span.firstChild) {
+          parent.insertBefore(span.firstChild, span);
+        }
+        parent.removeChild(span);
+        parent.normalize();
+      });
+    }
+
     function useActiveTool(verse) {
       const highlightClasses = ["highlighted", "highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple"];
 
@@ -2512,15 +2630,21 @@
       }
 
       if (activeTool === "underline") {
-        verse.classList.toggle("underlined");
+        if (!wrapSelectedTextInVerse(verse, "inline-underline")) {
+          verse.classList.toggle("underlined");
+        }
       }
 
       if (activeTool === "circle") {
-        verse.classList.toggle("circled");
+        if (!wrapSelectedTextInVerse(verse, "inline-circle")) {
+          verse.classList.toggle("circled");
+        }
       }
 
       if (activeTool === "box") {
-        verse.classList.toggle("boxed");
+        if (!wrapSelectedTextInVerse(verse, "inline-box")) {
+          verse.classList.toggle("boxed");
+        }
       }
 
       if (activeTool === "focus") {
@@ -2531,6 +2655,8 @@
 
       if (activeTool === "erase") {
         verse.classList.remove("highlighted", "highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple", "pointed", "focused", "underlined", "circled", "boxed");
+        removeInlineMarksFromVerse(verse);
+        removeInlineMarksFromVerse(verse);
         if (!document.querySelector(".verse.focused")) {
           scriptureBox.classList.remove("focus-mode");
         }
@@ -2670,6 +2796,7 @@
       scriptureBox.classList.remove("focus-mode");
       document.querySelectorAll(".verse").forEach((verse) => {
         verse.classList.remove("highlighted", "highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple", "pointed", "focused", "underlined", "circled", "boxed");
+        removeInlineMarksFromVerse(verse);
       });
       localStorage.removeItem(passageKey());
     }
