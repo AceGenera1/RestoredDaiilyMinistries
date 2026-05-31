@@ -415,7 +415,7 @@
       position: absolute;
       right: 0;
       top: 30px;
-      width: 285px;
+      width: 315px;
       background: #061526;
       color: #fff7e6;
       border: 1.5px solid var(--gold);
@@ -671,7 +671,7 @@
 
       <aside class="side">
         <div class="panel">
-          <h3>Live Teaching Tools</h3>
+          <div class="panel-title"><h3>Live Teaching Tools</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use these tools while studying, teaching, or recording. Highlight emphasizes verses, Pointer marks a verse, Focus dims everything except the selected verse, Clear removes marks, and Copy Passage copies the displayed Scripture text.</span></span></div>
           <div class="tool-grid three">
             <button id="highlightTool">Highlight</button>
             <button id="pointerTool">Pointer</button>
@@ -686,7 +686,7 @@
 
 
         <div class="panel">
-          <h3>Teaching Flow</h3>
+          <div class="panel-title"><h3>Teaching Flow</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">This is only a suggested teaching rhythm, not a rule. It helps you slow down, teach Scripture in manageable sections, observe context, point people to Christ, and leave room for prayerful reflection.</span></span></div>
           <ul class="teaching-flow-list">
             <li>Read slowly and clearly.</li>
             <li>Teach 3–5 verses at a time.</li>
@@ -697,10 +697,10 @@
           </ul>
         </div>
 
-        <div class="panel"><h3>Teaching Notes</h3><textarea id="teachingNotes" placeholder="Main teaching notes, outline, explanations..."></textarea></div>
-        <div class="panel"><h3>Cross References</h3><textarea id="crossRefs" placeholder="Supporting Scriptures, parallel passages, prophecy links..."></textarea></div>
-        <div class="panel"><h3>Application & Prayer</h3><textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea></div>
-        <div class="panel"><h3>Clip / Timestamp Notes</h3><textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea></div>
+        <div class="panel"><div class="panel-title"><h3>Teaching Notes</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area for main thoughts, teaching reminders, outline points, explanations, Spirit-led impressions, or anything you want to remember while walking through the passage. These notes save in this browser on this device.</span></span></div><textarea id="teachingNotes" placeholder="Main teaching notes, outline, explanations..."></textarea></div>
+        <div class="panel"><div class="panel-title"><h3>Cross References</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area for related Scriptures, supporting passages, Old and New Testament connections, fulfilled prophecy, repeated themes, word studies, or verses that help Scripture interpret Scripture.</span></span></div><textarea id="crossRefs" placeholder="Supporting Scriptures, parallel passages, prophecy links..."></textarea></div>
+        <div class="panel"><div class="panel-title"><h3>Application & Prayer</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area for how the passage should shape faith, repentance, obedience, encouragement, surrender, prayer points, altar-call thoughts, or pastoral application for real life.</span></span></div><textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea></div>
+        <div class="panel"><div class="panel-title"><h3>Clip / Timestamp Notes</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area during or after recording to mark strong moments, possible short clips, key quotes, video description notes, podcast summary ideas, or timestamps you want to revisit later.</span></span></div><textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea></div>
       </aside>
     </main>
 
@@ -2519,6 +2519,7 @@ html.obs body.dark #ironPromptPanel .iron-mini-prayer {
 }
 </style>
 
+
 <div id="ironPromptPanel">
   <h3>I.R.O.N. Study Prompts</h3>
   <p><strong>I — Inspect the Scripture</strong><br>Read carefully and understand the passage in context.</p>
@@ -2526,7 +2527,28 @@ html.obs body.dark #ironPromptPanel .iron-mini-prayer {
   <p><strong>O — Observe God’s Truth</strong><br>What does this reveal about God, Christ, sin, faith, obedience, or grace?</p>
   <p><strong>N — Next Steps in Obedience</strong><br>How is the Holy Spirit leading you to respond through faith, repentance, action, encouragement, or obedience?</p>
   <div class="iron-mini-prayer">Ask the Lord for wisdom, discernment, and a willing heart to obey His Word.</div>
+
+  <div class="iron-panel-divider"></div>
+
+  <h3>Prayerful Response</h3>
+  <p><strong>Ask the Lord:</strong></p>
+  <p>• What are You teaching me through this passage?<br>
+  • Is there something I need to repent of, surrender, believe, obey, or share?<br>
+  • How should this change the way I live today?</p>
+  <div class="iron-mini-prayer">Lord Jesus, help me not only hear Your Word, but walk in obedience to it.</div>
+
+  <div class="iron-panel-divider"></div>
+
+  <h3>Study Reminder</h3>
+  <ul class="iron-study-list">
+    <li>Read slowly and carefully.</li>
+    <li>Stay rooted in the context of Scripture.</li>
+    <li>Let Scripture interpret Scripture.</li>
+    <li>Pray for wisdom, discernment, and humility.</li>
+    <li>Listen for the guidance of the Holy Spirit through God’s Word.</li>
+  </ul>
 </div>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
