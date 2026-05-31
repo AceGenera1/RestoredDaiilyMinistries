@@ -2356,7 +2356,6 @@
       });
 
       return marks;
-    };
     }
 
     function saveMarks() {
@@ -2385,17 +2384,6 @@
         }
 
         if (saved.focused === v) {
-          scriptureBox.classList.add("focus-mode");
-          verse.classList.add("focused");
-        }
-      });
-    }
-
-        if (saved.pointed === verse.dataset.v) {
-          verse.classList.add("pointed");
-        }
-
-        if (saved.focused === verse.dataset.v) {
           scriptureBox.classList.add("focus-mode");
           verse.classList.add("focused");
         }
@@ -2509,20 +2497,6 @@
         if (!document.querySelector(".verse.focused")) {
           scriptureBox.classList.remove("focus-mode");
         }
-      }
-
-      saveMarks();
-    }
-
-      if (activeTool === "pointer") {
-        document.querySelectorAll(".verse.pointed").forEach((item) => item.classList.remove("pointed"));
-        verse.classList.add("pointed");
-      }
-
-      if (activeTool === "focus") {
-        scriptureBox.classList.add("focus-mode");
-        document.querySelectorAll(".verse.focused").forEach((item) => item.classList.remove("focused"));
-        verse.classList.add("focused");
       }
 
       saveMarks();
@@ -2651,17 +2625,6 @@
 
       const label = $("activeToolLabel");
       if (label) label.textContent = `Active Tool: ${labels[toolName] || toolName}`;
-    };
-
-      ["highlightTool", "pointerTool", "focusTool", "obsHighlightTool", "obsPointerTool", "obsFocusTool"].forEach((id) => {
-        const button = $(id);
-        if (button) button.classList.remove("active-tool");
-      });
-
-      (map[toolName] || []).forEach((id) => {
-        const button = $(id);
-        if (button) button.classList.add("active-tool");
-      });
     }
 
     function clearMarks() {
