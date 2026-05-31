@@ -877,6 +877,124 @@
       box-shadow: 0 8px 20px rgba(215,168,79,.12);
     }
 
+
+    /* Phase 2 Final Polish */
+    .verse.highlight-amber {
+      background: linear-gradient(90deg, rgba(255,151,72,.40), rgba(255,151,72,.14));
+      border-left: 7px solid #e8842d;
+      outline: 1px solid rgba(255,151,72,.65);
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-left: -12px;
+      margin-right: -10px;
+    }
+
+    body.dark .verse {
+      color: #fff6dc;
+      text-shadow: 0 1px 2px rgba(0,0,0,.28);
+    }
+
+    body.dark .vnum {
+      color: #f8d987;
+      text-shadow: 0 1px 2px rgba(0,0,0,.38);
+    }
+
+    body.dark .ref {
+      color: #fff4d5;
+      text-shadow: 0 2px 8px rgba(0,0,0,.32);
+    }
+
+    body.dark .source {
+      color: #f8d987;
+      text-shadow: 0 1px 4px rgba(0,0,0,.28);
+    }
+
+    body.dark .panel,
+    body.dark .scripture {
+      border-color: rgba(248,217,135,.55);
+      box-shadow: 0 12px 30px rgba(0,0,0,.20);
+    }
+
+    body.dark .panel h3,
+    body.dark .panel-title h3 {
+      color: #fff0c4;
+      text-shadow: 0 1px 4px rgba(0,0,0,.30);
+    }
+
+    body.dark textarea,
+    body.dark select,
+    body.dark input {
+      border-color: rgba(248,217,135,.55);
+      color: #fff7df;
+    }
+
+    body:not(.dark) .verse {
+      text-rendering: optimizeLegibility;
+    }
+
+    .tool-options.tool-colors {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .swatch.amber { background: #e8842d; }
+
+    html.obs .teacher-pop,
+    html.obs #ironPromptPanel.open {
+      resize: both;
+      min-width: 360px;
+      min-height: 230px;
+      max-width: calc(100vw - 24px);
+      max-height: calc(100vh - 110px);
+    }
+
+    html.obs .teacher-pop {
+      cursor: default;
+    }
+
+    html.obs #ironPromptPanel.open {
+      cursor: default;
+    }
+
+    .drag-handle {
+      cursor: move;
+      user-select: none;
+    }
+
+    html.obs .teacher-pop.drag-positioned,
+    html.obs #ironPromptPanel.open.drag-positioned {
+      left: var(--drag-left) !important;
+      top: var(--drag-top) !important;
+      right: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+    }
+
+    html.obs #ironPromptPanel.open:not(.drag-positioned) {
+      left: auto !important;
+      right: 22px !important;
+      top: 118px !important;
+      bottom: auto !important;
+      transform: none !important;
+    }
+
+    html.obs .teacher-pop:not(.drag-positioned) {
+      left: auto !important;
+      right: 22px !important;
+      top: 118px !important;
+      bottom: auto !important;
+      transform: none !important;
+    }
+
+    .tool-option {
+      min-height: 104px;
+    }
+
+    @media (max-width: 700px) {
+      .tool-options.tool-colors {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 1050px) {
       .hero { grid-template-columns: 1fr; text-align: center; }
       .verse-card { display: block; max-width: 520px; margin: 0 auto; }
@@ -955,6 +1073,7 @@
     <div class="obs-tool-bar" aria-label="OBS teaching tools">
       <button id="obsOpenTeacherTools">Teacher Tools</button>
       <button id="obsClearMarks" class="secondary">Clear</button>
+      <button id="obsResetPanels" class="secondary">Reset Panels</button>
     </div>
 
     <section class="controls">
@@ -1027,18 +1146,19 @@
 
 
     <div id="teacherToolsPanel" class="teacher-pop" aria-hidden="true">
-      <div class="teacher-pop-head">
+      <div class="teacher-pop-head drag-handle" data-drag-handle="teacherToolsPanel">
         <h3>Teacher Tools</h3>
         <button id="closeTeacherTools" class="teacher-pop-close secondary" type="button">Close</button>
       </div>
 
       <div class="tool-section-title">Highlight Colors</div>
-      <div class="tool-options">
+      <div class="tool-options tool-colors">
         <button type="button" class="tool-option" data-tool="highlight-gold"><strong><i class="swatch gold"></i> Gold Highlight</strong><span>Main points, key verses, repeated truths, or the central idea.</span></button>
         <button type="button" class="tool-option" data-tool="highlight-blue"><strong><i class="swatch blue"></i> Blue Highlight</strong><span>Promises, comfort, grace, encouragement, or what God is revealing.</span></button>
         <button type="button" class="tool-option" data-tool="highlight-green"><strong><i class="swatch green"></i> Green Highlight</strong><span>Growth, obedience, application, discipleship, and next steps.</span></button>
         <button type="button" class="tool-option" data-tool="highlight-red"><strong><i class="swatch red"></i> Red Highlight</strong><span>Warnings, sin, repentance, urgency, or serious commands.</span></button>
         <button type="button" class="tool-option" data-tool="highlight-purple"><strong><i class="swatch purple"></i> Purple Highlight</strong><span>Christ-centered themes, kingdom language, worship, authority, and glory.</span></button>
+<button type="button" class="tool-option" data-tool="highlight-amber"><strong><i class="swatch amber"></i> Amber Highlight</strong><span>Helpful for repeated emphasis, transition points, important observations, or comparison notes.</span></button>
       </div>
 
       <div class="tool-section-title">Teaching Marks</div>
@@ -1047,7 +1167,7 @@
         <button type="button" class="tool-option" data-tool="underline"><strong>Underline</strong><span>Select a word or phrase first to underline only that text, or click a verse to underline the whole verse.</span></button>
         <button type="button" class="tool-option" data-tool="circle"><strong>Circle</strong><span>Select a word, phrase, or even a single letter first to circle only that text, or click a verse to circle the whole verse.</span></button>
         <button type="button" class="tool-option" data-tool="box"><strong>Box</strong><span>Select a word or group of words first to box in only that text, or click a verse to box the whole verse.</span></button>
-        <button type="button" class="tool-option" data-tool="focus"><strong>Focus</strong><span>Dims the rest of the passage and spotlights one verse for reading or explanation.</span></button>
+        <button type="button" class="tool-option" data-tool="focus"><strong>Focus</strong><span>Click one or multiple verses to spotlight them together while dimming the rest of the passage.</span></button>
         <button type="button" class="tool-option" data-tool="erase"><strong>Erase Verse Marks</strong><span>Click a marked verse to remove its highlight, pointer, underline, circle, box, and focus.</span></button>
       </div>
 
@@ -2424,13 +2544,13 @@
         boxed: [],
         inlineHtml: {},
         pointed: document.querySelector(".verse.pointed")?.dataset.v || "",
-        focused: document.querySelector(".verse.focused")?.dataset.v || ""
+        focused: Array.from(document.querySelectorAll(".verse.focused")).map((verse) => verse.dataset.v)
       };
 
       document.querySelectorAll(".verse").forEach((verse) => {
         const v = verse.dataset.v;
 
-        ["highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple"].forEach((cls) => {
+        ["highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple", "highlight-amber"].forEach((cls) => {
           if (verse.classList.contains(cls) || (cls === "highlight-gold" && verse.classList.contains("highlighted"))) {
             marks.highlights[v] = cls;
           }
@@ -2480,7 +2600,8 @@
           verse.classList.add("pointed");
         }
 
-        if (saved.focused === v) {
+        const focusedSaved = Array.isArray(saved.focused) ? saved.focused : (saved.focused ? [saved.focused] : []);
+        if (focusedSaved.includes(v)) {
           scriptureBox.classList.add("focus-mode");
           verse.classList.add("focused");
         }
@@ -2610,7 +2731,7 @@
     }
 
     function useActiveTool(verse) {
-      const highlightClasses = ["highlighted", "highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple"];
+      const highlightClasses = ["highlighted", "highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple", "highlight-amber"];
 
       if (activeTool.startsWith("highlight-")) {
         const alreadyHasThis = verse.classList.contains(activeTool);
@@ -2648,13 +2769,17 @@
       }
 
       if (activeTool === "focus") {
-        scriptureBox.classList.add("focus-mode");
-        document.querySelectorAll(".verse.focused").forEach((item) => item.classList.remove("focused"));
-        verse.classList.add("focused");
+        verse.classList.toggle("focused");
+
+        if (document.querySelector(".verse.focused")) {
+          scriptureBox.classList.add("focus-mode");
+        } else {
+          scriptureBox.classList.remove("focus-mode");
+        }
       }
 
       if (activeTool === "erase") {
-        verse.classList.remove("highlighted", "highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple", "pointed", "focused", "underlined", "circled", "boxed");
+        verse.classList.remove("highlighted", "highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple", "highlight-amber", "pointed", "focused", "underlined", "circled", "boxed");
         removeInlineMarksFromVerse(verse);
         removeInlineMarksFromVerse(verse);
         if (!document.querySelector(".verse.focused")) {
@@ -2774,6 +2899,7 @@
         "highlight-green": "Green Highlight",
         "highlight-red": "Red Highlight",
         "highlight-purple": "Purple Highlight",
+        "highlight-amber": "Amber Highlight",
         pointer: "Pointer",
         underline: "Underline",
         circle: "Circle",
@@ -2795,7 +2921,7 @@
     function clearMarks() {
       scriptureBox.classList.remove("focus-mode");
       document.querySelectorAll(".verse").forEach((verse) => {
-        verse.classList.remove("highlighted", "highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple", "pointed", "focused", "underlined", "circled", "boxed");
+        verse.classList.remove("highlighted", "highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple", "highlight-amber", "pointed", "focused", "underlined", "circled", "boxed");
         removeInlineMarksFromVerse(verse);
       });
       localStorage.removeItem(passageKey());
@@ -2921,6 +3047,9 @@
       if ($("obsPointerTool")) $("obsPointerTool").onclick = () => setTool("pointer");
       if ($("obsFocusTool")) $("obsFocusTool").onclick = () => setTool("focus");
       if ($("obsClearMarks")) $("obsClearMarks").onclick = clearMarks;
+      if ($("obsResetPanels")) $("obsResetPanels").onclick = () => {
+        if (window.resetIronSharpenerFloatingPanels) window.resetIronSharpenerFloatingPanels();
+      };
 
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
@@ -3044,7 +3173,7 @@ html.obs body.dark #ironPromptPanel .iron-mini-prayer {
 
 
 <div id="ironPromptPanel">
-  <h3>I.R.O.N. Study Prompts</h3>
+  <h3 class="drag-handle" data-drag-handle="ironPromptPanel">I.R.O.N. Study Prompts</h3>
   <p><strong>I — Inspect the Scripture</strong><br>Read carefully and understand the passage in context.</p>
   <p><strong>R — Reflect Prayerfully</strong><br>Slow down, meditate on the Word, and listen humbly before the Lord.</p>
   <p><strong>O — Observe God’s Truth</strong><br>What does this reveal about God, Christ, sin, faith, obedience, or grace?</p>
@@ -3096,6 +3225,76 @@ document.addEventListener("DOMContentLoaded", function () {
 
   obsToolbar.appendChild(btn);
 });
+</script>
+
+
+<script>
+(function () {
+  function makeDraggable(panelId) {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+
+    const handle = document.querySelector('[data-drag-handle="' + panelId + '"]');
+    if (!handle) return;
+
+    let startX = 0;
+    let startY = 0;
+    let startLeft = 0;
+    let startTop = 0;
+    let dragging = false;
+
+    handle.addEventListener("mousedown", function (event) {
+      if (!document.documentElement.classList.contains("obs")) return;
+
+      dragging = true;
+      const rect = panel.getBoundingClientRect();
+      startX = event.clientX;
+      startY = event.clientY;
+      startLeft = rect.left;
+      startTop = rect.top;
+
+      panel.classList.add("drag-positioned");
+      event.preventDefault();
+    });
+
+    document.addEventListener("mousemove", function (event) {
+      if (!dragging) return;
+
+      const nextLeft = Math.max(8, Math.min(window.innerWidth - 120, startLeft + event.clientX - startX));
+      const nextTop = Math.max(8, Math.min(window.innerHeight - 120, startTop + event.clientY - startY));
+
+      panel.style.setProperty("--drag-left", nextLeft + "px");
+      panel.style.setProperty("--drag-top", nextTop + "px");
+    });
+
+    document.addEventListener("mouseup", function () {
+      dragging = false;
+    });
+  }
+
+  function resetDragPosition(panelId) {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    panel.classList.remove("drag-positioned");
+    panel.style.removeProperty("--drag-left");
+    panel.style.removeProperty("--drag-top");
+  }
+
+  window.resetIronSharpenerFloatingPanels = function () {
+    resetDragPosition("teacherToolsPanel");
+    resetDragPosition("ironPromptPanel");
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      makeDraggable("teacherToolsPanel");
+      makeDraggable("ironPromptPanel");
+    });
+  } else {
+    makeDraggable("teacherToolsPanel");
+    makeDraggable("ironPromptPanel");
+  }
+})();
 </script>
 
 </body>
