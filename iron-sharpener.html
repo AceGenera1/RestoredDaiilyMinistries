@@ -872,7 +872,32 @@
       .tool-grid, .tool-grid.three { grid-template-columns: 1fr; }
     }
 
-  </style>
+  
+    .tool-palette-overlay {
+      pointer-events: auto !important;
+    }
+
+    .tool-palette-modal,
+    .tool-palette-modal * {
+      pointer-events: auto !important;
+    }
+
+    .tool-option,
+    .tool-close {
+      position: relative;
+      z-index: 20002;
+      cursor: pointer !important;
+    }
+
+    .tool-palette-modal {
+      padding-bottom: 34px !important;
+    }
+
+    html.obs .tool-palette-modal {
+      padding-bottom: 34px !important;
+    }
+
+</style>
 </head>
 <body>
   <div class="shell">
@@ -2677,15 +2702,8 @@
     }
 
     function initToolPalette() {
-      if ($("openToolPalette")) $("openToolPalette").onclick = openToolPalette;
-      if ($("obsOpenToolPalette")) $("obsOpenToolPalette").onclick = openToolPalette;
-      if ($("closeToolPalette")) $("closeToolPalette").onclick = closeToolPalette;
-
-      document.querySelectorAll(".tool-option").forEach((button) => {
-        button.addEventListener("click", () => {
-          setTool(button.dataset.tool);
-          closeToolPalette();
-        });
+      // handled by final Phase 2 controller script
+    });
       });
 
       const palette = $("toolPalette");
@@ -2972,6 +2990,120 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </div>
   </div>
+
+
+<script>
+(function () {
+  function getEl(id) {
+    return document.getElementById(id);
+  }
+
+  function toolLabels(toolName) {
+    const labels = {
+      "highlight-gold": "Gold Highlight",
+      "highlight-blue": "Blue Highlight",
+      "highlight-green": "Green Highlight",
+      "highlight-red": "Red Highlight",
+      "highlight-purple": "Purple Highlight",
+      "pointer": "Pointer",
+      "underline": "Underline",
+      "circle": "Circle",
+      "box": "Box",
+      "focus": "Focus",
+      "erase": "Erase Verse Marks"
+    };
+    return labels[toolName] || toolName;
+  }
+
+  window.openToolPalette = function () {
+    const palette = getEl("toolPalette");
+    if (!palette) return;
+    palette.classList.add("open");
+    palette.setAttribute("aria-hidden", "false");
+  };
+
+  window.closeToolPalette = function () {
+    const palette = getEl("toolPalette");
+    if (!palette) return;
+    palette.classList.remove("open");
+    palette.setAttribute("aria-hidden", "true");
+  };
+
+  function chooseTool(toolName) {
+    if (!toolName) return;
+
+    if (typeof window.setTool === "function") {
+      window.setTool(toolName);
+    } else {
+      window.activeTool = toolName;
+      const label = getEl("activeToolLabel");
+      if (label) label.textContent = "Active Tool: " + toolLabels(toolName);
+    }
+
+    document.querySelectorAll(".tool-option").forEach(function (button) {
+      button.classList.toggle("active-choice", button.getAttribute("data-tool") === toolName);
+    });
+
+    const label = getEl("activeToolLabel");
+    if (label) label.textContent = "Active Tool: " + toolLabels(toolName);
+
+    window.closeToolPalette();
+  }
+
+  function bindPhase2Tools() {
+    const openBtn = getEl("openToolPalette");
+    const obsOpenBtn = getEl("obsOpenToolPalette");
+    const closeBtn = getEl("closeToolPalette");
+    const palette = getEl("toolPalette");
+
+    if (openBtn) openBtn.onclick = function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.openToolPalette();
+    };
+
+    if (obsOpenBtn) obsOpenBtn.onclick = function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.openToolPalette();
+    };
+
+    if (closeBtn) closeBtn.onclick = function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.closeToolPalette();
+    };
+
+    document.querySelectorAll(".tool-option").forEach(function (button) {
+      button.onclick = function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        chooseTool(button.getAttribute("data-tool"));
+      };
+    });
+
+    if (palette) {
+      palette.onclick = function (event) {
+        if (event.target === palette) {
+          window.closeToolPalette();
+        }
+      };
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        window.closeToolPalette();
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindPhase2Tools);
+  } else {
+    bindPhase2Tools();
+  }
+})();
+</script>
 
 </body>
 </html>
