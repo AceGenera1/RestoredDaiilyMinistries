@@ -553,7 +553,27 @@
     }
 
 
-    /* Phase 2 Teacher Tools */
+    /* Stable Phase 2 Teacher Tools */
+    .teacher-tools-box {
+      display: grid;
+      gap: 10px;
+    }
+
+    .active-tool-label {
+      padding: 10px 12px;
+      border: 1px solid rgba(215,168,79,.55);
+      border-radius: 10px;
+      background: rgba(248,217,135,.18);
+      color: #17304f;
+      font: 800 13px Arial, sans-serif;
+      text-align: center;
+    }
+
+    body.dark .active-tool-label {
+      color: #fff3d7;
+      background: rgba(0,0,0,.18);
+    }
+
     .verse.highlighted,
     .verse.highlight-gold {
       background: linear-gradient(90deg, rgba(244,199,108,.58), rgba(244,199,108,.20));
@@ -631,84 +651,72 @@
       box-shadow: 0 8px 18px rgba(0,0,0,.08);
     }
 
-    .active-tool-label {
-      margin-top: 12px;
-      padding: 10px 12px;
-      border: 1px solid rgba(215,168,79,.55);
-      border-radius: 10px;
-      background: rgba(248,217,135,.18);
-      color: #17304f;
-      font: 800 13px Arial, sans-serif;
-      text-align: center;
-    }
-
-    body.dark .active-tool-label {
-      color: #fff3d7;
-      background: rgba(0,0,0,.18);
-    }
-
-    .tool-palette-overlay {
+    .teacher-pop {
       display: none;
       position: fixed;
-      inset: 0;
-      z-index: 20000;
-      background: rgba(2,9,19,.54);
-      padding: 22px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .tool-palette-overlay.open {
-      display: flex;
-    }
-
-    .tool-palette-modal {
-      width: min(880px, calc(100vw - 28px));
-      max-height: 88vh;
+      right: 22px;
+      top: 118px;
+      width: min(520px, calc(100vw - 32px));
+      max-height: calc(100vh - 150px);
       overflow-y: auto;
+      z-index: 10050;
       border: 2px solid var(--gold);
-      border-radius: 20px;
+      border-radius: 18px;
       background: linear-gradient(180deg, #fffaf0, #fff2d6);
-      box-shadow: 0 30px 80px rgba(0,0,0,.45);
-      padding: 22px;
       color: #10213c;
+      box-shadow: 0 24px 70px rgba(0,0,0,.38);
+      padding: 18px;
     }
 
-    body.dark .tool-palette-modal {
+    .teacher-pop.open {
+      display: block;
+    }
+
+    body.dark .teacher-pop {
       background: linear-gradient(180deg, #0d2139, #07172b);
       color: #fff3d7;
     }
 
-    .tool-palette-head {
+    html.obs .teacher-pop {
+      top: auto;
+      right: auto;
+      left: 50%;
+      bottom: 92px;
+      transform: translateX(-50%);
+      width: min(650px, calc(100vw - 32px));
+      max-height: 68vh;
+    }
+
+    .teacher-pop-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       border-bottom: 1px solid var(--gold);
-      padding-bottom: 12px;
-      margin-bottom: 16px;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
     }
 
-    .tool-palette-head h3 {
+    .teacher-pop-head h3 {
       margin: 0;
       color: #8c5b09;
-      font-size: 26px;
+      font-size: 23px;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
     }
 
-    body.dark .tool-palette-head h3 {
+    body.dark .teacher-pop-head h3 {
       color: var(--bright);
     }
 
-    .tool-close {
-      padding: 9px 13px;
+    .teacher-pop-close {
+      padding: 8px 12px;
       font-size: 13px;
     }
 
     .tool-section-title {
-      margin: 18px 0 10px;
-      font: 900 13px Arial, sans-serif;
+      margin: 16px 0 9px;
+      font: 900 12px Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: #8c5b09;
@@ -720,22 +728,21 @@
 
     .tool-options {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
 
     .tool-option {
-      border: 1px solid rgba(215,168,79,.55);
-      border-radius: 14px;
-      background: rgba(255,255,255,.55);
-      padding: 14px;
-      text-align: left;
-      cursor: pointer;
-      transition: .18s ease;
-      box-shadow: none;
+      width: 100%;
+      border: 1px solid rgba(215,168,79,.58);
+      border-radius: 13px;
+      background: rgba(255,255,255,.58);
       color: #10213c;
-      font: 700 14px Arial, sans-serif;
+      padding: 12px;
+      text-align: left;
+      box-shadow: none;
       display: block;
+      font: 700 13px Arial, sans-serif;
     }
 
     body.dark .tool-option {
@@ -745,10 +752,9 @@
 
     .tool-option:hover,
     .tool-option.active-choice {
-      transform: translateY(-2px);
+      background: rgba(248,217,135,.20);
       border-color: var(--gold);
-      box-shadow: 0 10px 22px rgba(0,0,0,.16);
-      background: rgba(248,217,135,.18);
+      transform: translateY(-1px);
     }
 
     .tool-option strong {
@@ -756,9 +762,9 @@
       align-items: center;
       gap: 8px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 18px;
+      font-size: 17px;
+      margin-bottom: 6px;
       color: #061526;
-      margin-bottom: 7px;
     }
 
     body.dark .tool-option strong {
@@ -767,7 +773,7 @@
 
     .tool-option span {
       display: block;
-      line-height: 1.45;
+      line-height: 1.4;
       color: #31405a;
     }
 
@@ -776,8 +782,8 @@
     }
 
     .swatch {
-      width: 17px;
-      height: 17px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       border: 1px solid rgba(0,0,0,.18);
       display: inline-block;
@@ -790,9 +796,9 @@
     .swatch.red { background: #d44d4d; }
     .swatch.purple { background: #9a65d8; }
 
-    .tool-palette-note {
-      margin-top: 16px;
-      padding: 13px;
+    .teacher-pop-note {
+      margin-top: 14px;
+      padding: 12px;
       border-left: 4px solid var(--gold);
       border-radius: 10px;
       background: rgba(248,217,135,.16);
@@ -800,19 +806,9 @@
       line-height: 1.45;
     }
 
-    html.obs .tool-palette-overlay {
-      padding-bottom: 86px;
-    }
-
-    html.obs .tool-palette-modal {
-      width: min(760px, calc(100vw - 28px));
-      max-height: 74vh;
-    }
-
     html.obs .obs-tool-bar {
       flex-wrap: wrap;
       max-width: calc(100vw - 28px);
-      z-index: 20001;
     }
 
     @media (max-width: 700px) {
@@ -820,8 +816,11 @@
         grid-template-columns: 1fr;
       }
 
-      .tool-palette-modal {
-        padding: 16px;
+      .teacher-pop {
+        left: 16px;
+        right: 16px;
+        top: 98px;
+        width: auto;
       }
     }
 
@@ -872,32 +871,7 @@
       .tool-grid, .tool-grid.three { grid-template-columns: 1fr; }
     }
 
-  
-    .tool-palette-overlay {
-      pointer-events: auto !important;
-    }
-
-    .tool-palette-modal,
-    .tool-palette-modal * {
-      pointer-events: auto !important;
-    }
-
-    .tool-option,
-    .tool-close {
-      position: relative;
-      z-index: 20002;
-      cursor: pointer !important;
-    }
-
-    .tool-palette-modal {
-      padding-bottom: 34px !important;
-    }
-
-    html.obs .tool-palette-modal {
-      padding-bottom: 34px !important;
-    }
-
-</style>
+  </style>
 </head>
 <body>
   <div class="shell">
@@ -926,7 +900,7 @@
     <div class="ribbon">Prepared in prayer &nbsp; ✦ &nbsp; Taught with clarity &nbsp; ✦ &nbsp; Shared for discipleship</div>
 
     <div class="obs-tool-bar" aria-label="OBS teaching tools">
-      <button id="obsOpenToolPalette">Teacher Tools</button>
+      <button id="obsOpenTeacherTools">Teacher Tools</button>
       <button id="obsClearMarks" class="secondary">Clear</button>
     </div>
 
@@ -967,13 +941,14 @@
 
       <aside class="side">
         <div class="panel">
-          <div class="panel-title"><h3>Teacher Tools</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Open the Teacher Tools panel to choose how you want to mark the passage. These tools are for visual teaching, personal study, Bible study groups, OBS recordings, and Scripture explanation.</span></span></div>
-          <button id="openToolPalette">Open Teacher Tools</button>
-          <div id="activeToolLabel" class="active-tool-label">Active Tool: Gold Highlight</div>
-          <br>
-          <div class="tool-grid">
-            <button id="clearMarks" class="secondary">Clear Marks</button>
-            <button id="copyPassage" class="secondary">Copy Passage</button>
+          <div class="panel-title"><h3>Teacher Tools</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Open the Teacher Tools panel to choose how you want to mark the passage. These tools help with visual teaching, personal study, Bible study groups, OBS recordings, and Scripture explanation.</span></span></div>
+          <div class="teacher-tools-box">
+            <button id="openTeacherTools">Open Teacher Tools</button>
+            <div id="activeToolLabel" class="active-tool-label">Active Tool: Gold Highlight</div>
+            <div class="tool-grid">
+              <button id="clearMarks" class="secondary">Clear Marks</button>
+              <button id="copyPassage" class="secondary">Copy Passage</button>
+            </div>
           </div>
         </div>
 
@@ -996,6 +971,37 @@
         <div class="panel"><div class="panel-title"><h3>Clip / Timestamp Notes</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area during or after recording to mark strong moments, possible short clips, key quotes, video description notes, podcast summary ideas, or timestamps you want to revisit later.</span></span></div><textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea></div>
       </aside>
     </main>
+
+
+    <div id="teacherToolsPanel" class="teacher-pop" aria-hidden="true">
+      <div class="teacher-pop-head">
+        <h3>Teacher Tools</h3>
+        <button id="closeTeacherTools" class="teacher-pop-close secondary" type="button">Close</button>
+      </div>
+
+      <div class="tool-section-title">Highlight Colors</div>
+      <div class="tool-options">
+        <button type="button" class="tool-option" data-tool="highlight-gold"><strong><i class="swatch gold"></i> Gold Highlight</strong><span>Main points, key verses, repeated truths, or the central idea.</span></button>
+        <button type="button" class="tool-option" data-tool="highlight-blue"><strong><i class="swatch blue"></i> Blue Highlight</strong><span>Promises, comfort, grace, encouragement, or what God is revealing.</span></button>
+        <button type="button" class="tool-option" data-tool="highlight-green"><strong><i class="swatch green"></i> Green Highlight</strong><span>Growth, obedience, application, discipleship, and next steps.</span></button>
+        <button type="button" class="tool-option" data-tool="highlight-red"><strong><i class="swatch red"></i> Red Highlight</strong><span>Warnings, sin, repentance, urgency, or serious commands.</span></button>
+        <button type="button" class="tool-option" data-tool="highlight-purple"><strong><i class="swatch purple"></i> Purple Highlight</strong><span>Christ-centered themes, kingdom language, worship, authority, and glory.</span></button>
+      </div>
+
+      <div class="tool-section-title">Teaching Marks</div>
+      <div class="tool-options">
+        <button type="button" class="tool-option" data-tool="pointer"><strong>➤ Pointer</strong><span>Marks one verse with an arrow so viewers know exactly where you are focusing.</span></button>
+        <button type="button" class="tool-option" data-tool="underline"><strong>Underline</strong><span>Underlines a verse to emphasize a phrase, command, promise, or repeated idea.</span></button>
+        <button type="button" class="tool-option" data-tool="circle"><strong>Circle</strong><span>Creates rounded emphasis around a verse to slow attention and make it stand out.</span></button>
+        <button type="button" class="tool-option" data-tool="box"><strong>Box</strong><span>Places a teaching box around a verse for structure, comparison, or major points.</span></button>
+        <button type="button" class="tool-option" data-tool="focus"><strong>Focus</strong><span>Dims the rest of the passage and spotlights one verse for reading or explanation.</span></button>
+        <button type="button" class="tool-option" data-tool="erase"><strong>Erase Verse Marks</strong><span>Click a marked verse to remove its highlight, pointer, underline, circle, box, and focus.</span></button>
+      </div>
+
+      <div class="teacher-pop-note">
+        Choose a tool, then click a verse to apply it. These tools are meant to serve the Word, not distract from it.
+      </div>
+    </div>
 
     <footer class="footer">
       <strong>World English Bible (WEB) scripture text is public domain.</strong>
@@ -2369,6 +2375,7 @@
 
       document.querySelectorAll(".verse").forEach((verse) => {
         const v = verse.dataset.v;
+
         ["highlight-gold", "highlight-blue", "highlight-green", "highlight-red", "highlight-purple"].forEach((cls) => {
           if (verse.classList.contains(cls) || (cls === "highlight-gold" && verse.classList.contains("highlighted"))) {
             marks.highlights[v] = cls;
@@ -2389,14 +2396,17 @@
 
     function restoreMarks() {
       const saved = JSON.parse(localStorage.getItem(passageKey()) || "{}");
+      const oldHighlighted = saved.highlighted || [];
 
       document.querySelectorAll(".verse").forEach((verse) => {
         const v = verse.dataset.v;
 
         if (saved.highlights && saved.highlights[v]) {
           verse.classList.add(saved.highlights[v]);
-          if (saved.highlights[v] === "highlight-gold") verse.classList.add("highlighted");
-        } else if ((saved.highlighted || []).includes(v)) {
+          if (saved.highlights[v] === "highlight-gold") {
+            verse.classList.add("highlighted");
+          }
+        } else if (oldHighlighted.includes(v)) {
           verse.classList.add("highlighted", "highlight-gold");
         }
 
@@ -2490,7 +2500,9 @@
 
         if (!alreadyHasThis) {
           verse.classList.add(activeTool);
-          if (activeTool === "highlight-gold") verse.classList.add("highlighted");
+          if (activeTool === "highlight-gold") {
+            verse.classList.add("highlighted");
+          }
         }
       }
 
@@ -2603,7 +2615,7 @@
         ironPanel.classList.remove("open");
       }
 
-      closeToolPalette();
+      closeTeacherTools();
     }
 
     function setThemeMode(mode) {
@@ -2649,7 +2661,9 @@
       });
 
       const label = $("activeToolLabel");
-      if (label) label.textContent = `Active Tool: ${labels[toolName] || toolName}`;
+      if (label) {
+        label.textContent = `Active Tool: ${labels[toolName] || toolName}`;
+      }
     }
 
     function clearMarks() {
@@ -2686,32 +2700,31 @@
       });
     }
 
-
-    function openToolPalette() {
-      const palette = $("toolPalette");
-      if (!palette) return;
-      palette.classList.add("open");
-      palette.setAttribute("aria-hidden", "false");
+    function openTeacherTools() {
+      const panel = $("teacherToolsPanel");
+      if (!panel) return;
+      panel.classList.add("open");
+      panel.setAttribute("aria-hidden", "false");
     }
 
-    function closeToolPalette() {
-      const palette = $("toolPalette");
-      if (!palette) return;
-      palette.classList.remove("open");
-      palette.setAttribute("aria-hidden", "true");
+    function closeTeacherTools() {
+      const panel = $("teacherToolsPanel");
+      if (!panel) return;
+      panel.classList.remove("open");
+      panel.setAttribute("aria-hidden", "true");
     }
 
-    function initToolPalette() {
-      // handled by final Phase 2 controller script
-    });
+    function initTeacherTools() {
+      if ($("openTeacherTools")) $("openTeacherTools").onclick = openTeacherTools;
+      if ($("obsOpenTeacherTools")) $("obsOpenTeacherTools").onclick = openTeacherTools;
+      if ($("closeTeacherTools")) $("closeTeacherTools").onclick = closeTeacherTools;
+
+      document.querySelectorAll(".tool-option").forEach((button) => {
+        button.onclick = () => {
+          setTool(button.dataset.tool);
+          closeTeacherTools();
+        };
       });
-
-      const palette = $("toolPalette");
-      if (palette) {
-        palette.addEventListener("click", (event) => {
-          if (event.target === palette) closeToolPalette();
-        });
-      }
     }
 
     function init() {
@@ -2784,7 +2797,7 @@
 
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
-          closeToolPalette();
+          closeTeacherTools();
           setObsMode(false);
         }
       });
@@ -2792,7 +2805,7 @@
       restoreThemeMode();
       saveField("teachingNotes"); saveField("crossRefs"); saveField("applicationNotes"); saveField("clipNotes");
       initTooltips();
-      initToolPalette();
+      initTeacherTools();
       setTool("highlight-gold");
       loadPassage();
     }
@@ -2956,153 +2969,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   obsToolbar.appendChild(btn);
 });
-</script>
-
-
-  <div id="toolPalette" class="tool-palette-overlay" aria-hidden="true">
-    <div class="tool-palette-modal" role="dialog" aria-label="Teacher Tools">
-      <div class="tool-palette-head">
-        <h3>Teacher Tools</h3>
-        <button id="closeToolPalette" class="tool-close secondary">Close</button>
-      </div>
-
-      <div class="tool-section-title">Highlight Colors</div>
-      <div class="tool-options">
-        <button class="tool-option" data-tool="highlight-gold"><strong><i class="swatch gold"></i> Gold Highlight</strong><span>Best for main points, key verses, repeated truths, or the central idea of the passage.</span></button>
-        <button class="tool-option" data-tool="highlight-blue"><strong><i class="swatch blue"></i> Blue Highlight</strong><span>Helpful for promises, comfort, grace, encouragement, or what God is revealing.</span></button>
-        <button class="tool-option" data-tool="highlight-green"><strong><i class="swatch green"></i> Green Highlight</strong><span>Helpful for growth, obedience, application, discipleship, and next steps.</span></button>
-        <button class="tool-option" data-tool="highlight-red"><strong><i class="swatch red"></i> Red Highlight</strong><span>Helpful for warnings, sin, repentance, urgency, or serious commands in the text.</span></button>
-        <button class="tool-option" data-tool="highlight-purple"><strong><i class="swatch purple"></i> Purple Highlight</strong><span>Helpful for Christ-centered themes, kingdom language, worship, authority, and glory.</span></button>
-      </div>
-
-      <div class="tool-section-title">Teaching Marks</div>
-      <div class="tool-options">
-        <button class="tool-option" data-tool="pointer"><strong>➤ Pointer</strong><span>Marks one verse with an arrow so viewers know exactly where you are focusing.</span></button>
-        <button class="tool-option" data-tool="underline"><strong>Underline</strong><span>Underlines a verse to emphasize a phrase, command, promise, or repeated idea while teaching.</span></button>
-        <button class="tool-option" data-tool="circle"><strong>Circle</strong><span>Creates a rounded emphasis around a verse to slow attention and make it stand out visually.</span></button>
-        <button class="tool-option" data-tool="box"><strong>Box</strong><span>Places a strong teaching box around a verse for structure, comparison, or major teaching moments.</span></button>
-        <button class="tool-option" data-tool="focus"><strong>Focus</strong><span>Dims the rest of the passage and spotlights one verse for reading, explanation, or prayer.</span></button>
-        <button class="tool-option" data-tool="erase"><strong>Erase Verse Marks</strong><span>Click a marked verse to remove its highlight, pointer, underline, circle, box, and focus marks.</span></button>
-      </div>
-
-      <div class="tool-palette-note">
-        Teaching tools are meant to serve the Word, not distract from it. Choose a tool, then click a verse to apply it.
-      </div>
-    </div>
-  </div>
-
-
-<script>
-(function () {
-  function getEl(id) {
-    return document.getElementById(id);
-  }
-
-  function toolLabels(toolName) {
-    const labels = {
-      "highlight-gold": "Gold Highlight",
-      "highlight-blue": "Blue Highlight",
-      "highlight-green": "Green Highlight",
-      "highlight-red": "Red Highlight",
-      "highlight-purple": "Purple Highlight",
-      "pointer": "Pointer",
-      "underline": "Underline",
-      "circle": "Circle",
-      "box": "Box",
-      "focus": "Focus",
-      "erase": "Erase Verse Marks"
-    };
-    return labels[toolName] || toolName;
-  }
-
-  window.openToolPalette = function () {
-    const palette = getEl("toolPalette");
-    if (!palette) return;
-    palette.classList.add("open");
-    palette.setAttribute("aria-hidden", "false");
-  };
-
-  window.closeToolPalette = function () {
-    const palette = getEl("toolPalette");
-    if (!palette) return;
-    palette.classList.remove("open");
-    palette.setAttribute("aria-hidden", "true");
-  };
-
-  function chooseTool(toolName) {
-    if (!toolName) return;
-
-    if (typeof window.setTool === "function") {
-      window.setTool(toolName);
-    } else {
-      window.activeTool = toolName;
-      const label = getEl("activeToolLabel");
-      if (label) label.textContent = "Active Tool: " + toolLabels(toolName);
-    }
-
-    document.querySelectorAll(".tool-option").forEach(function (button) {
-      button.classList.toggle("active-choice", button.getAttribute("data-tool") === toolName);
-    });
-
-    const label = getEl("activeToolLabel");
-    if (label) label.textContent = "Active Tool: " + toolLabels(toolName);
-
-    window.closeToolPalette();
-  }
-
-  function bindPhase2Tools() {
-    const openBtn = getEl("openToolPalette");
-    const obsOpenBtn = getEl("obsOpenToolPalette");
-    const closeBtn = getEl("closeToolPalette");
-    const palette = getEl("toolPalette");
-
-    if (openBtn) openBtn.onclick = function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      window.openToolPalette();
-    };
-
-    if (obsOpenBtn) obsOpenBtn.onclick = function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      window.openToolPalette();
-    };
-
-    if (closeBtn) closeBtn.onclick = function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      window.closeToolPalette();
-    };
-
-    document.querySelectorAll(".tool-option").forEach(function (button) {
-      button.onclick = function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        chooseTool(button.getAttribute("data-tool"));
-      };
-    });
-
-    if (palette) {
-      palette.onclick = function (event) {
-        if (event.target === palette) {
-          window.closeToolPalette();
-        }
-      };
-    }
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        window.closeToolPalette();
-      }
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", bindPhase2Tools);
-  } else {
-    bindPhase2Tools();
-  }
-})();
 </script>
 
 </body>
