@@ -1375,7 +1375,7 @@
     }
 
 
-    /* Passage-Specific Notes Patch */
+    /* Passage Notes Safe Patch */
     .notes-save-status {
       margin-top: 8px;
       font: 800 12px Arial, sans-serif;
@@ -3253,36 +3253,34 @@
       return ["teachingNotes", "crossRefs", "applicationNotes", "clipNotes"];
     }
 
-    function makeStudyUnitKey(book, chapter, start, end, rangeMode) {
+    function studyKeyFromValues(book, chapter, start, end, rangeMode) {
       const sectionMode = rangeMode === "full" ? "full-chapter" : `${start}-${end}`;
       return `${storagePrefix}.notes.${book}.${chapter}.${sectionMode}`;
     }
 
     function currentStudyUnitKey() {
-      return makeStudyUnitKey(bookSel.value, chapSel.value, startSel.value, endSel.value, rangeSel.value);
+      return studyKeyFromValues(bookSel.value, chapSel.value, startSel.value, endSel.value, rangeSel.value);
     }
 
     let activeNotesKey = "";
 
-    function noteKeyFor(baseKey, id) {
-      return `${baseKey}.${id}`;
-    }
-
     function updateNotesSaveStatus(text) {
       const status = $("notesSaveStatus");
-      if (!status) return;
-      status.textContent = text || "Notes save per selected passage.";
+      if (status) status.textContent = text || "Notes save per selected passage.";
     }
 
-    function saveCurrentNotes() {
-      const baseKey = activeNotesKey || currentStudyUnitKey();
-
+    function saveNotesToKey(baseKey) {
+      if (!baseKey) return;
       noteIds().forEach((id) => {
         const field = $(id);
         if (field) {
-          localStorage.setItem(noteKeyFor(baseKey, id), field.value);
+          localStorage.setItem(`${baseKey}.${id}`, field.value);
         }
       });
+    }
+
+    function saveCurrentNotes() {
+      saveNotesToKey(activeNotesKey || currentStudyUnitKey());
     }
 
     function loadCurrentNotes() {
@@ -3291,13 +3289,13 @@
 
       noteIds().forEach((id) => {
         const field = $(id);
-        if (field) {
-          field.value = localStorage.getItem(noteKeyFor(baseKey, id)) || "";
-          field.oninput = () => {
-            localStorage.setItem(noteKeyFor(activeNotesKey || currentStudyUnitKey(), id), field.value);
-            updateNotesSaveStatus(`Notes saved for ${currentRef()}`);
-          };
-        }
+        if (!field) return;
+
+        field.value = localStorage.getItem(`${baseKey}.${id}`) || "";
+        field.oninput = () => {
+          localStorage.setItem(`${activeNotesKey}.${id}`, field.value);
+          updateNotesSaveStatus(`Notes saved for ${currentRef()}`);
+        };
       });
 
       updateNotesSaveStatus(`Notes for ${currentRef()}`);
@@ -3307,10 +3305,9 @@
       const field = $(id);
       if (!field) return;
       field.oninput = () => {
-        localStorage.setItem(noteKeyFor(activeNotesKey || currentStudyUnitKey(), id), field.value);
+        localStorage.setItem(`${activeNotesKey || currentStudyUnitKey()}.${id}`, field.value);
         updateNotesSaveStatus(`Notes saved for ${currentRef()}`);
       };
-    };
     }
 
     function setTool(toolName) {
@@ -3388,7 +3385,6 @@
       if (!panel) return;
       panel.classList.remove("open");
       panel.setAttribute("aria-hidden", "true");
-      panel.style.display = "";
     }
 
     function initTeacherTools() {
@@ -3404,7 +3400,7 @@
       });
     }
 
-    function changePassageAfterSaving(updateFn) {
+    function saveThenLoad(updateFn) {
       saveCurrentNotes();
       if (typeof updateFn === "function") updateFn();
       loadPassage();
@@ -3425,40 +3421,30 @@
       startSel.value = saved?.start || "1";
       endSel.value = saved?.end || "5";
 
-      bookSel.onchange = () => {
-        changePassageAfterSaving(() => {
-          fillChapters();
-          chapSel.value = "1";
-          fillVerses();
-          rangeSel.value = "5";
-          startSel.value = "1";
-          updateEndFromRange();
-        });
-      };
+      bookSel.onchange = () => saveThenLoad(() => {
+        fillChapters();
+        chapSel.value = "1";
+        fillVerses();
+        rangeSel.value = "5";
+        startSel.value = "1";
+        updateEndFromRange();
+      });
 
-      chapSel.onchange = () => {
-        changePassageAfterSaving(() => {
-          fillVerses();
-          startSel.value = "1";
-          updateEndFromRange();
-        });
-      };
+      chapSel.onchange = () => saveThenLoad(() => {
+        fillVerses();
+        startSel.value = "1";
+        updateEndFromRange();
+      });
 
-      startSel.onchange = () => {
-        changePassageAfterSaving(() => {
-          updateEndFromRange();
-        });
-      };
+      startSel.onchange = () => saveThenLoad(() => {
+        updateEndFromRange();
+      });
 
-      endSel.onchange = () => {
-        changePassageAfterSaving();
-      };
+      endSel.onchange = () => saveThenLoad();
 
-      rangeSel.onchange = () => {
-        changePassageAfterSaving(() => {
-          updateEndFromRange();
-        });
-      };
+      rangeSel.onchange = () => saveThenLoad(() => {
+        updateEndFromRange();
+      });
 
       $("loadBtn").onclick = () => {
         saveCurrentNotes();
@@ -3753,7 +3739,6 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
       }
       if (!panel) return;
-
       panel.classList.remove("drag-positioned");
       panel.style.removeProperty("--drag-left");
       panel.style.removeProperty("--drag-top");
@@ -3768,7 +3753,6 @@ document.addEventListener("DOMContentLoaded", function () {
         event.stopPropagation();
       }
       if (!panel) return;
-
       panel.classList.remove("open");
       panel.setAttribute("aria-hidden", "true");
       panel.style.display = "";
