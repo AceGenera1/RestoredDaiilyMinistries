@@ -3161,7 +3161,6 @@
     }
 
     async function loadPassage() {
-      saveCurrentNotes();
       refTitle.textContent = currentRef().replace(":", " ");
       passage.innerHTML = '<p class="verse">Loading passage…</p>';
       scriptureBox.classList.remove("focus-mode");
@@ -3254,13 +3253,19 @@
       return ["teachingNotes", "crossRefs", "applicationNotes", "clipNotes"];
     }
 
-    function currentStudyUnitKey() {
-      const sectionMode = rangeSel.value === "full" ? "full-chapter" : `${startSel.value}-${endSel.value}`;
-      return `${storagePrefix}.notes.${bookSel.value}.${chapSel.value}.${sectionMode}`;
+    function makeStudyUnitKey(book, chapter, start, end, rangeMode) {
+      const sectionMode = rangeMode === "full" ? "full-chapter" : `${start}-${end}`;
+      return `${storagePrefix}.notes.${book}.${chapter}.${sectionMode}`;
     }
 
-    function noteKey(id) {
-      return `${currentStudyUnitKey()}.${id}`;
+    function currentStudyUnitKey() {
+      return makeStudyUnitKey(bookSel.value, chapSel.value, startSel.value, endSel.value, rangeSel.value);
+    }
+
+    let activeNotesKey = "";
+
+    function noteKeyFor(baseKey, id) {
+      return `${baseKey}.${id}`;
     }
 
     function updateNotesSaveStatus(text) {
@@ -3270,26 +3275,31 @@
     }
 
     function saveCurrentNotes() {
+      const baseKey = activeNotesKey || currentStudyUnitKey();
+
       noteIds().forEach((id) => {
         const field = $(id);
         if (field) {
-          localStorage.setItem(noteKey(id), field.value);
+          localStorage.setItem(noteKeyFor(baseKey, id), field.value);
         }
       });
-      updateNotesSaveStatus(`Notes saved for ${currentRef()}`);
     }
 
     function loadCurrentNotes() {
+      const baseKey = currentStudyUnitKey();
+      activeNotesKey = baseKey;
+
       noteIds().forEach((id) => {
         const field = $(id);
         if (field) {
-          field.value = localStorage.getItem(noteKey(id)) || "";
+          field.value = localStorage.getItem(noteKeyFor(baseKey, id)) || "";
           field.oninput = () => {
-            localStorage.setItem(noteKey(id), field.value);
+            localStorage.setItem(noteKeyFor(activeNotesKey || currentStudyUnitKey(), id), field.value);
             updateNotesSaveStatus(`Notes saved for ${currentRef()}`);
           };
         }
       });
+
       updateNotesSaveStatus(`Notes for ${currentRef()}`);
     }
 
@@ -3297,9 +3307,10 @@
       const field = $(id);
       if (!field) return;
       field.oninput = () => {
-        localStorage.setItem(noteKey(id), field.value);
+        localStorage.setItem(noteKeyFor(activeNotesKey || currentStudyUnitKey(), id), field.value);
         updateNotesSaveStatus(`Notes saved for ${currentRef()}`);
       };
+    };
     }
 
     function setTool(toolName) {
@@ -3393,6 +3404,12 @@
       });
     }
 
+    function changePassageAfterSaving(updateFn) {
+      saveCurrentNotes();
+      if (typeof updateFn === "function") updateFn();
+      loadPassage();
+    }
+
     function init() {
       fillBooks();
 
@@ -3409,42 +3426,44 @@
       endSel.value = saved?.end || "5";
 
       bookSel.onchange = () => {
-        saveCurrentNotes();
-        fillChapters();
-        chapSel.value = "1";
-        fillVerses();
-        rangeSel.value = "5";
-        startSel.value = "1";
-        updateEndFromRange();
-        loadPassage();
+        changePassageAfterSaving(() => {
+          fillChapters();
+          chapSel.value = "1";
+          fillVerses();
+          rangeSel.value = "5";
+          startSel.value = "1";
+          updateEndFromRange();
+        });
       };
 
       chapSel.onchange = () => {
-        saveCurrentNotes();
-        fillVerses();
-        startSel.value = "1";
-        updateEndFromRange();
-        loadPassage();
+        changePassageAfterSaving(() => {
+          fillVerses();
+          startSel.value = "1";
+          updateEndFromRange();
+        });
       };
 
       startSel.onchange = () => {
-        saveCurrentNotes();
-        updateEndFromRange();
-        loadPassage();
+        changePassageAfterSaving(() => {
+          updateEndFromRange();
+        });
       };
 
       endSel.onchange = () => {
-        saveCurrentNotes();
-        loadPassage();
+        changePassageAfterSaving();
       };
 
       rangeSel.onchange = () => {
-        saveCurrentNotes();
-        updateEndFromRange();
-        loadPassage();
+        changePassageAfterSaving(() => {
+          updateEndFromRange();
+        });
       };
 
-      $("loadBtn").onclick = loadPassage;
+      $("loadBtn").onclick = () => {
+        saveCurrentNotes();
+        loadPassage();
+      };
       $("prevBtn").onclick = () => shiftRange(-1);
       $("nextBtn").onclick = () => shiftRange(1);
       $("themeBtn").onclick = () => setThemeMode(document.body.classList.contains("dark") ? "cream" : "dark");
