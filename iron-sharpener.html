@@ -1374,6 +1374,20 @@
       color: #fff7ef;
     }
 
+
+    /* Passage-Specific Notes Patch */
+    .notes-save-status {
+      margin-top: 8px;
+      font: 800 12px Arial, sans-serif;
+      color: #8c5b09;
+      text-align: center;
+      opacity: .92;
+    }
+
+    body.dark .notes-save-status {
+      color: #ffe08c;
+    }
+
 </style>
 </head>
 <body>
@@ -1472,7 +1486,7 @@
         <div class="panel"><div class="panel-title"><h3>Teaching Notes</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area for main thoughts, teaching reminders, outline points, explanations, Spirit-led impressions, or anything you want to remember while walking through the passage. These notes save in this browser on this device.</span></span></div><textarea id="teachingNotes" placeholder="Main teaching notes, outline, explanations..."></textarea></div>
         <div class="panel"><div class="panel-title"><h3>Cross References</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area for related Scriptures, supporting passages, Old and New Testament connections, fulfilled prophecy, repeated themes, word studies, or verses that help Scripture interpret Scripture.</span></span></div><textarea id="crossRefs" placeholder="Supporting Scriptures, parallel passages, prophecy links..."></textarea></div>
         <div class="panel"><div class="panel-title"><h3>Application & Prayer</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area for how the passage should shape faith, repentance, obedience, encouragement, surrender, prayer points, altar-call thoughts, or pastoral application for real life.</span></span></div><textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea></div>
-        <div class="panel"><div class="panel-title"><h3>Clip / Timestamp Notes</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area during or after recording to mark strong moments, possible short clips, key quotes, video description notes, podcast summary ideas, or timestamps you want to revisit later.</span></span></div><textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea></div>
+        <div class="panel"><div class="panel-title"><h3>Clip / Timestamp Notes</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area during or after recording to mark strong moments, possible short clips, key quotes, video description notes, podcast summary ideas, or timestamps you want to revisit later.</span></span></div><textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea><div id="notesSaveStatus" class="notes-save-status">Notes save per selected passage.</div></div>
       </aside>
     </main>
 
@@ -3147,6 +3161,7 @@
     }
 
     async function loadPassage() {
+      saveCurrentNotes();
       refTitle.textContent = currentRef().replace(":", " ");
       passage.innerHTML = '<p class="verse">Loading passage…</p>';
       scriptureBox.classList.remove("focus-mode");
@@ -3172,6 +3187,7 @@
 
         activateVerses();
         restoreMarks();
+        loadCurrentNotes();
 
         localStorage.setItem(`${storagePrefix}.lastRef`, JSON.stringify({
           book: bookSel.value,
@@ -3234,10 +3250,56 @@
       document.body.classList.toggle("dark", finalTheme === "dark");
     }
 
+    function noteIds() {
+      return ["teachingNotes", "crossRefs", "applicationNotes", "clipNotes"];
+    }
+
+    function currentStudyUnitKey() {
+      const sectionMode = rangeSel.value === "full" ? "full-chapter" : `${startSel.value}-${endSel.value}`;
+      return `${storagePrefix}.notes.${bookSel.value}.${chapSel.value}.${sectionMode}`;
+    }
+
+    function noteKey(id) {
+      return `${currentStudyUnitKey()}.${id}`;
+    }
+
+    function updateNotesSaveStatus(text) {
+      const status = $("notesSaveStatus");
+      if (!status) return;
+      status.textContent = text || "Notes save per selected passage.";
+    }
+
+    function saveCurrentNotes() {
+      noteIds().forEach((id) => {
+        const field = $(id);
+        if (field) {
+          localStorage.setItem(noteKey(id), field.value);
+        }
+      });
+      updateNotesSaveStatus(`Notes saved for ${currentRef()}`);
+    }
+
+    function loadCurrentNotes() {
+      noteIds().forEach((id) => {
+        const field = $(id);
+        if (field) {
+          field.value = localStorage.getItem(noteKey(id)) || "";
+          field.oninput = () => {
+            localStorage.setItem(noteKey(id), field.value);
+            updateNotesSaveStatus(`Notes saved for ${currentRef()}`);
+          };
+        }
+      });
+      updateNotesSaveStatus(`Notes for ${currentRef()}`);
+    }
+
     function saveField(id) {
-      const key = `${storagePrefix}.${id}`;
-      $(id).value = localStorage.getItem(key) || "";
-      $(id).oninput = (event) => localStorage.setItem(key, event.target.value);
+      const field = $(id);
+      if (!field) return;
+      field.oninput = () => {
+        localStorage.setItem(noteKey(id), field.value);
+        updateNotesSaveStatus(`Notes saved for ${currentRef()}`);
+      };
     }
 
     function setTool(toolName) {
@@ -3315,6 +3377,7 @@
       if (!panel) return;
       panel.classList.remove("open");
       panel.setAttribute("aria-hidden", "true");
+      panel.style.display = "";
     }
 
     function initTeacherTools() {
@@ -3346,6 +3409,7 @@
       endSel.value = saved?.end || "5";
 
       bookSel.onchange = () => {
+        saveCurrentNotes();
         fillChapters();
         chapSel.value = "1";
         fillVerses();
@@ -3356,6 +3420,7 @@
       };
 
       chapSel.onchange = () => {
+        saveCurrentNotes();
         fillVerses();
         startSel.value = "1";
         updateEndFromRange();
@@ -3363,13 +3428,18 @@
       };
 
       startSel.onchange = () => {
+        saveCurrentNotes();
         updateEndFromRange();
         loadPassage();
       };
 
-      endSel.onchange = loadPassage;
+      endSel.onchange = () => {
+        saveCurrentNotes();
+        loadPassage();
+      };
 
       rangeSel.onchange = () => {
+        saveCurrentNotes();
         updateEndFromRange();
         loadPassage();
       };
@@ -3409,11 +3479,13 @@
       });
 
       restoreThemeMode();
-      saveField("teachingNotes"); saveField("crossRefs"); saveField("applicationNotes"); saveField("clipNotes");
+      loadCurrentNotes();
       initTooltips();
       initTeacherTools();
       setTool("highlight-gold");
       loadPassage();
+
+      window.addEventListener("beforeunload", saveCurrentNotes);
     }
 
     init();
@@ -3643,6 +3715,55 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     makeDraggable("teacherToolsPanel");
     makeDraggable("ironPromptPanel");
+  }
+})();
+</script>
+
+
+<script>
+(function fixTeacherToolsReopenBug() {
+  function bindTeacherButtons() {
+    const openBtn = document.getElementById("openTeacherTools");
+    const obsOpenBtn = document.getElementById("obsOpenTeacherTools");
+    const closeBtn = document.getElementById("closeTeacherTools");
+    const panel = document.getElementById("teacherToolsPanel");
+
+    function forceOpen(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      if (!panel) return;
+
+      panel.classList.remove("drag-positioned");
+      panel.style.removeProperty("--drag-left");
+      panel.style.removeProperty("--drag-top");
+      panel.style.display = "";
+      panel.classList.add("open");
+      panel.setAttribute("aria-hidden", "false");
+    }
+
+    function forceClose(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      if (!panel) return;
+
+      panel.classList.remove("open");
+      panel.setAttribute("aria-hidden", "true");
+      panel.style.display = "";
+    }
+
+    if (openBtn) openBtn.onclick = forceOpen;
+    if (obsOpenBtn) obsOpenBtn.onclick = forceOpen;
+    if (closeBtn) closeBtn.onclick = forceClose;
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindTeacherButtons);
+  } else {
+    bindTeacherButtons();
   }
 })();
 </script>
