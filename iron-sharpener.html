@@ -1388,6 +1388,89 @@
       color: #ffe08c;
     }
 
+    .cross-ref-links {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cross-ref-link {
+  border: 1.5px solid var(--gold);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: #fff7e6;
+  color: #061526;
+  font: 800 13px Arial, sans-serif;
+  cursor: pointer;
+}
+
+body.dark .cross-ref-link {
+  background: #0d2139;
+  color: #fff2d7;
+}
+
+.teaching-note-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+#teachingPresentationCard {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.48);
+  padding: 28px;
+}
+
+#teachingPresentationCard.open {
+  display: flex;
+}
+
+.presentation-card-inner {
+  max-width: 950px;
+  width: min(950px, 96vw);
+  max-height: 82vh;
+  overflow-y: auto;
+  text-align: center;
+  border: 4px double var(--gold);
+  border-radius: 24px;
+  padding: 42px;
+  box-shadow: 0 30px 90px rgba(0,0,0,.45), 0 0 32px rgba(215,168,79,.25);
+}
+
+body:not(.dark) .presentation-card-inner {
+  background: linear-gradient(180deg, #fffaf0, #fff1cf);
+  color: #061526;
+}
+
+body.dark .presentation-card-inner {
+  background: linear-gradient(180deg, #102b4b, #061526);
+  color: #fff3d7;
+}
+
+.presentation-card-inner h2 {
+  margin: 0 0 18px;
+  font-size: clamp(34px, 6vw, 74px);
+  line-height: 1.05;
+  color: var(--gold);
+}
+
+.presentation-card-inner p {
+  font-size: clamp(22px, 3vw, 38px);
+  line-height: 1.35;
+  white-space: pre-wrap;
+}
+
+.presentation-close {
+  margin-top: 24px;
+}
+
 </style>
 </head>
 <body>
@@ -1483,13 +1566,21 @@
           </ul>
         </div>
 
-        <div class="panel"><div class="panel-title"><h3>Teaching Notes</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area for main thoughts, teaching reminders, outline points, explanations, Spirit-led impressions, or anything you want to remember while walking through the passage. These notes save in this browser on this device.</span></span></div><textarea id="teachingNotes" placeholder="Main teaching notes, outline, explanations..."></textarea></div>
-        <div class="panel"><div class="panel-title"><h3>Cross References</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area for related Scriptures, supporting passages, Old and New Testament connections, fulfilled prophecy, repeated themes, word studies, or verses that help Scripture interpret Scripture.</span></span></div><textarea id="crossRefs" placeholder="Supporting Scriptures, parallel passages, prophecy links..."></textarea></div>
-        <div class="panel"><div class="panel-title"><h3>Application & Prayer</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area for how the passage should shape faith, repentance, obedience, encouragement, surrender, prayer points, altar-call thoughts, or pastoral application for real life.</span></span></div><textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea></div>
-        <div class="panel"><div class="panel-title"><h3>Clip / Timestamp Notes</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">Use this area during or after recording to mark strong moments, possible short clips, key quotes, video description notes, podcast summary ideas, or timestamps you want to revisit later.</span></span></div><textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea><div id="notesSaveStatus" class="notes-save-status">Notes save per selected passage.</div></div>
-      </aside>
-    </main>
-
+       <div class="panel">
+  <div class="panel-title">
+    <h3>Teaching Notes</h3>
+    <span class="info-wrap" tabindex="0">
+      <span class="info-icon">i</span>
+      <span class="tooltip">Use this privately while preparing. When ready, show it as a presentation card on screen.</span>
+    </span>
+  </div>
+  <textarea id="teachingNotes" placeholder="Sermon title, main teaching note, outline, main point..."></textarea>
+  <div class="teaching-note-actions">
+    <button id="showTeachingNote" type="button">Show Teaching Note</button>
+    <button id="hideTeachingNote" class="secondary" type="button">Hide</button>
+  </div>
+</div>
+    
 
     <div id="teacherToolsPanel" class="teacher-pop" aria-hidden="true">
       <div class="teacher-pop-head drag-handle" data-drag-handle="teacherToolsPanel">
@@ -1521,6 +1612,14 @@
         Choose a tool, then click a verse to apply it. For highlight colors, underline, circle, or box, you can also select a word or phrase first, then click inside that verse to mark only the selected text.
       </div>
     </div>
+
+    <div id="teachingPresentationCard" aria-hidden="true">
+  <div class="presentation-card-inner">
+    <h2 id="presentationCardTitle">Teaching Note</h2>
+    <p id="presentationCardText"></p>
+    <button id="closeTeachingPresentation" class="presentation-close secondary" type="button">Hide Teaching Note</button>
+  </div>
+</div>
 
     <footer class="footer">
       <strong>World English Bible (WEB) scripture text is public domain.</strong>
@@ -3299,6 +3398,8 @@
       });
 
       updateNotesSaveStatus(`Notes for ${currentRef()}`);
+
+      setTimeout(renderCrossReferenceLinks, 0);
     }
 
     function saveField(id) {
@@ -3406,6 +3507,79 @@
       loadPassage();
     }
 
+    function parseScriptureReferences(text) {
+  const pattern = /\b(?:[1-3]\s*)?(?:Genesis|Exodus|Leviticus|Numbers|Deuteronomy|Joshua|Judges|Ruth|1 Samuel|2 Samuel|1 Kings|2 Kings|1 Chronicles|2 Chronicles|Ezra|Nehemiah|Esther|Job|Psalms?|Proverbs|Ecclesiastes|Song of Solomon|Isaiah|Jeremiah|Lamentations|Ezekiel|Daniel|Hosea|Joel|Amos|Obadiah|Jonah|Micah|Nahum|Habakkuk|Zephaniah|Haggai|Zechariah|Malachi|Matthew|Mark|Luke|John|Acts|Romans|1 Corinthians|2 Corinthians|Galatians|Ephesians|Philippians|Colossians|1 Thessalonians|2 Thessalonians|1 Timothy|2 Timothy|Titus|Philemon|Hebrews|James|1 Peter|2 Peter|1 John|2 John|3 John|Jude|Revelation)\s+\d+:\d+(?:-\d+)?\b/gi;
+  return [...new Set((text || "").match(pattern) || [])];
+}
+
+function goToScriptureReference(ref) {
+  const match = ref.match(/^((?:[1-3]\s*)?[A-Za-z ]+)\s+(\d+):(\d+)(?:-(\d+))?$/i);
+  if (!match) return;
+
+  let book = match[1].replace(/\s+/g, " ").trim();
+  book = book.replace(/^Psalm$/i, "Psalms");
+
+  const found = books.find(b => b[0].toLowerCase() === book.toLowerCase());
+  if (!found) return;
+
+  bookSel.value = found[0];
+  fillChapters();
+  chapSel.value = match[2];
+  fillVerses();
+  startSel.value = match[3];
+  endSel.value = match[4] || match[3];
+  rangeSel.value = "5";
+  loadPassage();
+}
+
+function renderCrossReferenceLinks() {
+  const crossRefs = $("crossRefs");
+  if (!crossRefs) return;
+
+  let holder = document.getElementById("crossRefLinks");
+  if (!holder) {
+    holder = document.createElement("div");
+    holder.id = "crossRefLinks";
+    holder.className = "cross-ref-links";
+    crossRefs.insertAdjacentElement("afterend", holder);
+  }
+
+  const refs = parseScriptureReferences(crossRefs.value);
+  holder.innerHTML = refs.map(ref =>
+    `<button type="button" class="cross-ref-link" data-ref="${ref}">${ref}</button>`
+  ).join("");
+
+  holder.querySelectorAll(".cross-ref-link").forEach(btn => {
+    btn.onclick = () => goToScriptureReference(btn.dataset.ref);
+  });
+}
+
+function showTeachingPresentation() {
+  const note = cleanText($("teachingNotes")?.value || "");
+  if (!note) return;
+
+  $("presentationCardText").textContent = note;
+  $("teachingPresentationCard").classList.add("open");
+  $("teachingPresentationCard").setAttribute("aria-hidden", "false");
+}
+
+function hideTeachingPresentation() {
+  $("teachingPresentationCard").classList.remove("open");
+  $("teachingPresentationCard").setAttribute("aria-hidden", "true");
+}
+
+function initTeachingPresentationTools() {
+  if ($("showTeachingNote")) $("showTeachingNote").onclick = showTeachingPresentation;
+  if ($("hideTeachingNote")) $("hideTeachingNote").onclick = hideTeachingPresentation;
+  if ($("closeTeachingPresentation")) $("closeTeachingPresentation").onclick = hideTeachingPresentation;
+
+  const crossRefs = $("crossRefs");
+  if (crossRefs) {
+    crossRefs.addEventListener("input", renderCrossReferenceLinks);
+    renderCrossReferenceLinks();
+  }
+}
+
     function init() {
       fillBooks();
 
@@ -3488,6 +3662,7 @@
       initTooltips();
       initTeacherTools();
       setTool("highlight-gold");
+      initTeachingPresentationTools();
       loadPassage();
 
       window.addEventListener("beforeunload", saveCurrentNotes);
