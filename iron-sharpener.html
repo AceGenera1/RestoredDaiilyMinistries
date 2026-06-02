@@ -1020,7 +1020,7 @@
       .ribbon { letter-spacing: 3px; font-size: 13px; }
       .logo-wrap { width: 154px; height: 154px; }
       .logo { width: 148px; height: 148px; }
-  
+ 
     .teaching-flow-list {
       margin: 0 0 0 20px;
       padding: 0;
@@ -1042,7 +1042,7 @@
       .tool-grid, .tool-grid.three { grid-template-columns: 1fr; }
     }
 
-  
+ 
     /* Final OBS Panel + Readability Cleanup */
     #ironPromptPanel h3 {
       margin-top: 18px !important;
@@ -1499,11 +1499,12 @@ body.dark .presentation-card-inner {
 
     <div class="ribbon">Prepared in prayer &nbsp; ✦ &nbsp; Taught with clarity &nbsp; ✦ &nbsp; Shared for discipleship</div>
 
-    <div class="obs-tool-bar" aria-label="OBS teaching tools">
-      <button id="obsOpenTeacherTools">Teacher Tools</button>
-      <button id="obsClearMarks" class="secondary">Clear</button>
-      <button id="obsResetPanels" class="secondary">Reset Panels</button>
-    </div>
+   <div class="obs-tool-bar" aria-label="OBS teaching tools">
+  <button id="obsOpenTeacherTools">Teacher Tools</button>
+  <button id="obsShowTeachingNote">Teaching Note</button>
+  <button id="obsClearMarks" class="secondary">Clear</button>
+  <button id="obsResetPanels" class="secondary">Reset Panels</button>
+</div>
 
     <section class="controls">
       <div><label for="book">Book</label><select id="book"></select></div>
@@ -1554,19 +1555,7 @@ body.dark .presentation-card-inner {
         </div>
 
 
-        <div class="panel">
-          <div class="panel-title"><h3>Teaching Flow</h3><span class="info-wrap" tabindex="0"><span class="info-icon">i</span><span class="tooltip">This is only a suggested teaching rhythm, not a rule. It helps you slow down, teach Scripture in manageable sections, observe context, point people to Christ, and leave room for prayerful reflection.</span></span></div>
-          <ul class="teaching-flow-list">
-            <li>Read slowly and clearly.</li>
-            <li>Teach 3–5 verses at a time.</li>
-            <li>Observe the context carefully.</li>
-            <li>Point people to Christ.</li>
-            <li>Pause and reflect prayerfully.</li>
-            <li>Let Scripture lead the teaching.</li>
-          </ul>
-        </div>
-
-       <div class="panel">
+<div class="panel">
   <div class="panel-title">
     <h3>Teaching Notes</h3>
     <span class="info-wrap" tabindex="0">
@@ -1574,13 +1563,55 @@ body.dark .presentation-card-inner {
       <span class="tooltip">Use this privately while preparing. When ready, show it as a presentation card on screen.</span>
     </span>
   </div>
+
   <textarea id="teachingNotes" placeholder="Sermon title, main teaching note, outline, main point..."></textarea>
+
   <div class="teaching-note-actions">
     <button id="showTeachingNote" type="button">Show Teaching Note</button>
     <button id="hideTeachingNote" class="secondary" type="button">Hide</button>
   </div>
 </div>
-    
+
+<div class="panel">
+  <div class="panel-title">
+    <h3>Cross References</h3>
+    <span class="info-wrap" tabindex="0">
+      <span class="info-icon">i</span>
+      <span class="tooltip">Type Scripture references here, and they will become clickable internal WEB links.</span>
+    </span>
+  </div>
+
+  <textarea id="crossRefs" placeholder="Example: John 1:1-5, Colossians 1:15-20, Hebrews 1:1-4"></textarea>
+  <div id="crossRefLinks" class="cross-ref-links"></div>
+</div>
+
+<div class="panel">
+  <div class="panel-title">
+    <h3>Application & Prayer</h3>
+    <span class="info-wrap" tabindex="0">
+      <span class="info-icon">i</span>
+      <span class="tooltip">Use this area for application, prayer points, encouragement, repentance, surrender, and pastoral response.</span>
+    </span>
+  </div>
+
+  <textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea>
+</div>
+
+<div class="panel">
+  <div class="panel-title">
+    <h3>Clip / Timestamp Notes</h3>
+    <span class="info-wrap" tabindex="0">
+      <span class="info-icon">i</span>
+      <span class="tooltip">Use this area to mark strong moments, possible short clips, key quotes, timestamps, and video notes.</span>
+    </span>
+  </div>
+
+  <textarea id="clipNotes" placeholder="Example: 12:40 - strong clip on Christ's supremacy..."></textarea>
+  <div id="notesSaveStatus" class="notes-save-status">Notes save per selected passage.</div>
+</div>
+
+</aside>
+</main>
 
     <div id="teacherToolsPanel" class="teacher-pop" aria-hidden="true">
       <div class="teacher-pop-head drag-handle" data-drag-handle="teacherToolsPanel">
@@ -3572,10 +3603,14 @@ function initTeachingPresentationTools() {
   if ($("showTeachingNote")) $("showTeachingNote").onclick = showTeachingPresentation;
   if ($("hideTeachingNote")) $("hideTeachingNote").onclick = hideTeachingPresentation;
   if ($("closeTeachingPresentation")) $("closeTeachingPresentation").onclick = hideTeachingPresentation;
+  if ($("obsShowTeachingNote")) $("obsShowTeachingNote").onclick = showTeachingPresentation;
 
   const crossRefs = $("crossRefs");
   if (crossRefs) {
-    crossRefs.addEventListener("input", renderCrossReferenceLinks);
+    crossRefs.addEventListener("input", () => {
+      localStorage.setItem(`${activeNotesKey || currentStudyUnitKey()}.crossRefs`, crossRefs.value);
+      renderCrossReferenceLinks();
+    });
     renderCrossReferenceLinks();
   }
 }
@@ -3770,6 +3805,31 @@ html.obs body:not(.dark) #ironPromptPanel .iron-mini-prayer {
 html.obs body.dark #ironPromptPanel .iron-mini-prayer {
   background: rgba(0,0,0,.18);
   color: var(--bright) !important;
+}
+
+  body:not(.dark) .footer {
+  background: linear-gradient(180deg, #fffaf0, #fff1cf) !important;
+  color: #061526 !important;
+}
+
+body:not(.dark) .footer strong {
+  color: #061526 !important;
+}
+
+body:not(.dark) .footer .sep {
+  background: #d7a84f !important;
+}
+
+body:not(.dark) #teachingPresentationCard {
+  background: rgba(255, 248, 234, .64) !important;
+}
+
+body.dark #teachingPresentationCard {
+  background: rgba(0, 0, 0, .52) !important;
+}
+
+html.obs #teachingPresentationCard {
+  z-index: 30000 !important;
 }
 </style>
 
