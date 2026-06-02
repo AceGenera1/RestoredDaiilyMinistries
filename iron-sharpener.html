@@ -1554,6 +1554,7 @@ body.dark .presentation-card-inner {
    <div class="obs-tool-bar" aria-label="OBS teaching tools">
   <button id="obsOpenTeacherTools">Teacher Tools</button>
   <button id="obsShowTeachingNote">Teaching Note</button>
+  <button id="obsShowApplicationNote">Application & Prayer</button>
   <button id="obsClearMarks" class="secondary">Clear</button>
   <button id="obsResetPanels" class="secondary">Reset Panels</button>
 </div>
@@ -3761,6 +3762,7 @@ function initTeachingPresentationTools() {
 if ($("hideApplicationNote")) $("hideApplicationNote").onclick = hideSmallApplicationNoteBox;
 if ($("showSmallApplicationNote")) $("showSmallApplicationNote").onclick = showSmallApplicationNoteBox;
 if ($("closeApplicationPresentation")) $("closeApplicationPresentation").onclick = hideApplicationPresentation;
+if ($("obsShowApplicationNote")) $("obsShowApplicationNote").onclick = showApplicationPresentation;
 
 const crossRefs = $("crossRefs");
 if (crossRefs) {
