@@ -276,6 +276,42 @@
       font-size: 14px;
     }
 
+    #applicationPresentationCard {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30000;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.48);
+  padding: 28px;
+}
+
+#applicationPresentationCard.open {
+  display: flex;
+}
+
+body:not(.dark) #applicationPresentationCard {
+  background: rgba(255, 248, 234, .64) !important;
+}
+
+body.dark #applicationPresentationCard {
+  background: rgba(0, 0, 0, .52) !important;
+}
+
+.application-note-hidden textarea {
+  display: none;
+}
+
+.application-note-hidden #showApplicationNote,
+.application-note-hidden #hideApplicationNote {
+  display: none;
+}
+
+.application-note-hidden #showSmallApplicationNote {
+  display: inline-flex;
+}
+
     .verse {
       font-size: 25px;
       line-height: 1.5;
@@ -1617,6 +1653,13 @@ body.dark .presentation-card-inner {
   </div>
 
   <textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea>
+  <div class="application-note-actions teaching-note-actions">
+  <button id="showApplicationNote" type="button">Show Application & Prayer</button>
+  <button id="hideApplicationNote" class="secondary" type="button">Hide</button>
+  <button id="showSmallApplicationNote" class="secondary" type="button" style="display:none;">
+    Bring Application Box Back
+  </button>
+</div>
 </div>
 
 <div class="panel">
@@ -1672,6 +1715,16 @@ body.dark .presentation-card-inner {
     <p id="presentationCardText"></p>
     <button id="closeTeachingPresentation" class="presentation-close secondary" type="button">Hide Teaching Note</button>
 </button>
+  </div>
+</div>
+
+    <div id="applicationPresentationCard" aria-hidden="true">
+  <div class="presentation-card-inner">
+    <h2>Application & Prayer</h2>
+    <p id="applicationPresentationText"></p>
+    <button id="closeApplicationPresentation" class="presentation-close secondary" type="button">
+      Hide Application & Prayer
+    </button>
   </div>
 </div>
 
@@ -3025,6 +3078,44 @@ body.dark .presentation-card-inner {
       return (books.find((book) => book[0] === bookSel.value) || books[0])[1];
     }
 
+    function showApplicationPresentation() {
+  const note = cleanText($("applicationNotes")?.value || "");
+  if (!note) return;
+
+  $("applicationPresentationText").textContent = note;
+  $("applicationPresentationCard").classList.add("open");
+  $("applicationPresentationCard").setAttribute("aria-hidden", "false");
+}
+
+function hideApplicationPresentation() {
+  $("applicationPresentationCard").classList.remove("open");
+  $("applicationPresentationCard").setAttribute("aria-hidden", "true");
+}
+
+function hideSmallApplicationNoteBox() {
+  const panel = $("applicationNotes")?.closest(".panel");
+  if (!panel) return;
+
+  panel.classList.add("application-note-hidden");
+  $("applicationNotes").style.display = "none";
+
+  if ($("showApplicationNote")) $("showApplicationNote").style.display = "none";
+  if ($("hideApplicationNote")) $("hideApplicationNote").style.display = "none";
+  if ($("showSmallApplicationNote")) $("showSmallApplicationNote").style.display = "inline-flex";
+}
+
+function showSmallApplicationNoteBox() {
+  const panel = $("applicationNotes")?.closest(".panel");
+  if (!panel) return;
+
+  panel.classList.remove("application-note-hidden");
+  $("applicationNotes").style.display = "";
+
+  if ($("showApplicationNote")) $("showApplicationNote").style.display = "inline-flex";
+  if ($("hideApplicationNote")) $("hideApplicationNote").style.display = "inline-flex";
+  if ($("showSmallApplicationNote")) $("showSmallApplicationNote").style.display = "none";
+}
+
     function hideSmallTeachingNoteBox() {
   const panel = $("teachingNotes")?.closest(".panel");
   if (!panel) return;
@@ -3666,6 +3757,10 @@ function initTeachingPresentationTools() {
   if ($("showSmallTeachingNote")) $("showSmallTeachingNote").onclick = showSmallTeachingNoteBox;
   if ($("closeTeachingPresentation")) $("closeTeachingPresentation").onclick = hideTeachingPresentation;
   if ($("obsShowTeachingNote")) $("obsShowTeachingNote").onclick = showTeachingPresentation;
+  if ($("showApplicationNote")) $("showApplicationNote").onclick = showApplicationPresentation;
+if ($("hideApplicationNote")) $("hideApplicationNote").onclick = hideSmallApplicationNoteBox;
+if ($("showSmallApplicationNote")) $("showSmallApplicationNote").onclick = showSmallApplicationNoteBox;
+if ($("closeApplicationPresentation")) $("closeApplicationPresentation").onclick = hideApplicationPresentation;
 
 const crossRefs = $("crossRefs");
 if (crossRefs) {
