@@ -947,6 +947,22 @@
       max-height: calc(100vh - 110px);
     }
 
+    .teaching-note-hidden textarea {
+  display: none;
+}
+
+.teaching-note-hidden .teaching-note-actions {
+  margin-top: 0;
+}
+
+.teaching-note-hidden #hideTeachingNote {
+  display: none;
+}
+
+.teaching-note-hidden #showSmallTeachingNote {
+  display: inline-flex;
+}
+
     html.obs .teacher-pop {
       cursor: default;
     }
@@ -1583,6 +1599,9 @@ body.dark .presentation-card-inner {
 
   <textarea id="crossRefs" placeholder="Example: John 1:1-5, Colossians 1:15-20, Hebrews 1:1-4"></textarea>
   <div id="crossRefLinks" class="cross-ref-links"></div>
+  <button id="backToPreviousPassage" class="secondary" type="button" style="display:none;margin-top:10px;">
+  ← Back to Previous Passage
+</button>
 </div>
 
 <div class="panel">
@@ -1649,6 +1668,9 @@ body.dark .presentation-card-inner {
     <h2 id="presentationCardTitle">Teaching Note</h2>
     <p id="presentationCardText"></p>
     <button id="closeTeachingPresentation" class="presentation-close secondary" type="button">Hide Teaching Note</button>
+    <button id="showSmallTeachingNote" class="secondary" type="button" style="display:none;">
+  Bring Note Box Back
+</button>
   </div>
 </div>
 
@@ -3002,6 +3024,28 @@ body.dark .presentation-card-inner {
       return (books.find((book) => book[0] === bookSel.value) || books[0])[1];
     }
 
+    function hideSmallTeachingNoteBox() {
+  const panel = $("teachingNotes")?.closest(".panel");
+  if (!panel) return;
+
+  panel.classList.add("teaching-note-hidden");
+
+  if ($("showSmallTeachingNote")) {
+    $("showSmallTeachingNote").style.display = "inline-flex";
+  }
+}
+
+function showSmallTeachingNoteBox() {
+  const panel = $("teachingNotes")?.closest(".panel");
+  if (!panel) return;
+
+  panel.classList.remove("teaching-note-hidden");
+
+  if ($("showSmallTeachingNote")) {
+    $("showSmallTeachingNote").style.display = "none";
+  }
+}
+
     function verseMax() {
       const chapterIndex = parseInt(chapSel.value, 10) - 1;
       const counts = verseCounts[bookSel.value];
@@ -3415,6 +3459,7 @@ body.dark .presentation-card-inner {
 
     function loadCurrentNotes() {
       const baseKey = currentStudyUnitKey();
+      setTimeout(renderCrossReferenceLinks, 0);
       activeNotesKey = baseKey;
 
       noteIds().forEach((id) => {
@@ -3543,15 +3588,27 @@ body.dark .presentation-card-inner {
   return [...new Set((text || "").match(pattern) || [])];
 }
 
+let previousPassageState = null;
+
 function goToScriptureReference(ref) {
   const match = ref.match(/^((?:[1-3]\s*)?[A-Za-z ]+)\s+(\d+):(\d+)(?:-(\d+))?$/i);
   if (!match) return;
+
+  previousPassageState = {
+    book: bookSel.value,
+    chapter: chapSel.value,
+    start: startSel.value,
+    end: endSel.value,
+    range: rangeSel.value
+  };
 
   let book = match[1].replace(/\s+/g, " ").trim();
   book = book.replace(/^Psalm$/i, "Psalms");
 
   const found = books.find(b => b[0].toLowerCase() === book.toLowerCase());
   if (!found) return;
+
+  saveCurrentNotes();
 
   bookSel.value = found[0];
   fillChapters();
@@ -3560,6 +3617,9 @@ function goToScriptureReference(ref) {
   startSel.value = match[3];
   endSel.value = match[4] || match[3];
   rangeSel.value = "5";
+
+  $("backToPreviousPassage").style.display = "inline-flex";
+
   loadPassage();
 }
 
@@ -3601,18 +3661,41 @@ function hideTeachingPresentation() {
 
 function initTeachingPresentationTools() {
   if ($("showTeachingNote")) $("showTeachingNote").onclick = showTeachingPresentation;
-  if ($("hideTeachingNote")) $("hideTeachingNote").onclick = hideTeachingPresentation;
+  if ($("hideTeachingNote")) $("hideTeachingNote").onclick = hideSmallTeachingNoteBox;
+  if ($("showSmallTeachingNote")) $("showSmallTeachingNote").onclick = showSmallTeachingNoteBox;
   if ($("closeTeachingPresentation")) $("closeTeachingPresentation").onclick = hideTeachingPresentation;
   if ($("obsShowTeachingNote")) $("obsShowTeachingNote").onclick = showTeachingPresentation;
 
-  const crossRefs = $("crossRefs");
-  if (crossRefs) {
-    crossRefs.addEventListener("input", () => {
-      localStorage.setItem(`${activeNotesKey || currentStudyUnitKey()}.crossRefs`, crossRefs.value);
-      renderCrossReferenceLinks();
-    });
+const crossRefs = $("crossRefs");
+if (crossRefs) {
+  crossRefs.addEventListener("input", () => {
+    localStorage.setItem(`${activeNotesKey || currentStudyUnitKey()}.crossRefs`, crossRefs.value);
     renderCrossReferenceLinks();
-  }
+  });
+
+  crossRefs.addEventListener("change", renderCrossReferenceLinks);
+  crossRefs.addEventListener("blur", renderCrossReferenceLinks);
+
+  renderCrossReferenceLinks();
+}
+}
+    if ($("backToPreviousPassage")) {
+  $("backToPreviousPassage").onclick = () => {
+    if (!previousPassageState) return;
+
+    saveCurrentNotes();
+
+    bookSel.value = previousPassageState.book;
+    fillChapters();
+    chapSel.value = previousPassageState.chapter;
+    fillVerses();
+    startSel.value = previousPassageState.start;
+    endSel.value = previousPassageState.end;
+    rangeSel.value = previousPassageState.range;
+
+    $("backToPreviousPassage").style.display = "none";
+    loadPassage();
+  };
 }
 
     function init() {
