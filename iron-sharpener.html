@@ -1556,6 +1556,7 @@ body.dark .presentation-card-inner {
   <button id="obsShowTeachingNote">Teaching Note</button>
   <button id="obsShowApplicationNote">Application & Prayer</button>
   <button id="obsShowTeachingMethod">Teaching Method</button>
+  <button id="ironPromptPanelBtn" type="button">I.R.O.N.</button>
   <button id="obsClearMarks" class="secondary">Clear</button>
   <button id="obsResetPanels" class="secondary">Reset Panels</button>
 </div>
@@ -3683,18 +3684,31 @@ function showSmallTeachingNoteBox() {
       panel.setAttribute("aria-hidden", "true");
     }
 
-    function openTeachingMethodPanel() {
+    function openTeachingMethodPanel(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
       const panel = $("teachingMethodPanel");
       if (!panel) return;
+      panel.classList.remove("drag-positioned");
+      panel.style.removeProperty("--drag-left");
+      panel.style.removeProperty("--drag-top");
+      panel.style.display = "";
       panel.classList.add("open");
       panel.setAttribute("aria-hidden", "false");
     }
 
-    function closeTeachingMethodPanel() {
+    function closeTeachingMethodPanel(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
       const panel = $("teachingMethodPanel");
       if (!panel) return;
       panel.classList.remove("open");
       panel.setAttribute("aria-hidden", "true");
+      panel.style.display = "";
     }
 
     function initTeacherTools() {
@@ -3703,6 +3717,8 @@ function showSmallTeachingNoteBox() {
       if ($("closeTeacherTools")) $("closeTeacherTools").onclick = closeTeacherTools;
       if ($("openTeachingMethodFromTools")) $("openTeachingMethodFromTools").onclick = openTeachingMethodPanel;
       if ($("openIronPanelFromTools")) $("openIronPanelFromTools").onclick = openIronPanel;
+      if ($("ironPromptPanelBtn")) $("ironPromptPanelBtn").onclick = openIronPanel;
+      if ($("closeIronPromptPanel")) $("closeIronPromptPanel").onclick = closeIronPanel;
       if ($("obsShowTeachingMethod")) $("obsShowTeachingMethod").onclick = openTeachingMethodPanel;
       if ($("closeTeachingMethodPanel")) $("closeTeachingMethodPanel").onclick = closeTeachingMethodPanel;
 
@@ -4203,7 +4219,10 @@ body.dark .teaching-method-callout {
 </div>
 
 <div id="ironPromptPanel">
-  <h3 class="drag-handle" data-drag-handle="ironPromptPanel">I.R.O.N. Study Prompts</h3>
+  <div class="teaching-method-head drag-handle" data-drag-handle="ironPromptPanel">
+    <h3>I.R.O.N. Study Prompts</h3>
+    <button id="closeIronPromptPanel" class="teacher-pop-close secondary" type="button">Close</button>
+  </div>
   <p><strong>I — Inspect the Scripture</strong><br>Read carefully and understand the passage in context.</p>
   <p><strong>R — Reflect Prayerfully</strong><br>Slow down, meditate on the Word, and listen humbly before the Lord.</p>
   <p><strong>O — Observe God’s Truth</strong><br>What does this reveal about God, Christ, sin, faith, obedience, or grace?</p>
@@ -4234,27 +4253,32 @@ body.dark .teaching-method-callout {
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const obsToolbar = document.querySelector(".obs-tool-bar");
-  const panel = document.getElementById("ironPromptPanel");
+  const ironBtn = document.getElementById("ironPromptPanelBtn");
+  const ironPanel = document.getElementById("ironPromptPanel");
+  const ironClose = document.getElementById("closeIronPromptPanel");
 
-  if (!obsToolbar || !panel) return;
+  function openIronPrompt(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if (!ironPanel) return;
+    ironPanel.classList.add("open");
+    ironPanel.setAttribute("aria-hidden", "false");
+  }
 
-  if (document.getElementById("ironPromptPanelBtn")) return;
+  function closeIronPrompt(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if (!ironPanel) return;
+    ironPanel.classList.remove("open");
+    ironPanel.setAttribute("aria-hidden", "true");
+  }
 
-  const btn = document.createElement("button");
-  btn.id = "ironPromptPanelBtn";
-  btn.type = "button";
-  btn.textContent = "I.R.O.N.";
-  btn.className = "secondary";
-
-  btn.addEventListener("click", function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-    panel.classList.toggle("open");
-    panel.setAttribute("aria-hidden", panel.classList.contains("open") ? "false" : "true");
-  });
-
-  obsToolbar.appendChild(btn);
+  if (ironBtn) ironBtn.addEventListener("click", openIronPrompt);
+  if (ironClose) ironClose.addEventListener("click", closeIronPrompt);
 });
 </script>
 
