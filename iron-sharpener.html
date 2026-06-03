@@ -276,50 +276,6 @@
       font-size: 14px;
     }
 
-    #applicationPresentationCard {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 30000;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,.48);
-  padding: 28px;
-}
-
-#teachingMethodPanel.open {
-  display: block;
-  position: fixed;
-  right: 22px;
-  top: 118px;
-  z-index: 10060;
-}
-
-#applicationPresentationCard.open {
-  display: flex;
-}
-
-body:not(.dark) #applicationPresentationCard {
-  background: rgba(255, 248, 234, .64) !important;
-}
-
-body.dark #applicationPresentationCard {
-  background: rgba(0, 0, 0, .52) !important;
-}
-
-.application-note-hidden textarea {
-  display: none;
-}
-
-.application-note-hidden #showApplicationNote,
-.application-note-hidden #hideApplicationNote {
-  display: none;
-}
-
-.application-note-hidden #showSmallApplicationNote {
-  display: inline-flex;
-}
-
     .verse {
       font-size: 25px;
       line-height: 1.5;
@@ -1531,6 +1487,153 @@ body.dark .presentation-card-inner {
   margin-top: 24px;
 }
 
+
+
+    /* Teaching Method + I.R.O.N. Floating Help Panels */
+    .floating-panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+    }
+
+    .floating-panel-head h3 {
+      margin: 0 !important;
+      padding-bottom: 0 !important;
+      border-bottom: 0 !important;
+      text-align: left !important;
+      color: #8c5b09;
+      font-size: 23px !important;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    body.dark .floating-panel-head h3 {
+      color: #ffe08c !important;
+      text-shadow: 0 2px 5px rgba(0,0,0,.44), 0 0 14px rgba(248,217,135,.16);
+    }
+
+    #teachingMethodPanel {
+      display: none;
+    }
+
+    #teachingMethodPanel.open {
+      display: block;
+      position: fixed;
+      right: 22px;
+      top: 118px;
+      width: min(620px, calc(100vw - 32px));
+      max-height: calc(100vh - 150px);
+      overflow-y: auto;
+      z-index: 10060;
+      border: 2px solid var(--gold);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.38);
+    }
+
+    body:not(.dark) #teachingMethodPanel.open {
+      background: linear-gradient(180deg, #fffaf0, #fff1d0) !important;
+      color: #10213c !important;
+      border: 2px solid rgba(183,116,16,.72) !important;
+    }
+
+    body.dark #teachingMethodPanel.open {
+      background: linear-gradient(180deg, #102b4b, #071a30) !important;
+      color: #fff6d9 !important;
+      border: 2px solid rgba(248,217,135,.88) !important;
+      box-shadow: 0 24px 60px rgba(0,0,0,.50), 0 0 24px rgba(248,217,135,.14) !important;
+    }
+
+    html.obs #teachingMethodPanel.open,
+    html.obs #ironPromptPanel.open {
+      resize: both;
+      min-width: 360px;
+      min-height: 230px;
+      max-width: calc(100vw - 24px);
+      max-height: calc(100vh - 110px);
+    }
+
+    html.obs #teachingMethodPanel.open:not(.drag-positioned) {
+      left: auto !important;
+      right: 22px !important;
+      top: 118px !important;
+      bottom: auto !important;
+      transform: none !important;
+    }
+
+    html.obs #teachingMethodPanel.open.drag-positioned {
+      left: var(--drag-left) !important;
+      top: var(--drag-top) !important;
+      right: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+    }
+
+    .teaching-method-panel p,
+    .teaching-method-panel li {
+      font: 800 14px Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    body.dark .teaching-method-panel p,
+    body.dark .teaching-method-panel li {
+      color: #fff7df !important;
+      text-shadow: 0 1px 2px rgba(0,0,0,.28);
+    }
+
+    .teaching-method-callout {
+      margin: 14px 0;
+      padding: 13px 14px;
+      border-left: 4px solid var(--gold);
+      border-radius: 10px;
+      background: rgba(248,217,135,.16);
+      font: italic 800 14px Georgia, "Times New Roman", serif;
+      line-height: 1.45;
+    }
+
+    body.dark .teaching-method-callout {
+      background: rgba(248,217,135,.13) !important;
+      color: #fff0bf !important;
+      border-left-color: #f8d987 !important;
+    }
+
+    html.obs .obs-tool-bar #obsOpenTeacherTools,
+    html.obs .obs-tool-bar #obsShowTeachingNote,
+    html.obs .obs-tool-bar #obsShowApplicationNote,
+    html.obs .obs-tool-bar #obsShowTeachingMethod,
+    html.obs .obs-tool-bar #ironPromptPanelBtn {
+      display: inline-flex !important;
+      background: linear-gradient(#f8d987, #d99f31) !important;
+      color: #061526 !important;
+      border: 1.5px solid var(--gold) !important;
+    }
+
+    html.obs .obs-tool-bar #obsClearMarks,
+    html.obs .obs-tool-bar #obsResetPanels {
+      background: #fff7e6 !important;
+      color: #061526 !important;
+      border: 1.5px solid var(--gold) !important;
+    }
+
+
+#applicationPresentationCard {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30000;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.48);
+  padding: 28px;
+}
+#applicationPresentationCard.open { display: flex; }
+body:not(.dark) #applicationPresentationCard { background: rgba(255, 248, 234, .64) !important; }
+body.dark #applicationPresentationCard { background: rgba(0, 0, 0, .52) !important; }
+
 </style>
 </head>
 <body>
@@ -1559,7 +1662,7 @@ body.dark .presentation-card-inner {
 
     <div class="ribbon">Prepared in prayer &nbsp; ✦ &nbsp; Taught with clarity &nbsp; ✦ &nbsp; Shared for discipleship</div>
 
-<div class="obs-tool-bar" aria-label="OBS teaching tools">
+   <div class="obs-tool-bar" aria-label="OBS teaching tools">
   <button id="obsOpenTeacherTools">Teacher Tools</button>
   <button id="obsShowTeachingNote">Teaching Note</button>
   <button id="obsShowApplicationNote">Application & Prayer</button>
@@ -1664,13 +1767,6 @@ body.dark .presentation-card-inner {
   </div>
 
   <textarea id="applicationNotes" placeholder="Pastoral application, prayer points, invitation, encouragement..."></textarea>
-  <div class="application-note-actions teaching-note-actions">
-  <button id="showApplicationNote" type="button">Show Application & Prayer</button>
-  <button id="hideApplicationNote" class="secondary" type="button">Hide</button>
-  <button id="showSmallApplicationNote" class="secondary" type="button" style="display:none;">
-    Bring Application Box Back
-  </button>
-</div>
 </div>
 
 <div class="panel">
@@ -1717,44 +1813,54 @@ body.dark .presentation-card-inner {
 
       <div class="tool-section-title">Teaching Help</div>
       <div class="tool-options">
-        <button type="button" class="tool-option" id="openTeachingMethodFromTools">
+        <button type="button" class="tool-option helper-option" id="openTeachingMethodFromTools">
           <strong>Teaching Method</strong>
           <span>Open the five-verse teaching rhythm, why it matters, and how to teach with clarity without rushing the passage.</span>
         </button>
-        <button type="button" class="tool-option" id="openIronPanelFromTools">
+        <button type="button" class="tool-option helper-option" id="openIronPanelFromTools">
           <strong>I.R.O.N. Prompts</strong>
           <span>Open the Inspect, Reflect, Observe, and Next Steps prompts for prayerful study and application.</span>
         </button>
       </div>
 
-  <div id="teachingMethodPanel" aria-hidden="true">
-  <div class="floating-panel-head drag-handle" data-drag-handle="teachingMethodPanel">
-    <h3>Teaching Method</h3>
-    <button id="closeTeachingMethodPanel" class="teacher-pop-close secondary" type="button">Close</button>
-  </div>
-
-  <div class="teaching-method-callout">
-    A five-verse rhythm helps the teacher slow down, protect the context, and let Scripture lead instead of rushing through too much at once.
-  </div>
-
-  <p><strong>Why teach around five verses at a time?</strong></p>
-  <ul class="teaching-flow-list">
-    <li><strong>It keeps the passage manageable.</strong> People can follow the text without feeling overwhelmed.</li>
-    <li><strong>It protects context.</strong> You can explain what came before, what is happening now, and where the passage is going.</li>
-    <li><strong>It gives room for observation.</strong> Repeated words, commands, promises, warnings, and Christ-centered truths become easier to see.</li>
-    <li><strong>It helps application become clear.</strong> The goal is not just information, but faithful response to God’s Word.</li>
-    <li><strong>It leaves space for prayer.</strong> The teacher can slow down and ask the Lord for wisdom, humility, and obedience.</li>
-  </ul>
-</div>
-
-  <button type="button" class="tool-option helper-option" id="openIronPanelFromTools">
-    <strong>I.R.O.N. Prompts</strong>
-    <span>Open the Inspect, Reflect, Observe, and Next Steps study prompts.</span>
-  </button>
-</div>
-
       <div class="teacher-pop-note">
         Choose a tool, then click a verse to apply it. For highlight colors, underline, circle, or box, you can also select a word or phrase first, then click inside that verse to mark only the selected text.
+      </div>
+    </div>
+
+
+    <div id="teachingMethodPanel" class="teaching-method-panel" aria-hidden="true" style="display:none;">
+      <div class="floating-panel-head drag-handle" data-drag-handle="teachingMethodPanel">
+        <h3>Teaching Method</h3>
+        <button id="closeTeachingMethodPanel" class="teacher-pop-close secondary" type="button">Close</button>
+      </div>
+
+      <div class="teaching-method-callout">
+        A five-verse rhythm helps the teacher slow down, protect the context, and let Scripture lead instead of rushing through too much at once.
+      </div>
+
+      <p><strong>Why teach around five verses at a time?</strong></p>
+      <ul class="teaching-flow-list">
+        <li><strong>It keeps the passage manageable.</strong> People can follow the text without feeling overwhelmed.</li>
+        <li><strong>It protects context.</strong> You can explain what came before, what is happening now, and where the passage is going.</li>
+        <li><strong>It gives room for observation.</strong> Repeated words, commands, promises, warnings, and Christ-centered truths become easier to see.</li>
+        <li><strong>It helps application become clear.</strong> The goal is not just information, but faithful response to God’s Word.</li>
+        <li><strong>It leaves space for prayer.</strong> The teacher can slow down and ask the Lord for wisdom, humility, and obedience.</li>
+      </ul>
+
+      <div class="iron-panel-divider"></div>
+
+      <p><strong>Simple teaching rhythm:</strong></p>
+      <ul class="teaching-flow-list">
+        <li>Read the selected verses slowly and clearly.</li>
+        <li>Explain the context in plain language.</li>
+        <li>Mark key words, repeated ideas, promises, warnings, or commands.</li>
+        <li>Point people to Christ and the Gospel.</li>
+        <li>Give one clear application or prayerful response.</li>
+      </ul>
+
+      <div class="teaching-method-callout">
+        The five-verse number is a guide, not a law. Some passages may need fewer verses. Some may allow more. The goal is faithful, Spirit-led clarity.
       </div>
     </div>
 
@@ -1763,19 +1869,17 @@ body.dark .presentation-card-inner {
     <h2 id="presentationCardTitle">Teaching Note</h2>
     <p id="presentationCardText"></p>
     <button id="closeTeachingPresentation" class="presentation-close secondary" type="button">Hide Teaching Note</button>
-</button>
   </div>
 </div>
 
+
     <div id="applicationPresentationCard" aria-hidden="true">
-  <div class="presentation-card-inner">
-    <h2>Application & Prayer</h2>
-    <p id="applicationPresentationText"></p>
-    <button id="closeApplicationPresentation" class="presentation-close secondary" type="button">
-      Hide Application & Prayer
-    </button>
-  </div>
-</div>
+      <div class="presentation-card-inner">
+        <h2>Application & Prayer</h2>
+        <p id="applicationPresentationText"></p>
+        <button id="closeApplicationPresentation" class="presentation-close secondary" type="button">Hide Application & Prayer</button>
+      </div>
+    </div>
 
     <footer class="footer">
       <strong>World English Bible (WEB) scripture text is public domain.</strong>
@@ -3127,43 +3231,19 @@ body.dark .presentation-card-inner {
       return (books.find((book) => book[0] === bookSel.value) || books[0])[1];
     }
 
+
     function showApplicationPresentation() {
-  const note = cleanText($("applicationNotes")?.value || "");
-  if (!note) return;
+      const note = cleanText($("applicationNotes")?.value || "");
+      if (!note) return;
+      $("applicationPresentationText").textContent = note;
+      $("applicationPresentationCard").classList.add("open");
+      $("applicationPresentationCard").setAttribute("aria-hidden", "false");
+    }
 
-  $("applicationPresentationText").textContent = note;
-  $("applicationPresentationCard").classList.add("open");
-  $("applicationPresentationCard").setAttribute("aria-hidden", "false");
-}
-
-function hideApplicationPresentation() {
-  $("applicationPresentationCard").classList.remove("open");
-  $("applicationPresentationCard").setAttribute("aria-hidden", "true");
-}
-
-function hideSmallApplicationNoteBox() {
-  const panel = $("applicationNotes")?.closest(".panel");
-  if (!panel) return;
-
-  panel.classList.add("application-note-hidden");
-  $("applicationNotes").style.display = "none";
-
-  if ($("showApplicationNote")) $("showApplicationNote").style.display = "none";
-  if ($("hideApplicationNote")) $("hideApplicationNote").style.display = "none";
-  if ($("showSmallApplicationNote")) $("showSmallApplicationNote").style.display = "inline-flex";
-}
-
-function showSmallApplicationNoteBox() {
-  const panel = $("applicationNotes")?.closest(".panel");
-  if (!panel) return;
-
-  panel.classList.remove("application-note-hidden");
-  $("applicationNotes").style.display = "";
-
-  if ($("showApplicationNote")) $("showApplicationNote").style.display = "inline-flex";
-  if ($("hideApplicationNote")) $("hideApplicationNote").style.display = "inline-flex";
-  if ($("showSmallApplicationNote")) $("showSmallApplicationNote").style.display = "none";
-}
+    function hideApplicationPresentation() {
+      $("applicationPresentationCard").classList.remove("open");
+      $("applicationPresentationCard").setAttribute("aria-hidden", "true");
+    }
 
     function hideSmallTeachingNoteBox() {
   const panel = $("teachingNotes")?.closest(".panel");
@@ -3544,6 +3624,15 @@ function showSmallTeachingNoteBox() {
       const ironPanel = document.getElementById("ironPromptPanel");
       if (ironPanel) {
         ironPanel.classList.remove("open");
+        ironPanel.style.display = "none";
+        ironPanel.setAttribute("aria-hidden", "true");
+      }
+
+      const teachingMethodPanel = document.getElementById("teachingMethodPanel");
+      if (teachingMethodPanel) {
+        teachingMethodPanel.classList.remove("open");
+        teachingMethodPanel.style.display = "none";
+        teachingMethodPanel.setAttribute("aria-hidden", "true");
       }
 
       closeTeacherTools();
@@ -3646,12 +3735,9 @@ function showSmallTeachingNoteBox() {
         erase: "Erase Verse Marks"
       };
 
-  document.querySelectorAll(".tool-option[data-tool]").forEach((button) => {
-  button.onclick = () => {
-    setTool(button.dataset.tool);
-    closeTeacherTools();
-  };
-});
+      document.querySelectorAll(".tool-option[data-tool]").forEach((button) => {
+        button.classList.toggle("active-choice", button.dataset.tool === toolName);
+      });
 
       const label = $("activeToolLabel");
       if (label) {
@@ -3809,11 +3895,8 @@ function initTeachingPresentationTools() {
   if ($("showSmallTeachingNote")) $("showSmallTeachingNote").onclick = showSmallTeachingNoteBox;
   if ($("closeTeachingPresentation")) $("closeTeachingPresentation").onclick = hideTeachingPresentation;
   if ($("obsShowTeachingNote")) $("obsShowTeachingNote").onclick = showTeachingPresentation;
-  if ($("showApplicationNote")) $("showApplicationNote").onclick = showApplicationPresentation;
-if ($("hideApplicationNote")) $("hideApplicationNote").onclick = hideSmallApplicationNoteBox;
-if ($("showSmallApplicationNote")) $("showSmallApplicationNote").onclick = showSmallApplicationNoteBox;
-if ($("closeApplicationPresentation")) $("closeApplicationPresentation").onclick = hideApplicationPresentation;
-if ($("obsShowApplicationNote")) $("obsShowApplicationNote").onclick = showApplicationPresentation;
+  if ($("obsShowApplicationNote")) $("obsShowApplicationNote").onclick = showApplicationPresentation;
+  if ($("closeApplicationPresentation")) $("closeApplicationPresentation").onclick = hideApplicationPresentation;
 
 const crossRefs = $("crossRefs");
 if (crossRefs) {
@@ -3919,6 +4002,20 @@ if (crossRefs) {
 
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
+          const teachingMethodPanel = document.getElementById("teachingMethodPanel");
+          if (teachingMethodPanel) {
+            teachingMethodPanel.classList.remove("open");
+            teachingMethodPanel.style.display = "none";
+            teachingMethodPanel.setAttribute("aria-hidden", "true");
+          }
+
+          const ironPanel = document.getElementById("ironPromptPanel");
+          if (ironPanel) {
+            ironPanel.classList.remove("open");
+            ironPanel.style.display = "none";
+            ironPanel.setAttribute("aria-hidden", "true");
+          }
+
           closeTeacherTools();
           setObsMode(false);
         }
@@ -4063,42 +4160,36 @@ body.dark #teachingPresentationCard {
 html.obs #teachingPresentationCard {
   z-index: 30000 !important;
 }
+
+
+/* Generic I.R.O.N. panel open state for Teacher Tools and OBS */
+#ironPromptPanel.open {
+  display: block;
+  position: fixed;
+  right: 22px;
+  top: 118px;
+  width: min(540px, calc(100vw - 30px));
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  z-index: 10055;
+  border: 2px solid var(--gold);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 18px 38px rgba(0,0,0,.42);
+}
+
+body:not(.dark) #ironPromptPanel.open {
+  background: linear-gradient(180deg, #fffaf0, #fff4dc) !important;
+  color: #10213c !important;
+}
+
+body.dark #ironPromptPanel.open {
+  background: linear-gradient(180deg, rgba(6,21,38,.98), rgba(8,27,48,.98)) !important;
+  color: #fff3cd !important;
+}
+
 </style>
 
-
-<div id="teachingMethodPanel" ...>
-...
-</div>
-
-
-  <div class="teaching-method-callout">
-    A five-verse rhythm helps the teacher slow down, protect the context, and let Scripture lead instead of rushing through too much at once.
-  </div>
-
-  <p><strong>Why teach around five verses at a time?</strong></p>
-  <ul class="teaching-flow-list">
-    <li><strong>It keeps the passage manageable.</strong> People can follow the text without feeling overwhelmed.</li>
-    <li><strong>It protects context.</strong> You can explain what came before, what is happening now, and where the passage is going.</li>
-    <li><strong>It gives room for observation.</strong> Repeated words, commands, promises, warnings, and Christ-centered truths become easier to see.</li>
-    <li><strong>It helps application become clear.</strong> The goal is not just information, but faithful response to God’s Word.</li>
-    <li><strong>It leaves space for prayer.</strong> The teacher can slow down and ask the Lord for wisdom, humility, and obedience.</li>
-  </ul>
-
-  <div class="iron-panel-divider"></div>
-
-  <p><strong>Simple teaching rhythm:</strong></p>
-  <ul class="teaching-flow-list">
-    <li>Read the selected verses slowly and clearly.</li>
-    <li>Explain the context in plain language.</li>
-    <li>Mark key words, repeated ideas, promises, warnings, or commands.</li>
-    <li>Point people to Christ and the Gospel.</li>
-    <li>Give one clear application or prayerful response.</li>
-  </ul>
-
-  <div class="teaching-method-callout">
-    The five-verse number is a guide, not a law. Some passages may need fewer verses. Some may allow more. The goal is faithful, Spirit-led clarity.
-  </div>
-</div>
 
 <div id="ironPromptPanel">
   <div class="floating-panel-head drag-handle" data-drag-handle="ironPromptPanel">
@@ -4140,24 +4231,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!obsToolbar || !panel) return;
 
-  if (document.getElementById("ironPromptPanelBtn")) return;
+  let btn = document.getElementById("ironPromptPanelBtn");
+  if (!btn) {
+    btn = document.createElement("button");
+    btn.id = "ironPromptPanelBtn";
+    btn.type = "button";
+    btn.textContent = "I.R.O.N.";
+  }
 
-  const btn = document.createElement("button");
-  btn.id = "ironPromptPanelBtn";
-  btn.type = "button";
-  btn.textContent = "I.R.O.N.";
   btn.className = "";
-
-  btn.addEventListener("click", function (event) {
+  btn.onclick = function (event) {
     event.preventDefault();
     event.stopPropagation();
-    panel.classList.toggle("open");
-  });
+    panel.style.display = "";
+    panel.classList.add("open");
+    panel.setAttribute("aria-hidden", "false");
+  };
 
   const clearButton = document.getElementById("obsClearMarks");
-  if (clearButton && clearButton.parentNode === obsToolbar) {
+  if (!btn.parentNode && clearButton && clearButton.parentNode === obsToolbar) {
     obsToolbar.insertBefore(btn, clearButton);
-  } else {
+  } else if (!btn.parentNode) {
     obsToolbar.appendChild(btn);
   }
 });
@@ -4218,16 +4312,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.resetIronSharpenerFloatingPanels = function () {
     resetDragPosition("teacherToolsPanel");
+    resetDragPosition("teachingMethodPanel");
     resetDragPosition("ironPromptPanel");
   };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       makeDraggable("teacherToolsPanel");
+      makeDraggable("teachingMethodPanel");
       makeDraggable("ironPromptPanel");
     });
   } else {
     makeDraggable("teacherToolsPanel");
+    makeDraggable("teachingMethodPanel");
     makeDraggable("ironPromptPanel");
   }
 })();
@@ -4282,13 +4379,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <script>
-(function finalIronSharpenerPanelBindings() {
-  function $(id) {
+(function restoredDailyTeachingHelpPanels() {
+  function get(id) {
     return document.getElementById(id);
   }
 
-  function openFloatingPanel(id) {
-    const panel = $(id);
+  function openPanel(id) {
+    const panel = get(id);
     if (!panel) return;
     panel.style.display = "";
     panel.classList.remove("drag-positioned");
@@ -4298,112 +4395,48 @@ document.addEventListener("DOMContentLoaded", function () {
     panel.setAttribute("aria-hidden", "false");
   }
 
-  function closeFloatingPanel(id) {
-    const panel = $(id);
+  function closePanel(id) {
+    const panel = get(id);
     if (!panel) return;
     panel.classList.remove("open");
     panel.setAttribute("aria-hidden", "true");
-    panel.style.display = "";
+    panel.style.display = "none";
   }
 
-  function bindOnce(id, eventName, handler) {
-    const el = $(id);
-    if (!el) return;
-    const clone = el.cloneNode(true);
-    el.parentNode.replaceChild(clone, el);
-    clone.addEventListener(eventName, handler);
+  function bindOpen(buttonId, panelId) {
+    const button = get(buttonId);
+    if (!button) return;
+    button.onclick = function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      openPanel(panelId);
+    };
   }
 
-  function makeDraggableSafe(panelId) {
-    const panel = $(panelId);
-    if (!panel || panel.dataset.safeDragReady === "true") return;
-
-    const handle = document.querySelector('[data-drag-handle="' + panelId + '"]');
-    if (!handle) return;
-
-    panel.dataset.safeDragReady = "true";
-
-    let startX = 0;
-    let startY = 0;
-    let startLeft = 0;
-    let startTop = 0;
-    let dragging = false;
-
-    handle.addEventListener("mousedown", function(event) {
-      if (!document.documentElement.classList.contains("obs")) return;
-      dragging = true;
-
-      const rect = panel.getBoundingClientRect();
-      startX = event.clientX;
-      startY = event.clientY;
-      startLeft = rect.left;
-      startTop = rect.top;
-
-      panel.classList.add("drag-positioned");
+  function bindClose(buttonId, panelId) {
+    const button = get(buttonId);
+    if (!button) return;
+    button.onclick = function(event) {
       event.preventDefault();
-    });
-
-    document.addEventListener("mousemove", function(event) {
-      if (!dragging) return;
-
-      const nextLeft = Math.max(8, Math.min(window.innerWidth - 120, startLeft + event.clientX - startX));
-      const nextTop = Math.max(8, Math.min(window.innerHeight - 120, startTop + event.clientY - startY));
-
-      panel.style.setProperty("--drag-left", nextLeft + "px");
-      panel.style.setProperty("--drag-top", nextTop + "px");
-    });
-
-    document.addEventListener("mouseup", function() {
-      dragging = false;
-    });
+      event.stopPropagation();
+      closePanel(panelId);
+    };
   }
 
-  function setup() {
-    bindOnce("obsShowTeachingMethod", "click", function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      openFloatingPanel("teachingMethodPanel");
-    });
+  function setupPanels() {
+    bindOpen("obsShowTeachingMethod", "teachingMethodPanel");
+    bindOpen("openTeachingMethodFromTools", "teachingMethodPanel");
+    bindOpen("ironPromptPanelBtn", "ironPromptPanel");
+    bindOpen("openIronPanelFromTools", "ironPromptPanel");
 
-    bindOnce("openTeachingMethodFromTools", "click", function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      openFloatingPanel("teachingMethodPanel");
-    });
-
-    bindOnce("closeTeachingMethodPanel", "click", function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      closeFloatingPanel("teachingMethodPanel");
-    });
-
-    bindOnce("openIronPanelFromTools", "click", function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      openFloatingPanel("ironPromptPanel");
-    });
-
-    bindOnce("ironPromptPanelBtn", "click", function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      openFloatingPanel("ironPromptPanel");
-    });
-
-    bindOnce("closeIronPromptPanel", "click", function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      closeFloatingPanel("ironPromptPanel");
-    });
-
-    makeDraggableSafe("teachingMethodPanel");
-    makeDraggableSafe("ironPromptPanel");
+    bindClose("closeTeachingMethodPanel", "teachingMethodPanel");
+    bindClose("closeIronPromptPanel", "ironPromptPanel");
 
     const oldReset = window.resetIronSharpenerFloatingPanels;
     window.resetIronSharpenerFloatingPanels = function() {
       if (typeof oldReset === "function") oldReset();
-
-      ["teachingMethodPanel", "ironPromptPanel", "teacherToolsPanel"].forEach(function(id) {
-        const panel = $(id);
+      ["teacherToolsPanel", "teachingMethodPanel", "ironPromptPanel"].forEach(function(id) {
+        const panel = get(id);
         if (!panel) return;
         panel.classList.remove("drag-positioned");
         panel.style.removeProperty("--drag-left");
@@ -4413,65 +4446,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setup);
+    document.addEventListener("DOMContentLoaded", setupPanels);
   } else {
-    setup();
+    setupPanels();
   }
 })();
 </script>
 
-  <script>
-(function finalTeachingHelpFix() {
-  function openPanel(panelId) {
-    const panel = document.getElementById(panelId);
-    if (!panel) {
-      alert("Panel not found: " + panelId);
-      return;
-    }
-
-    panel.style.display = "block";
-    panel.classList.add("open");
-    panel.setAttribute("aria-hidden", "false");
-  }
-
-  function closePanel(panelId) {
-    const panel = document.getElementById(panelId);
-    if (!panel) return;
-
-    panel.classList.remove("open");
-    panel.style.display = "none";
-    panel.setAttribute("aria-hidden", "true");
-  }
-
-  document.addEventListener("click", function(event) {
-    const target = event.target.closest("button");
-    if (!target) return;
-
-    if (target.id === "obsShowTeachingMethod" || target.id === "openTeachingMethodFromTools") {
-      event.preventDefault();
-      event.stopPropagation();
-      openPanel("teachingMethodPanel");
-    }
-
-    if (target.id === "ironPromptPanelBtn" || target.id === "openIronPanelFromTools") {
-      event.preventDefault();
-      event.stopPropagation();
-      openPanel("ironPromptPanel");
-    }
-
-    if (target.id === "closeTeachingMethodPanel") {
-      event.preventDefault();
-      event.stopPropagation();
-      closePanel("teachingMethodPanel");
-    }
-
-    if (target.id === "closeIronPromptPanel") {
-      event.preventDefault();
-      event.stopPropagation();
-      closePanel("ironPromptPanel");
-    }
-  }, true);
-})();
-</script>
 </body>
 </html>
