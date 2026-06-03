@@ -1556,7 +1556,6 @@ body.dark .presentation-card-inner {
   <button id="obsShowTeachingNote">Teaching Note</button>
   <button id="obsShowApplicationNote">Application & Prayer</button>
   <button id="obsShowTeachingMethod">Teaching Method</button>
-  <button id="ironPromptPanelBtn" type="button">I.R.O.N.</button>
   <button id="obsClearMarks" class="secondary">Clear</button>
   <button id="obsResetPanels" class="secondary">Reset Panels</button>
 </div>
@@ -1729,7 +1728,8 @@ body.dark .presentation-card-inner {
     <h2 id="presentationCardTitle">Teaching Note</h2>
     <p id="presentationCardText"></p>
     <button id="closeTeachingPresentation" class="presentation-close secondary" type="button">Hide Teaching Note</button>
-</div>
+</button>
+  </div>
 </div>
 
     <div id="applicationPresentationCard" aria-hidden="true">
@@ -3670,57 +3670,10 @@ function showSmallTeachingNoteBox() {
       panel.setAttribute("aria-hidden", "true");
     }
 
-    function openIronPanel() {
-      const panel = document.getElementById("ironPromptPanel");
-      if (!panel) return;
-      panel.classList.add("open");
-      panel.setAttribute("aria-hidden", "false");
-    }
-
-    function closeIronPanel() {
-      const panel = document.getElementById("ironPromptPanel");
-      if (!panel) return;
-      panel.classList.remove("open");
-      panel.setAttribute("aria-hidden", "true");
-    }
-
-    function openTeachingMethodPanel(event) {
-      if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      const panel = $("teachingMethodPanel");
-      if (!panel) return;
-      panel.classList.remove("drag-positioned");
-      panel.style.removeProperty("--drag-left");
-      panel.style.removeProperty("--drag-top");
-      panel.style.display = "";
-      panel.classList.add("open");
-      panel.setAttribute("aria-hidden", "false");
-    }
-
-    function closeTeachingMethodPanel(event) {
-      if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      const panel = $("teachingMethodPanel");
-      if (!panel) return;
-      panel.classList.remove("open");
-      panel.setAttribute("aria-hidden", "true");
-      panel.style.display = "";
-    }
-
     function initTeacherTools() {
       if ($("openTeacherTools")) $("openTeacherTools").onclick = openTeacherTools;
       if ($("obsOpenTeacherTools")) $("obsOpenTeacherTools").onclick = openTeacherTools;
       if ($("closeTeacherTools")) $("closeTeacherTools").onclick = closeTeacherTools;
-      if ($("openTeachingMethodFromTools")) $("openTeachingMethodFromTools").onclick = openTeachingMethodPanel;
-      if ($("openIronPanelFromTools")) $("openIronPanelFromTools").onclick = openIronPanel;
-      if ($("ironPromptPanelBtn")) $("ironPromptPanelBtn").onclick = openIronPanel;
-      if ($("closeIronPromptPanel")) $("closeIronPromptPanel").onclick = closeIronPanel;
-      if ($("obsShowTeachingMethod")) $("obsShowTeachingMethod").onclick = openTeachingMethodPanel;
-      if ($("closeTeachingMethodPanel")) $("closeTeachingMethodPanel").onclick = closeTeachingMethodPanel;
 
       document.querySelectorAll(".tool-option[data-tool]").forEach((button) => {
         button.onclick = () => {
@@ -3929,8 +3882,6 @@ if (crossRefs) {
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
           closeTeacherTools();
-          closeIronPanel();
-          closeTeachingMethodPanel();
           setObsMode(false);
         }
       });
@@ -4074,117 +4025,12 @@ body.dark #teachingPresentationCard {
 html.obs #teachingPresentationCard {
   z-index: 30000 !important;
 }
-
-/* Teaching Method / Five-Verse Teaching Panel */
-#teachingMethodPanel {
-  display: none;
-}
-
-#teachingMethodPanel.open {
-  display: block;
-  position: fixed;
-  right: 22px;
-  top: 118px;
-  width: min(580px, calc(100vw - 32px));
-  max-height: calc(100vh - 150px);
-  overflow-y: auto;
-  z-index: 10060;
-  border: 2px solid var(--gold);
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 24px 70px rgba(0,0,0,.38);
-}
-
-body:not(.dark) #teachingMethodPanel.open {
-  background: linear-gradient(180deg, #fffaf0, #fff1d0) !important;
-  color: #10213c !important;
-  border: 2px solid rgba(183,116,16,.72) !important;
-}
-
-body.dark #teachingMethodPanel.open {
-  background: linear-gradient(180deg, #102b4b, #071a30) !important;
-  color: #fff6d9 !important;
-  border: 2px solid rgba(248,217,135,.88) !important;
-  box-shadow: 0 24px 60px rgba(0,0,0,.50), 0 0 24px rgba(248,217,135,.14) !important;
-}
-
-html.obs #teachingMethodPanel.open {
-  top: 118px;
-  right: 22px;
-  width: min(650px, calc(100vw - 32px));
-  max-height: 68vh;
-  resize: both;
-  min-width: 360px;
-  min-height: 230px;
-  max-width: calc(100vw - 24px);
-  max-height: calc(100vh - 110px);
-}
-
-html.obs #teachingMethodPanel.open.drag-positioned {
-  left: var(--drag-left) !important;
-  top: var(--drag-top) !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: none !important;
-}
-
-.teaching-method-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  border-bottom: 1px solid var(--gold);
-  padding-bottom: 10px;
-  margin-bottom: 14px;
-}
-
-.teaching-method-head h3 {
-  margin: 0;
-  color: #8c5b09;
-  font-size: 23px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-body.dark .teaching-method-head h3 {
-  color: #ffe08c !important;
-  text-shadow: 0 2px 5px rgba(0,0,0,.44), 0 0 14px rgba(248,217,135,.16);
-}
-
-.teaching-method-panel p,
-.teaching-method-panel li {
-  font: 800 14px Arial, sans-serif;
-  line-height: 1.55;
-}
-
-body.dark .teaching-method-panel p,
-body.dark .teaching-method-panel li {
-  color: #fff7df !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,.28);
-}
-
-.teaching-method-callout {
-  margin: 14px 0;
-  padding: 13px 14px;
-  border-left: 4px solid var(--gold);
-  border-radius: 10px;
-  background: rgba(248,217,135,.16);
-  font: italic 800 14px Georgia, "Times New Roman", serif;
-  line-height: 1.45;
-}
-
-body.dark .teaching-method-callout {
-  background: rgba(248,217,135,.13) !important;
-  color: #fff0bf !important;
-  border-left-color: #f8d987 !important;
-}
-
 </style>
 
 
 
 <div id="teachingMethodPanel" class="teaching-method-panel" aria-hidden="true">
-  <div class="teaching-method-head drag-handle" data-drag-handle="teachingMethodPanel">
+  <div class="floating-panel-head drag-handle" data-drag-handle="teachingMethodPanel">
     <h3>Teaching Method</h3>
     <button id="closeTeachingMethodPanel" class="teacher-pop-close secondary" type="button">Close</button>
   </div>
@@ -4219,7 +4065,7 @@ body.dark .teaching-method-callout {
 </div>
 
 <div id="ironPromptPanel">
-  <div class="teaching-method-head drag-handle" data-drag-handle="ironPromptPanel">
+  <div class="floating-panel-head drag-handle" data-drag-handle="ironPromptPanel">
     <h3>I.R.O.N. Study Prompts</h3>
     <button id="closeIronPromptPanel" class="teacher-pop-close secondary" type="button">Close</button>
   </div>
@@ -4253,32 +4099,31 @@ body.dark .teaching-method-callout {
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const ironBtn = document.getElementById("ironPromptPanelBtn");
-  const ironPanel = document.getElementById("ironPromptPanel");
-  const ironClose = document.getElementById("closeIronPromptPanel");
+  const obsToolbar = document.querySelector(".obs-tool-bar");
+  const panel = document.getElementById("ironPromptPanel");
 
-  function openIronPrompt(event) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    if (!ironPanel) return;
-    ironPanel.classList.add("open");
-    ironPanel.setAttribute("aria-hidden", "false");
+  if (!obsToolbar || !panel) return;
+
+  if (document.getElementById("ironPromptPanelBtn")) return;
+
+  const btn = document.createElement("button");
+  btn.id = "ironPromptPanelBtn";
+  btn.type = "button";
+  btn.textContent = "I.R.O.N.";
+  btn.className = "";
+
+  btn.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    panel.classList.toggle("open");
+  });
+
+  const clearButton = document.getElementById("obsClearMarks");
+  if (clearButton && clearButton.parentNode === obsToolbar) {
+    obsToolbar.insertBefore(btn, clearButton);
+  } else {
+    obsToolbar.appendChild(btn);
   }
-
-  function closeIronPrompt(event) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    if (!ironPanel) return;
-    ironPanel.classList.remove("open");
-    ironPanel.setAttribute("aria-hidden", "true");
-  }
-
-  if (ironBtn) ironBtn.addEventListener("click", openIronPrompt);
-  if (ironClose) ironClose.addEventListener("click", closeIronPrompt);
 });
 </script>
 
@@ -4338,19 +4183,16 @@ document.addEventListener("DOMContentLoaded", function () {
   window.resetIronSharpenerFloatingPanels = function () {
     resetDragPosition("teacherToolsPanel");
     resetDragPosition("ironPromptPanel");
-    resetDragPosition("teachingMethodPanel");
   };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
       makeDraggable("teacherToolsPanel");
       makeDraggable("ironPromptPanel");
-      makeDraggable("teachingMethodPanel");
     });
   } else {
     makeDraggable("teacherToolsPanel");
     makeDraggable("ironPromptPanel");
-    makeDraggable("teachingMethodPanel");
   }
 })();
 </script>
@@ -4398,6 +4240,146 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("DOMContentLoaded", bindTeacherButtons);
   } else {
     bindTeacherButtons();
+  }
+})();
+</script>
+
+
+<script>
+(function finalIronSharpenerPanelBindings() {
+  function $(id) {
+    return document.getElementById(id);
+  }
+
+  function openFloatingPanel(id) {
+    const panel = $(id);
+    if (!panel) return;
+    panel.style.display = "";
+    panel.classList.remove("drag-positioned");
+    panel.style.removeProperty("--drag-left");
+    panel.style.removeProperty("--drag-top");
+    panel.classList.add("open");
+    panel.setAttribute("aria-hidden", "false");
+  }
+
+  function closeFloatingPanel(id) {
+    const panel = $(id);
+    if (!panel) return;
+    panel.classList.remove("open");
+    panel.setAttribute("aria-hidden", "true");
+    panel.style.display = "";
+  }
+
+  function bindOnce(id, eventName, handler) {
+    const el = $(id);
+    if (!el) return;
+    const clone = el.cloneNode(true);
+    el.parentNode.replaceChild(clone, el);
+    clone.addEventListener(eventName, handler);
+  }
+
+  function makeDraggableSafe(panelId) {
+    const panel = $(panelId);
+    if (!panel || panel.dataset.safeDragReady === "true") return;
+
+    const handle = document.querySelector('[data-drag-handle="' + panelId + '"]');
+    if (!handle) return;
+
+    panel.dataset.safeDragReady = "true";
+
+    let startX = 0;
+    let startY = 0;
+    let startLeft = 0;
+    let startTop = 0;
+    let dragging = false;
+
+    handle.addEventListener("mousedown", function(event) {
+      if (!document.documentElement.classList.contains("obs")) return;
+      dragging = true;
+
+      const rect = panel.getBoundingClientRect();
+      startX = event.clientX;
+      startY = event.clientY;
+      startLeft = rect.left;
+      startTop = rect.top;
+
+      panel.classList.add("drag-positioned");
+      event.preventDefault();
+    });
+
+    document.addEventListener("mousemove", function(event) {
+      if (!dragging) return;
+
+      const nextLeft = Math.max(8, Math.min(window.innerWidth - 120, startLeft + event.clientX - startX));
+      const nextTop = Math.max(8, Math.min(window.innerHeight - 120, startTop + event.clientY - startY));
+
+      panel.style.setProperty("--drag-left", nextLeft + "px");
+      panel.style.setProperty("--drag-top", nextTop + "px");
+    });
+
+    document.addEventListener("mouseup", function() {
+      dragging = false;
+    });
+  }
+
+  function setup() {
+    bindOnce("obsShowTeachingMethod", "click", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      openFloatingPanel("teachingMethodPanel");
+    });
+
+    bindOnce("openTeachingMethodFromTools", "click", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      openFloatingPanel("teachingMethodPanel");
+    });
+
+    bindOnce("closeTeachingMethodPanel", "click", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      closeFloatingPanel("teachingMethodPanel");
+    });
+
+    bindOnce("openIronPanelFromTools", "click", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      openFloatingPanel("ironPromptPanel");
+    });
+
+    bindOnce("ironPromptPanelBtn", "click", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      openFloatingPanel("ironPromptPanel");
+    });
+
+    bindOnce("closeIronPromptPanel", "click", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      closeFloatingPanel("ironPromptPanel");
+    });
+
+    makeDraggableSafe("teachingMethodPanel");
+    makeDraggableSafe("ironPromptPanel");
+
+    const oldReset = window.resetIronSharpenerFloatingPanels;
+    window.resetIronSharpenerFloatingPanels = function() {
+      if (typeof oldReset === "function") oldReset();
+
+      ["teachingMethodPanel", "ironPromptPanel", "teacherToolsPanel"].forEach(function(id) {
+        const panel = $(id);
+        if (!panel) return;
+        panel.classList.remove("drag-positioned");
+        panel.style.removeProperty("--drag-left");
+        panel.style.removeProperty("--drag-top");
+      });
+    };
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setup);
+  } else {
+    setup();
   }
 })();
 </script>
