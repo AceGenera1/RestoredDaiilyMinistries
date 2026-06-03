@@ -1551,11 +1551,12 @@ body.dark .presentation-card-inner {
 
     <div class="ribbon">Prepared in prayer &nbsp; ✦ &nbsp; Taught with clarity &nbsp; ✦ &nbsp; Shared for discipleship</div>
 
-   <div class="obs-tool-bar" aria-label="OBS teaching tools">
+<div class="obs-tool-bar" aria-label="OBS teaching tools">
   <button id="obsOpenTeacherTools">Teacher Tools</button>
   <button id="obsShowTeachingNote">Teaching Note</button>
   <button id="obsShowApplicationNote">Application & Prayer</button>
   <button id="obsShowTeachingMethod">Teaching Method</button>
+  <button id="ironPromptPanelBtn" type="button">I.R.O.N.</button>
   <button id="obsClearMarks" class="secondary">Clear</button>
   <button id="obsResetPanels" class="secondary">Reset Panels</button>
 </div>
@@ -1717,6 +1718,19 @@ body.dark .presentation-card-inner {
           <span>Open the Inspect, Reflect, Observe, and Next Steps prompts for prayerful study and application.</span>
         </button>
       </div>
+
+<div class="tool-section-title">Teaching Help</div>
+<div class="tool-options">
+  <button type="button" class="tool-option helper-option" id="openTeachingMethodFromTools">
+    <strong>Teaching Method</strong>
+    <span>Open the five-verse teaching rhythm and why it helps keep Scripture clear.</span>
+  </button>
+
+  <button type="button" class="tool-option helper-option" id="openIronPanelFromTools">
+    <strong>I.R.O.N. Prompts</strong>
+    <span>Open the Inspect, Reflect, Observe, and Next Steps study prompts.</span>
+  </button>
+</div>
 
       <div class="teacher-pop-note">
         Choose a tool, then click a verse to apply it. For highlight colors, underline, circle, or box, you can also select a word or phrase first, then click inside that verse to mark only the selected text.
@@ -3611,9 +3625,12 @@ function showSmallTeachingNoteBox() {
         erase: "Erase Verse Marks"
       };
 
-      document.querySelectorAll(".tool-option").forEach((button) => {
-        button.classList.toggle("active-choice", button.dataset.tool === toolName);
-      });
+  document.querySelectorAll(".tool-option[data-tool]").forEach((button) => {
+  button.onclick = () => {
+    setTool(button.dataset.tool);
+    closeTeacherTools();
+  };
+});
 
       const label = $("activeToolLabel");
       if (label) {
@@ -4383,6 +4400,61 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 })();
 </script>
+<script>
+(function ironSharpenerHelperPanels() {
+  function get(id) {
+    return document.getElementById(id);
+  }
 
+  function openPanel(id) {
+    const panel = get(id);
+    if (!panel) return;
+
+    panel.style.display = "block";
+    panel.classList.add("open");
+    panel.setAttribute("aria-hidden", "false");
+  }
+
+  function closePanel(id) {
+    const panel = get(id);
+    if (!panel) return;
+
+    panel.classList.remove("open");
+    panel.style.display = "none";
+    panel.setAttribute("aria-hidden", "true");
+  }
+
+  function bindOpen(buttonId, panelId) {
+    const button = get(buttonId);
+    if (!button) return;
+
+    button.onclick = function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      openPanel(panelId);
+    };
+  }
+
+  function bindClose(buttonId, panelId) {
+    const button = get(buttonId);
+    if (!button) return;
+
+    button.onclick = function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      closePanel(panelId);
+    };
+  }
+
+  bindOpen("obsShowTeachingMethod", "teachingMethodPanel");
+  bindOpen("openTeachingMethodFromTools", "teachingMethodPanel");
+
+  bindOpen("ironPromptPanelBtn", "ironPromptPanel");
+  bindOpen("openIronPanelFromTools", "ironPromptPanel");
+
+  bindClose("closeTeachingMethodPanel", "teachingMethodPanel");
+  bindClose("closeIronPromptPanel", "ironPromptPanel");
+})();
+</script>
 </body>
 </html>
