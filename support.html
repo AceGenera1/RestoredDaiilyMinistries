@@ -1,39 +1,765 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support | Restored Daily Ministries</title>
-  <meta name="description" content="Support Restored Daily Ministries as we share biblical encouragement, discipleship, prayer, Bible teaching, and Gospel-centered resources." />
+  <meta name="description" content="Support Restored Daily Ministries as we share biblical encouragement, discipleship, prayer, Bible teaching, and Gospel-centered resources.">
+
   <style>
-    :root{--deep:#101A2E;--earth:#1F4F46;--cream:#FFF8EA;--gold:#D7A84F;--lightgold:#F8D987;--royal:#13233F;--text:#2B394F;--sky:#EEF7FF;--aqua:#EAF4F1;--paper:#FFF9EC;--softline:rgba(215,168,79,.22);--shadow:0 18px 45px rgba(16,26,46,.14)}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--text);background:radial-gradient(circle at top left,rgba(248,217,135,.22),transparent 30%),linear-gradient(180deg,var(--cream),#F7EFE0 55%,#EEF7FF)} a{color:inherit;text-decoration:none}
-    .site-header{position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,var(--deep),var(--royal));border-bottom:2px solid var(--gold);box-shadow:0 10px 28px rgba(0,0,0,.18)}
-    .header-inner{max-width:1180px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand img{width:78px;height:78px;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,.25))}.brand-text{color:var(--cream);line-height:1.05;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;font-size:20px}.brand-text span{display:block;color:var(--lightgold);font-size:12px;letter-spacing:2px;margin-top:5px;text-transform:none;font-style:italic;font-weight:600}
-    .menu-wrap{position:relative}.menu-button{border:1px solid rgba(248,217,135,.75);background:rgba(255,255,255,.08);color:var(--cream);border-radius:999px;padding:12px 16px;font-weight:800;letter-spacing:.6px;cursor:pointer;font-family:Arial,sans-serif}.menu{display:none;position:absolute;right:0;top:calc(100% + 12px);width:275px;background:var(--paper);border:2px solid var(--gold);border-radius:18px;box-shadow:0 18px 45px rgba(0,0,0,.24);overflow:hidden}.menu.open{display:block}.menu a{display:block;padding:13px 18px;font:800 14px Arial,sans-serif;color:var(--royal);border-bottom:1px solid rgba(215,168,79,.22)}.menu a:hover,.menu a.active{background:linear-gradient(90deg,rgba(248,217,135,.45),rgba(255,248,234,.2));color:#0D1A2F}
-    .page-hero{min-height:430px;display:grid;place-items:center;text-align:center;color:white;position:relative;overflow:hidden;background:linear-gradient(rgba(16,26,46,.78),rgba(16,26,46,.82)),url("hero-background.jpg") center 43%/cover no-repeat;border-bottom:3px solid var(--gold)}.page-hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,rgba(248,217,135,.20),transparent 26%),linear-gradient(180deg,transparent 55%,rgba(16,26,46,.32));pointer-events:none}.hero-content{position:relative;z-index:2;max-width:980px;padding:60px 22px}.eyebrow{color:var(--lightgold);text-transform:uppercase;letter-spacing:4px;font:900 13px Arial,sans-serif;margin-bottom:14px}h1{margin:0;font-size:clamp(42px,7vw,78px);line-height:.95;text-shadow:0 4px 18px rgba(0,0,0,.35)}.hero-content p{max-width:780px;margin:20px auto 0;font-size:clamp(20px,3vw,28px);line-height:1.35;color:#FFF4D6;font-style:italic}
-    .btn-row{margin-top:30px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;padding:14px 24px;font:900 14px Arial,sans-serif;letter-spacing:.4px;border:2px solid var(--gold);box-shadow:0 12px 26px rgba(0,0,0,.18);transition:transform .18s ease,box-shadow .18s ease}.btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.22)}.btn.gold{background:linear-gradient(180deg,var(--lightgold),var(--gold));color:var(--deep)}.btn.cream{background:rgba(255,248,234,.95);color:var(--deep)}
-    main{max-width:1180px;margin:0 auto;padding:38px 18px 56px}.section{margin:26px 0;padding:clamp(24px,4vw,42px);background:rgba(255,249,236,.92);border:1px solid var(--softline);border-radius:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}.section:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(248,217,135,.22),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.32),transparent);pointer-events:none}.section>*{position:relative;z-index:1}.section.center{text-align:center}.section h2{margin:0 0 14px;color:var(--deep);font-size:clamp(30px,4vw,46px);line-height:1.05}.section h3{color:var(--royal);font-size:24px;margin:0 0 10px}.section p{font-size:19px;line-height:1.72;margin:0 0 16px}.scripture-card{background:linear-gradient(135deg,var(--deep),var(--royal));color:var(--cream);border:2px solid var(--gold)}.scripture-card h2,.scripture-card p{color:var(--cream)}.scripture-card em{color:var(--lightgold)}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}.card{background:rgba(255,255,255,.64);border:1px solid var(--softline);border-radius:22px;padding:24px;box-shadow:0 12px 28px rgba(16,26,46,.08)}.card .icon{font-size:32px;margin-bottom:10px;display:block}.card p{font-size:17px;line-height:1.6;margin-bottom:0}.support-callout{background:radial-gradient(circle at top left,rgba(248,217,135,.34),transparent 30%),linear-gradient(135deg,#FFF8EA,#EAF4F1);border:2px solid rgba(215,168,79,.45)}.prayer-section{background:radial-gradient(circle at 25% 0%,rgba(255,255,255,.45),transparent 35%),linear-gradient(135deg,#F8D987,#F2C76E);border:2px solid rgba(16,26,46,.18)}.prayer-section h2{color:var(--deep)}.ways-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px;text-align:left}.ways-list div{background:rgba(255,255,255,.58);border:1px solid rgba(215,168,79,.35);border-radius:16px;padding:14px 16px;font:800 15px Arial,sans-serif;color:var(--deep)}.note{margin-top:18px;font-size:15px!important;color:rgba(43,57,79,.82);font-family:Arial,sans-serif}
-    footer{background:linear-gradient(135deg,var(--deep),var(--royal));color:var(--cream);border-top:3px solid var(--gold);padding:34px 18px;text-align:center}.footer-inner{max-width:980px;margin:0 auto}.footer-logo{width:86px;height:86px;object-fit:contain;margin-bottom:14px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25))}footer p{margin:8px 0;line-height:1.6;color:#FFF4D6}footer a{color:var(--lightgold);font-weight:bold}
-    @media(max-width:820px){.header-inner{padding:10px 14px}.brand img{width:62px;height:62px}.brand-text{font-size:16px;letter-spacing:1px}.brand-text span{font-size:11px}.page-hero{min-height:410px;background-position:center top}.grid,.ways-list{grid-template-columns:1fr}.menu{right:0;width:min(290px,calc(100vw - 28px))}}
+
+    :root {
+      --deep: #101A2E;
+      --earth: #1F4F46;
+      --card: #F9F2E4;
+      --cream: #FFF8EA;
+      --gold: #D7A84F;
+      --lightgold: #F8D987;
+      --amber: #F2C76E;
+      --royal: #13233F;
+      --text: #2B394F;
+      --sky: #EEF7FF;
+      --aqua: #EAF4F1;
+      --paper: #FFF9EC;
+      --softline: rgba(215, 168, 79, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(248, 217, 135, 0.30), transparent 34%),
+        linear-gradient(180deg, #EEF7FF 0%, #FFF8EA 34%, #EAF4F1 68%, #101A2E 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(16, 26, 46, 0.96);
+      border-bottom: 1px solid rgba(248, 217, 135, 0.34);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+
+    .brand-emblem {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+      display: block;
+      background: transparent;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+      flex: 0 0 auto;
+    }
+
+    .brand-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      min-width: 0;
+    }
+
+    .brand-main {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--cream);
+      font-size: clamp(28px, 2.45vw, 44px);
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.28);
+      white-space: nowrap;
+    }
+
+    .brand-sub {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--gold);
+      font-size: clamp(15px, 1.15vw, 21px);
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-sub::before,
+    .brand-sub::after {
+      content: "";
+      width: 46px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+      flex: 0 0 auto;
+    }
+
+    .brand-sub::after { background: linear-gradient(90deg, var(--gold), transparent); }
+
+    .nav-control {
+      position: relative;
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 2px solid rgba(248, 217, 135, 0.62);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--cream);
+      padding: 11px 18px;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .menu-toggle:hover,
+    .nav-control.is-open .menu-toggle {
+      background: rgba(248, 217, 135, 0.18);
+      color: var(--lightgold);
+      box-shadow: 0 0 18px rgba(214, 170, 99, 0.18);
+    }
+
+    .menu-icon {
+      width: 18px;
+      height: 12px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-icon span {
+      display: block;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      width: 270px;
+      padding: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(248, 217, 135, 0.42);
+      background: linear-gradient(180deg, rgba(16, 26, 46, 0.98), rgba(9, 17, 31, 0.98));
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+      display: grid;
+      gap: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: 0.2s ease;
+    }
+
+    .nav-control.is-open .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .dropdown-menu a {
+      text-decoration: none;
+      color: var(--cream);
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 14px;
+      border: 1px solid rgba(248, 217, 135, 0.18);
+      background: rgba(255, 255, 255, 0.04);
+      transition: 0.2s ease;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a.active {
+      color: var(--lightgold);
+      background: rgba(248, 217, 135, 0.16);
+      border-color: rgba(248, 217, 135, 0.48);
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .page-hero {
+      min-height: 460px;
+      padding: 100px 22px 88px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(16, 26, 46, 0.34), rgba(16, 26, 46, 0.70)),
+        url('./hero-background.png?v=31') 82% 26% / cover no-repeat;
+      border-bottom: 1px solid rgba(214, 170, 99, 0.25);
+    }
+
+    .page-hero h1 {
+      max-width: 1100px;
+      font-size: clamp(42px, 8vw, 82px);
+      color: #fff5dd;
+      text-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    .page-hero p {
+      max-width: 920px;
+      margin: 18px auto 0;
+      font-size: clamp(18px, 3vw, 23px);
+      color: #F7EEDB;
+      font-weight: 700;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+    }
+
+    .section {
+      padding: 82px 22px;
+      background: linear-gradient(180deg, #FFF8EA 0%, #EEF7FF 52%, #EAF4F1 100%);
+      color: #13233F;
+    }
+
+    .section.alt { background: linear-gradient(180deg, #F7FBFF 0%, #FFF8EA 100%); }
+    .container { max-width: 1160px; margin: 0 auto; }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(38px, 7vw, 66px);
+      color: #13233F;
+      margin-bottom: 18px;
+    }
+
+    .section-text {
+      max-width: 930px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: clamp(18px, 3vw, 22px);
+      color: #2B394F;
+    }
+
+    .content-box, .support-box, .message-box, .scripture-box {
+      max-width: 980px;
+      margin: 34px auto 0;
+      padding: 38px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 234, 0.91));
+      border: 1px solid rgba(214, 170, 99, 0.36);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.12);
+      text-align: center;
+    }
+
+    .content-box h3, .support-box h3, .message-box h3, .scripture-box h3 {
+      color: #13233F;
+      font-size: clamp(29px, 4vw, 42px);
+      margin-bottom: 14px;
+    }
+
+    .content-box p, .support-box p, .scripture-box p {
+      color: #2B394F;
+      font-size: 19px;
+      margin: 0 auto 18px;
+      max-width: 900px;
+    }
+
+    .message-box {
+      text-align: left;
+      max-width: 880px;
+    }
+
+    .message-box h3 { text-align: center; }
+
+    .message-box p {
+      color: #2B394F;
+      font-size: 20px;
+      margin: 0 0 18px;
+      line-height: 1.85;
+      text-align: left;
+    }
+
+    .message-box .signature {
+      text-align: center;
+      font-weight: 900;
+      margin-top: 26px;
+      line-height: 1.55;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 280px));
+      justify-content: center;
+      gap: 22px;
+      margin-top: 38px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 234, 0.92));
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 16px 36px rgba(28, 45, 74, 0.10);
+      text-align: left;
+      min-height: 255px;
+    }
+
+    .card .tag {
+      display: inline-block;
+      color: #8A621D;
+      background: rgba(248, 217, 135, 0.36);
+      border: 1px solid rgba(215, 168, 79, 0.55);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      color: var(--royal);
+      font-size: clamp(25px, 3vw, 34px);
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--text);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .btns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 2px solid rgba(214, 170, 99, 0.72);
+      transition: 0.25s;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #FFE39A, #D7A84F);
+      color: #13233F;
+      font-weight: 900;
+      box-shadow: 0 12px 32px rgba(198, 122, 61, 0.23);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #8A621D;
+      border: 2px solid rgba(183, 131, 45, 0.70);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18), 0 0 22px rgba(214, 170, 99, 0.22);
+    }
+
+    .note-box {
+      max-width: 980px;
+      margin: 42px auto 0;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(248, 217, 135, 0.22);
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      color: #2B394F;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .prayer-box {
+      max-width: 980px;
+      margin: 34px auto 0;
+      padding: 34px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(248, 217, 135, 0.42), rgba(255, 248, 234, 0.96));
+      border: 1px solid rgba(215, 168, 79, 0.42);
+      box-shadow: 0 22px 58px rgba(0, 0, 0, 0.10);
+      text-align: center;
+    }
+
+    .ways-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .ways-list div {
+      padding: 15px 17px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(215, 168, 79, 0.34);
+      color: #13233F;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .legal-note {
+      font-size: 15px !important;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgba(43, 57, 79, 0.82) !important;
+      max-width: 820px !important;
+      margin-top: 24px !important;
+    }
+
+    .scripture-box {
+      background: linear-gradient(180deg, rgba(16, 26, 46, 0.98), rgba(9, 17, 31, 0.98));
+      border: 1px solid rgba(248, 217, 135, 0.42);
+    }
+
+    .scripture-box h3 { color: var(--lightgold); }
+    .scripture-box p { color: #F7EEDB; }
+    .scripture-box em { color: #fff5dd; }
+
+    .site-footer {
+      padding: 42px 22px;
+      text-align: center;
+      background: linear-gradient(180deg, #101A2E, #09111F);
+      border-top: 1px solid rgba(248, 217, 135, 0.34);
+    }
+
+    .footer-profile-logo {
+      width: 145px;
+      max-width: 48vw;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 16px auto;
+      background: transparent;
+    }
+
+    .site-footer .tagline {
+      color: var(--lightgold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .site-footer p {
+      color: #D7DFEF;
+      margin: 8px 0 0;
+    }
+
+    .footer-links {
+      margin-top: 12px;
+      color: #D7DFEF;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: var(--lightgold);
+      text-decoration: underline;
+      font-weight: 800;
+    }
+
+    @media (max-width: 900px) {
+      .page-hero {
+        min-height: 430px;
+        padding: 80px 18px 58px;
+        background-position: 76% 30%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-wrap { gap: 12px; padding: 12px 12px; }
+      .brand { gap: 9px; }
+      .brand-emblem { width: 58px; height: 58px; }
+      .brand-main { font-size: 22px; letter-spacing: 0.7px; }
+      .brand-sub { margin-top: 5px; font-size: 12px; letter-spacing: 2.7px; gap: 6px; }
+      .brand-sub::before, .brand-sub::after { width: 18px; height: 2px; }
+      .menu-toggle { padding: 9px 13px; font-size: 13px; }
+      .dropdown-menu { width: min(86vw, 300px); }
+      .page-hero { min-height: 470px; padding: 70px 16px 52px; background-position: 70% 28%; }
+      .section { padding: 62px 16px; }
+      .content-box, .support-box, .message-box, .scripture-box, .prayer-box { padding: 26px; }
+      .message-box p { font-size: 18px; line-height: 1.7; }
+      .footer-profile-logo { width: 135px; max-width: 50vw; }
+    }
+
+    @media (max-width: 480px) {
+      .brand-main { font-size: 19px; }
+      .brand-sub { font-size: 10.5px; letter-spacing: 2px; }
+      .brand-emblem { width: 52px; height: 52px; }
+      .menu-toggle { padding: 9px 11px; }
+      .menu-toggle-text { display: none; }
+      .cards { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
+
 <body>
-  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html" aria-label="Restored Daily Ministries home"><img src="header-logo.png" alt="Restored Daily Ministries logo" /><div class="brand-text">Restored Daily Ministries<span>Restored by grace. Renewed daily. Sent on mission.</span></div></a><nav class="menu-wrap" aria-label="Main navigation"><button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mainMenu">Menu ☰</button><div class="menu" id="mainMenu"><a href="index.html">Home</a><a href="mission.html">Mission</a><a href="devotional.html">Devotionals</a><a href="disciple.html">Lessons</a><a href="preaching.html">Preaching</a><a href="podcast.html">Podcast</a><a href="prayer.html">Prayer</a><a href="community.html">Community</a><a href="support.html" class="active">Support</a><a href="contact.html">Contact Us</a><a href="rights.html">Rights & Use</a></div></nav></div></header>
-  <section class="page-hero"><div class="hero-content"><div class="eyebrow">Partner With the Mission</div><h1>Support Restored Daily Ministries</h1><p>Helping bring biblical encouragement, discipleship, prayer, and the hope of Christ Jesus to people around the world.</p><div class="btn-row"><a class="btn gold" href="https://www.givesendgo.com/support-restored-daily-ministries" target="_blank" rel="noopener">Support the Ministry</a><a class="btn cream" href="#ways-to-support">Other Ways to Help</a></div></div></section>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
+        <img
+          class="brand-emblem"
+          src="./profile-logo.png?v=31"
+          alt="Restored Daily Ministries emblem"
+        >
+
+        <div class="brand-wordmark">
+          <div class="brand-main">Restored Daily</div>
+          <div class="brand-sub">Ministries</div>
+        </div>
+      </a>
+
+      <div class="nav-control">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteDropdownMenu">
+          <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="menu-toggle-text">Menu</span>
+        </button>
+
+        <nav id="siteDropdownMenu" class="dropdown-menu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="mission.html">Mission</a>
+          <a href="devotional.html">Devotionals</a>
+          <a href="disciple.html">Lessons</a>
+          <a href="preaching.html">Preaching</a>
+          <a href="podcast.html">Podcast</a>
+          <a href="prayer.html">Prayer</a>
+          <a href="iron-sharpener.html">Iron Sharpener</a>
+          <a href="membership.html">Community</a>
+          <a class="active" aria-current="page" href="support.html">Support</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="rights.html">Rights & Use</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
   <main>
-    <section class="section"><h2>Why Support?</h2><p>Restored Daily Ministries exists to share the Gospel of Jesus Christ through daily devotionals, Bible teaching, prayer ministry, discipleship resources, preaching, and digital outreach.</p><p>Our mission is to reach people who feel forgotten, discouraged, overlooked, or convinced that God can no longer use them. Through Christ Jesus, we believe every life still has purpose.</p><p>Your support helps make this ministry possible and allows biblical encouragement, prayer, teaching, and discipleship resources to continue reaching people who need the hope of Christ.</p></section>
-    <section class="section"><h2>What Your Support Helps Provide</h2><div class="grid"><div class="card"><span class="icon">📖</span><h3>Biblical Teaching</h3><p>Daily devotionals, Journey Through the Bible videos, Scripture study resources, and Christ-centered teaching that helps people grow in God’s Word.</p></div><div class="card"><span class="icon">🙏</span><h3>Prayer & Encouragement</h3><p>Prayer request ministry, personal encouragement, spiritual support, and reminders that people are not forgotten by God.</p></div><div class="card"><span class="icon">🛠</span><h3>Discipleship Tools</h3><p>Continued development of tools like Iron Sharpener, built to help believers study Scripture, prepare lessons, and teach God’s Word with clarity.</p></div><div class="card"><span class="icon">🌎</span><h3>Digital Gospel Outreach</h3><p>Website operations, ministry technology, video production, outreach efforts, accessibility improvements, and future resources that point people to Christ Jesus.</p></div></div></section>
-    <section class="section support-callout center"><h2>Give Through GiveSendGo</h2><p>If the Lord leads you to support this ministry financially, your gift helps us continue creating biblical teaching resources, discipleship tools, prayer support, and Gospel-centered content that points people to Christ Jesus.</p><div class="btn-row"><a class="btn gold" href="https://www.givesendgo.com/support-restored-daily-ministries" target="_blank" rel="noopener">Support Restored Daily Ministries</a></div><p class="note">Giving is handled securely through GiveSendGo. Please note that Restored Daily Ministries is still growing in structure, and gifts should not be assumed to be tax-deductible unless otherwise stated.</p></section>
-    <section class="section"><h2>Our Commitment</h2><p>We are committed to using ministry support with integrity, transparency, and prayerful stewardship. Every gift helps further the mission of pointing people toward Christ Jesus through biblical encouragement, discipleship, prayer, and teaching.</p><p>Thank you for standing with this ministry as we continue seeking to serve faithfully, steward wisely, and keep Christ at the center of everything we do.</p></section>
-    <section class="section prayer-section center" id="ways-to-support"><h2>Not Able to Give? You Can Still Support the Ministry.</h2><p>Whether you are able to give financially or not, your prayers are deeply appreciated. We believe every good gift comes from the Lord and trust Him to provide according to His will.</p><div class="ways-list"><div>Pray for the ministry</div><div>Share devotionals with others</div><div>Share videos and Bible teachings</div><div>Invite others to join the community</div><div>Submit prayer requests</div><div>Encourage someone with God’s Word</div></div></section>
-    <section class="section center"><h2>A Message From Kris</h2><p>Thank you for taking the time to visit Restored Daily Ministries.</p><p>Whether you support financially, pray for the ministry, share content with others, or simply spend time in God’s Word with us, I am grateful.</p><p>My prayer is that every devotional, Bible study, message, and resource points people closer to Christ Jesus and reminds them that their story is not over.</p><p><strong>— Kris<br>Restored Daily Ministries</strong></p></section>
-    <section class="section scripture-card center"><h2>To Him Be the Glory</h2><p><em>“Now to Him who is able to do far more abundantly beyond all that we ask or think, according to the power that works within us, to Him be the glory in the church and in Christ Jesus to all generations forever and ever. Amen.”</em></p><p><strong>— Ephesians 3:20–21</strong></p></section>
+
+    <section class="page-hero">
+      <h1>Support Restored Daily Ministries</h1>
+      <p>Helping bring biblical encouragement, discipleship, prayer, and the hope of Christ Jesus to people around the world.</p>
+
+      <div class="btns">
+        <a class="btn btn-primary" href="https://www.givesendgo.com/support-restored-daily-ministries" target="_blank" rel="noopener">
+          Support the Ministry
+        </a>
+        <a class="btn btn-secondary" href="#ways-to-support">
+          Other Ways to Help
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Why Support?</h2>
+        <p class="section-text">
+          Restored Daily Ministries exists to share the Gospel of Jesus Christ through daily devotionals, Bible teaching, prayer ministry, discipleship resources, preaching, and digital outreach.
+        </p>
+        <div class="content-box">
+          <p>Our mission is to reach people who feel forgotten, discouraged, overlooked, or convinced that God can no longer use them. Through Christ Jesus, we believe every life still has purpose.</p>
+          <p>Your support helps make this ministry possible and allows biblical encouragement, prayer, teaching, and discipleship resources to continue reaching people who need the hope of Christ.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2 class="section-title">What Your Support Helps Provide</h2>
+        <p class="section-text">Every gift helps further the mission of pointing people toward Christ Jesus through biblical encouragement, discipleship, prayer, and teaching.</p>
+
+        <div class="cards">
+          <div class="card">
+            <div class="tag">Biblical Teaching</div>
+            <h3>Scripture-Centered Resources</h3>
+            <p>Daily devotionals, Journey Through the Bible videos, Scripture study resources, and Christ-centered teaching that helps people grow in God’s Word.</p>
+          </div>
+
+          <div class="card">
+            <div class="tag">Prayer</div>
+            <h3>Prayer & Encouragement</h3>
+            <p>Prayer request ministry, personal encouragement, spiritual support, and reminders that people are not forgotten by God.</p>
+          </div>
+
+          <div class="card">
+            <div class="tag">Discipleship Tools</div>
+            <h3>Iron Sharpener</h3>
+            <p>Continued development of discipleship and Bible study tools built to help believers study Scripture, prepare lessons, and teach God’s Word with clarity.</p>
+          </div>
+
+          <div class="card">
+            <div class="tag">Digital Outreach</div>
+            <h3>Gospel-Centered Media</h3>
+            <p>Website operations, ministry technology, video production, outreach efforts, accessibility improvements, and future resources that point people to Christ Jesus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Give Through GiveSendGo</h2>
+        <div class="support-box">
+          <h3>Partner With the Ministry</h3>
+          <p>If the Lord leads you to support this ministry financially, your gift helps us continue creating biblical teaching resources, discipleship tools, prayer support, and Gospel-centered content that points people to Christ Jesus.</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="https://www.givesendgo.com/support-restored-daily-ministries" target="_blank" rel="noopener">
+              Support Restored Daily Ministries
+            </a>
+          </div>
+          <p class="legal-note">Giving is handled securely through GiveSendGo. Please note that Restored Daily Ministries is still growing in structure, and gifts should not be assumed to be tax-deductible unless otherwise stated.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2 class="section-title">Our Commitment</h2>
+        <p class="section-text">We are committed to using ministry support with integrity, transparency, and prayerful stewardship.</p>
+        <div class="note-box">Thank you for standing with this ministry as we continue seeking to serve faithfully, steward wisely, and keep Christ at the center of everything we do.</div>
+      </div>
+    </section>
+
+    <section class="section" id="ways-to-support">
+      <div class="container">
+        <h2 class="section-title">Not Able to Give?</h2>
+        <p class="section-text">You can still support the ministry. Whether you are able to give financially or not, your prayers are deeply appreciated. We believe every good gift comes from the Lord and trust Him to provide according to His will.</p>
+        <div class="prayer-box">
+          <div class="ways-list">
+            <div>Pray for the ministry</div>
+            <div>Share devotionals with others</div>
+            <div>Share videos and Bible teachings</div>
+            <div>Invite others to join the community</div>
+            <div>Submit prayer requests</div>
+            <div>Encourage someone with God’s Word</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="message-box">
+          <h3>A Message From Kris</h3>
+          <p>Thank you for taking the time to visit Restored Daily Ministries.</p>
+          <p>Whether you support financially, pray for the ministry, share content with others, or simply spend time in God’s Word with us, I am grateful.</p>
+          <p>My prayer is that every devotional, Bible study, message, and resource points people closer to Christ Jesus and reminds them that their story is not over.</p>
+          <p class="signature">— Kris<br>Restored Daily Ministries</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="scripture-box">
+          <h3>To Him Be the Glory</h3>
+          <p><em>“Now to Him who is able to do far more abundantly beyond all that we ask or think, according to the power that works within us, to Him be the glory in the church and in Christ Jesus to all generations forever and ever. Amen.”</em></p>
+          <p><strong>— Ephesians 3:20–21</strong></p>
+        </div>
+      </div>
+    </section>
+
   </main>
-  <footer><div class="footer-inner"><img class="footer-logo" src="profile-logo.png" alt="Restored Daily Ministries" /><p><strong>Restored Daily Ministries</strong></p><p>Restored by grace. Renewed daily. Sent on mission.</p><p><a href="contact.html">Contact Us</a> · <a href="rights.html">Rights & Use</a> · <a href="support.html">Support</a></p></div></footer>
+
+  <footer class="site-footer">
+    <img class="footer-profile-logo" src="./profile-logo.png?v=31" alt="Restored Daily Ministries profile logo">
+    <div class="tagline">Restored by Grace • Renewed Daily • Sent on Mission</div>
+    <p>© 2026 Restored Daily Ministries™ • All rights reserved.<br>All Glory to Jesus Christ</p>
+    <div class="footer-links">
+      <a href="contact.html">Contact Us</a>
+      <span> • </span>
+      <a href="rights.html">Rights & Use</a>
+      <span> • </span>
+      <a href="support.html">Support</a>
+    </div>
+  </footer>
+
   <script>
-    const menuButton=document.getElementById("menuButton");const mainMenu=document.getElementById("mainMenu");menuButton.addEventListener("click",function(){const isOpen=mainMenu.classList.toggle("open");menuButton.setAttribute("aria-expanded",isOpen?"true":"false")});document.addEventListener("click",function(event){if(!event.target.closest(".menu-wrap")){mainMenu.classList.remove("open");menuButton.setAttribute("aria-expanded","false")}});document.addEventListener("keydown",function(event){if(event.key==="Escape"){mainMenu.classList.remove("open");menuButton.setAttribute("aria-expanded","false")}});
+    function initRestoredDailyMenu() {
+      const navControl = document.querySelector(".nav-control");
+      const menuButton = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("siteDropdownMenu");
+
+      if (!navControl || !menuButton || !menu) return;
+
+      function closeMenu() {
+        navControl.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+      }
+
+      function toggleMenu() {
+        const isOpen = navControl.classList.toggle("is-open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+      }
+
+      menuButton.addEventListener("click", function(event) {
+        event.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener("click", function(event) {
+        if (!navControl.contains(event.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+      });
+
+      menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+      });
+    }
+
+    initRestoredDailyMenu();
   </script>
+
 </body>
 </html>
