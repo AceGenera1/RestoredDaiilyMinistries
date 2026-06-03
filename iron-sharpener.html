@@ -1727,12 +1727,25 @@ body.dark .presentation-card-inner {
         </button>
       </div>
 
-<div class="tool-section-title">Teaching Help</div>
-<div class="tool-options">
-  <button type="button" class="tool-option helper-option" id="openTeachingMethodFromTools">
-    <strong>Teaching Method</strong>
-    <span>Open the five-verse teaching rhythm and why it helps keep Scripture clear.</span>
-  </button>
+  <div id="teachingMethodPanel" aria-hidden="true">
+  <div class="floating-panel-head drag-handle" data-drag-handle="teachingMethodPanel">
+    <h3>Teaching Method</h3>
+    <button id="closeTeachingMethodPanel" class="teacher-pop-close secondary" type="button">Close</button>
+  </div>
+
+  <div class="teaching-method-callout">
+    A five-verse rhythm helps the teacher slow down, protect the context, and let Scripture lead instead of rushing through too much at once.
+  </div>
+
+  <p><strong>Why teach around five verses at a time?</strong></p>
+  <ul class="teaching-flow-list">
+    <li><strong>It keeps the passage manageable.</strong> People can follow the text without feeling overwhelmed.</li>
+    <li><strong>It protects context.</strong> You can explain what came before, what is happening now, and where the passage is going.</li>
+    <li><strong>It gives room for observation.</strong> Repeated words, commands, promises, warnings, and Christ-centered truths become easier to see.</li>
+    <li><strong>It helps application become clear.</strong> The goal is not just information, but faithful response to God’s Word.</li>
+    <li><strong>It leaves space for prayer.</strong> The teacher can slow down and ask the Lord for wisdom, humility, and obedience.</li>
+  </ul>
+</div>
 
   <button type="button" class="tool-option helper-option" id="openIronPanelFromTools">
     <strong>I.R.O.N. Prompts</strong>
@@ -4406,8 +4419,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 })();
 </script>
-<script>
-<script>
+
+  <script>
 (function finalTeachingHelpFix() {
   function openPanel(panelId) {
     const panel = document.getElementById(panelId);
