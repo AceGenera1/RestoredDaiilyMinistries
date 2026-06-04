@@ -991,11 +991,20 @@
 }
 
 .teaching-note-hidden .teaching-note-actions {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
   margin-top: 0;
 }
 
 .teaching-note-hidden #hideTeachingNote {
   display: none;
+}
+
+.teaching-note-hidden #showTeachingNote,
+.teaching-note-hidden #showSmallTeachingNote {
+  width: 100% !important;
+  height: 59px !important;
 }
 
 .teaching-note-hidden #showSmallTeachingNote {
