@@ -248,10 +248,15 @@
     }
 
   .application-note-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
   margin-top: 10px;
+}
+
+.application-note-actions button {
+  width: 100% !important;
+  white-space: nowrap;
 }
 
     .source {
