@@ -4460,5 +4460,120 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 </script>
 
+
+<script>
+(function finalApplicationPrayerButtonFix() {
+  function get(id) {
+    return document.getElementById(id);
+  }
+
+  function cleanApplicationText(text) {
+    return (text || "").replace(/\s+/g, " ").trim();
+  }
+
+  function showApplicationPresentationFinal(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const textarea = get("applicationNotes");
+    const card = get("applicationPresentationCard");
+    const textHolder = get("applicationPresentationText");
+
+    if (!textarea || !card || !textHolder) return;
+
+    const note = cleanApplicationText(textarea.value);
+    if (!note) return;
+
+    textHolder.textContent = note;
+    card.classList.add("open");
+    card.setAttribute("aria-hidden", "false");
+  }
+
+  function hideApplicationNoteBoxFinal(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const textarea = get("applicationNotes");
+    const showBtn = get("showApplicationNote");
+    const hideBtn = get("hideApplicationNote");
+    const bringBackBtn = get("showSmallApplicationNote");
+    const panel = textarea ? textarea.closest(".panel") : null;
+
+    if (panel) panel.classList.add("application-note-hidden");
+    if (textarea) textarea.style.display = "none";
+    if (showBtn) showBtn.style.display = "none";
+    if (hideBtn) hideBtn.style.display = "none";
+    if (bringBackBtn) bringBackBtn.style.display = "inline-flex";
+  }
+
+  function showApplicationNoteBoxFinal(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const textarea = get("applicationNotes");
+    const showBtn = get("showApplicationNote");
+    const hideBtn = get("hideApplicationNote");
+    const bringBackBtn = get("showSmallApplicationNote");
+    const panel = textarea ? textarea.closest(".panel") : null;
+
+    if (panel) panel.classList.remove("application-note-hidden");
+    if (textarea) textarea.style.display = "";
+    if (showBtn) showBtn.style.display = "inline-flex";
+    if (hideBtn) hideBtn.style.display = "inline-flex";
+    if (bringBackBtn) bringBackBtn.style.display = "none";
+  }
+
+  function closeApplicationPresentationFinal(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const card = get("applicationPresentationCard");
+    if (!card) return;
+
+    card.classList.remove("open");
+    card.setAttribute("aria-hidden", "true");
+  }
+
+  document.addEventListener("click", function(event) {
+    const button = event.target.closest("button");
+    if (!button) return;
+
+    if (button.id === "showApplicationNote") {
+      showApplicationPresentationFinal(event);
+    }
+
+    if (button.id === "hideApplicationNote") {
+      hideApplicationNoteBoxFinal(event);
+    }
+
+    if (button.id === "showSmallApplicationNote") {
+      showApplicationNoteBoxFinal(event);
+    }
+
+    if (button.id === "closeApplicationPresentation") {
+      closeApplicationPresentationFinal(event);
+    }
+  }, true);
+
+  const showBtn = get("showApplicationNote");
+  const hideBtn = get("hideApplicationNote");
+  const bringBackBtn = get("showSmallApplicationNote");
+
+  if (showBtn) showBtn.style.display = "inline-flex";
+  if (hideBtn) hideBtn.style.display = "inline-flex";
+  if (bringBackBtn && bringBackBtn.style.display !== "inline-flex") {
+    bringBackBtn.style.display = "none";
+  }
+})();
+</script>
+
 </body>
 </html>
