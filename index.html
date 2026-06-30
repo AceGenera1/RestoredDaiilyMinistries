@@ -594,8 +594,24 @@
     }
 
 
-    /* v32 — Mobile menu scroll lock + Iron Sharpener link cleanup
-       Keeps the Restored Daily Ministries mobile menu inside the phone screen. */
+    /* v33 — desktop compact menu + mobile scroll drawer lock
+       Desktop gets the compact dropdown. Mobile keeps the scrollable menu. */
+    @media (min-width: 761px) {
+      .dropdown-menu {
+        width: 242px;
+        padding: 10px;
+        gap: 6px;
+        border-radius: 18px;
+      }
+
+      .dropdown-menu a {
+        padding: 9px 12px;
+        border-radius: 11px;
+        font-size: 13px;
+        line-height: 1.15;
+      }
+    }
+
     @media (max-width: 760px) {
       body.rdm-menu-open {
         overflow: hidden;
@@ -683,7 +699,7 @@
           <a href="preaching.html">Preaching</a>
           <a href="podcast.html">Podcast</a>
           <a href="prayer.html">Prayer</a>
-          <a href="https://iron.restoreddailyministries.org/personal-study.html">Iron Sharpener</a>
+          <a href="https://iron.restoreddailyministries.org/index.html">Iron Sharpener</a>
           <a href="membership.html">Community</a>
           <a href="support.html">Support</a>
           <a href="contact.html">Contact Us</a>
