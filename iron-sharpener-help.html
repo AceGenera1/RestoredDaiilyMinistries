@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Install Iron Sharpener on iPhone, iPad, Android phone, or Android tablet; prepare it for offline use; and learn the Disciple Maker and Disciple Journal.">
+  <title>Iron Sharpener Help &amp; Installation | Restored Daily Ministries</title>
+
+  <style>
+    :root {
+      --deep: #101A2E;
+      --earth: #1F4F46;
+      --card: #F9F2E4;
+      --cream: #FFF8EA;
+      --gold: #D7A84F;
+      --lightgold: #F8D987;
+      --amber: #F2C76E;
+      --royal: #13233F;
+      --text: #2B394F;
+      --sky: #EEF7FF;
+      --aqua: #EAF4F1;
+      --paper: #FFF9EC;
+      --softline: rgba(215, 168, 79, 0.18);
+      --success: #1F6D5E;
+      --warning: #8A621D;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 112px; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(248, 217, 135, 0.28), transparent 34%),
+        linear-gradient(180deg, #EEF7FF 0%, #FFF8EA 34%, #EAF4F1 72%, #101A2E 100%);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(16, 26, 46, 0.96);
+      border-bottom: 1px solid rgba(248, 217, 135, 0.34);
+      backdrop-filter: blur(12px);
+    }
+    .nav-wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      position: relative;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+    .brand-emblem {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,.25));
+      flex: 0 0 auto;
+    }
+    .brand-wordmark { display: flex; flex-direction: column; line-height: 1; min-width: 0; }
+    .brand-main {
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--cream);
+      font-size: clamp(28px, 2.45vw, 44px);
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 5px rgba(0,0,0,.28);
+      white-space: nowrap;
+    }
+    .brand-sub {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--gold);
+      font-size: clamp(15px, 1.15vw, 21px);
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .brand-sub::before, .brand-sub::after {
+      content: "";
+      width: 46px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+      flex: 0 0 auto;
+    }
+    .brand-sub::after { background: linear-gradient(90deg, var(--gold), transparent); }
+    .nav-control { position: relative; flex: 0 0 auto; display: flex; justify-content: flex-end; }
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 2px solid rgba(248, 217, 135, .62);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--cream);
+      padding: 11px 18px;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: .4px;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .menu-toggle:hover, .nav-control.is-open .menu-toggle {
+      background: rgba(248,217,135,.18);
+      color: var(--lightgold);
+      box-shadow: 0 0 18px rgba(214,170,99,.18);
+    }
+    .menu-icon { width: 18px; height: 12px; display: inline-flex; flex-direction: column; justify-content: space-between; }
+    .menu-icon span { display: block; height: 2px; border-radius: 999px; background: currentColor; }
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 12px);
+      right: 0;
+      width: 270px;
+      padding: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(248,217,135,.42);
+      background: linear-gradient(180deg, rgba(16,26,46,.98), rgba(9,17,31,.98));
+      box-shadow: 0 24px 60px rgba(0,0,0,.34);
+      display: grid;
+      gap: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: .2s ease;
+    }
+    .nav-control.is-open .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+    .dropdown-menu a {
+      text-decoration: none;
+      color: var(--cream);
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 14px;
+      border: 1px solid rgba(248,217,135,.18);
+      background: rgba(255,255,255,.04);
+      transition: .2s ease;
+    }
+    .dropdown-menu a:hover, .dropdown-menu a.active {
+      color: var(--lightgold);
+      background: rgba(248,217,135,.16);
+      border-color: rgba(248,217,135,.48);
+    }
+
+    h1, h2, h3, h4 { font-family: Georgia, 'Times New Roman', serif; margin: 0; line-height: 1.12; }
+    .help-hero {
+      min-height: 540px;
+      padding: 92px 22px 78px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(16,26,46,.60), rgba(16,26,46,.88)),
+        url('./hero-background.png?v=31') 70% 30% / cover no-repeat;
+      border-bottom: 1px solid rgba(214,170,99,.28);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 16px;
+      padding: 8px 15px;
+      border: 1px solid rgba(248,217,135,.52);
+      border-radius: 999px;
+      background: rgba(16,26,46,.46);
+      color: var(--lightgold);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+    .help-hero h1 {
+      max-width: 1050px;
+      color: #FFF5DD;
+      font-size: clamp(44px, 8vw, 82px);
+      text-shadow: 0 8px 28px rgba(0,0,0,.58);
+    }
+    .help-hero p {
+      max-width: 900px;
+      margin: 20px auto 0;
+      color: #F7EEDB;
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 700;
+      line-height: 1.55;
+      text-shadow: 0 4px 14px rgba(0,0,0,.5);
+    }
+    .hero-actions, .button-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 900;
+      border: 2px solid rgba(214,170,99,.72);
+      transition: .2s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #FFE39A, #D7A84F);
+      color: #13233F;
+      box-shadow: 0 12px 32px rgba(198,122,61,.23);
+    }
+    .btn-secondary { background: rgba(255,255,255,.95); color: #8A621D; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(0,0,0,.18), 0 0 22px rgba(214,170,99,.22); }
+
+    .quick-links {
+      background: #101A2E;
+      border-top: 1px solid rgba(248,217,135,.2);
+      border-bottom: 1px solid rgba(248,217,135,.3);
+      padding: 16px 18px;
+    }
+    .quick-links-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .quick-links a {
+      color: #FFF8EA;
+      text-decoration: none;
+      border: 1px solid rgba(248,217,135,.34);
+      background: rgba(255,255,255,.05);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .quick-links a:hover { color: var(--lightgold); background: rgba(248,217,135,.14); }
+
+    .section { padding: 78px 22px; background: linear-gradient(180deg, #FFF8EA 0%, #EEF7FF 52%, #EAF4F1 100%); }
+    .section.alt { background: linear-gradient(180deg, #F7FBFF 0%, #FFF8EA 100%); }
+    .section.dark {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(248,217,135,.12), transparent 38%),
+        linear-gradient(180deg, #13233F, #101A2E);
+      color: #FFF8EA;
+    }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-title {
+      text-align: center;
+      color: #13233F;
+      font-size: clamp(36px, 6vw, 62px);
+      margin-bottom: 17px;
+    }
+    .dark .section-title { color: #FFF5DD; }
+    .section-text {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+      color: #2B394F;
+      font-size: clamp(18px, 2.8vw, 22px);
+    }
+    .dark .section-text { color: #DCE6F3; }
+
+    .feature-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .feature-pill {
+      min-height: 115px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 5px;
+      border: 1px solid rgba(215,168,79,.34);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 14px 32px rgba(28,45,74,.08);
+    }
+    .feature-pill strong { color: #13233F; font-size: 17px; }
+    .feature-pill span { color: #5A6678; font-size: 14px; }
+    .feature-icon { font-size: 28px; line-height: 1; }
+
+    .device-grid, .walkthrough-grid, .trouble-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 38px;
+    }
+    .device-card, .walk-card, .trouble-card, .offline-panel, .privacy-panel {
+      border: 1px solid rgba(215,168,79,.34);
+      border-radius: 28px;
+      padding: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,248,234,.92));
+      box-shadow: 0 18px 42px rgba(28,45,74,.10);
+    }
+    .device-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .device-symbol {
+      width: 54px;
+      height: 54px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      border-radius: 17px;
+      background: linear-gradient(135deg, #13233F, #1F4F46);
+      color: #FFF8EA;
+      font-size: 26px;
+      box-shadow: 0 10px 24px rgba(16,26,46,.16);
+    }
+    .device-card h3, .walk-card h3, .offline-panel h3, .privacy-panel h3 { color: #13233F; font-size: clamp(27px, 4vw, 38px); }
+    .device-card .browser-note {
+      margin: 0 0 18px;
+      padding: 10px 13px;
+      border-radius: 14px;
+      background: rgba(248,217,135,.24);
+      color: #654A1C;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 13px; counter-reset: helpstep; }
+    .steps li {
+      position: relative;
+      min-height: 42px;
+      padding: 3px 0 3px 50px;
+      color: #2B394F;
+      font-size: 17px;
+    }
+    .steps li::before {
+      counter-increment: helpstep;
+      content: counter(helpstep);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F8D987, #D7A84F);
+      color: #13233F;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(183,131,45,.18);
+    }
+    .steps strong { color: #13233F; }
+
+    .offline-panel { max-width: 980px; margin: 38px auto 0; }
+    .offline-panel .steps { margin-top: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 28px; }
+    .important {
+      margin-top: 24px;
+      border-left: 6px solid var(--gold);
+      border-radius: 16px;
+      background: rgba(248,217,135,.2);
+      padding: 17px 19px;
+      color: #493715;
+      font-weight: 800;
+    }
+
+    .walk-card { min-height: 100%; }
+    .walk-card ul { margin: 20px 0 0; padding-left: 22px; color: #2B394F; }
+    .walk-card li { margin-bottom: 12px; font-size: 17px; }
+    .walk-card strong { color: #13233F; }
+    .walk-card .tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(248,217,135,.3);
+      border: 1px solid rgba(215,168,79,.44);
+      color: #8A621D;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    .reference-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 34px;
+    }
+    .flow-step {
+      position: relative;
+      text-align: center;
+      border: 1px solid rgba(248,217,135,.34);
+      border-radius: 22px;
+      padding: 24px 18px;
+      background: rgba(255,255,255,.06);
+    }
+    .flow-step strong { display: block; color: #F8D987; font-size: 19px; margin-bottom: 7px; }
+    .flow-step span { color: #DCE6F3; }
+
+    .privacy-panel { margin-top: 34px; background: linear-gradient(180deg, #FFF9EC, #FFF1D0); }
+    .privacy-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 24px; align-items: center; }
+    .privacy-panel p { margin: 13px 0 0; color: #2B394F; font-size: 17px; }
+    .backup-box {
+      border: 1px solid rgba(215,168,79,.48);
+      border-radius: 22px;
+      background: #13233F;
+      color: #FFF8EA;
+      padding: 22px;
+    }
+    .backup-box strong { display: block; color: #F8D987; font-size: 19px; margin-bottom: 7px; }
+
+    .faq-list { max-width: 980px; margin: 38px auto 0; display: grid; gap: 13px; }
+    details {
+      border: 1px solid rgba(215,168,79,.32);
+      border-radius: 18px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 10px 24px rgba(28,45,74,.06);
+      overflow: hidden;
+    }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 19px 54px 19px 20px;
+      color: #13233F;
+      font-weight: 900;
+      font-size: 17px;
+      position: relative;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #8A621D;
+      font-size: 28px;
+      line-height: 1;
+    }
+    details[open] summary::after { content: "−"; }
+    details p { margin: 0; padding: 0 20px 20px; color: #2B394F; font-size: 16px; }
+
+    .trouble-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .trouble-card { padding: 24px; }
+    .trouble-card h3 { color: #13233F; font-size: 24px; margin-bottom: 10px; }
+    .trouble-card p { margin: 0; color: #2B394F; }
+
+    .final-card {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 44px 30px;
+      border: 1px solid rgba(248,217,135,.45);
+      border-radius: 32px;
+      background: rgba(255,255,255,.06);
+      text-align: center;
+      box-shadow: 0 22px 58px rgba(0,0,0,.24);
+    }
+    .final-card h2 { color: #FFF5DD; font-size: clamp(34px, 6vw, 56px); }
+    .final-card p { max-width: 780px; margin: 16px auto 0; color: #DCE6F3; font-size: 19px; }
+
+    .site-footer {
+      padding: 42px 22px;
+      text-align: center;
+      background: linear-gradient(180deg, #101A2E, #09111F);
+      border-top: 1px solid rgba(248,217,135,.34);
+    }
+    .footer-profile-logo { width: 145px; max-width: 48vw; height: auto; object-fit: contain; display: block; margin: 0 auto 16px; }
+    .site-footer .tagline { color: var(--lightgold); text-transform: uppercase; letter-spacing: 2px; font-size: 13px; font-weight: 900; }
+    .site-footer p { color: #D7DFEF; margin: 8px 0 0; }
+    .footer-links { margin-top: 12px; color: #D7DFEF; font-size: 14px; }
+    .footer-links a { color: var(--lightgold); text-decoration: underline; font-weight: 800; }
+
+    @media (min-width: 761px) {
+      .dropdown-menu { width: 242px; padding: 10px; gap: 6px; border-radius: 18px; }
+      .dropdown-menu a { padding: 9px 12px; border-radius: 11px; font-size: 13px; line-height: 1.15; }
+    }
+    @media (max-width: 920px) {
+      .feature-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .trouble-grid { grid-template-columns: 1fr 1fr; }
+      .offline-panel .steps { grid-template-columns: 1fr; }
+      .privacy-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .nav-wrap { gap: 12px; padding: 12px; }
+      .brand { gap: 9px; }
+      .brand-emblem { width: 58px; height: 58px; }
+      .brand-main { font-size: 22px; letter-spacing: .7px; }
+      .brand-sub { margin-top: 5px; font-size: 12px; letter-spacing: 2.7px; gap: 6px; }
+      .brand-sub::before, .brand-sub::after { width: 18px; }
+      .menu-toggle { padding: 9px 13px; font-size: 13px; }
+      body.rdm-menu-open { overflow: hidden; touch-action: none; }
+      .nav-control { position: static; }
+      .dropdown-menu {
+        position: fixed;
+        top: calc(82px + env(safe-area-inset-top, 0px));
+        left: 14px;
+        right: 14px;
+        width: auto;
+        max-height: calc(100dvh - 104px - env(safe-area-inset-bottom, 0px));
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        padding: 14px;
+        gap: 8px;
+        border-radius: 24px;
+        z-index: 200;
+      }
+      .dropdown-menu a { padding: 13px 16px; min-height: 50px; display: flex; align-items: center; font-size: 18px; line-height: 1.15; }
+      .help-hero { min-height: 520px; padding: 78px 17px 64px; background-position: 72% 30%; }
+      .section { padding: 62px 16px; }
+      .device-grid, .walkthrough-grid, .trouble-grid { grid-template-columns: 1fr; }
+      .reference-flow { grid-template-columns: 1fr; }
+      .device-card, .walk-card, .offline-panel, .privacy-panel { padding: 24px; }
+    }
+    @media (max-width: 520px) {
+      .brand-main { font-size: 19px; }
+      .brand-sub { font-size: 10.5px; letter-spacing: 2px; }
+      .brand-emblem { width: 52px; height: 52px; }
+      .menu-toggle { padding: 9px 11px; }
+      .menu-toggle-text { display: none; }
+      .dropdown-menu { top: calc(76px + env(safe-area-inset-top, 0px)); left: 12px; right: 12px; max-height: calc(100dvh - 96px - env(safe-area-inset-bottom, 0px)); padding: 12px; gap: 7px; }
+      .dropdown-menu a { min-height: 48px; padding: 12px 15px; font-size: 17px; }
+      .feature-strip { grid-template-columns: 1fr; }
+      .hero-actions .btn, .button-row .btn { width: 100%; }
+      .steps li { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
+        <img class="brand-emblem" src="./profile-logo.png?v=31" alt="Restored Daily Ministries emblem">
+        <div class="brand-wordmark">
+          <div class="brand-main">Restored Daily</div>
+          <div class="brand-sub">Ministries</div>
+        </div>
+      </a>
+      <div class="nav-control">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteDropdownMenu">
+          <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="menu-toggle-text">Menu</span>
+        </button>
+        <nav id="siteDropdownMenu" class="dropdown-menu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="mission.html">Mission</a>
+          <a href="devotional.html">Devotionals</a>
+          <a href="disciple.html">Lessons</a>
+          <a href="preaching.html">Preaching</a>
+          <a href="podcast.html">Podcast</a>
+          <a href="prayer.html">Prayer</a>
+          <a href="https://iron.restoreddailyministries.org/index.html">Iron Sharpener</a>
+          <a class="active" aria-current="page" href="iron-sharpener-help.html">Iron Sharpener Help</a>
+          <a href="membership.html">Community</a>
+          <a href="support.html">Support</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="rights.html">Rights &amp; Use</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="help-hero">
+      <div class="eyebrow">Free Scripture Study &amp; Discipleship Tool</div>
+      <h1>Iron Sharpener Help &amp; Installation</h1>
+      <p>Install Iron Sharpener on your phone or tablet, prepare it for offline use, and learn how to use the Disciple Maker and Disciple Journal.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://iron.restoreddailyministries.org/index.html">Open Iron Sharpener</a>
+        <a class="btn btn-secondary" href="#install">Install on Your Device</a>
+      </div>
+    </section>
+
+    <nav class="quick-links" aria-label="Page sections">
+      <div class="quick-links-inner">
+        <a href="#overview">Overview</a>
+        <a href="#install">Install</a>
+        <a href="#offline">Offline Use</a>
+        <a href="#walkthrough">Walkthrough</a>
+        <a href="#faq">FAQ</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+      </div>
+    </nav>
+
+    <section class="section" id="overview">
+      <div class="container">
+        <h2 class="section-title">What Is Iron Sharpener?</h2>
+        <p class="section-text">Iron Sharpener is a free Scripture study, discipleship, teaching, and journaling tool created by Restored Daily Ministries. It brings Bible reading, study resources, teaching preparation, personal reflection, and prayer into one place.</p>
+
+        <div class="feature-strip">
+          <div class="feature-pill"><span class="feature-icon" aria-hidden="true">✦</span><strong>Completely Free</strong><span>No subscription required</span></div>
+          <div class="feature-pill"><span class="feature-icon" aria-hidden="true">✓</span><strong>No Account</strong><span>Open it and begin studying</span></div>
+          <div class="feature-pill"><span class="feature-icon" aria-hidden="true">↧</span><strong>Works Offline</strong><span>After one online preparation</span></div>
+          <div class="feature-pill"><span class="feature-icon" aria-hidden="true">🔒</span><strong>Private Journal</strong><span>Entries stay on your device</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="install">
+      <div class="container">
+        <h2 class="section-title">Install Iron Sharpener</h2>
+        <p class="section-text">Choose your device below. Always begin by opening Iron Sharpener in the normal browser on the device where you want to install it.</p>
+
+        <div class="device-grid">
+          <article class="device-card">
+            <div class="device-head"><div class="device-symbol" aria-hidden="true">☎</div><h3>iPhone</h3></div>
+            <p class="browser-note">Use Safari for the most reliable installation.</p>
+            <ol class="steps">
+              <li>Open <strong>Safari</strong> and visit Iron Sharpener.</li>
+              <li>Tap the <strong>Share</strong> button. Depending on your Safari layout, you may first tap the page menu.</li>
+              <li>Scroll through the actions and choose <strong>Add to Home Screen</strong>.</li>
+              <li>Turn on <strong>Open as Web App</strong> if that option appears.</li>
+              <li>Confirm the name <strong>Iron Sharpener</strong>, then tap <strong>Add</strong>.</li>
+              <li>Open Iron Sharpener from the new Home Screen icon while still connected to the internet.</li>
+            </ol>
+          </article>
+
+          <article class="device-card">
+            <div class="device-head"><div class="device-symbol" aria-hidden="true">▣</div><h3>iPad</h3></div>
+            <p class="browser-note">Use Safari and keep the iPad online during the first open.</p>
+            <ol class="steps">
+              <li>Open <strong>Safari</strong> and visit Iron Sharpener.</li>
+              <li>Tap the <strong>Share</strong> button in the Safari toolbar.</li>
+              <li>Tap <strong>More</strong> if needed, then choose <strong>Add to Home Screen</strong>.</li>
+              <li>Turn on <strong>Open as Web App</strong> if it is offered.</li>
+              <li>Confirm <strong>Iron Sharpener</strong> and tap <strong>Add</strong>.</li>
+              <li>Launch it from the Home Screen and allow the first page to finish opening before preparing offline use.</li>
+            </ol>
+          </article>
+
+          <article class="device-card">
+            <div class="device-head"><div class="device-symbol" aria-hidden="true">●</div><h3>Android Phone</h3></div>
+            <p class="browser-note">Google Chrome is recommended. Menu wording can vary slightly by phone.</p>
+            <ol class="steps">
+              <li>Open <strong>Chrome</strong> and visit Iron Sharpener.</li>
+              <li>Tap the <strong>three-dot menu</strong> beside the address bar.</li>
+              <li>Choose <strong>Add to home screen</strong>.</li>
+              <li>Tap <strong>Install</strong> when Chrome offers to install the web app.</li>
+              <li>Confirm the app name and placement.</li>
+              <li>Open Iron Sharpener from the Home Screen while connected to the internet.</li>
+            </ol>
+          </article>
+
+          <article class="device-card">
+            <div class="device-head"><div class="device-symbol" aria-hidden="true">▤</div><h3>Android Tablet</h3></div>
+            <p class="browser-note">Use Chrome or the tablet browser that provides an Install App option.</p>
+            <ol class="steps">
+              <li>Open <strong>Chrome</strong> and visit Iron Sharpener.</li>
+              <li>Open the <strong>three-dot menu</strong>.</li>
+              <li>Choose <strong>Add to home screen</strong> or <strong>Install app</strong>.</li>
+              <li>Confirm the installation.</li>
+              <li>Find the Iron Sharpener icon on the Home Screen or in the app drawer.</li>
+              <li>Open it online once before beginning the offline preparation.</li>
+            </ol>
+          </article>
+        </div>
+
+        <div class="button-row"><a class="btn btn-primary" href="https://iron.restoreddailyministries.org/index.html">Open Iron Sharpener Now</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="offline">
+      <div class="container">
+        <h2 class="section-title">Prepare It for Offline Use</h2>
+        <p class="section-text">Installing the Home Screen app and preparing it for offline use are two separate steps. Complete the preparation while you have a reliable internet connection.</p>
+
+        <div class="offline-panel">
+          <h3>One-Time Offline Preparation</h3>
+          <ol class="steps">
+            <li>Open the installed Iron Sharpener app while connected to the internet.</li>
+            <li>Tap the <strong>Online / Offline Ready</strong> status at the bottom of the teaching side.</li>
+            <li>Choose <strong>Prepare Offline Use</strong>.</li>
+            <li>Keep the app open and the screen awake while the Bible and study-resource library are saved.</li>
+            <li>Wait until the status confirms that Iron Sharpener is <strong>Offline Ready</strong>.</li>
+            <li>Close and reopen the app once, then test it without internet access.</li>
+          </ol>
+          <div class="important">Do not remove the Home Screen app, clear browser website data, or use a private/incognito browser if you want to keep offline resources and locally saved Journal entries. Export a Journal backup before deleting the app or clearing website data.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="walkthrough">
+      <div class="container">
+        <h2 class="section-title">Walk Through the Tool</h2>
+        <p class="section-text">Iron Sharpener contains two connected sides. Use the Disciple Maker for Scripture study and teaching preparation, and the Disciple Journal for personal study, prayer, and saved reflection.</p>
+
+        <div class="walkthrough-grid">
+          <article class="walk-card">
+            <div class="tag">Teaching &amp; Study</div>
+            <h3>Disciple Maker</h3>
+            <ul>
+              <li><strong>Choose a Book and Chapter:</strong> The full chapter opens for reading and study.</li>
+              <li><strong>Teacher Tools:</strong> Highlight, underline, circle, box, focus, copy, and erase Scripture markings.</li>
+              <li><strong>Study Resources:</strong> Open Bible backgrounds, dictionaries, Nave’s Topical Bible, Biblical Doctrine, commentaries, Book Overviews, and Built-In Cross References.</li>
+              <li><strong>Teaching Notes:</strong> Save a main point, outline, or presentation note for the selected passage.</li>
+              <li><strong>Application &amp; Prayer:</strong> Record practical application, prayer points, encouragement, repentance, and pastoral response.</li>
+              <li><strong>OBS Focus:</strong> Use a clean Scripture presentation view for teaching or recording.</li>
+            </ul>
+          </article>
+
+          <article class="walk-card">
+            <div class="tag">Personal Study &amp; Prayer</div>
+            <h3>Disciple Journal</h3>
+            <ul>
+              <li><strong>Scripture:</strong> Read a full chapter or follow an exact Scripture reference from a study resource.</li>
+              <li><strong>Journal:</strong> Work through the guided Personal Study Guide or use the freewrite option.</li>
+              <li><strong>History:</strong> Open, search, and revisit previously saved entries.</li>
+              <li><strong>Mark:</strong> Highlight, underline, circle, and mark words or verses during personal study.</li>
+              <li><strong>Tools:</strong> Use the same Bible study resources without leaving the Journal side.</li>
+              <li><strong>Export:</strong> Create a backup of your Journal and keep it somewhere safe.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="references">
+      <div class="container">
+        <h2 class="section-title">Following Scripture References</h2>
+        <p class="section-text">When a study resource includes a Bible reference, Iron Sharpener opens the exact verse or verse range while keeping the visible heading simple.</p>
+        <div class="reference-flow">
+          <div class="flow-step"><strong>1. Tap a Reference</strong><span>For example, Romans 8:1–4.</span></div>
+          <div class="flow-step"><strong>2. Read the Passage</strong><span>The exact verses open in the Scripture section.</span></div>
+          <div class="flow-step"><strong>3. Use Scripture Back</strong><span>Return to the chapter you were studying without losing your place.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Protect Your Journal</h2>
+        <p class="section-text">Your Journal entries are designed to remain private and stored locally on your device. Because they are not tied to an online account, regular backups matter.</p>
+        <div class="privacy-panel">
+          <div class="privacy-grid">
+            <div>
+              <h3>Your Entries Stay on Your Device</h3>
+              <p>Restored Daily Ministries does not receive or read your Journal entries. Your entries remain in the browser or installed Home Screen app on the device where you created them.</p>
+            </div>
+            <div class="backup-box"><strong>Back Up Regularly</strong>Use the Journal’s Export option, save the backup somewhere secure, and create a new backup before deleting the app, clearing browser data, changing devices, or resetting the device.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="faq">
+      <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-text">Open a question below for a clear answer.</p>
+        <div class="faq-list">
+          <details><summary>Is Iron Sharpener free?</summary><p>Yes. Iron Sharpener is provided free by Restored Daily Ministries.</p></details>
+          <details><summary>Do I need to create an account?</summary><p>No. You can open the tool and begin studying without creating an account or signing in.</p></details>
+          <details><summary>Can I use Iron Sharpener without internet access?</summary><p>Yes. First install it and complete Prepare Offline Use while connected to the internet. Wait for the Offline Ready confirmation before disconnecting.</p></details>
+          <details><summary>Where are my Disciple Journal entries saved?</summary><p>They are saved locally on the device and browser or Home Screen app you are using. They are not automatically stored in an online ministry account.</p></details>
+          <details><summary>Will my Journal transfer automatically to another device?</summary><p>No. Export a backup from the original device and use the Journal’s restore/import process on the other device when available.</p></details>
+          <details><summary>What happens if I delete the Home Screen app?</summary><p>Offline resources or locally saved data may be removed depending on the device and browser. Export your Journal first and be prepared to run Prepare Offline Use again after reinstalling.</p></details>
+          <details><summary>Why does the first offline preparation take time?</summary><p>Iron Sharpener is saving the Bible and a large study-resource library to your device. Keep the app open, remain online, and allow the process to finish.</p></details>
+          <details><summary>Can I use Iron Sharpener on a computer?</summary><p>Yes. Open it in a desktop browser. Installation is optional on a computer.</p></details>
+          <details><summary>Which Bible translation does Iron Sharpener use?</summary><p>Iron Sharpener uses the World English Bible (WEB), a public-domain Bible translation.</p></details>
+          <details><summary>Can Restored Daily Ministries read my Journal?</summary><p>No. Journal entries remain locally on your device unless you personally export or share them.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="troubleshooting">
+      <div class="container">
+        <h2 class="section-title">Troubleshooting</h2>
+        <p class="section-text">Most setup problems can be corrected with one of these steps.</p>
+        <div class="trouble-grid">
+          <article class="trouble-card"><h3>Install Option Missing</h3><p>Confirm that you opened Iron Sharpener in Safari on iPhone/iPad or Chrome on Android. Do not use a private or incognito tab.</p></article>
+          <article class="trouble-card"><h3>App Seems Outdated</h3><p>Open the live website once while online, close the installed app completely, and then reopen it.</p></article>
+          <article class="trouble-card"><h3>Offline Tools Missing</h3><p>Reconnect to the internet, open the Offline Ready panel, and run Prepare Offline Use again without closing the app.</p></article>
+          <article class="trouble-card"><h3>Preparation Was Interrupted</h3><p>Return online and restart Prepare Offline Use. Leave the screen awake until the completion message appears.</p></article>
+          <article class="trouble-card"><h3>Journal Entries Missing</h3><p>Make sure you are using the same device, browser profile, and installed app. Check whether browser data was cleared.</p></article>
+          <article class="trouble-card"><h3>Low Device Storage</h3><p>Free some storage space before preparing the complete offline Bible and study-resource library.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="container">
+        <div class="final-card">
+          <h2>Ready to Study the Word?</h2>
+          <p>Open Iron Sharpener, choose a passage, and prayerfully begin. May the Lord use His Word to sharpen, restore, strengthen, and equip you.</p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="https://iron.restoreddailyministries.org/index.html">Open Iron Sharpener</a>
+            <a class="btn btn-secondary" href="contact.html">Contact the Ministry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <img class="footer-profile-logo" src="./profile-logo.png?v=31" alt="Restored Daily Ministries profile logo">
+    <div class="tagline">Restored by Grace • Renewed Daily • Sent on Mission</div>
+    <p>© 2026 Restored Daily Ministries™ • All rights reserved.<br>All Glory to Jesus Christ</p>
+    <div class="footer-links"><a href="contact.html">Contact Us</a><span> • </span><a href="support.html">Support</a><span> • </span><a href="rights.html">Rights &amp; Use</a></div>
+  </footer>
+
+  <script>
+    function initRestoredDailyMenu() {
+      const navControl = document.querySelector('.nav-control');
+      const menuButton = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('siteDropdownMenu');
+      if (!navControl || !menuButton || !menu) return;
+
+      function closeMenu() {
+        navControl.classList.remove('is-open');
+        document.body.classList.remove('rdm-menu-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }
+      function toggleMenu() {
+        const isOpen = navControl.classList.toggle('is-open');
+        document.body.classList.toggle('rdm-menu-open', isOpen);
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+      }
+      menuButton.addEventListener('click', function(event) { event.stopPropagation(); toggleMenu(); });
+      document.addEventListener('click', function(event) { if (!navControl.contains(event.target)) closeMenu(); });
+      document.addEventListener('keydown', function(event) { if (event.key === 'Escape') closeMenu(); });
+      menu.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', closeMenu); });
+    }
+    initRestoredDailyMenu();
+  </script>
+</body>
+</html>
