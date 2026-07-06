@@ -513,6 +513,99 @@
       }
     }
   </style>
+
+  <!-- v35 — unified compact site menu across all regular RDM pages -->
+  <style id="rdm-v35-unified-site-menu">
+    /* Desktop and pointer-capable computers: compact, scroll-safe dropdown. */
+    @media (min-width: 761px) {
+      .dropdown-menu {
+        width: 242px !important;
+        padding: 10px !important;
+        gap: 6px !important;
+        border-radius: 18px !important;
+        max-height: calc(100dvh - 98px) !important;
+        overflow-y: auto !important;
+        overscroll-behavior: contain !important;
+        scrollbar-width: thin;
+      }
+
+      .dropdown-menu a {
+        padding: 9px 12px !important;
+        min-height: 0 !important;
+        border-radius: 11px !important;
+        font-size: 13px !important;
+        line-height: 1.15 !important;
+      }
+    }
+
+    /* Phones and tablets: fixed, safe-area-aware, independently scrollable drawer. */
+    @media (max-width: 760px) {
+      body.rdm-menu-open {
+        overflow: hidden !important;
+      }
+
+      .nav-control {
+        position: static !important;
+      }
+
+      .dropdown-menu {
+        position: fixed !important;
+        top: var(--rdm-menu-top, calc(82px + env(safe-area-inset-top, 0px))) !important;
+        left: 14px !important;
+        right: 14px !important;
+        width: auto !important;
+        max-height: calc(100dvh - var(--rdm-menu-top-number, 82px) - env(safe-area-inset-bottom, 0px) - 14px) !important;
+        overflow-y: auto !important;
+        overscroll-behavior: contain !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+        padding: 14px !important;
+        gap: 8px !important;
+        border-radius: 24px !important;
+        z-index: 2000 !important;
+      }
+
+      .dropdown-menu a {
+        padding: 13px 16px !important;
+        min-height: 50px !important;
+        display: flex !important;
+        align-items: center !important;
+        font-size: 18px !important;
+        line-height: 1.15 !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dropdown-menu {
+        left: 12px !important;
+        right: 12px !important;
+        padding: 12px !important;
+        gap: 7px !important;
+      }
+
+      .dropdown-menu a {
+        min-height: 48px !important;
+        padding: 12px 15px !important;
+        font-size: 17px !important;
+      }
+    }
+
+    /* Keep the active page unmistakable for mouse, keyboard, and touch users. */
+    .dropdown-menu a.active,
+    .dropdown-menu a[aria-current="page"] {
+      color: var(--lightgold, #F8D987) !important;
+      background: rgba(248, 217, 135, 0.16) !important;
+      border-color: rgba(248, 217, 135, 0.48) !important;
+    }
+
+    .menu-toggle:focus-visible,
+    .dropdown-menu a:focus-visible {
+      outline: 3px solid var(--lightgold, #F8D987) !important;
+      outline-offset: 3px !important;
+    }
+  </style>
+
+  <meta name="rdm-site-menu-build" content="v35-unified-menu" />
 </head>
 <body>
   <header class="site-header">
@@ -529,7 +622,7 @@
           <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
           <span class="menu-toggle-text">Menu</span>
         </button>
-        <nav id="siteDropdownMenu" class="dropdown-menu" aria-label="Main navigation">
+                <nav id="siteDropdownMenu" class="dropdown-menu" aria-label="Main navigation" aria-hidden="true">
           <a href="index.html">Home</a>
           <a href="mission.html">Mission</a>
           <a href="devotional.html">Devotionals</a>
@@ -537,11 +630,12 @@
           <a href="preaching.html">Preaching</a>
           <a href="podcast.html">Podcast</a>
           <a href="prayer.html">Prayer</a>
-          <a href="iron-sharpener.html">Iron Sharpener</a>
-          <a href="community.html">Community</a>
+          <a href="https://iron.restoreddailyministries.org/index.html">Iron Sharpener</a>
+          <a href="iron-sharpener-help.html">Iron Sharpener Help</a>
+          <a href="membership.html">Community</a>
           <a href="support.html">Support</a>
           <a href="contact.html">Contact Us</a>
-          <a href="rights.html">Rights & Use</a>
+          <a href="rights.html">Rights &amp; Use</a>
         </nav>
       </div>
     </div>
@@ -583,40 +677,7 @@
   <a href="rights.html">Rights & Use</a>
 </div>
   </footer>
-  <script>
-    function initRestoredDailyMenu() {
-      const navControl = document.querySelector(".nav-control");
-      const menuButton = document.querySelector(".menu-toggle");
-      const menu = document.getElementById("siteDropdownMenu");
-      if (!navControl || !menuButton || !menu) return;
-      function closeMenu() {
-        navControl.classList.remove("is-open");
-        menuButton.setAttribute("aria-expanded", "false");
-      }
-      function toggleMenu() {
-        const isOpen = navControl.classList.toggle("is-open");
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-      }
-      menuButton.addEventListener("click", function(event) {
-        event.stopPropagation();
-        toggleMenu();
-      });
-      document.addEventListener("click", function(event) {
-        if (!navControl.contains(event.target)) {
-          closeMenu();
-        }
-      });
-      document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape") {
-          closeMenu();
-        }
-      });
-      menu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", closeMenu);
-      });
-    }
-    initRestoredDailyMenu();
-  </script>
+  
   <script>
     const LESSONS_API_URL = "https://script.google.com/macros/s/AKfycbyMpMm_C9r3yF16VVKRmxNQmCmQaiLEDkqezOTSwpSjSsg6CGCuTx1Iw0JfMA5GmnKF/exec";
     function escapeJournalHtml(value) {
@@ -845,5 +906,81 @@
     window.addEventListener("hashchange", scrollToSharedEntryIfNeeded);
     loadJournal();
   </script>
+
+  <script id="rdm-v35-unified-site-menu-script">
+    (function initRdmUnifiedMenuV35() {
+      "use strict";
+      if (window.__rdmUnifiedMenuV35) return;
+      window.__rdmUnifiedMenuV35 = true;
+
+      const header = document.querySelector(".site-header");
+      const navControl = document.querySelector(".nav-control");
+      const menuButton = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("siteDropdownMenu");
+
+      if (!navControl || !menuButton || !menu) return;
+
+      function syncMenuPosition() {
+        if (!header) return;
+        const rect = header.getBoundingClientRect();
+        const top = Math.max(0, Math.round(rect.bottom + 8));
+        document.documentElement.style.setProperty("--rdm-menu-top", top + "px");
+        document.documentElement.style.setProperty("--rdm-menu-top-number", top + "px");
+      }
+
+      function closeMenu(options) {
+        const settings = options || {};
+        navControl.classList.remove("is-open");
+        document.body.classList.remove("rdm-menu-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-hidden", "true");
+        if (settings.returnFocus) menuButton.focus({ preventScroll: true });
+      }
+
+      function openMenu() {
+        syncMenuPosition();
+        navControl.classList.add("is-open");
+        document.body.classList.add("rdm-menu-open");
+        menuButton.setAttribute("aria-expanded", "true");
+        menu.setAttribute("aria-hidden", "false");
+      }
+
+      function toggleMenu() {
+        if (navControl.classList.contains("is-open")) closeMenu();
+        else openMenu();
+      }
+
+      menuButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener("click", function(event) {
+        if (!navControl.contains(event.target)) closeMenu();
+      });
+
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape" && navControl.classList.contains("is-open")) {
+          closeMenu({ returnFocus: true });
+        }
+      });
+
+      menu.querySelectorAll("a").forEach(function(link) {
+        link.addEventListener("click", function() { closeMenu(); });
+      });
+
+      window.addEventListener("resize", syncMenuPosition, { passive: true });
+      window.addEventListener("orientationchange", function() {
+        setTimeout(syncMenuPosition, 80);
+      }, { passive: true });
+      window.addEventListener("pageshow", syncMenuPosition, { passive: true });
+      window.addEventListener("pagehide", function() { closeMenu(); }, { passive: true });
+
+      syncMenuPosition();
+      closeMenu();
+    })();
+  </script>
+
 </body>
 </html>
