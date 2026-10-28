@@ -713,7 +713,7 @@
               <div class="resource-meta">Weekly Letter</div>
               <h3>Intercession Letter</h3>
               <p>Read the five prayer matters, Scripture, and invitation to intercede.</p>
-              <div class="btns" style="justify-content:flex-start;margin-top:18px"><a class="btn btn-primary" href="to-the-throne-letter-TTT-0001.html" target="_blank" rel="noopener">Read Intercession Letter</a></div>
+              <div class="btns" style="justify-content:flex-start;margin-top:18px"><a class="btn btn-secondary" href="to-the-throne-letter-TTT-0001.html" target="_blank" rel="noopener">Read Intercession Letter</a></div>
             </article>
             <article class="resource-card">
               <div class="resource-meta">Prayer Companion</div>
@@ -727,11 +727,6 @@
               <p>Examine the sources informing each matter.</p>
               <div class="btns" style="justify-content:flex-start;margin-top:18px"><a class="btn btn-secondary" href="to-the-throne-sources-TTT-0001.html" target="_blank" rel="noopener">Check Sources</a></div>
             </article>
-          </div>
-          <div class="btns" style="justify-content:flex-start;margin-top:24px;flex-wrap:wrap">
-            <button class="btn btn-secondary" type="button" id="shareWeekly">Share This Week</button>
-            <button class="btn btn-secondary" type="button" id="copyWeekly">Copy Weekly Link</button>
-            <span id="shareStatus" role="status" aria-live="polite"></span>
           </div>
         </div>
         <div class="content-box" style="margin-top:30px;text-align:left">
@@ -847,6 +842,5 @@
     })();
   </script>
 
-<script>(function(){const url=location.origin+location.pathname+"#week-0001";const status=document.getElementById("shareStatus");function fallback(){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(()=>{status.textContent="Link copied."}).catch(()=>{status.textContent="Copy the address from your browser."})}else{status.textContent="Copy the address from your browser."}}document.getElementById("copyWeekly").addEventListener("click",fallback);document.getElementById("shareWeekly").addEventListener("click",async function(){if(navigator.share){try{await navigator.share({title:"To The Throne Weekly Intercession",url});return}catch(e){if(e.name==="AbortError")return}}fallback()})})();</script>
 </body>
 </html>
