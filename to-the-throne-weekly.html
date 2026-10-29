@@ -653,7 +653,26 @@
 
 
   </style>
-</head>
+<style id="ttt-weekly-archive-v2">
+.week-panel{margin:36px auto 0;max-width:1040px;background:#fffaf0;border:1px solid rgba(183,131,45,.42);border-radius:26px;overflow:hidden;box-shadow:0 18px 42px #1c2d4a16}
+.week-heading{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:26px 30px;background:linear-gradient(120deg,#fff7df,#f8edda);border-bottom:1px solid #d7a84f66}
+.week-heading h3{color:#13233f;font-size:clamp(25px,3.5vw,36px);margin:2px 0 8px}
+.week-heading p{margin:0;font-size:16px;line-height:1.5}
+.week-date{white-space:nowrap;color:#7a5516;font-size:13px;font-weight:800;border:1px solid #c9a363;padding:7px 12px;border-radius:99px}
+.week-list{padding:8px 20px}
+.week-link{display:flex;align-items:center;gap:18px;text-decoration:none;color:#13233f;padding:19px 10px;border-bottom:1px solid #d7a84f3c;transition:background .15s}
+.week-link:last-child{border-bottom:0}
+.week-link:hover,.week-link:focus-visible{background:#f6eedb;outline-offset:2px}
+.week-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#13233f;color:#f8d987;font-family:Georgia,serif;font-size:16px;font-weight:700;flex-shrink:0}
+.week-link-label{flex:1;display:flex;flex-direction:column;gap:3px}
+.week-link-label strong{font-size:clamp(18px,2.7vw,22px);font-family:Georgia,serif;line-height:1.25}
+.week-link-label small{font-size:14px;color:#5d6574;line-height:1.4}
+.week-action{font-weight:800;color:#8a621d;font-size:14px;white-space:nowrap}
+.upcoming-week{max-width:1040px;margin:24px auto 0;border:1px solid #d7a84f55;background:#fffaf0b8;border-radius:22px;padding:22px 30px;display:flex;flex-direction:column;gap:6px}
+.upcoming-week strong{font:700 24px Georgia,serif;color:#13233f}
+.upcoming-week p{margin:0}
+@media(max-width:600px){.week-heading{padding:22px;flex-direction:column;align-items:flex-start}.week-list{padding:4px 12px}.week-link{gap:12px}.week-action{font-size:12px}.week-icon{width:32px;height:32px;font-size:13px}}
+</style></head>
 <body>
 <header class="site-header">
     <div class="nav-wrap">
@@ -703,40 +722,38 @@
     </section>
     <section class="section">
       <div class="container">
-        <h2 class="section-title">Read. Watch. Pray.</h2>
-        <p class="section-text">Join us in standing in the gap for people in need around the world.</p>
-        <div class="content-box" id="week-0001" style="text-align:left">
-          <div class="resource-meta">Weekly Intercession • October 26, 2026 • TTT-0001</div>
-          <h3>Week of October 26, 2026</h3>
-          <div class="resource-grid">
-            <article class="resource-card">
-              <div class="resource-meta">Weekly Letter</div>
-              <h3>Intercession Letter</h3>
-              <p>Read the five prayer matters, Scripture, and invitation to intercede.</p>
-              <div class="btns" style="justify-content:flex-start;margin-top:18px"><a class="btn btn-secondary" href="to-the-throne-letter-TTT-0001.html" target="_blank" rel="noopener">Read Intercession Letter</a></div>
-            </article>
-            <article class="resource-card">
-              <div class="resource-meta">Prayer Companion</div>
-              <h3>Episode Notes</h3>
-              <p>Follow the situations and prayer focuses from the weekly session.</p>
-              <div class="btns" style="justify-content:flex-start;margin-top:18px"><a class="btn btn-secondary" href="to-the-throne-notes-TTT-0001.html" target="_blank" rel="noopener">Read Episode Notes</a></div>
-            </article>
-            <article class="resource-card">
-              <div class="resource-meta">Verification Record</div>
-              <h3>Sources &amp; Verification</h3>
-              <p>Examine the sources informing each matter.</p>
-              <div class="btns" style="justify-content:flex-start;margin-top:18px"><a class="btn btn-secondary" href="to-the-throne-sources-TTT-0001.html" target="_blank" rel="noopener">Check Sources</a></div>
-            </article>
+        <h2 class="section-title">Weekly Intercession Archive</h2>
+        <p class="section-text">Choose a week to read its letter, follow the episode, pray through the updates, and review the sources behind every report.</p>
+        <section class="week-panel" id="week-0001" aria-labelledby="week-0001-title">
+          <header class="week-heading">
+            <div><div class="resource-meta">TTT-0001 · Weekly Five</div>
+              <h3 id="week-0001-title">Week of October 26, 2026</h3>
+              <p>One week. One record of prayer, verified updates, and thanksgiving.</p>
+            </div>
+            <span class="week-date">October 26 – November 1</span>
+          </header>
+          <div class="week-list">
+            <a class="week-link" href="to-the-throne-letter-TTT-0001.html" aria-label="Read Weekly Intercession Letter, week of October 26">
+              <span class="week-icon" aria-hidden="true">01</span><span class="week-link-label"><strong>Weekly Intercession Letter</strong><small>Monday · Five original prayer matters</small></span><span class="week-action">Read letter →</span>
+            </a>
+            <a class="week-link" href="to-the-throne-notes-TTT-0001.html">
+              <span class="week-icon" aria-hidden="true">02</span><span class="week-link-label"><strong>Episode Notes</strong><small>Monday · Prayer-session companion</small></span><span class="week-action">Read notes →</span>
+            </a>
+            <a class="week-link" href="to-the-throne-sources-TTT-0001.html">
+              <span class="week-icon" aria-hidden="true">03</span><span class="week-link-label"><strong>Sources &amp; Verification</strong><small>Living weekly source record · Monday, Wednesday &amp; Friday updates</small></span><span class="week-action">Check sources →</span>
+            </a>
+            <a class="week-link" href="to-the-throne-update-TTT-0001-2026-10-28.html">
+              <span class="week-icon" aria-hidden="true">04</span><span class="week-link-label"><strong>Intercession Update</strong><small>Wednesday, October 28 · Week of October 26</small></span><span class="week-action">Read update →</span>
+            </a>
+            <a class="week-link" href="to-the-throne-praise-TTT-0001-2026-10-28.html">
+              <span class="week-icon" aria-hidden="true">05</span><span class="week-link-label"><strong>Praise Report</strong><small>Wednesday, October 28 · Week of October 26</small></span><span class="week-action">Read report →</span>
+            </a>
           </div>
-        </div>
-<div class="resource-grid" aria-label="Wednesday October 28 reports">
-<article class="resource-card"><div class="resource-meta">Wednesday • October 28 • Intercession</div><h3>Intercession Update</h3><p>Five situations, verified developments and guided prayer.</p><div class="btns"><a class="btn btn-secondary" href="to-the-throne-update-TTT-0001-2026-10-28.html" target="_blank" rel="noopener">Read Wednesday Update</a></div></article>
-<article class="resource-card"><div class="resource-meta">Wednesday • October 28 • Praise</div><h3>Kenya Praise Report</h3><p>Twenty Ebola contacts completed symptom-free monitoring; prayer continues.</p><div class="btns"><a class="btn btn-secondary" href="to-the-throne-praise-TTT-0001-2026-10-28.html" target="_blank" rel="noopener">Read Praise Report</a></div></article>
-</div><p style="margin-top:24px">Wednesday's sources are included in the same <a href="to-the-throne-sources-TTT-0001.html#wednesday-2026-10-28">living weekly verification archive</a>.</p>
-        <div class="content-box" style="margin-top:30px;text-align:left">
-          <div class="resource-meta">Next Weekly Intercession</div>
-          <h3>Week of November 2, 2026</h3>
-          <p>Next week's resources will be added after final verification and approval.</p>
+        </section>
+        <div class="upcoming-week" aria-label="Next week's report">
+          <span class="resource-meta">Next Week</span>
+          <strong>Week of November 2, 2026</strong>
+          <p>Resources will appear here once verified, approved and released.</p>
         </div>
         <div class="quote">The news cycle may move on, but prayer never ceases.</div>
       </div>
