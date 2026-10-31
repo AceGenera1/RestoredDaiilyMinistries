@@ -19,8 +19,79 @@ a{color:#6d4817}.nav{background:var(--navy);color:#f8d987;display:flex;align-ite
 .transcript h2{font-size:28px;line-height:1.2;margin:6px 0 18px}.transcript h3{font-size:20px;line-height:1.25;margin:25px 0 8px;color:#7b2524}.transcript p{margin:10px 0}.scripture{font-style:italic;border-left:4px solid var(--gold);padding-left:18px}.note{font:14px/1.65 Arial,sans-serif;color:#40516b}
 .footer{background:var(--navy);color:#f8d987;text-align:center;padding:26px 16px;font:700 12px/1.8 Arial,sans-serif;letter-spacing:.5px}
 @media(max-width:550px){.nav{justify-content:center;text-align:center}.nav-links{justify-content:center}.wrap{width:min(100% - 16px,1050px);margin-top:18px}.graphic{padding:3px}.transcript{padding:18px}}
+</style><style id="rdm-ttt-unified-resource-shell-v1">
+/* Matching the approved Wednesday report: global ministry header/menu and footer only. */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(16,26,46,.96);border-bottom:1px solid rgba(248,217,135,.34);font-family:Arial,Helvetica,sans-serif}
+.site-header .nav-wrap{max-width:1320px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:22px;position:relative}
+.site-header .brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex:0 1 auto;min-width:0}
+.site-header .brand-emblem{width:82px;height:82px;object-fit:contain;display:block;background:transparent;filter:drop-shadow(0 4px 8px rgba(0,0,0,.25));flex:0 0 auto}
+.site-header .brand-wordmark{display:flex;flex-direction:column;line-height:1;min-width:0}
+.site-header .brand-main{font-family:Georgia,'Times New Roman',serif;color:#fff8ea;font-size:clamp(28px,2.45vw,44px);font-weight:700;letter-spacing:1.2px;text-transform:uppercase;text-shadow:0 2px 5px rgba(0,0,0,.28);white-space:nowrap}
+.site-header .brand-sub{display:flex;align-items:center;gap:12px;margin-top:8px;font-family:Georgia,'Times New Roman',serif;color:#d7a84f;font-size:clamp(15px,1.15vw,21px);font-weight:700;letter-spacing:6px;text-transform:uppercase;white-space:nowrap}
+.site-header .brand-sub:before,.site-header .brand-sub:after{content:"";width:46px;height:2px;border-radius:999px;background:linear-gradient(90deg,transparent,#d7a84f);flex:0 0 auto}
+.site-header .brand-sub:after{background:linear-gradient(90deg,#d7a84f,transparent)}
+.site-header .nav-control{position:relative;flex:0 0 auto;display:flex;justify-content:flex-end}
+.site-header .menu-toggle{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:2px solid rgba(248,217,135,.62);border-radius:999px;background:rgba(255,255,255,.06);color:#fff8ea;padding:11px 18px;font:900 14px Arial,Helvetica,sans-serif;letter-spacing:.4px;cursor:pointer;transition:.2s}
+.site-header .menu-toggle:hover,.site-header .nav-control.is-open .menu-toggle{background:rgba(248,217,135,.18);color:#f8d987;box-shadow:0 0 18px rgba(214,170,99,.18)}
+.site-header .menu-icon{width:18px;height:12px;display:inline-flex;flex-direction:column;justify-content:space-between}
+.site-header .menu-icon span{display:block;height:2px;border-radius:999px;background:currentColor}
+.site-header .dropdown-menu{position:absolute;top:calc(100% + 12px);right:0;width:270px;padding:14px;border-radius:22px;border:1px solid rgba(248,217,135,.42);background:linear-gradient(180deg,rgba(16,26,46,.98),rgba(9,17,31,.98));box-shadow:0 24px 60px rgba(0,0,0,.34);display:grid;gap:8px;opacity:0;visibility:hidden;transform:translateY(-8px);pointer-events:none;transition:.2s;z-index:80}
+.site-header .nav-control.is-open .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+.site-header .dropdown-menu a{text-decoration:none;color:#fff8ea;padding:12px 14px;border-radius:14px;font:900 14px Arial,Helvetica,sans-serif;border:1px solid rgba(248,217,135,.18);background:rgba(255,255,255,.04);transition:.2s}
+.site-header .dropdown-menu a:hover,.site-header .dropdown-menu a.active{color:#f8d987;background:rgba(248,217,135,.16);border-color:rgba(248,217,135,.48)}
+.site-footer{padding:42px 22px;text-align:center;background:linear-gradient(180deg,#101a2e,#09111f);border-top:1px solid rgba(248,217,135,.34);font:16px/1.7 Arial,Helvetica,sans-serif}
+.site-footer .footer-profile-logo{width:145px;max-width:48vw;height:auto;object-fit:contain;display:block;margin:0 auto 16px;background:transparent}
+.site-footer .tagline{color:#f8d987;text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:900}
+.site-footer p{color:#d7dfef;margin:8px 0 0}
+.site-footer .footer-links{margin-top:12px;color:#d7dfef;font-size:14px}
+.site-footer .footer-links a{color:#f8d987;text-decoration:underline;font-weight:800}
+body:has(.site-header) {background:linear-gradient(180deg,#f0f4f4,#fff8e7 35%,#edf4f4)}
+body:has(.site-header) .ttt-approved-image{max-width:1050px!important}
+@media(max-width:760px){.site-header .nav-wrap{gap:12px;padding:12px}.site-header .brand{gap:9px}.site-header .brand-emblem{width:58px;height:58px}.site-header .brand-main{font-size:22px;letter-spacing:.7px}.site-header .brand-sub{margin-top:5px;font-size:12px;letter-spacing:2.7px;gap:6px}.site-header .brand-sub:before,.site-header .brand-sub:after{width:18px}.site-header .menu-toggle{padding:9px 13px;font-size:13px}.site-header .dropdown-menu{width:min(86vw,300px)}.site-footer .footer-profile-logo{width:135px;max-width:50vw}}
+@media(max-width:480px){.site-header .brand-main{font-size:19px}.site-header .brand-sub{font-size:10.5px;letter-spacing:2px}.site-header .brand-emblem{width:52px;height:52px}.site-header .menu-toggle{padding:9px 11px}.site-header .menu-toggle-text{display:none}}
+@media print{.site-header,.site-footer{display:none!important}}
 </style></head>
-<body><header class="nav"><a href="to-the-throne.html">TO THE THRONE · Restored Daily Ministries</a><nav class="nav-links" aria-label="To The Throne resources"><a href="to-the-throne.html">Ministry</a><a href="to-the-throne-weekly.html#week-0001">Weekly Archive</a><a href="to-the-throne-sources-TTT-0001.html">Sources &amp; Verification</a></nav></header>
+<body><header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="Restored Daily Ministries Home">
+        <img
+          class="brand-emblem"
+          src="./profile-logo.png?v=31"
+          alt="Restored Daily Ministries emblem"
+        >
+
+        <div class="brand-wordmark">
+          <div class="brand-main">Restored Daily</div>
+          <div class="brand-sub">Ministries</div>
+        </div>
+      </a>
+
+      <div class="nav-control">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteDropdownMenu">
+          <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="menu-toggle-text">Menu</span>
+        </button>
+
+                <nav id="siteDropdownMenu" class="dropdown-menu" aria-label="Main navigation" aria-hidden="true">
+          <a href="index.html">Home</a>
+          <a href="mission.html">Mission</a>
+          <a href="devotional.html">Devotionals</a>
+          <a href="disciple.html">Lessons</a>
+          <a href="preaching.html">Preaching</a>
+          <a href="podcast.html">Podcast</a>
+          <a href="prayer.html">Prayer</a>
+          <a class="active" aria-current="page" href="to-the-throne.html">To The Throne</a>
+          <a href="restored-daily-music.html">Restored Daily Music</a>
+          <a href="https://iron.restoreddailyministries.org/index.html">Iron Sharpener</a>
+          <a href="iron-sharpener-help.html">Iron Sharpener Help</a>
+          <a href="membership.html">Community</a>
+          <a href="support.html">Support</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="rights.html">Rights &amp; Use</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 <main class="wrap"><div class="intro"><div class="kicker">Friday · October 30, 2026 · TTT-0001</div><h1>Faith Friday: Prayer Never Ceases</h1><p>Do not let these needs fade from memory. Keep standing in the gap.</p><p class="tag">THE NEWS CYCLE MAY MOVE ON, BUT PRAYER NEVER CEASES.</p></div>
 <section class="graphic" aria-label="Approved Faith Friday weekend prayer graphic"><img src="assets/to-the-throne/weekly-graphics/2026-10-26/To%20the%20Throne_%20Faith%20Friday%20Prayer.png" alt="Faith Friday: Prayer Never Ceases. Do not let these needs fade from memory. Keep standing in the gap. Continue praying this weekend for those facing persecution, sickness, hardship, displacement and loss. 1 Corinthians 15:58 (WEB). To The Throne, Restored Daily Ministries." loading="eager" decoding="async" fetchpriority="high"></section>
 <div class="actions"><a href="assets/to-the-throne/weekly-graphics/2026-10-26/To%20the%20Throne_%20Faith%20Friday%20Prayer.png" target="_blank" rel="noopener noreferrer">View full-size graphic</a><a href="to-the-throne-weekly.html#week-0001">Back to weekly archive</a><button type="button" data-ttt-share aria-label="Share this Faith Friday prayer invitation">Share this invitation</button></div>
@@ -32,5 +103,78 @@ a{color:#6d4817}.nav{background:var(--navy);color:#f8d987;display:flex;align-ite
 <p><strong><em>The news cycle may move on, but prayer never ceases.</em></strong></p>
 <p class="note">Continue praying through the week’s matters using the <a href="to-the-throne-weekly.html#week-0001">Weekly Intercession Archive</a>. This Faith Friday invitation is not an additional news report.</p>
 </section></main>
-<footer class="footer">TO THE THRONE · Standing in the gap for those in need.<div>TRUTH BEFORE NARRATIVE | PRAYER BEFORE REACTION | AS FAST AS TRUTH ALLOWS</div><div>© 2026 Restored Daily Ministries · All Glory to Jesus Christ</div></footer>
-<script id="ttt-share-letter-v1">(function(){document.querySelectorAll('[data-ttt-share]').forEach(function(button){button.addEventListener('click',async function(){var url=window.location.href.split('#')[0];var title=document.querySelector('meta[property="og:title"]')?.content||document.title;var original=button.textContent;try{if(navigator.share){await navigator.share({title:title,url:url});return;}if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url);button.textContent='Link copied!';}else{var field=document.createElement('textarea');field.value=url;field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();if(!document.execCommand('copy'))throw new Error('Unable to copy');field.remove();button.textContent='Link copied!';}setTimeout(function(){button.textContent=original;},2500);}catch(e){if(e.name==='AbortError')return;window.prompt('Copy this link to share:',url);}});});})();</script></body></html>
+<footer class="site-footer"><img class="footer-profile-logo" src="./profile-logo.png?v=31" alt="Restored Daily Ministries profile logo"><div class="tagline">Restored by Grace • Renewed Daily • Sent on Mission</div><p>© 2026 Restored Daily Ministries • All rights reserved.<br>All Glory to Jesus Christ</p><div class="footer-links"><a href="contact.html">Contact Us</a><span> • </span><a href="support.html">Support</a><span> • </span><a href="rights.html">Rights &amp; Use</a></div></footer>
+<script id="ttt-share-letter-v1">(function(){document.querySelectorAll('[data-ttt-share]').forEach(function(button){button.addEventListener('click',async function(){var url=window.location.href.split('#')[0];var title=document.querySelector('meta[property="og:title"]')?.content||document.title;var original=button.textContent;try{if(navigator.share){await navigator.share({title:title,url:url});return;}if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url);button.textContent='Link copied!';}else{var field=document.createElement('textarea');field.value=url;field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();if(!document.execCommand('copy'))throw new Error('Unable to copy');field.remove();button.textContent='Link copied!';}setTimeout(function(){button.textContent=original;},2500);}catch(e){if(e.name==='AbortError')return;window.prompt('Copy this link to share:',url);}});});})();</script><script id="rdm-v35-unified-site-menu-script">
+    (function initRdmUnifiedMenuV35() {
+      "use strict";
+      if (window.__rdmUnifiedMenuV35) return;
+      window.__rdmUnifiedMenuV35 = true;
+
+      const header = document.querySelector(".site-header");
+      const navControl = document.querySelector(".nav-control");
+      const menuButton = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("siteDropdownMenu");
+
+      if (!navControl || !menuButton || !menu) return;
+
+      function syncMenuPosition() {
+        if (!header) return;
+        const rect = header.getBoundingClientRect();
+        const top = Math.max(0, Math.round(rect.bottom + 8));
+        document.documentElement.style.setProperty("--rdm-menu-top", top + "px");
+        document.documentElement.style.setProperty("--rdm-menu-top-number", top + "px");
+      }
+
+      function closeMenu(options) {
+        const settings = options || {};
+        navControl.classList.remove("is-open");
+        document.body.classList.remove("rdm-menu-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-hidden", "true");
+        if (settings.returnFocus) menuButton.focus({ preventScroll: true });
+      }
+
+      function openMenu() {
+        syncMenuPosition();
+        navControl.classList.add("is-open");
+        document.body.classList.add("rdm-menu-open");
+        menuButton.setAttribute("aria-expanded", "true");
+        menu.setAttribute("aria-hidden", "false");
+      }
+
+      function toggleMenu() {
+        if (navControl.classList.contains("is-open")) closeMenu();
+        else openMenu();
+      }
+
+      menuButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleMenu();
+      });
+
+      document.addEventListener("click", function(event) {
+        if (!navControl.contains(event.target)) closeMenu();
+      });
+
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape" && navControl.classList.contains("is-open")) {
+          closeMenu({ returnFocus: true });
+        }
+      });
+
+      menu.querySelectorAll("a").forEach(function(link) {
+        link.addEventListener("click", function() { closeMenu(); });
+      });
+
+      window.addEventListener("resize", syncMenuPosition, { passive: true });
+      window.addEventListener("orientationchange", function() {
+        setTimeout(syncMenuPosition, 80);
+      }, { passive: true });
+      window.addEventListener("pageshow", syncMenuPosition, { passive: true });
+      window.addEventListener("pagehide", function() { closeMenu(); }, { passive: true });
+
+      syncMenuPosition();
+      closeMenu();
+    })();
+  </script></body></html>
