@@ -48,7 +48,13 @@ def validate(data,kind):
     for n,m in enumerate(matters,1):
         for k in ('headline','location','status'):require(m.get(k),f'Matter {n} {k}')
         if kind=='recording_brief':
-            if not m.get('verified_details') or not m.get('prayer_focus'):raise ValueError('Matter %d needs details and prayer focus'%n)
+            details=m.get('verified_details')
+            if not isinstance(details,str) or not details.strip():
+                raise ValueError('Matter %d needs a single recording-ready Key Verified Details paragraph, not bullets'%n)
+            if any(details.lstrip().startswith(x) for x in ('•','- ','* ')) or '\n•' in details or '\n- ' in details:
+                raise ValueError('Matter %d Key Verified Details must be connected prose, not bullets'%n)
+            if not isinstance(m.get('prayer_focus'),list) or not m['prayer_focus']:
+                raise ValueError('Matter %d needs separate Prayer Focus bullet points'%n)
             for k in ('scripture_reference','scripture_text'):require(m.get(k),f'Matter {n} {k}')
             for field in ('watch','uncertainty','coaching','intro','prayer_script'):
                 if field in m:raise ValueError('Forbidden recording field '+field)
@@ -76,7 +82,7 @@ def brief(data,out):
     for i,m in enumerate(data['matters'],1):
         band=Table([[P('%02d'%i,'head'),P(m['headline'],'head')]],colWidths=[90,460])
         band.setStyle(table_style([('BACKGROUND',(0,0),(0,0),GOLD),('BACKGROUND',(1,0),(1,0),NAVY)]))
-        fields=[('LOCATION',P(m['location'])),('STATUS',P(m['status'])),('KEY VERIFIED DETAILS',[P('• '+x) for x in m['verified_details']]),('PRAYER FOCUS',[P('• '+x) for x in m['prayer_focus']]),('SCRIPTURE',[P(m['scripture_reference'],'goldhead'),P(m['scripture_text'])])]
+        fields=[('LOCATION',P(m['location'])),('STATUS',P(m['status'])),('KEY VERIFIED DETAILS',P(m['verified_details'])),('PRAYER FOCUS',[P('• '+x) for x in m['prayer_focus']]),('SCRIPTURE',[P(m['scripture_reference'],'goldhead'),P(m['scripture_text'])])]
         rows=[[P(label,'label'),value] for label,value in fields]
         tbl=Table(rows,colWidths=[105,445],hAlign='LEFT')
         tbl.setStyle(table_style([('BACKGROUND',(0,0),(0,-1),PALE),('BACKGROUND',(1,0),(1,-1),colors.white),('LINEBELOW',(0,-1),(-1,-1),.6,GOLD)]))
