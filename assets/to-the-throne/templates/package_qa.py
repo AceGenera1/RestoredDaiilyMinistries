@@ -14,6 +14,8 @@ def build(record,output):
     for i,m in enumerate(record['matters'],1):
         for field in ('headline','location','status','summary','verified_details','prayer_focus','scripture_reference','scripture_text','sources'):
             if not m.get(field):raise ValueError('Matter %d missing %s'%(i,field))
+        if not isinstance(m['verified_details'],str) or not m['verified_details'].strip():
+            raise ValueError('Matter %d requires a concise, recording-ready verified-details paragraph, not a bullet list'%i)
         ref=m['scripture_reference'].strip().lower()
         if ref in seen:raise ValueError('Repeated Scripture: '+ref)
         seen.add(ref)
