@@ -11,7 +11,7 @@ from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER,TA_LEFT
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Table,TableStyle,PageBreak
+from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Table,TableStyle,PageBreak,KeepTogether
 NAVY=colors.HexColor('#111C32')
 GOLD=colors.HexColor('#B78730')
 PALE=colors.HexColor('#F7EAD5')
@@ -86,7 +86,7 @@ def brief(data,out):
         rows=[[P(label,'label'),value] for label,value in fields]
         tbl=Table(rows,colWidths=[105,445],hAlign='LEFT')
         tbl.setStyle(table_style([('BACKGROUND',(0,0),(0,-1),PALE),('BACKGROUND',(1,0),(1,-1),colors.white),('LINEBELOW',(0,-1),(-1,-1),.6,GOLD)]))
-        story.extend([Spacer(1,8),band,tbl,Spacer(1,14)])
+        story.append(KeepTogether([Spacer(1,8),band,tbl,Spacer(1,14)]))
         if i==2:story.append(PageBreak())
     doc=SimpleDocTemplate(out,pagesize=letter,leftMargin=31,rightMargin=31,topMargin=28,bottomMargin=51,title='TTT '+data['edition']+' Weekly Recording Brief',author='Restored Daily Ministries')
     doc._ttt_draft=not (data.get('approved') and data.get('publication_authorized'))
@@ -120,6 +120,10 @@ def qa_pdf(path,data,kind):
     for i,m in enumerate(data['matters'],1):
         if m['headline'] not in text:raise ValueError('Missing headline '+str(i))
         if kind=='recording_brief':
+            details=re.sub(r'\\s+',' ',m['verified_details']).strip()
+            extracted=re.sub(r'\\s+',' ',text).strip()
+            if details not in extracted:
+                raise ValueError('Missing or truncated Key Verified Details paragraph for matter '+str(i))
             for key in ('scripture_reference','scripture_text'):
                 if norm(m[key]) not in norm(text):raise ValueError('Missing or clipped '+key+' in '+str(i))
         else:
