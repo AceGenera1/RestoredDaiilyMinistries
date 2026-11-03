@@ -31,11 +31,14 @@ def verify(original, revised, allowed):
     if original.size != revised.size:
         return {"passed":False,"error":"Dimensions changed", "original":original.size,"revised":revised.size}
     diff=ImageChops.difference(original.convert("RGBA"),revised.convert("RGBA"))
-    box=diff.getbbox()
+    # RGBA.getbbox() can incorrectly return None when only RGB differs and alpha stays identical.
+    rgb_diff=diff.convert("RGB")
+    alpha_diff=diff.getchannel("A")
+    box=ImageChops.lighter(rgb_diff.convert("L"),alpha_diff).getbbox()
     if box is None:
         return {"passed":True,"changed_pixels":0,"changed_bbox":None,"changed_outside_allow":0,
                 "note":"No pixel changes"}
-    mask=diff.convert("RGB").point(lambda p: 255 if p else 0).convert("L")
+    mask=rgb_diff.point(lambda p: 255 if p else 0).convert("L")
     # RGB difference mask collapsed across channels; alpha is checked separately.
     a_diff=ImageChops.difference(original.getchannel("A"),revised.getchannel("A"))
     from PIL import ImageChops as C
