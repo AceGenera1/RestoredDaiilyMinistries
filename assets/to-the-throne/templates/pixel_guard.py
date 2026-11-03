@@ -38,11 +38,14 @@ def verify(original, revised, allowed):
     if box is None:
         return {"passed":True,"changed_pixels":0,"changed_bbox":None,"changed_outside_allow":0,
                 "note":"No pixel changes"}
-    mask=rgb_diff.point(lambda p: 255 if p else 0).convert("L")
-    # RGB difference mask collapsed across channels; alpha is checked separately.
-    a_diff=ImageChops.difference(original.getchannel("A"),revised.getchannel("A"))
+    # Compare all four channels independently: grayscale conversion can hide
+    # equal-luminance color substitutions (such as a changed brand heading).
+    channels=diff.split()
     from PIL import ImageChops as C
-    mask=C.lighter(mask,a_diff.point(lambda p: 255 if p else 0))
+    mask=channels[0]
+    for ch in channels[1:]:
+        mask=C.lighter(mask,ch)
+    mask=mask.point(lambda p: 255 if p else 0)
     changed=0;outside=0
     pix=mask.load()
     width,height=original.size
