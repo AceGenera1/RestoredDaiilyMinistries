@@ -1,0 +1,39 @@
+{
+  "version": "TTT-BRAND-LOCK-1.0",
+  "status": "draft_production_tools_existing_pngs_are_authority",
+  "ministry": "To The Throne / Restored Daily Ministries",
+  "colors": {
+    "navy": "#13233F",
+    "deep_navy": "#101A2E",
+    "parchment": "#FFF8EA",
+    "bronze_orange": "#B87930",
+    "gold": "#D7A84F",
+    "ivory": "#FFF8EA",
+    "text": "#24334B",
+    "burgundy_status": "#7E303A",
+    "amber_status": "#A76B2D"
+  },
+  "policy": {
+    "matter_headings": "bronze_orange_only_never_red",
+    "source_note_required": true,
+    "source_note_rule": "Use only actual report sources and direct reader to the weekly Sources & Verification archive.",
+    "no_real_news_photographs": true,
+    "original_emblem_only": true,
+    "preserve_mountain_sunrise_and_signature": true,
+    "no_entire_image_regeneration_for_micro_edits": true,
+    "no_external_publication_without_user_authorization": true
+  },
+  "references": {
+    "weekly_five": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-weekly-letter.png",
+    "intercession_update": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-intercession.png",
+    "praise_report": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-praise.png",
+    "persecuted_church": "assets/to-the-throne/weekly-graphics/2026-10-26/tttpc-0001-01-thursday-persecuted-church.png",
+    "faith_friday": "assets/to-the-throne/weekly-graphics/2026-10-26/To the Throne_ Faith Friday Prayer.png",
+    "social_share": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-weekly-letter-social-share.png"
+  },
+  "structure": {
+    "graphics": "assets/to-the-throne/weekly-graphics/YYYY-MM-DD/",
+    "documents": "assets/to-the-throne/weekly-documents/YYYY-MM-DD/",
+    "filename_rule": "Use exact dated-path filenames referenced by website pages. Do not delete a folder or change unrelated assets."
+  }
+}
