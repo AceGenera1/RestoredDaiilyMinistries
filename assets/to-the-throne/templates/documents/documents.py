@@ -22,7 +22,7 @@ BANNED=['watch / uncertainty','known limitations','suggested opening','suggested
 def clean(x):return escape(str(x)).replace('\n','<br/>')
 def style(name,size=9,leading=None,color=INK,bold=False,align=TA_LEFT):
     return ParagraphStyle(name,fontName='Helvetica-Bold' if bold else 'Helvetica',fontSize=size,leading=leading or size*1.36,textColor=color,alignment=align,spaceAfter=0)
-S={'title':style('title',17,20,NAVY,True,TA_CENTER),'subtitle':style('subtitle',12,16,GOLD,True,TA_CENTER),'center':style('center',8,11,INK,False,TA_CENTER),'normal':style('normal',9,12,INK),'small':style('small',8,10,INK),'label':style('label',7.8,11,GOLD,True),'head':style('head',11,14,colors.white,True),'goldhead':style('goldhead',10,13,GOLD,True)}
+S={'title':style('title',17,20,NAVY,True,TA_CENTER),'subtitle':style('subtitle',12,16,GOLD,True,TA_CENTER),'center':style('center',8,11,INK,False,TA_CENTER),'normal':style('normal',9,12,INK),'small':style('small',8,10,INK),'label':style('label',7.8,11,GOLD,True),'head':style('head',11,14,colors.white,True),'goldhead':style('goldhead',10,13,GOLD,True),'navyhead':style('navyhead',11,14,NAVY,True)}
 def P(v,name='normal'):return Paragraph(clean(v),S[name])
 def footer(canvas,doc):
     canvas.saveState()
@@ -86,8 +86,8 @@ def source_sheet(data,out):
     story=source_cover(data)
     for i,m in enumerate(data['matters'],1):
         story.append(P('TO THE THRONE','center'))
-        band=Table([[P('%02d'%i,'head'),[P(m['location'],'label'),P(m['headline'],'head')]]],colWidths=[245,305])
-        band.setStyle(table_style([('BACKGROUND',(0,0),(0,0),NAVY),('BACKGROUND',(1,0),(1,0),NAVY),('TOPPADDING',(0,0),(-1,-1),13),('BOTTOMPADDING',(0,0),(-1,-1),13)]))
+        band=Table([[P('%02d'%i,'head'),[P(m['location'],'label'),P(m['headline'],'navyhead')]]],colWidths=[245,305])
+        band.setStyle(table_style([('BACKGROUND',(0,0),(0,0),NAVY),('BACKGROUND',(1,0),(1,0),PALE),('TOPPADDING',(0,0),(-1,-1),13),('BOTTOMPADDING',(0,0),(-1,-1),13)]))
         story.extend([Spacer(1,7),band,Spacer(1,14),P('FACTUAL BASIS','goldhead'),Spacer(1,7),P(m['factual_basis']),Spacer(1,16)])
         for j,s in enumerate(m['sources'],1):
             link='<link href="'+escape(s['url'],quote=True)+'" color="#13233F"><u>'+escape(s['url'])+'</u></link>'
