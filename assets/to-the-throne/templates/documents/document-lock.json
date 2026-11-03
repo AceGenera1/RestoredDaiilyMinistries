@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "status": "LOCKED_content_confirmed_2026-11-03; visual_ref_recording_brief_v1.0",
+  "status": "LOCKED recording-ready paragraph content November 3, 2026; visual master preserved",
   "references": {
     "recording_brief": {
       "user_supplied": "To-The-Throne-Weekly-Recording-Brief-v1.0-LOCKED.pdf",
@@ -45,7 +45,8 @@
           "written prayer",
           "coaching or speaking instructions"
         ],
-        "scripture": "Quote every verse of the chosen passage, no ellipses or truncation; distinct passage per matter"
+        "scripture": "Quote every verse of the chosen passage, no ellipses or truncation; distinct passage per matter",
+        "verified_details_format": "One concise, clearly attributed, natural-sounding factual paragraph per matter; not bullets. Written to be read aloud, with the event and key verified facts in logical order. Avoid jargon, confusing constructions, unsupported certainty, and unsourced embellishments. Prayer Focus remains bullets; Scripture remains verbatim."
       }
     },
     "public_source_sheet": {
@@ -87,7 +88,7 @@
     ],
     "recording_brief": [
       "Five ordered matters, one consistent visual format matching uploaded v1.0 PDF's navy/bronze/ivory design",
-      "Required for EACH matter: heading, location, status, Key Verified Details, specific Prayer Focus points, complete Scripture passage with accurate reference",
+      "Required for EACH matter: heading, location, status, Key Verified Details, specific Prayer Focus points, complete Scripture passage with accurate reference; Key Verified Details MUST be a single coherent read-aloud paragraph, never bullet fragments",
       "No WATCH / UNCERTAINTY or Known Limitations sections",
       "No written prayers, suggested openings, scripted transitions, coaching, speaking instructions, or closing invitations",
       "Scripture must be complete and unique across matters; label actual Bible translation without silently changing quoted wording",
@@ -104,6 +105,7 @@
     ]
   },
   "release_gates": [
+    "Read-aloud editorial QA: each Key Verified Details paragraph is immediately understandable and accurate without the reader having to rearrange facts mentally",
     "Final Recording Brief field schema explicitly locked by Kris: details, prayer focus and full Scripture, no watch/uncertainty or coaching",
     "Generate PDF from locked layout and current approved data",
     "Check page count and text overflow",
