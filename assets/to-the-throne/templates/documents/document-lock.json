@@ -46,7 +46,7 @@
           "coaching or speaking instructions"
         ],
         "scripture": "Quote every verse of the chosen passage, no ellipses or truncation; distinct passage per matter",
-        "verified_details_format": "One concise, clearly attributed, natural-sounding factual paragraph per matter; not bullets. Written to be read aloud, with the event and key verified facts in logical order. Avoid jargon, confusing constructions, unsupported certainty, and unsourced embellishments. Prayer Focus remains bullets; Scripture remains verbatim."
+        "verified_details_format": "Brief, clear, spoken-natural paragraph focused on the HEART OF THE PRAYER MATTER: who is affected, what happened/is happening, and only the essential attributed and verified context required to understand whom and what we are praying for. Typically 2–3 concise sentences; allow fewer or slightly more as facts require. This is an intercession briefing, NOT a news broadcast. No news-style chronology, excessive numbers, analysis, commentary, or detailed reporting unless necessary to the specific prayer need. Never weaken verification, omit material qualifications, or embellish. Prayer Focus stays bullets; Scripture is quoted completely."
       }
     },
     "public_source_sheet": {
@@ -92,7 +92,8 @@
       "No WATCH / UNCERTAINTY or Known Limitations sections",
       "No written prayers, suggested openings, scripted transitions, coaching, speaking instructions, or closing invitations",
       "Scripture must be complete and unique across matters; label actual Bible translation without silently changing quoted wording",
-      "Longer Scripture may require additional pages, but never shrink text to unreadable size or silently omit verses; maintain the visual system"
+      "Longer Scripture may require additional pages, but never shrink text to unreadable size or silently omit verses; maintain the visual system",
+      "PRAYER-FIRST BREVITY: concise 2–3 sentence Key Verified Details paragraphs by default, prioritizing people and their prayer needs over reporting every news detail; no artificial word cap that sacrifices accuracy"
     ],
     "public_source_sheet": [
       "Cover plus one matter per page as the locked visual",
