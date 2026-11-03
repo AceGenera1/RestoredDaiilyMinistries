@@ -51,3 +51,6 @@ python assets/to-the-throne/templates/package_qa.py CANONICAL-WEEK.json --out /t
 ```
 
 **Safety gates:** no automatic GitHub publishing, no modification of the active automation, no overwriting weekly archive assets, no invented Bible text or source URLs, and no premature claims that reconstructed graphics are production-ready.
+
+## Recording-ready paragraph standard — locked November 3, 2026
+Each matter's **Key Verified Details** is a concise, factually attributed paragraph that can be read naturally during the episode, not a bullet list. Start with who reported what happened and where/when; give the most important verified consequences in a sensible order; qualify uncertainty only within the factual language when essential. Prefer plain, easily spoken sentences and clean transitions. Do not add coaching, narration, speculation, personal commentary or new claims. Preserve **Prayer Focus as bullets** and **Scripture as an exact, complete quotation**. Review paragraph aloud before release; automated validation checks structure, not whether prose is genuinely easy to speak.
