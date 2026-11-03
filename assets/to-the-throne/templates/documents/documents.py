@@ -120,8 +120,8 @@ def qa_pdf(path,data,kind):
     for i,m in enumerate(data['matters'],1):
         if m['headline'] not in text:raise ValueError('Missing headline '+str(i))
         if kind=='recording_brief':
-            details=re.sub(r'\\s+',' ',m['verified_details']).strip()
-            extracted=re.sub(r'\\s+',' ',text).strip()
+            details=re.sub(r'\s+',' ',m['verified_details']).strip()
+            extracted=re.sub(r'\s+',' ',text).strip()
             if details not in extracted:
                 raise ValueError('Missing or truncated Key Verified Details paragraph for matter '+str(i))
             for key in ('scripture_reference','scripture_text'):
