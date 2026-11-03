@@ -1,0 +1,216 @@
+{
+  "edition": "TTT-DEMO-NOT-REAL",
+  "week_of": "2026-11-02",
+  "publication_date": "2026-11-03",
+  "approved": false,
+  "publication_authorized": false,
+  "introduction": "SYNTHETIC TEST CONTENT ONLY",
+  "closing": "SYNTHETIC TEST CONTENT ONLY",
+  "matters": [
+    {
+      "headline": "SYNTHETIC MATTER 1",
+      "location": "TEST REGION 1",
+      "region": "EXAMPLE COUNTRY",
+      "status": "ACTIVE",
+      "summary": "TEST ONLY: This statement is not a factual report.",
+      "verified_details": [
+        "SYNTHETIC DETAIL ONE",
+        "SYNTHETIC DETAIL TWO"
+      ],
+      "prayer_focus": [
+        "SYNTHETIC PRAYER FOCUS"
+      ],
+      "scripture_reference": "Demo 1:1 (TEST)",
+      "scripture_text": "SYNTHETIC VERSE-LIKE TEXT, NOT SCRIPTURE; DO NOT PUBLISH.",
+      "last_verified": "2026-11-03 10:00",
+      "approved_map_image": "",
+      "sources": [
+        {
+          "outlet": "EXAMPLE ORGANIZATION 1",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-1-1"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 2",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-1-2"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 3",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-1-3"
+        }
+      ]
+    },
+    {
+      "headline": "SYNTHETIC MATTER 2",
+      "location": "TEST REGION 2",
+      "region": "EXAMPLE COUNTRY",
+      "status": "ACTIVE",
+      "summary": "TEST ONLY: This statement is not a factual report.",
+      "verified_details": [
+        "SYNTHETIC DETAIL ONE",
+        "SYNTHETIC DETAIL TWO"
+      ],
+      "prayer_focus": [
+        "SYNTHETIC PRAYER FOCUS"
+      ],
+      "scripture_reference": "Demo 2:1 (TEST)",
+      "scripture_text": "SYNTHETIC VERSE-LIKE TEXT, NOT SCRIPTURE; DO NOT PUBLISH.",
+      "last_verified": "2026-11-03 10:00",
+      "approved_map_image": "",
+      "sources": [
+        {
+          "outlet": "EXAMPLE ORGANIZATION 1",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-2-1"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 2",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-2-2"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 3",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-2-3"
+        }
+      ]
+    },
+    {
+      "headline": "SYNTHETIC MATTER 3",
+      "location": "TEST REGION 3",
+      "region": "EXAMPLE COUNTRY",
+      "status": "ACTIVE",
+      "summary": "TEST ONLY: This statement is not a factual report.",
+      "verified_details": [
+        "SYNTHETIC DETAIL ONE",
+        "SYNTHETIC DETAIL TWO"
+      ],
+      "prayer_focus": [
+        "SYNTHETIC PRAYER FOCUS"
+      ],
+      "scripture_reference": "Demo 3:1 (TEST)",
+      "scripture_text": "SYNTHETIC VERSE-LIKE TEXT, NOT SCRIPTURE; DO NOT PUBLISH.",
+      "last_verified": "2026-11-03 10:00",
+      "approved_map_image": "",
+      "sources": [
+        {
+          "outlet": "EXAMPLE ORGANIZATION 1",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-3-1"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 2",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-3-2"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 3",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-3-3"
+        }
+      ]
+    },
+    {
+      "headline": "SYNTHETIC MATTER 4",
+      "location": "TEST REGION 4",
+      "region": "EXAMPLE COUNTRY",
+      "status": "ACTIVE",
+      "summary": "TEST ONLY: This statement is not a factual report.",
+      "verified_details": [
+        "SYNTHETIC DETAIL ONE",
+        "SYNTHETIC DETAIL TWO"
+      ],
+      "prayer_focus": [
+        "SYNTHETIC PRAYER FOCUS"
+      ],
+      "scripture_reference": "Demo 4:1 (TEST)",
+      "scripture_text": "SYNTHETIC VERSE-LIKE TEXT, NOT SCRIPTURE; DO NOT PUBLISH.",
+      "last_verified": "2026-11-03 10:00",
+      "approved_map_image": "",
+      "sources": [
+        {
+          "outlet": "EXAMPLE ORGANIZATION 1",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-4-1"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 2",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-4-2"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 3",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-4-3"
+        }
+      ]
+    },
+    {
+      "headline": "SYNTHETIC MATTER 5",
+      "location": "TEST REGION 5",
+      "region": "EXAMPLE COUNTRY",
+      "status": "ACTIVE",
+      "summary": "TEST ONLY: This statement is not a factual report.",
+      "verified_details": [
+        "SYNTHETIC DETAIL ONE",
+        "SYNTHETIC DETAIL TWO"
+      ],
+      "prayer_focus": [
+        "SYNTHETIC PRAYER FOCUS"
+      ],
+      "scripture_reference": "Demo 5:1 (TEST)",
+      "scripture_text": "SYNTHETIC VERSE-LIKE TEXT, NOT SCRIPTURE; DO NOT PUBLISH.",
+      "last_verified": "2026-11-03 10:00",
+      "approved_map_image": "",
+      "sources": [
+        {
+          "outlet": "EXAMPLE ORGANIZATION 1",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-5-1"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 2",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-5-2"
+        },
+        {
+          "outlet": "EXAMPLE ORGANIZATION 3",
+          "title": "SYNTHETIC TEST TITLE",
+          "published": "2026-11-03",
+          "establishes": "SYNTHETIC TEST EVIDENCE ONLY.",
+          "url": "https://example.org/ttt-test-5-3"
+        }
+      ]
+    }
+  ]
+}
