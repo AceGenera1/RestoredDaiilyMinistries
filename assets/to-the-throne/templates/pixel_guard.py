@@ -32,20 +32,18 @@ def verify(original, revised, allowed):
         return {"passed":False,"error":"Dimensions changed", "original":original.size,"revised":revised.size}
     diff=ImageChops.difference(original.convert("RGBA"),revised.convert("RGBA"))
     # RGBA.getbbox() can incorrectly return None when only RGB differs and alpha stays identical.
-    rgb_diff=diff.convert("RGB")
-    alpha_diff=diff.getchannel("A")
-    box=ImageChops.lighter(rgb_diff.convert("L"),alpha_diff).getbbox()
-    if box is None:
-        return {"passed":True,"changed_pixels":0,"changed_bbox":None,"changed_outside_allow":0,
-                "note":"No pixel changes"}
-    # Compare all four channels independently: grayscale conversion can hide
-    # equal-luminance color substitutions (such as a changed brand heading).
+    # Compare each channel before computing the bounding box. An RGB-to-gray
+    # conversion could overlook equal-luminance brand color substitutions.
     channels=diff.split()
     from PIL import ImageChops as C
     mask=channels[0]
     for ch in channels[1:]:
         mask=C.lighter(mask,ch)
     mask=mask.point(lambda p: 255 if p else 0)
+    box=mask.getbbox()
+    if box is None:
+        return {"passed":True,"changed_pixels":0,"changed_bbox":None,"changed_outside_allow":0,
+                "note":"No pixel changes"}
     changed=0;outside=0
     pix=mask.load()
     width,height=original.size
