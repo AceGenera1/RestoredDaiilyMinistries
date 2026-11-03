@@ -36,6 +36,20 @@ def run():
         b=qa_pdf(str(path/'brief.pdf'),brief_data,'recording_brief')
         s=qa_pdf(str(path/'sources.pdf'),source_data,'public_source_sheet')
         assert b['pages']==2 and s['pages']==6 and s['hyperlinks']==15,(b,s)
+        # Long factual paragraphs and complete passages must not lose text or
+        # split a matter heading from its prayer/Scripture onto another page.
+        long_brief=copy.deepcopy(brief_data)
+        for item in long_brief['matters']:
+            item['verified_details']=' '.join([item['verified_details']]*3)
+            item['scripture_text']=' '.join(['SYNTHETIC VERSE TEXT FOR LAYOUT ONLY.']*26)
+        brief(long_brief,str(path/'long-brief.pdf'))
+        long_qa=qa_pdf(str(path/'long-brief.pdf'),long_brief,'recording_brief')
+        import fitz
+        long_pages=fitz.open(str(path/'long-brief.pdf'))
+        for num,item in enumerate(long_brief['matters'],1):
+            heading_pages=[i for i,pg in enumerate(long_pages) if item['headline'] in pg.get_text()]
+            verse_pages=[i for i,pg in enumerate(long_pages) if item['scripture_reference'] in pg.get_text()]
+            assert heading_pages and heading_pages==verse_pages,('Matter split over pages',num,heading_pages,verse_pages)
         bad=copy.deepcopy(brief_data)
         bad['matters'][0]['scripture_reference']=bad['matters'][1]['scripture_reference']
         rejected(lambda:validate(bad,'recording_brief'))
@@ -57,5 +71,5 @@ def run():
         print(json.dumps({'passed':True,'recording_brief_pages':b['pages'],
             'source_sheet_pages':s['pages'],'clickable_source_links':s['hyperlinks'],
             'negative_tests':['duplicate scripture','Reuters URL','forbidden uncertainty field','bullet-list verified details'],
-            'pixel_guard_passed':True},indent=2))
+            'pixel_guard_passed':True,'long_paragraph_pages':long_qa['pages'],'matter_page_integrity':True},indent=2))
 if __name__=='__main__':run()
