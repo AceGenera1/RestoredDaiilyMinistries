@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "status": "visual_reference_locked_content_discrepancy_pending_review",
+  "status": "LOCKED_content_confirmed_2026-11-03; visual_ref_recording_brief_v1.0",
   "references": {
     "recording_brief": {
       "user_supplied": "To-The-Throne-Weekly-Recording-Brief-v1.0-LOCKED.pdf",
@@ -20,10 +20,33 @@
           "LOCATION",
           "STATUS",
           "KEY VERIFIED DETAILS",
-          "WATCH / UNCERTAINTY"
+          "PRAYER FOCUS",
+          "SCRIPTURE (FULL TEXT + REFERENCE)"
         ]
       },
-      "content_conflict": "Uploaded PDF contains WATCH / UNCERTAINTY, but latest Nov 2 agent instruction prohibits it and requires Prayer Focus + complete Scripture. Do not resolve automatically; ask Kris which final field schema governs before publishing."
+      "content_conflict": "RESOLVED by explicit user decision: the November 2 content requirements control. Retain the uploaded PDF's visual design; replace Watch / Uncertainty with Prayer Focus and full, unique Scripture for all five matters.",
+      "content_schema": {
+        "matter_count": 5,
+        "required_fields": [
+          "headline",
+          "location",
+          "status",
+          "key_verified_details",
+          "prayer_focus",
+          "scripture_reference",
+          "scripture_full_text"
+        ],
+        "forbidden_fields": [
+          "WATCH / UNCERTAINTY",
+          "KNOWN LIMITATIONS",
+          "suggested opening",
+          "transition",
+          "closing invitation",
+          "written prayer",
+          "coaching or speaking instructions"
+        ],
+        "scripture": "Quote every verse of the chosen passage, no ellipses or truncation; distinct passage per matter"
+      }
     },
     "public_source_sheet": {
       "user_supplied": "To-The-Throne-Public-Source-Sheet-v1.1-LOCKED.pdf",
@@ -63,11 +86,12 @@
       "Do not modify live website or archive without permission"
     ],
     "recording_brief": [
-      "Five ordered matters",
-      "Use only the user-authorized field schema",
-      "No written prayers, scripted sermon coaching or introductions",
-      "Full Scripture only if user confirms this final brief format requires it",
-      "Never silently remove or add fields to resolve the current template conflict"
+      "Five ordered matters, one consistent visual format matching uploaded v1.0 PDF's navy/bronze/ivory design",
+      "Required for EACH matter: heading, location, status, Key Verified Details, specific Prayer Focus points, complete Scripture passage with accurate reference",
+      "No WATCH / UNCERTAINTY or Known Limitations sections",
+      "No written prayers, suggested openings, scripted transitions, coaching, speaking instructions, or closing invitations",
+      "Scripture must be complete and unique across matters; label actual Bible translation without silently changing quoted wording",
+      "Longer Scripture may require additional pages, but never shrink text to unreadable size or silently omit verses; maintain the visual system"
     ],
     "public_source_sheet": [
       "Cover plus one matter per page as the locked visual",
@@ -80,7 +104,7 @@
     ]
   },
   "release_gates": [
-    "Confirm approved content-field resolution for recording brief",
+    "Final Recording Brief field schema explicitly locked by Kris: details, prayer focus and full Scripture, no watch/uncertainty or coaching",
     "Generate PDF from locked layout and current approved data",
     "Check page count and text overflow",
     "Extract PDF text to confirm no missing or placeholder fields",
