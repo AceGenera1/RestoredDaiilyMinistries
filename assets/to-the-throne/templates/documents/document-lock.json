@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "status": "visual_reference_locked_content_discrepancy_pending_review",
+  "references": {
+    "recording_brief": {
+      "user_supplied": "To-The-Throne-Weekly-Recording-Brief-v1.0-LOCKED.pdf",
+      "pages": 2,
+      "paper": "US Letter",
+      "visual": {
+        "masthead": "Centered TO THE THRONE navy",
+        "subtitle": "WEEKLY RECORDING BRIEF bronze",
+        "edition": "TTT-XXXX and week-of date",
+        "matter_count": 5,
+        "matter_division": "01–02 on page 1, 03–05 on page 2",
+        "number_background": "bronze",
+        "heading_background": "deep navy",
+        "label_column": "pale ivory",
+        "body": "black/dark navy on white",
+        "rows": [
+          "LOCATION",
+          "STATUS",
+          "KEY VERIFIED DETAILS",
+          "WATCH / UNCERTAINTY"
+        ]
+      },
+      "content_conflict": "Uploaded PDF contains WATCH / UNCERTAINTY, but latest Nov 2 agent instruction prohibits it and requires Prayer Focus + complete Scripture. Do not resolve automatically; ask Kris which final field schema governs before publishing."
+    },
+    "public_source_sheet": {
+      "user_supplied": "To-The-Throne-Public-Source-Sheet-v1.1-LOCKED.pdf",
+      "pages": 6,
+      "paper": "US Letter",
+      "visual": {
+        "cover": "TO THE THRONE / PUBLIC SOURCE SHEET; edition; publication date; purpose; how to read; source standard; closing motto",
+        "matters": "Exactly one numbered matter per page, pages 2–6",
+        "banner": "deep navy numeric block on left; ivory location/headline on right",
+        "sections": [
+          "FACTUAL BASIS",
+          "SOURCE 1",
+          "SOURCE 2",
+          "SOURCE 3",
+          "PUBLIC STATUS",
+          "LAST VERIFIED"
+        ],
+        "source_fields": [
+          "ORGANIZATION / OUTLET — ARTICLE, STATEMENT, OR REPORT TITLE",
+          "Published / Updated",
+          "Establishes",
+          "Open source"
+        ],
+        "motto": "TRUTH BEFORE NARRATIVE | PRAYER BEFORE REACTION | AS FAST AS TRUTH ALLOWS",
+        "source_link_requirements": "real clickable HTTPS links, no invented source claims"
+      }
+    }
+  },
+  "rules": {
+    "shared": [
+      "Use approved facts only; no invented claims",
+      "Preserve the edition and dates",
+      "Do not substitute an older document design",
+      "No decorative redesign or unauthorized text",
+      "No overlapping, clipped, shrunken, or off-page text",
+      "PDF links must be clickable",
+      "Do not modify live website or archive without permission"
+    ],
+    "recording_brief": [
+      "Five ordered matters",
+      "Use only the user-authorized field schema",
+      "No written prayers, scripted sermon coaching or introductions",
+      "Full Scripture only if user confirms this final brief format requires it",
+      "Never silently remove or add fields to resolve the current template conflict"
+    ],
+    "public_source_sheet": [
+      "Cover plus one matter per page as the locked visual",
+      "Factual matter summaries only",
+      "Attribution specific to each source; descriptions of what each source establishes",
+      "Dates as published/updated and last verified in America/Chicago",
+      "No Scripture, prayer focuses, ministry advice, backstage/internal notes or speculative claims",
+      "Do not equate syndicated copies with independent corroboration",
+      "Source blocks correspond to actual verified links; if fewer than three credible sources, flag before delivery rather than fabricate"
+    ]
+  },
+  "release_gates": [
+    "Confirm approved content-field resolution for recording brief",
+    "Generate PDF from locked layout and current approved data",
+    "Check page count and text overflow",
+    "Extract PDF text to confirm no missing or placeholder fields",
+    "Check PDF hyperlinks and source-domain consistency",
+    "Render each PDF page and visually compare with reference",
+    "Confirm edition/week/status and matching five matters across graphics and PDFs",
+    "Get explicit publication authorization"
+  ]
+}
