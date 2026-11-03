@@ -5,10 +5,14 @@ These two uploaded PDF versions are the **authoritative visual references**:
 - **Weekly Recording Brief v1.0 LOCKED:** US Letter, 2 pages, page 1 matters 01–02 and page 2 matters 03–05. Centered masthead, gold subtitle and numbers, navy header panels, pale-ivory label column. The uploaded document shows Location, Status, Key Verified Details and Watch / Uncertainty.
 - **Public Source Sheet v1.1 LOCKED:** US Letter, 6 pages: cover + one matter per page. Navy numbered banner, ivory headline panel, factual basis, up to three grounded source blocks (publication/update date, precisely what they establish, actual clickable source URL), public status, last verified, navy/gold motto. Cover includes purpose, how-to-read and source standard.
 
-## Unresolved instruction conflict — do not silently reconcile
-The user's **uploaded Recording Brief v1.0** does **not** contain Prayer Focus or Scripture and includes Watch / Uncertainty. The **current unified agent's November 2 locked text** instead requires Prayer Focus plus complete Scripture and prohibits a Watch / Uncertainty section.
+## Final content decision — LOCKED November 3, 2026
+Kris confirmed the latest November 2 recording-brief fields as the authoritative content structure, while preserving the supplied v1.0 PDF's navy/bronze/ivory visual design:
 
-This is a **release blocker for the Recording Brief**, NOT permission to replace the user's uploaded design with an older draft. Confirm with Kris which content structure is final before adding executable document generation.
+- Exactly five numbered matters with Location, Status, **Key Verified Details**, **Prayer Focus**, and **complete Scripture text plus reference** for each.
+- **No Watch / Uncertainty or Known Limitations section.**
+- **No coaching**, suggested introductions, transitions, written prayers, or closing invitations.
+- Allow pages to grow if full Scripture requires space; never truncate verses, compress to unreadable text, or change the visual identity.
+- This supersedes the uploaded PDF's *field placeholders*, not its approved layout and color design.
 
 ## Production rules
 - Reuse existing unified To The Throne Ministry Agent; no new agent.
