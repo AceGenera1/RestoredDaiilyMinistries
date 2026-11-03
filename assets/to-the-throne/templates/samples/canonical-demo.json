@@ -13,10 +13,7 @@
       "region": "EXAMPLE COUNTRY",
       "status": "ACTIVE",
       "summary": "TEST ONLY: This statement is not a factual report.",
-      "verified_details": [
-        "SYNTHETIC DETAIL ONE",
-        "SYNTHETIC DETAIL TWO"
-      ],
+      "verified_details": "The fictional example organization reported a synthetic incident on November 2. No real-world situation is described in this test paragraph.",
       "prayer_focus": [
         "SYNTHETIC PRAYER FOCUS"
       ],
@@ -54,10 +51,7 @@
       "region": "EXAMPLE COUNTRY",
       "status": "ACTIVE",
       "summary": "TEST ONLY: This statement is not a factual report.",
-      "verified_details": [
-        "SYNTHETIC DETAIL ONE",
-        "SYNTHETIC DETAIL TWO"
-      ],
+      "verified_details": "The fictional example organization reported a synthetic incident on November 2. No real-world situation is described in this test paragraph.",
       "prayer_focus": [
         "SYNTHETIC PRAYER FOCUS"
       ],
@@ -95,10 +89,7 @@
       "region": "EXAMPLE COUNTRY",
       "status": "ACTIVE",
       "summary": "TEST ONLY: This statement is not a factual report.",
-      "verified_details": [
-        "SYNTHETIC DETAIL ONE",
-        "SYNTHETIC DETAIL TWO"
-      ],
+      "verified_details": "The fictional example organization reported a synthetic incident on November 2. No real-world situation is described in this test paragraph.",
       "prayer_focus": [
         "SYNTHETIC PRAYER FOCUS"
       ],
@@ -136,10 +127,7 @@
       "region": "EXAMPLE COUNTRY",
       "status": "ACTIVE",
       "summary": "TEST ONLY: This statement is not a factual report.",
-      "verified_details": [
-        "SYNTHETIC DETAIL ONE",
-        "SYNTHETIC DETAIL TWO"
-      ],
+      "verified_details": "The fictional example organization reported a synthetic incident on November 2. No real-world situation is described in this test paragraph.",
       "prayer_focus": [
         "SYNTHETIC PRAYER FOCUS"
       ],
@@ -177,10 +165,7 @@
       "region": "EXAMPLE COUNTRY",
       "status": "ACTIVE",
       "summary": "TEST ONLY: This statement is not a factual report.",
-      "verified_details": [
-        "SYNTHETIC DETAIL ONE",
-        "SYNTHETIC DETAIL TWO"
-      ],
+      "verified_details": "The fictional example organization reported a synthetic incident on November 2. No real-world situation is described in this test paragraph.",
       "prayer_focus": [
         "SYNTHETIC PRAYER FOCUS"
       ],
