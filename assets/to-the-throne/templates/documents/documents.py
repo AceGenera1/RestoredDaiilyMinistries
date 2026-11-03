@@ -30,6 +30,10 @@ def footer(canvas,doc):
     canvas.setStrokeColor(GOLD);canvas.setLineWidth(.5);canvas.line(28,36,w-28,36)
     canvas.setFillColor(NAVY);canvas.setFont('Helvetica-Bold',7)
     canvas.drawCentredString(w/2,23,MOTTO)
+    if getattr(doc,'_ttt_draft',True):
+        canvas.setFillColor(colors.HexColor('#8A6262'))
+        canvas.setFont('Helvetica-Bold',7)
+        canvas.drawRightString(w-28,h-17,'DRAFT REVIEW - NOT FOR PUBLICATION')
     canvas.restoreState()
 def header(title,edition,week):
     return [P('TO THE THRONE','title'),P(title,'subtitle'),P('Edition: '+edition+'  •  Week of: '+week,'center'),Spacer(1,13)]
@@ -79,6 +83,7 @@ def brief(data,out):
         story.extend([Spacer(1,8),band,tbl,Spacer(1,14)])
         if i==2:story.append(PageBreak())
     doc=SimpleDocTemplate(out,pagesize=letter,leftMargin=31,rightMargin=31,topMargin=28,bottomMargin=51,title='TTT '+data['edition']+' Weekly Recording Brief',author='Restored Daily Ministries')
+    doc._ttt_draft=not (data.get('approved') and data.get('publication_authorized'))
     doc.build(story,onFirstPage=footer,onLaterPages=footer)
 def source_cover(data):
     return header('PUBLIC SOURCE SHEET',data['edition'],data['week_of'])+[Spacer(1,24),P('PUBLICATION DATE: '+data.get('publication_date',data['week_of']),'center'),Spacer(1,40),P('PURPOSE','goldhead'),Spacer(1,8),P("This sheet provides the public sources supporting the factual context used in this week's To The Throne intercession letter and video. Each matter below includes the sources used to support the factual information shared with the body of Christ."),Spacer(1,25),P('HOW TO READ IT','goldhead'),Spacer(1,8),P('Each source is paired with a short statement explaining exactly what that source establishes. A source is never treated as supporting a claim beyond what it actually reports or documents.'),Spacer(1,25),P('SOURCE STANDARD','goldhead'),Spacer(1,8),P('Primary and credible local sources are prioritized where available. Consequential claims are independently corroborated when reasonably possible. Copies of the same underlying report are not treated as independent confirmation.'),Spacer(1,75),P('The news cycle may move on, but prayer never ceases.','center'),PageBreak()]
@@ -98,6 +103,7 @@ def source_sheet(data,out):
         story.extend([Spacer(1,5),P('PUBLIC STATUS: '+m['status'],'small'),P('LAST VERIFIED: '+m['last_verified']+' (America/Chicago)','small')])
         if i!=5:story.append(PageBreak())
     doc=SimpleDocTemplate(out,pagesize=letter,leftMargin=31,rightMargin=31,topMargin=29,bottomMargin=52,title='TTT '+data['edition']+' Public Source Sheet',author='Restored Daily Ministries')
+    doc._ttt_draft=not (data.get('approved') and data.get('publication_authorized'))
     doc.build(story,onFirstPage=footer,onLaterPages=footer)
 def qa_pdf(path,data,kind):
     import fitz
