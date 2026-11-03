@@ -25,3 +25,29 @@ Kris confirmed the latest November 2 recording-brief fields as the authoritative
 - Do not replace existing public PDFs just to establish new templates.
 
 See `document-lock.json` for structural and QC rules. The PDF bytes are currently conversation uploads; their exact originals should be committed into a reference-assets directory separately if binary upload is supported, instead of recreating them by memory.
+
+
+## Implemented PDF generator (draft-only)
+`documents.py` produces actual PDF documents from structured JSON using ReportLab:
+- Recording Brief: navy/bronze/ivory panels, 5 matters in order, Key Verified Details, Prayer Focus, and complete Scripture. Begins matter 03 on a new page, preserving the reference two-page arrangement **when content fits**; long full passages expand to additional pages without shortening them.
+- Public Source Sheet: front matter plus one page per matter (6 pages total), navy/ivory numbered banner, source publication dates, claim-by-claim attribution and actual clickable HTTPS links.
+- `--qa` uses PyMuPDF to check required output text, source hyperlinks, absent banned sections, matter count, and page count. A longer Source Sheet that overflows its approved one-matter-per-page design fails rather than silently shifting pages.
+
+Install `reportlab`, `pymupdf`, and `Pillow`; all tools use ordinary Python 3.
+
+Examples (run from the repository root):
+
+```bash
+python assets/to-the-throne/templates/documents/documents.py INPUT-RECORDING.json --kind recording_brief --out /tmp/TTT-recording-DRAFT.pdf --qa
+python assets/to-the-throne/templates/documents/documents.py INPUT-SOURCES.json --kind public_source_sheet --out /tmp/TTT-sources-DRAFT.pdf --qa
+python assets/to-the-throne/templates/test_pipeline.py
+```
+
+## Canonical weekly package
+`../package_qa.py` reads one canonical five-matter JSON record and creates draft recording and source PDFs, a structured graphic payload, an HTML graphic preview, and `QA-DRAFT.json`. The graphic HTML preview is *NOT* pixel-faithful and cannot be published until the approved graphic-production layout is fully matched. A successful PDF QA test does not verify that events, sources, or Scripture are factually correct; those still require the locked research/approval process.
+
+```bash
+python assets/to-the-throne/templates/package_qa.py CANONICAL-WEEK.json --out /tmp/ttt-draft-package
+```
+
+**Safety gates:** no automatic GitHub publishing, no modification of the active automation, no overwriting weekly archive assets, no invented Bible text or source URLs, and no premature claims that reconstructed graphics are production-ready.
