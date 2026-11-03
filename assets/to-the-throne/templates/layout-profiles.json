@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "status": "draft_profiles_for_visual_matching_not_approved_renderers",
+  "canonical_references": {
+    "weekly_five": {
+      "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-weekly-letter.png",
+      "reference_dimensions": [
+        1122,
+        1402
+      ],
+      "layout": "five map tiles, large close, signature, source attribution above signature"
+    },
+    "intercession_update": {
+      "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-intercession.png",
+      "reference_dimensions": [
+        1086,
+        1448
+      ],
+      "layout": "five compressed map+facts+prayer rows, numbered bronze circles, active and continuing bands"
+    },
+    "praise_report": {
+      "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-praise.png",
+      "reference_dimensions": [
+        1086,
+        1448
+      ],
+      "layout": "green praise masthead, single map, verified change and thank/continue panels"
+    },
+    "persecuted_church": {
+      "path": "assets/to-the-throne/weekly-graphics/2026-10-26/tttpc-0001-01-thursday-persecuted-church.png",
+      "reference_dimensions": [
+        1122,
+        1402
+      ],
+      "layout": "single region, large geography and contextual illustration, four prayer columns, separate sources box"
+    },
+    "faith_friday": {
+      "path": "assets/to-the-throne/weekly-graphics/2026-10-26/To the Throne_ Faith Friday Prayer.png",
+      "reference_dimensions": [
+        1087,
+        1446
+      ],
+      "layout": "navy-gold banner, centered weekend encouragement, Scripture panel, unique globe footer; no event source citation where only devotional exhortation"
+    },
+    "social_share": {
+      "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-weekly-letter-social-share.png",
+      "reference_dimensions": null,
+      "layout": "separate approved social-share composition; do not crop text-heavy report blindly"
+    }
+  },
+  "common_lock": {
+    "approved_image_not_a_layered_template": true,
+    "emblem_must_be_reused_not_reillustrated": true,
+    "source_footer_when_report_uses_factual_sources": true,
+    "no_fake_source_names": true,
+    "matter_headlines_bronze_orange_not_red": true,
+    "retain_published_references_until_user_authorizes_swap": true
+  },
+  "release_checks": [
+    "Compare complete rendered preview with canonical reference",
+    "Ensure no text clipping",
+    "Verify data and Scripture against approved content",
+    "Verify source-note placement and attribution",
+    "Check approved emblem and region maps",
+    "Get final visual approval before enabling renderer for production"
+  ]
+}
