@@ -1,0 +1,85 @@
+{
+  "schema": "ttt-approved-production-gates-v1",
+  "status": "draft_region_masks_only_not_full_reproduction",
+  "non_negotiable": "Never substitute generative art, generic logos, fresh backgrounds, redesigned cards, or a prior version for an approved master. Fail rather than invent.",
+  "phase": "Monday + Wednesday templates prioritized",
+  "output_policy": {
+    "publish_requires": "Explicit user approval of facts, complete generated preview visual signoff, verification of exact website destination, and mandatory design checks",
+    "unapproved_template": "Draft previews only, never released as TTT approved art",
+    "social_media": "No social posts during remainder of week of 2026-11-02 per user directive"
+  },
+  "formats": {
+    "monday": {
+      "reference": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-weekly-letter.png",
+      "reference_width": 1122,
+      "reference_height": 1402,
+      "five_matters": true,
+      "fixed": [
+        "original incense monogram emblem",
+        "navy masthead and ministry subtitle",
+        "parchment, ornamental border and mountain sunrise footer",
+        "Brother Kris signature treatment",
+        "navy bottom motto bar"
+      ],
+      "variables": [
+        "edition and date",
+        "five approved matter regions",
+        "location-specific verified maps",
+        "verified headline",
+        "status",
+        "verified short summary",
+        "prayer focus",
+        "complete Scripture",
+        "attributed source footer"
+      ],
+      "custom_rules": [
+        "Matter headlines bronze-orange, not red",
+        "Source attributions must be inside graphic and match source sheet",
+        "Use only verified map images",
+        "Do not change legal and intentional red elements elsewhere"
+      ],
+      "visuals_verified": false
+    },
+    "wednesday": {
+      "reference": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-intercession.png",
+      "reference_width": 1086,
+      "reference_height": 1448,
+      "fixed": [
+        "original incense monogram emblem",
+        "navy-and-gold masthead",
+        "deep navy UPDATE title bar",
+        "original map treatment and bronze numbered circles",
+        "mountain-and-sunrise footer",
+        "Brother Kris signature",
+        "bottom motto"
+      ],
+      "variables": [
+        "date",
+        "updated matters up to five",
+        "verified location maps",
+        "specific development bullet statements",
+        "Prayer Focus",
+        "complete Scripture",
+        "ACTIVE/CONTINUING status",
+        "attributed sources"
+      ],
+      "custom_rules": [
+        "Do not fill all five slots unless five meaningful verified updates exist",
+        "Do not conflate update with Monday matter copy",
+        "No false praise or speculative new figures",
+        "Preserve exact presentation and bronze headings"
+      ],
+      "visuals_verified": false
+    }
+  },
+  "acceptance_tests": [
+    "Verified editable/templated output for Monday matches approved reference visually",
+    "Verified editable/templated output for Wednesday matches approved reference visually",
+    "Changes to only date or one paragraph leave all protected pixels intact",
+    "Map and location labels are grounded in source evidence",
+    "Source footer present, legible, and reconciles to dated public sources sheet",
+    "Scripture is accurate, unique, and complete within each reporting package",
+    "Non-approved candidate never published or presented as final",
+    "Social-share variants tested separately rather than using arbitrary image crops"
+  ]
+}
