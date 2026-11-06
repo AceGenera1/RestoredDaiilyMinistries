@@ -1,0 +1,84 @@
+{
+  "format": "monday",
+  "edition": "TTT-SYNTHETIC",
+  "date_label": "NOV 9, 2026",
+  "source_names": [
+    "SYNTHETIC A",
+    "SYNTHETIC B"
+  ],
+  "matters": [
+    {
+      "location": "TEST REGION 1",
+      "heading": "SYNTHETIC HEADLINE",
+      "summary": "Fictional content only. Tests layout of the approved ministry identity.",
+      "prayer_focus": [
+        "Support affected families",
+        "Protect the vulnerable"
+      ],
+      "scripture": {
+        "reference": "TEST 1:1",
+        "text": "Synthetic text, not Scripture."
+      },
+      "status": "ACTIVE"
+    },
+    {
+      "location": "TEST REGION 2",
+      "heading": "SYNTHETIC HEADLINE",
+      "summary": "Fictional content only. Tests layout of the approved ministry identity.",
+      "prayer_focus": [
+        "Support affected families",
+        "Protect the vulnerable"
+      ],
+      "scripture": {
+        "reference": "TEST 2:1",
+        "text": "Synthetic text, not Scripture."
+      },
+      "status": "ACTIVE"
+    },
+    {
+      "location": "TEST REGION 3",
+      "heading": "SYNTHETIC HEADLINE",
+      "summary": "Fictional content only. Tests layout of the approved ministry identity.",
+      "prayer_focus": [
+        "Support affected families",
+        "Protect the vulnerable"
+      ],
+      "scripture": {
+        "reference": "TEST 3:1",
+        "text": "Synthetic text, not Scripture."
+      },
+      "status": "ACTIVE"
+    },
+    {
+      "location": "TEST REGION 4",
+      "heading": "SYNTHETIC HEADLINE",
+      "summary": "Fictional content only. Tests layout of the approved ministry identity.",
+      "prayer_focus": [
+        "Support affected families",
+        "Protect the vulnerable"
+      ],
+      "scripture": {
+        "reference": "TEST 4:1",
+        "text": "Synthetic text, not Scripture."
+      },
+      "status": "ACTIVE"
+    },
+    {
+      "location": "TEST REGION 5",
+      "heading": "SYNTHETIC HEADLINE",
+      "summary": "Fictional content only. Tests layout of the approved ministry identity.",
+      "prayer_focus": [
+        "Support affected families",
+        "Protect the vulnerable"
+      ],
+      "scripture": {
+        "reference": "TEST 5:1",
+        "text": "Synthetic text, not Scripture."
+      },
+      "status": "ACTIVE"
+    }
+  ],
+  "closing": "Synthetic data: for layout testing, not publication.",
+  "approved": false,
+  "publication_authorized": false
+}
