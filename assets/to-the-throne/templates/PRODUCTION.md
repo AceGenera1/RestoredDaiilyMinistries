@@ -31,3 +31,14 @@ The canonical record feeds two drafts plus structured graphic fields and QA stat
 6. **Do not assume that passing automated structural tests proves factual accuracy or graphic fidelity.**
 
 The original approved artwork stays in `../weekly-graphics/2026-10-26/`. The recording-brief and source-sheet PDF visual references are described in `documents/document-lock.json`. Never overwrite published assets from these scripts.
+
+
+## Monday and Wednesday production gate — current implementation
+
+`approved-production-gates.json` identifies the October 26 **approved** Monday and Wednesday visual references and the allowed vs protected design elements. It explicitly disallows producing new generic images as a fallback.
+
+`reference_safe_compositor.py` now supports exact-size rectangular PNG replacement patches in reviewed regions, locked to the original image's SHA-256. It refuses to edit anywhere outside the authorized patch bounds and refuses to write straight to published folders. Tested locally with an approved uploaded Monday PNG: a valid bounded change passed; an unauthorized change was rejected.
+
+This **solves safe micro-edits**, but does NOT make entirely new weekly graphics with new locations and maps by itself. Do not claim it does. To achieve faithful full production, create approved **blank/element-separated Monday and Wednesday masters** and plug a deterministic field renderer into them. Until those are visually validated, use the actual approved report PNG as the canonical display and do not generate generic alternatives.
+
+No automatic publication is connected to these tools. User approval of each week's research and explicit release still governs. For week of November 2, social posting is suspended by user instruction.
