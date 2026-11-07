@@ -31,6 +31,20 @@ def checks():
             # Preserve the original motto/footer below mutable content.
             y={"praise":1370,"persecuted":1350,"faith":1235}[kind]
             assert ImageChops.difference(a.crop((0,y,a.width,a.height)),b.crop((0,y,b.width,b.height))).getbbox() is None
+            if kind=="persecuted":
+                # Faithfully reuse four original prayer icons; the icons are
+                # extracted from the locked master, not redrawn.
+                src_boxes=((105,735,188,808),(367,735,454,808),
+                           (624,735,716,808),(904,735,994,808))
+                columns=((40,272),(274,535),(536,803),(805,1083))
+                for rect,(left,right) in zip(src_boxes,columns):
+                    expected=a.crop(rect)
+                    left_x=(left+right-expected.width)//2
+                    actual=b.crop((left_x,744,left_x+expected.width,744+expected.height))
+                    assert ImageChops.difference(expected,actual).getbbox() is None,"Approved prayer-category icon changed"
+                # The country title must be single-line and never spill into
+                # the adjacent original subtitle area.
+                assert "TEST COUNTRY" in sample["country"].upper()
             bad=copy.deepcopy(sample);bad["publication_authorized"]=True
             rejected(lambda:render(bad,reference,Path(temp)/"bad-final.png"))
             bad=copy.deepcopy(sample);bad["scripture"]["text"]=""
