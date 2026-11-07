@@ -29,3 +29,14 @@ jobs:
             assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-intercession.png
       - name: Test Praise, Persecuted Church, and Faith Friday masters
         run: python assets/to-the-throne/templates/test_special_graphics.py
+
+      - name: Build five-family draft review package and verify four social-share masters
+        run: python assets/to-the-throne/templates/build_all_previews.py --out /tmp/ttt-synthetic-previews
+      - name: Upload synthetic preview package for design QA only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ttt-synthetic-visual-qa-do-not-publish
+          path: /tmp/ttt-synthetic-previews/
+          if-no-files-found: warn
+          retention-days: 7
