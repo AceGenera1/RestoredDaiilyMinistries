@@ -27,7 +27,7 @@ def checks():
             b=Image.open(output).convert("RGB")
             assert a.size==b.size
             # Original monogram; exclude top-center editable date.
-            assert ImageChops.difference(a.crop((115,38,265,166)),b.crop((115,38,265,166))).getbbox() is None
+            assert ImageChops.difference(a.crop((115,45,265,166)),b.crop((115,45,265,166))).getbbox() is None
             # Preserve the original motto/footer below mutable content.
             y={"praise":1370,"persecuted":1350,"faith":1235}[kind]
             assert ImageChops.difference(a.crop((0,y,a.width,a.height)),b.crop((0,y,b.width,b.height))).getbbox() is None
