@@ -62,12 +62,16 @@ def check(data):
     if not isinstance(data["source_names"],list):raise ValueError("Source names must be a list")
     if kind=="praise":
         for key in ("headline","outcome","verified_changes","prayer_focus","scripture","map"):
-            if not data.get(key):raise ValueError("Missing Praise field "+key)
+            if key=="map":
+                if not isinstance(data.get("map"),dict):raise ValueError("Missing Praise map object")
+            elif not data.get(key):raise ValueError("Missing Praise field "+key)
         if len(data["verified_changes"])>3 or len(data["prayer_focus"])>3:
             raise ValueError("Praise bullets exceed established panel capacity")
     elif kind=="persecuted":
         for key in ("country","region","verified_summary","pastoral_invitation","prayer_focus","scripture","map"):
-            if not data.get(key):raise ValueError("Missing Persecuted Church field "+key)
+            if key=="map":
+                if not isinstance(data.get("map"),dict):raise ValueError("Missing Persecuted Church map object")
+            elif not data.get(key):raise ValueError("Missing Persecuted Church field "+key)
         if len(data["prayer_focus"])!=4:raise ValueError("Persecuted format expects four prayer categories")
     else:
         for key in ("headline","intro","prayer_request","scripture"):
