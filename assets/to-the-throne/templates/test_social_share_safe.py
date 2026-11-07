@@ -29,8 +29,10 @@ def main():
             result=edit(data)
             assert result["passed"] and result["protected_pixels_unchanged"]
             with Image.open(output) as edited:
-                diff=ImageChops.difference(original,edited.convert("RGBA"))
-                assert diff.getbbox() is None or diff.crop((0,0,size[0],int(size[1]*.2))).getbbox() is None
+                diff=ImageChops.difference(original.convert("RGB"),edited.convert("RGB"))
+                assert diff.getbbox() is not None, "Test patch had no effect"
+                assert diff.crop((0,0,size[0],int(size[1]*.2))).getbbox() is None, "Protected masthead changed"
+                assert diff.crop((0,int(size[1]*.88),size[0],size[1])).getbbox() is None, "Protected footer changed"
             bad=dict(data);bad["approved"]=True
             denied(lambda:edit(bad))
             bad=dict(data);bad["allowed_change_rectangles"]=[[0,0,40,20]]
