@@ -1,0 +1,35 @@
+{
+  "format": "persecuted",
+  "edition": "TTTPC-DEMO",
+  "date_label": "NOV 5 2026",
+  "source_names": [
+    "SYNTHETIC SOURCE"
+  ],
+  "country": "TEST COUNTRY",
+  "region": "TEST REGION",
+  "verified_summary": "This is a synthetic persecution-summary paragraph created solely to check the layout. It is not a verified news claim.",
+  "pastoral_invitation": "Remember believers who face hardship. This example is not intended for publication or public ministry.",
+  "map": {},
+  "prayer_focus": [
+    {
+      "title": "GRIEVING FAMILIES",
+      "focus": "Pray for comfort and protection."
+    },
+    {
+      "title": "THOSE DISPLACED",
+      "focus": "Pray for safe shelter and provision."
+    },
+    {
+      "title": "LOCAL CHURCH",
+      "focus": "Pray for strength and wisdom."
+    },
+    {
+      "title": "THOSE RESPONSIBLE",
+      "focus": "Pray for repentance and salvation."
+    }
+  ],
+  "scripture": {
+    "reference": "TEST 2:1 (NOT SCRIPTURE)",
+    "text": "Synthetic placeholder text, not the words of Scripture."
+  }
+}
