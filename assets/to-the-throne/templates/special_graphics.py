@@ -110,28 +110,79 @@ def praise(im,d,data):
     t(d,data["scripture"]["text"],95,1018,895,19,NAVY,2,23,False,True)
     t(d,"SOURCES: "+" • ".join(data["source_names"]),85,1070,925,16,NAVY,2,19,True)
 def persecuted(im,d,data):
-    # Leave upper approved TTT masthead and signed mountain footers untouched.
-    d.rectangle((35,166,1084,1233),fill=PAPER)
-    t(d,data["country"].upper(),44,170,467,58,NAVY,2,64,True,True)
-    t(d,"REMEMBER OUR BROTHERS AND SISTERS IN CHRIST",47,286,476,26,BRONZE,3,31,True,True)
-    t(d,data["region"].upper(),49,375,459,18,NAVY,2,22,True)
-    map_png(im,d,data["map"],(516,174,1078,562))
-    t(d,data["verified_summary"],43,435,454,20,NAVY,6,26,False,True)
-    d.line((42,570,1079,570),fill=GOLD,width=3)
-    t(d,data["pastoral_invitation"],45,582,1030,21,NAVY,5,28,False,True)
-    bar(d,(44,722,1077,763),BRONZE)
-    centered(d,"LET US TAKE THESE NEEDS BEFORE THE THRONE",67,727,990,24,"#fff5d6",True,True)
-    cats=data["prayer_focus"]
-    for i,m in enumerate(cats):
-        x=40+i*265
-        if i:d.line((x,773,x,1035),fill=GOLD,width=2)
-        centered(d,m["title"].upper(),x+8,790,245,19,BRONZE,True,True)
-        t(d,m["focus"],x+11,838,241,18,NAVY,9,22,False,True)
-    d.rectangle((45,1055,1074,1118),fill="#f6e4c6",outline=GOLD,width=2)
-    t(d,data["scripture"]["reference"],61,1062,989,21,BRONZE,1,25,True)
-    t(d,data["scripture"]["text"],61,1085,989,18,NAVY,2,21)
-    t(d,"REMEMBER THE PERSECUTED CHURCH",47,1131,973,23,BRONZE,1,26,True,True)
-    t(d,"SOURCES: "+" • ".join(data["source_names"]),47,1169,990,16,NAVY,2,19,True)
+    """Persecuted Church: preserve approved asymmetrical visual grammar.
+
+    The locked master uses 3 short prayer columns and a taller fourth column
+    for those responsible for the attack. The scripture / remember / source
+    elements occupy ONLY the first three columns beneath them. This is a
+    draft reconstruction, not a pixel-faithful final master.
+    """
+    # Recover ornamental icon artwork and the original bronze invitation
+    # directly from the locked reference, rather than redrawing new symbols.
+    # Crop before clearing printed text from the underlying flattened image.
+    original=im.copy()
+    icon_boxes=((99,733,192,816),(365,733,460,816),
+                (622,733,719,816),(902,733,998,816))
+    icons=[original.crop(rect) for rect in icon_boxes]
+    banner=original.crop((252,704,849,742))
+    # Keep the masthead above y=166 and signed original mountain/footer
+    # artwork below y=1233 completely identical to the approved image.
+    d.rectangle((35,167,1085,1232),fill=PAPER)
+    t(d,data["country"].upper(),43,173,464,57,NAVY,2,61,True,True)
+    t(d,"REMEMBER OUR BROTHERS",43,272,463,26,BRONZE,1,32,True,True)
+    t(d,"AND SISTERS IN CHRIST",43,304,463,26,BRONZE,1,32,True,True)
+    d.line((43,340,108,340),fill=GOLD,width=2)
+    t(d,data["region"].upper(),120,335,372,18,NAVY,2,22,True)
+    # Reserved upper-right map / illustration; no unverified borrowed map.
+    map_png(im,d,data["map"],(517,172,1080,561))
+    t(d,data["verified_summary"],43,373,460,20,NAVY,7,25,False,True)
+    d.line((42,566,1078,566),fill=GOLD,width=2)
+    t(d,data["pastoral_invitation"],44,577,1030,21,NAVY,5,26,False,True)
+    # Bronze decorative bar copied from the approved original. It is a
+    # protected design component, not dynamically redrawn typography.
+    im.paste(banner,(252,704))
+    d.line((40,724,252,724),fill=GOLD,width=2)
+    d.line((849,724,1063,724),fill=GOLD,width=2)
+    cols=((40,272),(274,535),(536,803),(805,1083))
+    end_short=1045
+    for i,col in enumerate(cols):
+        x0,x1=col
+        if i:
+            d.line((x0,746,x0,1050 if i<3 else 1131),fill=GOLD,width=2)
+        # Preserve precisely the approved prayer-category icon, rather than
+        # turning it into a generic emoji or newly drawn religious emblem.
+        icon=icons[i]
+        ox=(x0+x1-icon.width)//2
+        im.paste(icon,(ox,735))
+        title=data["prayer_focus"][i]["title"].upper()
+        hfont=font(18,True,True)
+        words=[]
+        for word in title.split():
+            cand=(" ".join(words[-1:])+" "+word).strip() if words else word
+            words.append(word)
+        yy=t(d,title,x0+10,811,x1-x0-20,18,BRONZE,3,21,True,True)
+        d.line((x0+14,yy+1,x1-12,yy+1),fill=GOLD,width=1)
+        focus=data["prayer_focus"][i]["focus"]
+        max_lines=12 if i==3 else 8
+        y=t(d,focus,x0+11,yy+11,x1-x0-22,18,NAVY,max_lines,21,False,True)
+        if y>(1128 if i==3 else 1039):
+            raise ValueError("Persecuted Church prayer column overflow; revise wording/layout")
+    # Scripture and remembrance only span first THREE columns. The fourth
+    # long intercessory column must remain intact down to the lower margin.
+    d.rectangle((32,1048,803,1124),fill="#f6e4c6",outline=GOLD,width=2)
+    t(d,data["scripture"]["reference"],165,1056,620,21,BRONZE,1,24,True)
+    t(d,data["scripture"]["text"],166,1080,621,17,NAVY,2,20,False,True)
+    # Reuse the original Scripture book illustration: fixed approved artwork.
+    book=original.crop((45,1054,137,1126))
+    im.paste(book,(42,1052))
+    t(d,"REMEMBER THE PERSECUTED CHURCH",112,1136,610,20,BRONZE,1,23,True)
+    t(d,"Keep lifting up our brothers and sisters in Christ.",114,1165,616,16,NAVY,2,18,False,True)
+    # Document attribution block occupies right bottom, outside the
+    # three-column scripture/closing content.
+    d.line((727,1142,1069,1142),fill=GOLD,width=1)
+    t(d,"SOURCES: "+" • ".join(data["source_names"]),732,1151,335,15,NAVY,2,19,True)
+    t(d,"Full verification: this week's To The Throne archive.",732,1190,331,13,NAVY,2,16)
+
 def faith(im,d,data):
     # Preserve approved FAITH FRIDAY masthead/banner and scenic lower/footer block.
     d.rectangle((44,426,1045,997),fill=PAPER)
