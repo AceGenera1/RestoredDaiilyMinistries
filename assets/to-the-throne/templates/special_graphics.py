@@ -121,14 +121,20 @@ def persecuted(im,d,data):
     # directly from the locked reference, rather than redrawing new symbols.
     # Crop before clearing printed text from the underlying flattened image.
     original=im.copy()
-    icon_boxes=((99,733,192,816),(365,733,460,816),
-                (622,733,719,816),(902,733,998,816))
+    icon_boxes=((105,735,188,808),(367,735,454,808),
+                (624,735,716,808),(904,735,994,808))
     icons=[original.crop(rect) for rect in icon_boxes]
     banner=original.crop((252,704,849,742))
     # Keep the masthead above y=166 and signed original mountain/footer
     # artwork below y=1233 completely identical to the approved image.
-    d.rectangle((35,167,1085,1232),fill=PAPER)
-    t(d,data["country"].upper(),43,173,464,57,NAVY,2,61,True,True)
+    d.rectangle((35,167,1085,1234),fill=PAPER)
+    country=data["country"].upper()
+    size=57
+    while d.textbbox((0,0),country,font=font(size,True,True))[2]>460 and size>26:
+        size-=1
+    if d.textbbox((0,0),country,font=font(size,True,True))[2]>460:
+        raise ValueError("Country title too long for locked Persecuted Church layout")
+    d.text((43,173),country,font=font(size,True,True),fill=NAVY)
     t(d,"REMEMBER OUR BROTHERS",43,272,463,26,BRONZE,1,32,True,True)
     t(d,"AND SISTERS IN CHRIST",43,304,463,26,BRONZE,1,32,True,True)
     d.line((43,340,108,340),fill=GOLD,width=2)
@@ -153,14 +159,14 @@ def persecuted(im,d,data):
         # turning it into a generic emoji or newly drawn religious emblem.
         icon=icons[i]
         ox=(x0+x1-icon.width)//2
-        im.paste(icon,(ox,735))
+        im.paste(icon,(ox,744))
         title=data["prayer_focus"][i]["title"].upper()
         hfont=font(18,True,True)
         words=[]
         for word in title.split():
             cand=(" ".join(words[-1:])+" "+word).strip() if words else word
             words.append(word)
-        yy=t(d,title,x0+10,811,x1-x0-20,18,BRONZE,3,21,True,True)
+        yy=t(d,title,x0+10,825,x1-x0-20,18,BRONZE,3,21,True,True)
         d.line((x0+14,yy+1,x1-12,yy+1),fill=GOLD,width=1)
         focus=data["prayer_focus"][i]["focus"]
         max_lines=12 if i==3 else 8
