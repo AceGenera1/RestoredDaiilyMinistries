@@ -30,6 +30,8 @@ jobs:
       - name: Test Praise, Persecuted Church, and Faith Friday masters
         run: python assets/to-the-throne/templates/test_special_graphics.py
 
+      - name: Verify all four social-share originals and authorized micro-edits
+        run: python assets/to-the-throne/templates/test_social_share_safe.py
       - name: Build five-family draft review package and verify four social-share masters
         run: python assets/to-the-throne/templates/build_all_previews.py --out /tmp/ttt-synthetic-previews
       - name: Upload synthetic preview package for design QA only
