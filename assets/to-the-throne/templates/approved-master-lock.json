@@ -1,0 +1,42 @@
+{
+  "monday": {
+    "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-weekly-letter.png",
+    "git_blob_sha1": "84fdfdc19970f19edde47618f6ea37a7106eab34",
+    "size": [
+      1122,
+      1402
+    ]
+  },
+  "wednesday": {
+    "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-intercession.png",
+    "git_blob_sha1": "3fb18eb9ec54b23d28f59eaba9bb364701a68dcc",
+    "size": [
+      1086,
+      1448
+    ]
+  },
+  "praise": {
+    "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-praise.png",
+    "git_blob_sha1": "9df064310bf0188996c3856c1d2238129e794ac4",
+    "size": [
+      1086,
+      1448
+    ]
+  },
+  "persecuted": {
+    "path": "assets/to-the-throne/weekly-graphics/2026-10-26/tttpc-0001-01-thursday-persecuted-church.png",
+    "git_blob_sha1": "43304140e1d81ff5764c70368ed6cdadf3f414aa",
+    "size": [
+      1122,
+      1402
+    ]
+  },
+  "faith": {
+    "path": "assets/to-the-throne/weekly-graphics/2026-10-26/To the Throne_ Faith Friday Prayer.png",
+    "git_blob_sha1": "6e755ae5bf42be3c2bfc72aa39eb667faf6dab7a",
+    "size": [
+      1087,
+      1446
+    ]
+  }
+}

@@ -8,6 +8,7 @@ artwork is blocked until visually approved against each locked PNG.
 import argparse,json,re,hashlib
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont,ImageOps
+from reference_integrity import verify as verify_master
 SIZES={"praise":(1086,1448),"persecuted":(1122,1402),"faith":(1087,1446)}
 NAVY="#10224a";GOLD="#b78134";GREEN="#075138";BRONZE="#aa5624";PAPER="#fff0d4"
 def font(size,bold=False,serif=False):
@@ -141,6 +142,7 @@ def render(data,reference,out):
     kind=check(data)
     ref=Path(reference)
     if not ref.is_file():raise ValueError("Approved reference not found: no artwork fallback")
+    verify_master(kind,ref)
     with Image.open(ref) as source: im=source.convert("RGB")
     if im.size!=SIZES[kind]:raise ValueError("Wrong approved reference dimensions")
     d=ImageDraw.Draw(im)

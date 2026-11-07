@@ -7,6 +7,7 @@ until visually approved; final output is deliberately blocked.
 import argparse,json,hashlib
 from pathlib import Path
 from PIL import Image,ImageDraw,ImageFont,ImageOps,ImageChops
+from reference_integrity import verify as verify_master
 NAVY="#102451";ORANGE="#AE6A27";GOLD="#C18A32";RED="#971322"
 REGIONS={"monday":(1122,1402),"wednesday":(1086,1448)}
 def ft(n=17,bold=False):
@@ -49,6 +50,8 @@ def source(d,data,x,y,width):
 def require(data,draft):
     kind=data.get("format")
     if kind not in REGIONS:raise ValueError("Only monday and wednesday are supported")
+    if data.get("approved") or data.get("publication_authorized"):
+        raise ValueError("Unapproved renderer refuses approved/publication flag")
     matter=data.get("matters",[])
     if (kind=="monday" and len(matter)!=5) or (kind=="wednesday" and not 1<=len(matter)<=5):
         raise ValueError("Invalid matter count")
@@ -62,6 +65,8 @@ def require(data,draft):
         for k in ("reference","text"):
             if not m["scripture"].get(k):raise ValueError("Incomplete Scripture")
         refs.append(m["scripture"]["reference"].lower())
+        if m.get("map_file") and (not m.get("map_verified") or not m.get("map_source")):
+            raise ValueError("Map file is not verified and attributed: "+m["location"])
         if not draft and not Path(m.get("map_file","")).is_file():raise ValueError("Missing verified map")
     if len(set(refs))!=len(refs):raise ValueError("Distinct Scripture passages required")
     if not draft:raise ValueError("UNAPPROVED renderer: final output disabled pending visual acceptance")
@@ -137,6 +142,7 @@ def main():
     a=p.parse_args();data=json.loads(Path(a.data).read_text(encoding="utf-8"));kind=require(data,a.draft)
     reference=Path(a.reference)
     if not reference.exists():raise ValueError("Approved reference missing: no fallback artwork allowed")
+    verify_master(kind,reference)
     with Image.open(reference) as ref:im=ref.convert("RGB")
     if im.size!=REGIONS[kind]:raise ValueError("Approved reference dimensions incorrect")
     d=ImageDraw.Draw(im);date_box(d,data,kind)
