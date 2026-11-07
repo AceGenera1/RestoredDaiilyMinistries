@@ -38,5 +38,29 @@
       1087,
       1446
     ]
+  },
+  "monday-social": {
+    "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-weekly-letter-social-share.png",
+    "git_blob_sha1": "3304471ac556ac97d297a17b5e59857fa8e4599e",
+    "role": "approved_social_share_master",
+    "editable": false
+  },
+  "wednesday-social": {
+    "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-intercession-social-share.png",
+    "git_blob_sha1": "d33be75e2397ce1cee79db2a56aed561f1b349b5",
+    "role": "approved_social_share_master",
+    "editable": false
+  },
+  "praise-social": {
+    "path": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-praise-social-share.png",
+    "git_blob_sha1": "d85897e3bc1d2cd5b803a17a9344271d40f293f7",
+    "role": "approved_social_share_master",
+    "editable": false
+  },
+  "persecuted-social": {
+    "path": "assets/to-the-throne/weekly-graphics/2026-10-26/tttpc-0001-01-social-share.png",
+    "git_blob_sha1": "8adee762c78da3f0b71b479a6b1b73efe471909d",
+    "role": "approved_social_share_master",
+    "editable": false
   }
 }
