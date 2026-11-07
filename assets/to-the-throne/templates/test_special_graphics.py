@@ -34,8 +34,8 @@ def checks():
             if kind=="persecuted":
                 # Faithfully reuse four original prayer icons; the icons are
                 # extracted from the locked master, not redrawn.
-                src_boxes=((105,735,188,808),(367,735,454,808),
-                           (624,735,716,808),(904,735,994,808))
+                src_boxes=((105,744,188,813),(367,744,454,813),
+                           (624,744,716,813),(904,744,994,813))
                 columns=((40,272),(274,535),(536,803),(805,1083))
                 for rect,(left,right) in zip(src_boxes,columns):
                     expected=a.crop(rect)
