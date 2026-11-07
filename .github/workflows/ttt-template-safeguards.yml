@@ -1,0 +1,31 @@
+name: To The Throne template safeguards
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/to-the-throne/templates/**"
+      - ".github/workflows/ttt-template-safeguards.yml"
+  pull_request:
+    paths:
+      - "assets/to-the-throne/templates/**"
+      - ".github/workflows/ttt-template-safeguards.yml"
+jobs:
+  synthetic-template-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install render/test dependencies
+        run: pip install -r assets/to-the-throne/templates/requirements.txt
+      - name: Test PDF integrity and evidence fields
+        run: python assets/to-the-throne/templates/test_pipeline.py
+      - name: Test Monday and Wednesday masters and final-output blocking
+        run: |
+          python assets/to-the-throne/templates/test_locked_graphics.py \
+            assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-weekly-letter.png \
+            assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-intercession.png
+      - name: Test Praise, Persecuted Church, and Faith Friday masters
+        run: python assets/to-the-throne/templates/test_special_graphics.py
