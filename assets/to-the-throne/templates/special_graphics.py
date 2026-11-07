@@ -121,8 +121,8 @@ def persecuted(im,d,data):
     # directly from the locked reference, rather than redrawing new symbols.
     # Crop before clearing printed text from the underlying flattened image.
     original=im.copy()
-    icon_boxes=((105,735,188,808),(367,735,454,808),
-                (624,735,716,808),(904,735,994,808))
+    icon_boxes=((105,744,188,813),(367,744,454,813),
+                (624,744,716,813),(904,744,994,813))
     icons=[original.crop(rect) for rect in icon_boxes]
     banner=original.crop((252,704,849,742))
     # Keep the masthead above y=166 and signed original mountain/footer
