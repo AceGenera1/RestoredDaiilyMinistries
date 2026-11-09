@@ -78,7 +78,7 @@ def render(data,out):
     reference=REPO/SPEC[kind]["path"]
     verify(kind,reference)
     paper,(w,h)=base_art(kind,reference)
-    texts=[];map_layers=[]
+    texts=[];map_layers=[];decor=[]
     def add(content,x,y,width,**kwargs):
         node,end=wrapped(content,x,y,width,**kwargs)
         texts.append(node)
@@ -108,18 +108,26 @@ def render(data,out):
             sc=m["scripture"]
             end=add(sc["reference"]+" — "+sc["text"],682,max(y+123,end+8),355,size=13,maxlines=3,leading=14)
             if end>y+154:raise ValueError("Monday full Scripture collides with next matter")
-            add(m.get("status","ACTIVE"),935,y+59,124,size=15,weight="bold",fill=BRONZE,maxlines=1)
+            status=m.get("status","ACTIVE").upper()
+            if status not in ("ACTIVE","CONTINUING"):raise ValueError("Unrecognized Monday status")
+            badge="#8d1420" if status=="ACTIVE" else "#b36b1d"
+            decor.append(f'<rect x="924" y="{y+7}" width="143" height="49" rx="7" fill="{badge}"/>')
+            add(status,936,y+37,119,size=14,weight="bold",fill="#ffffff",maxlines=1)
         add(data.get("closing","Continue praying for those facing hardship."),45,1111,1015,size=18,maxlines=3,leading=22)
         add(names,49,1162,1015,size=15,maxlines=2,leading=17,weight="bold")
     elif kind=="wednesday":
         for i,m in enumerate(data["matters"]):
             y=344+174*i
             map_layers.append(image_layer(m,(35,y+5,239,164)))
-            add(str(i+1),294,y+48,40,size=30,weight="bold",fill=BRONZE,maxlines=1)
+            decor.append(f'<circle cx="306" cy="{y+38}" r="24" fill="#b66c19"/>')
+            add(str(i+1),296,y+48,38,size=29,weight="bold",fill="#ffffff",maxlines=1)
             add(m["location"].upper(),339,y+25,333,size=18,weight="bold",maxlines=2)
             add(m["heading"].upper(),339,y+63,331,size=16,weight="bold",fill=BRONZE,maxlines=2)
             add(m["summary"],339,y+103,332,size=15,leading=18,maxlines=4)
-            add(m.get("status","ACTIVE").upper()+" • INTERCESSION",713,y+23,324,size=16,weight="bold",maxlines=1)
+            status=m.get("status","ACTIVE").upper()
+            if status not in ("ACTIVE","CONTINUING"):raise ValueError("Unrecognized Wednesday status")
+            decor.append(f'<rect x="686" y="{y+3}" width="360" height="31" fill="{"#951521" if status=="ACTIVE" else "#b36b1d"}"/>')
+            add(status+" • INTERCESSION",713,y+23,324,size=15,weight="bold",fill="#ffffff",maxlines=1)
             add("PRAYER FOCUS",705,y+56,320,size=17,weight="bold",fill=BRONZE,maxlines=1)
             end=y+74
             for prayer in m["prayer_focus"]:
@@ -157,6 +165,7 @@ def render(data,out):
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="{w}" height="{h}" viewBox="0 0 {w} {h}">
 <g id="locked-art" inkscape:groupmode="layer" inkscape:label="LOCKED TTT BRAND ART"><image x="0" y="0" width="{w}" height="{h}" href="data:image/png;base64,{paper}"/></g>
 <g id="verified-geography" inkscape:groupmode="layer" inkscape:label="MAPS — separate, verify provenance">{''.join(map_layers)}</g>
+<g id="editable-decorations" inkscape:groupmode="layer" inkscape:label="EDITABLE BADGES AND NUMBERED CIRCLES">{''.join(decor)}</g>
 <g id="editable-typography" inkscape:groupmode="layer" inkscape:label="EDITABLE TITLE/FACTS/PRAYER/SCRIPTURE/SOURCES">{''.join(texts)}</g>
 <g id="draft-only" inkscape:groupmode="layer" inkscape:label="UNAPPROVED — remove only after verified design acceptance">
 <rect x="1" y="1" width="{w-2}" height="37" fill="#fff0d4"/>
@@ -168,7 +177,7 @@ def render(data,out):
     file.parent.mkdir(parents=True,exist_ok=True)
     file.write_text(layers,encoding="utf-8")
     ET.parse(file)
-    return {"format":kind,"file":str(file),"layers":4,
+    return {"format":kind,"file":str(file),"layers":5,
       "editable_text_objects":len(texts),"individual_map_layers":len(map_layers),
       "publication_allowed":False}
 if __name__=="__main__":
