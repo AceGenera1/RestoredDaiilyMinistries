@@ -40,6 +40,11 @@ jobs:
         run: python assets/to-the-throne/templates/test_social_share_safe.py
       - name: Build five-family draft review package and verify four social-share masters
         run: python assets/to-the-throne/templates/build_all_previews.py --out /tmp/ttt-synthetic-previews
+      - name: Generate editable Persecuted Church SVG draft for design review
+        run: |
+          python assets/to-the-throne/templates/layered_persecuted.py \
+            assets/to-the-throne/templates/samples/persecuted-render-test.json \
+            --out /tmp/ttt-synthetic-previews/persecuted-editable-DRAFT.svg
       - name: Compare all five draft layouts against exact approved graphic masters
         run: |
           python assets/to-the-throne/templates/visual_acceptance.py \
