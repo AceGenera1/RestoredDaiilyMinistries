@@ -54,6 +54,15 @@ jobs:
           python assets/to-the-throne/templates/layered_persecuted.py \
             assets/to-the-throne/templates/samples/persecuted-render-test.json \
             --out /tmp/ttt-synthetic-previews/persecuted-editable-DRAFT.svg
+      - name: Validate all four layered social-share SVG templates
+        run: python assets/to-the-throne/templates/test_layered_social.py
+      - name: Export four layered social-share review drafts
+        run: |
+          for kind in monday-social wednesday-social praise-social persecuted-social; do
+            python assets/to-the-throne/templates/layered_social.py \
+              assets/to-the-throne/templates/samples/${kind}-layered-test.json \
+              --out /tmp/ttt-synthetic-previews/${kind}-editable-DRAFT.svg
+          done
       - name: Compare all five draft layouts against exact approved graphic masters
         run: |
           python assets/to-the-throne/templates/visual_acceptance.py \
