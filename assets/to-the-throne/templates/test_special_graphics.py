@@ -41,7 +41,12 @@ def checks():
                     expected=a.crop(rect)
                     left_x=(left+right-expected.width)//2
                     actual=b.crop((left_x,744,left_x+expected.width,744+expected.height))
-                    assert ImageChops.difference(expected,actual).getbbox() is None,"Approved prayer-category icon changed"
+                    # Icon's interior remains identical to its approved source;
+                    # external rectangular lettering is now removed by an
+                    # antialiased circular mask.
+                    w,h=expected.size
+                    inner=(w//4,h//4,3*w//4,3*h//4)
+                    assert ImageChops.difference(expected.crop(inner),actual.crop(inner)).getbbox() is None,"Original icon changed"
                 # The country title must be single-line and never spill into
                 # the adjacent original subtitle area.
                 assert "TEST COUNTRY" in sample["country"].upper()
