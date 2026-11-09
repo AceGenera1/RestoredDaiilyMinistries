@@ -14,14 +14,19 @@ def main():
             file=Path(tmp)/(kind+"-editable.svg")
             result=render(data,file)
             groups=ET.parse(file).findall(".//s:g",ns)
-            assert [g.get("id") for g in groups]==["locked-art","verified-geography","editable-typography","draft-only"]
+            assert [g.get("id") for g in groups]==["locked-art","verified-geography","editable-decorations","editable-typography","draft-only"]
             assert groups[0].find("s:image",ns) is not None
-            assert len(groups[2].findall("s:text",ns))>=6
+            assert len(groups[3].findall("s:text",ns))>=6
+            if kind=="monday":
+                assert len(groups[2].findall("s:rect",ns))==5,"Five separate status badges required"
+            if kind=="wednesday":
+                assert len(groups[2].findall("s:circle",ns))==5,"Five numbered update circles required"
+                assert len(groups[2].findall("s:rect",ns))==5,"Five update status bars required"
             assert result["publication_allowed"] is False
             bad=copy.deepcopy(data);bad["approved"]=True
             try:render(bad,Path(tmp)/"unauthorized.svg")
             except ValueError:pass
             else:raise AssertionError("Approved flag bypassed by "+kind)
-            results[kind]={"draft_passed":True,"layers":4,"text_fields":result["editable_text_objects"],"maps":result["individual_map_layers"]}
+            results[kind]={"draft_passed":True,"layers":5,"text_fields":result["editable_text_objects"],"maps":result["individual_map_layers"]}
     print(json.dumps(results,indent=2))
 if __name__=="__main__":main()
