@@ -83,9 +83,11 @@ def render(data,out):
         node,end=wrapped(content,x,y,width,**kwargs)
         texts.append(node)
         return end
-    add("WEEKLY INTERCESSION LETTER" if kind=="monday" else {"wednesday":"WEDNESDAY","praise":"WEDNESDAY","faith":"FRIDAY"}[kind],
-        836 if kind=="monday" else 831,62 if kind=="monday" else 61,210 if kind=="monday" else 170,
-        size=16,weight="bold",maxlines=2)
+    if kind=="monday":
+        add("WEEKLY INTERCESSION LETTER",791,62,272,size=12,weight="bold",maxlines=1)
+    else:
+        add({"wednesday":"WEDNESDAY","praise":"WEDNESDAY","faith":"FRIDAY"}[kind],
+            831,61,170,size=16,weight="bold",maxlines=1)
     add(data.get("edition",""),810 if kind=="monday" else 832,116 if kind=="monday" else 153,
         220 if kind=="monday" else 171,size=20 if kind=="monday" else 14,weight="bold",maxlines=2)
     add(data["date_label"],800 if kind=="monday" else 832,142 if kind=="monday" else 103,
