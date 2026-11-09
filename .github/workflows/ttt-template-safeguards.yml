@@ -63,6 +63,8 @@ jobs:
               assets/to-the-throne/templates/samples/${kind}-layered-test.json \
               --out /tmp/ttt-synthetic-previews/${kind}-editable-DRAFT.svg
           done
+      - name: Review all four editable social SVGs against their original approved artwork
+        run: python assets/to-the-throne/templates/render_social_review.py --folder /tmp/ttt-synthetic-previews
       - name: Compare all five draft layouts against exact approved graphic masters
         run: |
           python assets/to-the-throne/templates/visual_acceptance.py \
