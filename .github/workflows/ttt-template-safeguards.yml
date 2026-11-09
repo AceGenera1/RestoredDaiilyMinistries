@@ -30,6 +30,8 @@ jobs:
       - name: Test Praise, Persecuted Church, and Faith Friday masters
         run: python assets/to-the-throne/templates/test_special_graphics.py
 
+      - name: Run full draft integration from one canonical weekly record
+        run: python assets/to-the-throne/templates/test_integrated_draft.py
       - name: Reject incomplete or unauthorized weekly releases
         run: python assets/to-the-throne/templates/test_archive_release_gate.py
       - name: Verify all four social-share originals and authorized micro-edits
