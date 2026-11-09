@@ -1,0 +1,30 @@
+{
+  "schema": "ttt-visual-design-acceptance-v1",
+  "recorded_at": "2026-11-09",
+  "evidence": "User reviewed updated Persecuted Church and Praise Report individual sample previews and stated 'Close enough let’s move forward'",
+  "families": {
+    "persecuted": {
+      "layout_accepted": true,
+      "scripture_footer_spacing_accepted": true,
+      "reference": "assets/to-the-throne/weekly-graphics/2026-10-26/tttpc-0001-01-thursday-persecuted-church.png",
+      "renderer": "assets/to-the-throne/templates/layered_persecuted.py"
+    },
+    "praise": {
+      "layout_accepted": true,
+      "approved_variation": "Green header boxes acceptable; original approved icons retained",
+      "reference": "assets/to-the-throne/weekly-graphics/2026-10-26/ttt-0001-wednesday-praise.png",
+      "renderer": "assets/to-the-throne/templates/layered_other.py"
+    }
+  },
+  "scope": "APPROVAL OF THESE TWO REUSABLE LAYOUTS ONLY; NOT APPROVAL OF ANY WEEK'S FACTS, MAPS, SCRIPTURE, DOCUMENTS, RELEASE OR AUTOMATIC PUBLICATION",
+  "other_families": "No new visual acceptance inferred for Monday, Wednesday or Faith Friday",
+  "release_gates": {
+    "per_week_research_approval": true,
+    "current_source_recheck": true,
+    "verified_map_required": true,
+    "complete_scripture_required": true,
+    "actual_render_preview_quality_check": true,
+    "explicit_release_authorization": true
+  },
+  "publication_performed": false
+}
