@@ -7,7 +7,7 @@ Never authorizes publication and never creates geographic maps.
 import argparse,base64,html,io,json
 from pathlib import Path
 from xml.etree import ElementTree as ET
-from PIL import Image,ImageDraw,ImageFont
+from PIL import Image,ImageDraw,ImageFont,ImageOps
 from special_graphics import check,textured_panel,original_round_icon,font
 from reference_integrity import SPEC,verify
 ROOT=Path(__file__).resolve().parent
@@ -48,7 +48,6 @@ def make_base(ref):
     for rect,(lo,hi) in zip(rects,cols):
         crop,mask=original_round_icon(original,rect)
         base.paste(crop,((lo+hi-crop.width)//2,744),mask)
-    base.paste(original.crop((45,1054,137,1126)),(42,1052))
     d=ImageDraw.Draw(base)
     d.line((42,566,1078,566),fill="#b78134",width=2)
     d.line((40,724,252,724),fill="#b78134",width=2)
@@ -56,6 +55,7 @@ def make_base(ref):
     for x in (273,535,803):
         d.line((x,746,x,1038 if x!=803 else 1131),fill="#b78134",width=2)
     d.rectangle((32,1048,803,1124),fill="#f6e4c6",outline="#b78134",width=2)
+    base.paste(original.crop((45,1054,137,1126)),(42,1052))
     d.line((727,1142,1069,1142),fill="#b78134",width=1)
     # Keep public-source and Scripture text entirely OUT of the raster layer.
     buf=io.BytesIO();base.save(buf,"PNG")
@@ -65,10 +65,19 @@ def build(data,out):
     ref=REPO/SPEC["persecuted"]["path"];verify("persecuted",ref)
     if any(data.get(x) for x in ("approved","publication_authorized")):
         raise ValueError("No release authorization in draft editor")
-    if data.get("map",{}).get("map_file"):
-        if not data["map"].get("map_verified") or not data["map"].get("map_source"):
+    map_data=data.get("map",{})
+    if map_data.get("map_file"):
+        if not map_data.get("map_verified") or not map_data.get("map_source"):
             raise ValueError("Map must be verified and attributed")
-        raise ValueError("Map-vector layer not yet approved; use the reviewed PNG path")
+        if not Path(map_data["map_file"]).is_file():
+            raise ValueError("Verified map asset missing")
+        with Image.open(map_data["map_file"]) as loaded:
+            tile=ImageOps.fit(loaded.convert("RGBA"),(555,385))
+            buf=io.BytesIO()
+            tile.save(buf,format="PNG")
+            map_layer='<image x="521" y="173" width="555" height="385" href="data:image/png;base64,'+base64.b64encode(buf.getvalue()).decode("ascii")+'"/>'
+    else:
+        map_layer='<rect x="518" y="171" width="562" height="390" fill="#e6d4b7" fill-opacity=".72" stroke="#b78134" stroke-width="2"/>'
     baseline=make_base(ref)
     texts=[]
     def add(value,x,y,width,**kw):
@@ -107,6 +116,7 @@ def build(data,out):
 <g id="locked-art" inkscape:groupmode="layer" inkscape:label="LOCKED ART - approved emblem, paper, prayer icons, mountain">
   <image x="0" y="0" width="{W}" height="{H}" href="data:image/png;base64,{baseline}"/>
 </g>
+<g id="verified-geography" inkscape:groupmode="layer" inkscape:label="VERIFIED MAP - separately replaceable">{map_layer}</g>
 <g id="editable-typography" inkscape:groupmode="layer" inkscape:label="EDITABLE TEXT - synthetic review data">
 {''.join(texts)}
 </g>
@@ -122,7 +132,7 @@ def build(data,out):
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(svg,encoding="utf-8")
     ET.parse(path)
-    return {"format":"persecuted","output":str(path),"layers":3,"editable_text_fields":len(texts),
+    return {"format":"persecuted","output":str(path),"layers":4,"editable_text_fields":len(texts),"verified_map_supplied":bool(map_data.get("map_file")),
       "approved_art_sha":SPEC["persecuted"]["git_blob_sha1"],"draft":True,"publication_allowed":False}
 if __name__=="__main__":
     p=argparse.ArgumentParser()
