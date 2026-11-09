@@ -151,14 +151,14 @@ def render(data,out):
         add(data["headline"].upper(),80,367,910,size=28,weight="bold",fill="#ffffff",maxlines=1)
         add(data["outcome"],76,404,905,size=17,fill="#ffffff",maxlines=1)
         add("VERIFIED PRAISE / WHAT CHANGED",514,470,487,size=18,fill="#ffffff",weight="bold",maxlines=1)
-        y=516
+        y=538
         for v in data["verified_changes"]:
-            y=add("• "+v,438,y,536,size=20,maxlines=4,leading=26)+14
+            y=add("• "+v,443,y,539,size=19,maxlines=4,leading=25)+12
         if y>735:raise ValueError("Praise facts overflow")
         add("THANK THE LORD / CONTINUE TO PRAY",514,766,487,size=18,fill="#ffffff",weight="bold",maxlines=1)
-        y=811
+        y=835
         for v in data["prayer_focus"]:
-            y=add("• "+v,438,y,536,size=19,maxlines=3,leading=25)+9
+            y=add("• "+v,443,y,539,size=18,maxlines=3,leading=24)+8
         if y>983:raise ValueError("Praise prayer overflow")
         add(data["scripture"]["reference"],425,1010,560,size=19,weight="bold",maxlines=1)
         add(data["scripture"]["text"],107,1040,886,size=18,maxlines=2,leading=22)
