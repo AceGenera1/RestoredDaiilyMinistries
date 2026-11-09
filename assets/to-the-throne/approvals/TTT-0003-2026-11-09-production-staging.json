@@ -1,0 +1,39 @@
+{
+  "schema": "ttt-production-staging-v1",
+  "edition": "TTT-0003",
+  "date": "2026-11-09",
+  "content_approval_record": "assets/to-the-throne/approvals/TTT-0003-2026-11-09-content-approval.json",
+  "production": "Monday private review package generated; user-visible downloadable PNG, 1-page graphics PDF, recording brief PDF, 6-page clickable sources PDF",
+  "matter_count": 5,
+  "matters": [
+    "Yemen: families near Sanaa, AP Nov 9 revised attributed toll",
+    "Sudan: UNHCR/IOM shelter funding crisis",
+    "Gaza: November 8 OCHA flooding situation report",
+    "Florida: Brevard County continuing flood recovery",
+    "Ukraine: UNICEF school disruption"
+  ],
+  "scripture": [
+    "Psalm 147:3 (WEBU)",
+    "Psalm 46:1 (WEBU)",
+    "Psalm 121:5 (WEBU)",
+    "Psalm 34:6 (WEBU)",
+    "Psalm 82:3 (WEBU)"
+  ],
+  "source_verification": {
+    "AP": "https://apnews.com/article/9b6fa963ea4766a08956e53506494468",
+    "UNHCR": "https://www.unhcr.org/news/press-releases/unhcr-and-iom-warn-millions-sudan-risk-losing-emergency-shelter-funding-runs",
+    "OCHA": "https://www.ochaopt.org/content/humanitarian-situation-report-heavy-rains-gaza-strip-8-november-2026",
+    "Brevard": "https://www.brevardfl.gov/StormCenter",
+    "UNICEF": "https://www.unicef.org/eca/press-releases/increased-attacks-disrupt-childrens-education-air-raid-alarms-affect-nearly-two"
+  },
+  "current_gates": {
+    "user_approved_facts": true,
+    "private_pdf_qa_complete": true,
+    "monday_graphic_private_preview_created": true,
+    "geographic_maps": "New cartographic panels, not previously approved original charcoal map style",
+    "public_website_archive_updated": false,
+    "social_media_posted": false,
+    "complete_five_resource_weekly_archive": false
+  },
+  "next": "User may review the private Monday PNG on mobile. Do not auto-publish. Wednesday and Friday resources should be generated from subsequently verified developments, not fabricated in advance."
+}
