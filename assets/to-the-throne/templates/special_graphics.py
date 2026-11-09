@@ -215,6 +215,9 @@ def persecuted(im,d,data):
     # survive just above the permanent signoff. Erase only this narrow,
     # field-specific strip; preserve the authentic In Christ and signature.
     im.paste(textured_panel(989,34),(110,1213))
+    # The original right-hand source note extends a few pixels lower than
+    # the other source text; clean only that strip, not the signed landscape.
+    im.paste(textured_panel(385,12),(714,1245))
 
 def faith(im,d,data):
     # Preserve approved FAITH FRIDAY masthead/banner and scenic lower/footer block.
