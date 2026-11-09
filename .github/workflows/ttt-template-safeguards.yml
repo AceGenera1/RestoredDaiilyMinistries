@@ -20,6 +20,8 @@ jobs:
           python-version: "3.11"
       - name: Install render/test dependencies
         run: pip install -r assets/to-the-throne/templates/requirements.txt
+      - name: Reject wrong-week matter reuse and missing original letter paragraph
+        run: python assets/to-the-throne/templates/test_editorial_lock.py
       - name: Test PDF integrity and evidence fields
         run: python assets/to-the-throne/templates/test_pipeline.py
       - name: Test Monday and Wednesday masters and final-output blocking
