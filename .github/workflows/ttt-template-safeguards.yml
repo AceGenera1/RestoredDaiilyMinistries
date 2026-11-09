@@ -34,6 +34,8 @@ jobs:
         run: python assets/to-the-throne/templates/test_integrated_draft.py
       - name: Reject incomplete or unauthorized weekly releases
         run: python assets/to-the-throne/templates/test_archive_release_gate.py
+      - name: Validate editable Persecuted Church vector text layers
+        run: python assets/to-the-throne/templates/test_layered_persecuted.py
       - name: Verify all four social-share originals and authorized micro-edits
         run: python assets/to-the-throne/templates/test_social_share_safe.py
       - name: Build five-family draft review package and verify four social-share masters
