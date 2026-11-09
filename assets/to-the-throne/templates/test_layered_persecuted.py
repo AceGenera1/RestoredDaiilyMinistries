@@ -25,6 +25,15 @@ def main():
         assert result["publication_allowed"] is False and result["verified_map_supplied"] is False
         bad=copy.deepcopy(data);bad["approved"]=True
         denied(lambda:build(bad,Path(tmp)/"unauthorized.svg"))
+        # A full verse cannot be clipped just to fit the old narrow frame.
+        long_verse=copy.deepcopy(data)
+        long_verse["scripture"]["text"]=" ".join(["These are synthetic layout words"]*40)
+        denied(lambda:build(long_verse,Path(tmp)/"clipped-scripture.svg"))
+        # One overly long attribution must be rejected, not painted onto
+        # the brother's handwritten signature or bottom panorama.
+        long_sources=copy.deepcopy(data)
+        long_sources["source_names"]=["Extraordinarily Long Source Organization Name"]*12
+        denied(lambda:build(long_sources,Path(tmp)/"clipped-sources.svg"))
         print(json.dumps({"passed":True,"svg_layers":4,"editable_text_fields":len(nodes),
            "original_art_sha_verified":True,"release_blocked":True}))
 if __name__=="__main__":main()
