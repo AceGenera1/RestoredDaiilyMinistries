@@ -20,6 +20,7 @@ PAPER="#faead0";NAVY="#102451";BRONZE="#aa682c";GREEN="#075138"
 KINDS=("monday","wednesday","praise","faith")
 def base_art(kind,ref):
     with Image.open(ref) as img:base=img.convert("RGBA")
+    approved_original=base.copy()
     w,h=base.size
     d=ImageDraw.Draw(base)
     if kind=="monday":
@@ -50,7 +51,7 @@ def base_art(kind,ref):
         # Circular antialiasing omits neighboring old flattened lettering.
         for bounds,(x,y) in (((431,437,500,507),(425,440)),
                              ((432,734,501,802),(425,737))):
-            symbol,mask=original_round_icon(img.convert("RGBA"),bounds)
+            symbol,mask=original_round_icon(approved_original,bounds)
             base.paste(symbol,(x,y),mask)
     elif kind=="faith":
         base.paste(textured_panel(1001,571),(44,426))
