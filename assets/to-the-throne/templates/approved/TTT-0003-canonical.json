@@ -1,0 +1,84 @@
+{
+  "schema": "ttt-canonical-editorial-v1",
+  "edition": "TTT-0003",
+  "week_of": "2026-11-09",
+  "publication_date": "2026-11-09",
+  "approval_record": "assets/to-the-throne/approvals/TTT-0003-2026-11-09-content-approval.json",
+  "source_precedence": "The Monday Nov 9 recheck email supersedes conflicting details in the Sunday Nov 8 proposal.",
+  "mandatory_closing": "As always, brothers and sisters, these are merely five of the many people and situations around the world in need of prayer. Let us stand in the gap for them and intercede on their behalf before the Throne. Take these matters before our Heavenly Father this week, and we encourage you to pray beyond these prayer prompts. Allow the Holy Spirit to guide your prayers and help you intercede for the people and situations represented here.",
+  "closing_tagline": "The news cycle may move on, but prayer never ceases.",
+  "matters": [
+    {
+      "id": "yemen-sanaa",
+      "location": "Sanaa area, Yemen",
+      "headline": "CIVILIAN FAMILIES AFTER AIRSTRIKES",
+      "scripture_reference": "Psalm 147:3",
+      "scripture_text": "He heals the broken in heart, and binds up their wounds.",
+      "prayer_focus": [
+        "Care for injured children and adults",
+        "Comfort grieving households",
+        "Protect civilians and rescue workers"
+      ],
+      "factual_core": "According to AP on November 9, Houthi health authorities reported 44 people killed and 40 wounded after strikes near Sanaa. The toll and responsibility were not independently verified.",
+      "source": "https://apnews.com/article/9b6fa963ea4766a08956e53506494468"
+    },
+    {
+      "id": "sudan-shelter",
+      "location": "Sudan",
+      "headline": "URGENT SHELTER AND SUPPLY SHORTAGES",
+      "scripture_reference": "Psalm 46:1",
+      "scripture_text": "God is our refuge and strength, a very present help in trouble.",
+      "prayer_focus": [
+        "Safe shelter, bedding and supplies",
+        "Strength for local aid partners",
+        "Protection and access to assistance"
+      ],
+      "factual_core": "UNHCR and IOM estimated 15.4 million people need emergency shelter or household items; funding allows them to prioritize about 10%. These are agency estimates.",
+      "source": "https://www.unhcr.org/news/press-releases/unhcr-and-iom-warn-millions-sudan-risk-losing-emergency-shelter-funding-runs"
+    },
+    {
+      "id": "gaza-flood",
+      "location": "Gaza Strip",
+      "headline": "FLOODING IN DISPLACEMENT SHELTERS",
+      "scripture_reference": "Psalm 121:5",
+      "scripture_text": "The LORD is your keeper. The LORD is your shade on your right hand.",
+      "prayer_focus": [
+        "Dry shelter and sanitation",
+        "Protect vulnerable families",
+        "Safe delivery of humanitarian aid"
+      ],
+      "factual_core": "OCHA's November 8 report describes heavy rains flooding displacement sites and damaging thousands of temporary shelters, with humanitarian supplies running low.",
+      "source": "https://www.ochaopt.org/content/humanitarian-situation-report-heavy-rains-gaza-strip-8-november-2026"
+    },
+    {
+      "id": "florida-brevard",
+      "location": "Brevard County, Florida",
+      "headline": "FLOOD RECOVERY AND HOME CLEANUP",
+      "scripture_reference": "Psalm 34:6",
+      "scripture_text": "This poor man cried, and the LORD heard him, and saved him out of all his troubles.",
+      "prayer_focus": [
+        "Safe homes and clean water",
+        "Support older and disabled neighbors",
+        "Strength for responders"
+      ],
+      "factual_core": "Following flooding on November 2, county emergency notices describe continuing shelter, cleanup, and recovery assistance; not a new November 9 flood.",
+      "source": "https://www.brevardfl.gov/StormCenter"
+    },
+    {
+      "id": "ukraine-school",
+      "location": "Ukraine",
+      "headline": "AIR-RAID ALARMS INTERRUPT SCHOOLING",
+      "scripture_reference": "Psalm 82:3",
+      "scripture_text": "Defend the weak, the poor, and the fatherless. Maintain the rights of the poor and oppressed.",
+      "prayer_focus": [
+        "Protect students and teachers",
+        "Safe schools and shelters",
+        "Healing and trauma support for families"
+      ],
+      "factual_core": "UNICEF reported air-raid warnings affected nearly two-thirds of school days in September–October, disrupting children's education.",
+      "source": "https://www.unicef.org/ukraine/press-releases/increased-attacks-disrupt-childrens-education-air-raid-alarms-affect-nearly-two"
+    }
+  ],
+  "visual_master_policy": "The last user-accepted ornate TTT-0003 look is a visual reference only: it is a flattened image and contains out-of-date TTT-0001 matters. Never use it as a content-filled base. True repeatability requires separate clean art layers.",
+  "publication_authorized": false
+}
