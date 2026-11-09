@@ -42,7 +42,7 @@ def base_art(kind,ref):
     elif kind=="praise":
         base.paste(textured_panel(989,780),(45,330))
         d=ImageDraw.Draw(base)
-        d.rectangle((820,40,1004,182),fill="#fff0d7",outline="#a5772e",width=2)
+        d.rectangle((811,40,1025,182),fill="#fff0d7",outline="#a5772e",width=2)
         d.rectangle((47,331,1014,423),fill=GREEN,outline=BRONZE,width=2)
         d.rectangle((420,439,1011,483),fill=GREEN,outline=BRONZE,width=2)
         d.rectangle((420,735,1011,779),fill=GREEN,outline=BRONZE,width=2)
@@ -56,7 +56,7 @@ def base_art(kind,ref):
     elif kind=="faith":
         base.paste(textured_panel(1001,571),(44,426))
         d=ImageDraw.Draw(base)
-        d.rectangle((818,39,1008,173),fill="#fff0d7",outline="#a5772e",width=2)
+        d.rectangle((811,39,1022,173),fill="#fff0d7",outline="#a5772e",width=2)
         d.line((217,509,875,509),fill=BRONZE,width=2)
         d.rectangle((140,828,947,969),fill="#f8e6c8",outline=BRONZE,width=3)
     mem=io.BytesIO()
@@ -147,15 +147,15 @@ def render(data,out):
         add(names,49,1248,988,size=15,maxlines=2,weight="bold",leading=18)
     elif kind=="praise":
         map_layers.append(image_layer(data["map"],(47,437,358,538)))
-        add("WEDNESDAY",839,65,153,size=19,weight="bold",maxlines=1)
+        # Day label is already rendered once in the shared date plaque.
         add(data["headline"].upper(),80,367,910,size=28,weight="bold",fill="#ffffff",maxlines=1)
         add(data["outcome"],76,404,905,size=17,fill="#ffffff",maxlines=1)
-        add("VERIFIED PRAISE / WHAT CHANGED",448,469,547,size=21,fill="#ffffff",weight="bold",maxlines=1)
+        add("VERIFIED PRAISE / WHAT CHANGED",514,470,487,size=18,fill="#ffffff",weight="bold",maxlines=1)
         y=516
         for v in data["verified_changes"]:
             y=add("• "+v,438,y,536,size=20,maxlines=4,leading=26)+14
         if y>735:raise ValueError("Praise facts overflow")
-        add("THANK THE LORD / CONTINUE TO PRAY",446,764,550,size=20,fill="#ffffff",weight="bold",maxlines=1)
+        add("THANK THE LORD / CONTINUE TO PRAY",514,766,487,size=18,fill="#ffffff",weight="bold",maxlines=1)
         y=811
         for v in data["prayer_focus"]:
             y=add("• "+v,438,y,536,size=19,maxlines=3,leading=25)+9
@@ -164,7 +164,7 @@ def render(data,out):
         add(data["scripture"]["text"],107,1040,886,size=18,maxlines=2,leading=22)
         add(names,85,1092,925,size=14,maxlines=2,leading=16)
     else:
-        add("FRIDAY",845,64,159,size=20,weight="bold",maxlines=1)
+        # Day label is already rendered once in the shared date plaque.
         add(data["headline"],133,478,889,size=31,weight="bold",maxlines=1)
         add(data["intro"],132,558,874,size=22,maxlines=2,leading=27)
         add(data["prayer_request"],113,667,868,size=23,leading=31,maxlines=8)
