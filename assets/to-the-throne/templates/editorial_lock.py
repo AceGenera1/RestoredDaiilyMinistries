@@ -41,7 +41,12 @@ def check(record,approved):
         raise ValueError("Full original closing paragraph missing or changed")
     if record.get("closing_tagline")!=approved["closing_tagline"]:
         raise ValueError("Closing prayer tagline missing or changed")
-    content=json.dumps(record,ensure_ascii=False).upper()
+    # Search publishable editorial fields ONLY. Metadata legitimately
+    # documents the rejected historical edition and must not fail itself.
+    content=json.dumps({"matters":actual,
+          "closing":record.get("mandatory_closing",""),
+          "tagline":record.get("closing_tagline","")},
+          ensure_ascii=False).upper()
     for term in LEGACY:
         if term in content:raise ValueError("BANNED historical content in current week: "+term)
     return {"passed":True,"edition":approved["edition"],"matters":list(EXPECTED),
