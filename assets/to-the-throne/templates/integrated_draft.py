@@ -13,6 +13,7 @@ from package_qa import build as pdf_package
 from reference_integrity import SPEC,verify
 from locked_graphics import require as require_regular,monday,wednesday,date_box,ft
 from special_graphics import render as special_render
+from social_evergreen import stage as stage_social
 def render_regular(data,kind,out):
     from PIL import Image,ImageDraw
     ref=REPO/SPEC[kind]["path"]
@@ -71,7 +72,10 @@ def produce(week,out,other=None):
         if kind=="wednesday":render_regular(payload,kind,output)
         else:special_render(payload,REPO/SPEC[kind]["path"],output)
         status["rendered_graphics"][kind]={"file":output.name,"state":"DRAFT"}
-    status["missing_components"]+=["four_social_share_editable_variants","approved_clean_background_layers"]
+    social=stage_social(out/"approved-evergreen-social")
+    status["evergreen_social"]={"verified_originals":social["approved_originals"],"unchanged":True,
+       "caption_status":"Separate; user review required", "publication":False}
+    status["missing_components"]+=["approved_clean_background_layers"]
     (out/"QA-INTEGRATED-DRAFT.json").write_text(json.dumps(status,indent=2)+"\n")
     return status
 if __name__=="__main__":
