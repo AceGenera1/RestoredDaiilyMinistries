@@ -54,6 +54,10 @@ jobs:
           python assets/to-the-throne/templates/layered_persecuted.py \
             assets/to-the-throne/templates/samples/persecuted-render-test.json \
             --out /tmp/ttt-synthetic-previews/persecuted-editable-DRAFT.svg
+      - name: Verify evergreen approved social masters remain byte-identical
+        run: python assets/to-the-throne/templates/test_social_evergreen.py
+      - name: Stage exact approved originals for preview, not publication
+        run: python assets/to-the-throne/templates/social_evergreen.py --out /tmp/ttt-synthetic-previews/evergreen-originals
       - name: Validate all four layered social-share SVG templates
         run: python assets/to-the-throne/templates/test_layered_social.py
       - name: Export four layered social-share review drafts
