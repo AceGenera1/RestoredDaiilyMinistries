@@ -58,6 +58,11 @@ jobs:
         run: python assets/to-the-throne/templates/test_social_evergreen.py
       - name: Stage exact approved originals for preview, not publication
         run: python assets/to-the-throne/templates/social_evergreen.py --out /tmp/ttt-synthetic-previews/evergreen-originals
+      - name: Render and protect all five actual layered SVG graphics
+        run: |
+          python assets/to-the-throne/templates/verify_layered_visuals.py \
+            --folder /tmp/ttt-synthetic-previews \
+            --out /tmp/ttt-synthetic-previews/layered-visual-qa
       - name: Compare all five draft layouts against exact approved graphic masters
         run: |
           python assets/to-the-throne/templates/visual_acceptance.py \
