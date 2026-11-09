@@ -40,6 +40,15 @@ jobs:
         run: python assets/to-the-throne/templates/test_social_share_safe.py
       - name: Build five-family draft review package and verify four social-share masters
         run: python assets/to-the-throne/templates/build_all_previews.py --out /tmp/ttt-synthetic-previews
+      - name: Validate layered editable SVG candidates for all four other formats
+        run: python assets/to-the-throne/templates/test_layered_other.py
+      - name: Export four additional editable SVG drafts for design review
+        run: |
+          for kind in monday wednesday praise faith; do
+            python assets/to-the-throne/templates/layered_other.py \
+              assets/to-the-throne/templates/samples/${kind}-render-test.json \
+              --out /tmp/ttt-synthetic-previews/${kind}-editable-DRAFT.svg
+          done
       - name: Generate editable Persecuted Church SVG draft for design review
         run: |
           python assets/to-the-throne/templates/layered_persecuted.py \
