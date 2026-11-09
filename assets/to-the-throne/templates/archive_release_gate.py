@@ -32,6 +32,33 @@ def validate_manifest(manifest):
     if manifest.get("research_verified") is not True:error("Verified research approval absent")
     if manifest.get("visuals_approved") is not True:error("Visual signoff absent")
     if manifest.get("publication_authorized") is not True:error("Publication not authorized")
+    # A design approval or checksum is NOT permission to recycle previous
+    # week's facts. Every release must carry a separately verified canonical
+    # editorial record, and a traceable render from that exact content.
+    editorial=manifest.get("canonical_editorial")
+    if not isinstance(editorial,dict):
+        error("Release missing canonical editorial and provenance")
+    f=editorial.get("path")
+    if not isinstance(f,str) or not f.strip():
+        error("Canonical editorial source file is required")
+    canonical_file=Path(f).resolve()
+    if not canonical_file.is_file() or canonical_file.is_symlink():
+        error("Approved canonical editorial file missing or symlink")
+    actual_hash=sha256(canonical_file.read_bytes())
+    if actual_hash!=editorial.get("sha256"):
+        error("Approved editorial changed after release approval")
+    approved_data=json.loads(canonical_file.read_text(encoding="utf-8"))
+    if approved_data.get("edition")!=edition:
+        error("Editorial edition differs from release edition")
+    if approved_data.get("week_of")!=manifest["week_of"]:
+        error("Editorial week differs from release week")
+    if edition=="TTT-0003":
+        from editorial_lock import check,FIXTURE
+        check(approved_data,json.loads(FIXTURE.read_text(encoding="utf-8")))
+    if not editorial.get("renderer_payload_verified"):
+        error("Weekly graphics renderer must confirm exact approved factual fields")
+    if not editorial.get("original_closing_present"):
+        error("Complete approved closing paragraph must be present")
     assets=manifest.get("assets")
     if not isinstance(assets,dict) or set(assets)!=set(REQUIRED):
         error("Weekly archive requires exactly five resources: "+", ".join(REQUIRED))
