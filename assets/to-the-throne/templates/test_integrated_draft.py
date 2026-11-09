@@ -14,6 +14,9 @@ def main():
         assert status["pdfs"]["public_source_sheet"]["pages"]==6
         assert (Path(folder)/"package/graphics/monday-DRAFT.png").is_file()
         assert "wednesday" in status["missing_components"] and "praise" in status["missing_components"]
+        assert status["evergreen_social"]["verified_originals"]==4
+        assert status["evergreen_social"]["publication"] is False
+        assert len(list((Path(folder)/"package/approved-evergreen-social").glob("*-APPROVED-ORIGINAL.png")))==4
         print(json.dumps({"passed":True,"edition":week["edition"],"pdf_pages":[status["pdfs"]["recording_brief"]["pages"],6],
           "monday_draft":True,"missing_updates_flagged":True,"publishing_blocked":True},indent=2))
 if __name__=="__main__":main()
