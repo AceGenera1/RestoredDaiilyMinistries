@@ -47,6 +47,11 @@ def checks():
                     w,h=expected.size
                     inner=(w//4,h//4,3*w//4,3*h//4)
                     assert ImageChops.difference(expected.crop(inner),actual.crop(inner)).getbbox() is None,"Original icon changed"
+                # Rebuild only the changing text; the real signed mountain
+                # footer and red prayer motto must remain exactly original.
+                protected=[(20,1260,350,1340),(110,1255,605,1275)]
+                for box in protected:
+                    assert ImageChops.difference(a.crop(box),b.crop(box)).getbbox() is None,"Approved signed-footer region altered"
                 # The country title must be single-line and never spill into
                 # the adjacent original subtitle area.
                 assert "TEST COUNTRY" in sample["country"].upper()
