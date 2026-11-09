@@ -1,0 +1,41 @@
+{
+  "schema": "ttt-weekly-release-v1",
+  "edition": "TTT-0003",
+  "week_of": "2026-11-09",
+  "approved_by_user": false,
+  "research_verified": false,
+  "visuals_approved": false,
+  "publication_authorized": false,
+  "assets": {
+    "weekly_letter": {
+      "edition": "TTT-0003",
+      "approved": false,
+      "path": "REPLACE-WITH-APPROVED-PATH.pdf",
+      "sha256": "REPLACE-WITH-REAL-SHA256"
+    },
+    "episode_notes": {
+      "edition": "TTT-0003",
+      "approved": false,
+      "path": "REPLACE-WITH-APPROVED-PATH.pdf",
+      "sha256": "REPLACE-WITH-REAL-SHA256"
+    },
+    "sources_verification": {
+      "edition": "TTT-0003",
+      "approved": false,
+      "path": "REPLACE-WITH-APPROVED-PATH.pdf",
+      "sha256": "REPLACE-WITH-REAL-SHA256"
+    },
+    "intercession_update": {
+      "edition": "TTT-0003",
+      "approved": false,
+      "path": "REPLACE-WITH-APPROVED-PATH.png",
+      "sha256": "REPLACE-WITH-REAL-SHA256"
+    },
+    "praise_report": {
+      "edition": "TTT-0003",
+      "approved": false,
+      "path": "REPLACE-WITH-APPROVED-PATH.png",
+      "sha256": "REPLACE-WITH-REAL-SHA256"
+    }
+  }
+}
