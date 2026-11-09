@@ -7,7 +7,7 @@ artwork is blocked until visually approved against each locked PNG.
 """
 import argparse,json,re,hashlib
 from pathlib import Path
-from PIL import Image,ImageDraw,ImageFont,ImageOps
+from PIL import Image,ImageDraw,ImageFont,ImageOps,ImageFilter
 from reference_integrity import verify as verify_master
 SIZES={"praise":(1086,1448),"persecuted":(1122,1402),"faith":(1087,1446)}
 NAVY="#10224a";GOLD="#b78134";GREEN="#075138";BRONZE="#aa5624";PAPER="#fff0d4"
@@ -109,6 +109,28 @@ def praise(im,d,data):
     centered(d,data["scripture"]["reference"],50,991,963,20,NAVY,True,True)
     t(d,data["scripture"]["text"],95,1018,895,19,NAVY,2,23,False,True)
     t(d,"SOURCES: "+" • ".join(data["source_names"]),85,1070,925,16,NAVY,2,19,True)
+def textured_panel(width,height):
+    """Deterministic low-contrast parchment inside editable text area only."""
+    import random
+    rng=random.Random(19026)
+    backdrop=Image.new("RGB",(width,height),(250,234,205))
+    grain=Image.effect_noise((width,height),11).convert("L")
+    tint=Image.new("RGB",(width,height),(213,183,136))
+    backdrop=Image.blend(backdrop,Image.composite(tint,backdrop,grain),.08)
+    cw=max(2,width//24);ch=max(2,height//24)
+    low=Image.new("L",(cw,ch))
+    low.putdata([rng.randrange(90,166) for _ in range(cw*ch)])
+    low=low.resize((width,height),Image.Resampling.BICUBIC).filter(ImageFilter.GaussianBlur(6))
+    pale=Image.new("RGB",(width,height),(243,220,186))
+    return Image.blend(backdrop,Image.composite(pale,backdrop,low),.13)
+def original_round_icon(original,rect):
+    """Crop protected original ornament with antialiased alpha around its circle."""
+    crop=original.crop(rect)
+    w,h=crop.size
+    mask_large=Image.new("L",(w*3,h*3),0)
+    ImageDraw.Draw(mask_large).ellipse((6,6,(w-2)*3,(h-2)*3),fill=255)
+    return crop,mask_large.resize((w,h),Image.Resampling.LANCZOS)
+
 def persecuted(im,d,data):
     """Persecuted Church: preserve approved asymmetrical visual grammar.
 
@@ -123,11 +145,12 @@ def persecuted(im,d,data):
     original=im.copy()
     icon_boxes=((105,744,188,813),(367,744,454,813),
                 (624,744,716,813),(904,744,994,813))
-    icons=[original.crop(rect) for rect in icon_boxes]
+    icons=[original_round_icon(original,rect) for rect in icon_boxes]
     banner=original.crop((252,704,849,742))
     # Keep the masthead above y=166 and signed original mountain/footer
     # artwork below y=1233 completely identical to the approved image.
-    d.rectangle((35,167,1085,1234),fill=PAPER)
+    im.paste(textured_panel(1050,1068),(35,167))
+    d=ImageDraw.Draw(im)
     country=data["country"].upper()
     size=57
     while d.textbbox((0,0),country,font=font(size,True,True))[2]>460 and size>26:
@@ -157,9 +180,9 @@ def persecuted(im,d,data):
             d.line((x0,746,x0,1050 if i<3 else 1131),fill=GOLD,width=2)
         # Preserve precisely the approved prayer-category icon, rather than
         # turning it into a generic emoji or newly drawn religious emblem.
-        icon=icons[i]
+        icon,mask=icons[i]
         ox=(x0+x1-icon.width)//2
-        im.paste(icon,(ox,744))
+        im.paste(icon,(ox,744),mask)
         title=data["prayer_focus"][i]["title"].upper()
         hfont=font(18,True,True)
         words=[]
