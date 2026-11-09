@@ -55,10 +55,27 @@ def validate_manifest(manifest):
     if edition=="TTT-0003":
         from editorial_lock import check,FIXTURE
         check(approved_data,json.loads(FIXTURE.read_text(encoding="utf-8")))
-    if not editorial.get("renderer_payload_verified"):
-        error("Weekly graphics renderer must confirm exact approved factual fields")
-    if not editorial.get("original_closing_present"):
-        error("Complete approved closing paragraph must be present")
+    # Never trust a boolean "renderer verified" assertion from a packaging
+    # script. Inspect the actual machine-readable payload and SHA checksum.
+    payload_file=editorial.get("renderer_payload_path")
+    if not isinstance(payload_file,str) or not payload_file.strip():
+        error("Actual typed graphic renderer payload is missing")
+    payload_path=Path(payload_file).resolve()
+    if not payload_path.is_file() or payload_path.is_symlink():
+        error("Approved renderer payload does not exist or is a symlink")
+    if sha256(payload_path.read_bytes())!=editorial.get("renderer_payload_sha256"):
+        error("Renderer payload changed after approval")
+    payload=json.loads(payload_path.read_text(encoding="utf-8"))
+    if edition=="TTT-0003":
+        from editorial_lock import validate_renderer_payload
+        validate_renderer_payload(approved_data,payload)
+    else:
+        if payload.get("edition")!=edition or len(payload.get("matters",[]))!=5:
+            error("Renderer payload cannot be tied to five current matters")
+        if payload.get("closing")!=approved_data.get("mandatory_closing"):
+            error("Complete approved closing paragraph missing from renderer")
+    if not approved_data.get("mandatory_closing"):
+        error("Canonical editorial record is missing original closing paragraph")
     assets=manifest.get("assets")
     if not isinstance(assets,dict) or set(assets)!=set(REQUIRED):
         error("Weekly archive requires exactly five resources: "+", ".join(REQUIRED))
