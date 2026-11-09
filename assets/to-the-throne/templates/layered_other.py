@@ -10,6 +10,7 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 from PIL import Image,ImageDraw,ImageOps
 from layered_persecuted import wrapped, textured_panel
+from special_graphics import original_round_icon
 from reference_integrity import SPEC,verify
 from locked_graphics import require as require_weekly
 from special_graphics import check as require_special
@@ -44,6 +45,13 @@ def base_art(kind,ref):
         d.rectangle((47,331,1014,423),fill=GREEN,outline=BRONZE,width=2)
         d.rectangle((420,439,1011,483),fill=GREEN,outline=BRONZE,width=2)
         d.rectangle((420,735,1011,779),fill=GREEN,outline=BRONZE,width=2)
+        # Reuse the TWO approved circular praise/prayer symbols rather
+        # than discarding them when reconstructing editable green headings.
+        # Circular antialiasing omits neighboring old flattened lettering.
+        for bounds,(x,y) in (((431,437,500,507),(425,440)),
+                             ((432,734,501,802),(425,737))):
+            symbol,mask=original_round_icon(img.convert("RGBA"),bounds)
+            base.paste(symbol,(x,y),mask)
     elif kind=="faith":
         base.paste(textured_panel(1001,571),(44,426))
         d=ImageDraw.Draw(base)
