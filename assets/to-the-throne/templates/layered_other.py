@@ -101,7 +101,7 @@ def render(data,out):
             add(m["location"].upper(),319,y+23,338,size=19,weight="bold",maxlines=2)
             add(m["heading"].upper(),319,y+56,338,size=17,weight="bold",fill=BRONZE,maxlines=2)
             add(m["summary"],319,y+92,334,size=15,maxlines=4,leading=17)
-            add("TAKE IT BEFORE THE THRONE",678,y+24,246,size=16,weight="bold",fill=BRONZE,maxlines=1)
+            add("TAKE IT BEFORE THE THRONE",678,y+24,246,size=11,weight="bold",fill=BRONZE,maxlines=1)
             end=y+42
             for prayer in m["prayer_focus"]:
                 end=add("• "+prayer,683,end+3,234,size=14,leading=16,maxlines=2)
