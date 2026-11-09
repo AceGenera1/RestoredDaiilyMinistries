@@ -49,9 +49,11 @@ def make_base(ref):
         crop,mask=original_round_icon(original,rect)
         base.paste(crop,((lo+hi-crop.width)//2,744),mask)
     d=ImageDraw.Draw(base)
-    # The approved floral horizontal divider is an artwork element, not
-    # generic vector decoration; reuse it from the locked source.
-    base.paste(original.crop((40,558,1081,574)),(40,558))
+    # Only crop the original CENTRAL ornament: using the whole flattened
+    # horizontal strip accidentally brought old sentence fragments along.
+    d.line((42,566,510,566),fill="#b78134",width=2)
+    d.line((574,566,1078,566),fill="#b78134",width=2)
+    base.paste(original.crop((510,558,574,574)),(510,558))
     d.line((40,724,252,724),fill="#b78134",width=2)
     d.line((849,724,1063,724),fill="#b78134",width=2)
     for x in (273,535,803):
