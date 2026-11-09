@@ -105,7 +105,13 @@ def monday(im,d,data,draft):
             d.ellipse((683,offset+4,689,offset+10),fill=NAVY)
             offset=write(d,696,offset,prayer,ft(16),NAVY,216,2,16)+1
         sc=m["scripture"]
-        write(d,682,max(y+107,offset+1),sc["reference"]+" — "+sc["text"],ft(14),NAVY,380,3,16)
+        verse_y=max(y+107,offset+1)
+        # Rendering a complete passage is mandatory. Never spill Scripture
+        # into the next matter's row or silently clip its final line.
+        verse_lines=lines(d,sc["reference"]+" — "+sc["text"],ft(14),380,3)
+        if verse_y+len(verse_lines)*16>y+155:
+            raise ValueError("Matter "+str(i+1)+" exceeds Monday row height; revise approved layout, not Scripture")
+        write(d,682,verse_y,sc["reference"]+" — "+sc["text"],ft(14),NAVY,380,3,16)
         status=m.get("status","ACTIVE").upper()
         d.rounded_rectangle((924,y+7,1067,y+51),radius=8,fill=RED if status=="ACTIVE" else ORANGE)
         write(d,939,y+18,status,ft(18,True),"white",116,1,19)
@@ -133,7 +139,11 @@ def wednesday(im,d,data,draft):
             d.ellipse((706,off+6,712,off+12),fill=ORANGE)
             off=write(d,718,off,prayer,ft(15),NAVY,318,2,16)+2
         sc=m["scripture"]
-        write(d,699,max(off+1,y+126),sc["reference"]+" — "+sc["text"],ft(14),NAVY,338,3,15)
+        verse_y=max(off+1,y+126)
+        verse_lines=lines(d,sc["reference"]+" — "+sc["text"],ft(14),338,3)
+        if verse_y+len(verse_lines)*15>y+173:
+            raise ValueError("Matter "+str(i+1)+" exceeds Wednesday update row; no Scripture truncation allowed")
+        write(d,699,verse_y,sc["reference"]+" — "+sc["text"],ft(14),NAVY,338,3,15)
     d.rectangle((31,1222,1045,1271),fill="#FFF2DB")
     source(d,data,50,1230,990)
 def main():
