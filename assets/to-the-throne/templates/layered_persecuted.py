@@ -49,13 +49,22 @@ def make_base(ref):
         crop,mask=original_round_icon(original,rect)
         base.paste(crop,((lo+hi-crop.width)//2,744),mask)
     d=ImageDraw.Draw(base)
-    d.line((42,566,1078,566),fill="#b78134",width=2)
+    # The approved floral horizontal divider is an artwork element, not
+    # generic vector decoration; reuse it from the locked source.
+    base.paste(original.crop((40,558,1081,574)),(40,558))
     d.line((40,724,252,724),fill="#b78134",width=2)
     d.line((849,724,1063,724),fill="#b78134",width=2)
     for x in (273,535,803):
         d.line((x,746,x,1038 if x!=803 else 1131),fill="#b78134",width=2)
     d.rectangle((32,1048,803,1124),fill="#f6e4c6",outline="#b78134",width=2)
     base.paste(original.crop((45,1054,137,1126)),(42,1052))
+    # The approved remembrance globe and source-document emblems must
+    # survive independent text changes, just like the four prayer icons.
+    globe,globe_mask=original_round_icon(original,(38,1134,103,1196))
+    base.paste(globe,(38,1134),globe_mask)
+    doc_icon=original.crop((728,1174,769,1216))
+    base.paste(doc_icon,(728,1155))
+    d=ImageDraw.Draw(base)
     d.line((727,1142,1069,1142),fill="#b78134",width=1)
     # Keep public-source and Scripture text entirely OUT of the raster layer.
     buf=io.BytesIO();base.save(buf,"PNG")
@@ -94,7 +103,8 @@ def build(data,out):
     add("AND SISTERS IN CHRIST",43,322,456,size=26,maxlines=1,weight="bold",fill=bronze)
     add(data["region"].upper(),120,349,371,size=18,maxlines=2,weight="bold")
     add(data["verified_summary"],43,391,457,size=20,leading=26,maxlines=7)
-    add("VERIFIED MAP REQUIRED",529,211,536,size=18,maxlines=1,weight="bold")
+    if not map_data.get("map_file"):
+        add("VERIFIED MAP REQUIRED",529,211,536,size=18,maxlines=1,weight="bold")
     add(data["pastoral_invitation"],44,596,1020,size=20,leading=26,maxlines=5)
     col=((40,272),(274,535),(536,803),(805,1083))
     for i,(l,r) in enumerate(col):
@@ -106,8 +116,8 @@ def build(data,out):
     add(data["scripture"]["text"],162,1093,610,size=16,maxlines=2,leading=19)
     add("REMEMBER THE PERSECUTED CHURCH",111,1152,605,size=19,maxlines=1,weight="bold",fill=bronze)
     add("Keep lifting up our brothers and sisters in Christ.",113,1177,597,size=16,maxlines=2,leading=18)
-    add("SOURCES: "+" • ".join(data["source_names"]),732,1157,331,size=14,maxlines=2,leading=18,weight="bold")
-    add("Full references: weekly archive.",732,1190,331,size=13,maxlines=1)
+    add("SOURCES: "+" • ".join(data["source_names"]),782,1157,278,size=13,maxlines=2,leading=17,weight="bold")
+    add("Full references: weekly archive.",782,1193,278,size=12,maxlines=1)
     # Layer group labels work in Inkscape; editable text and permanent artwork
     # are separate. A visible draft banner is intentionally non-removable.
     svg=f'''<?xml version="1.0" encoding="UTF-8"?>
