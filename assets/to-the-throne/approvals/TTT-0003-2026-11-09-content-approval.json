@@ -1,0 +1,39 @@
+{
+  "schema": "ttt-editorial-approval-v1",
+  "edition": "TTT-0003",
+  "week_of": "2026-11-09",
+  "approved_in": "ChatGPT project conversation",
+  "user_statement": "I’m approving both emails for TTT03 in this chat I have thoroughly read over everything",
+  "scope": {
+    "sunday_email": "TO THE THRONE | Sunday Nov 8 — TTT-0003 Weekly Five PROVISIONAL PRIVATE REVIEW",
+    "monday_email": "Re: TO THE THRONE | Sunday Nov 8 — TTT-0003 Weekly Five PROVISIONAL PRIVATE REVIEW",
+    "precedence": "Monday November 9 recheck amendments control over Sunday's provisional facts",
+    "matter_order": [
+      "Yemen",
+      "Sudan",
+      "Gaza",
+      "United States — Brevard County Florida",
+      "Ukraine"
+    ],
+    "yemen": "Use November 9 AP-attributed revised Houthi-authorities toll (44 reported killed, 40 wounded); do not add November 7 figures, do not state independent verification or assert responsibility",
+    "gaza": "Use November 8 OCHA primary situation report (posted November 9), avoiding independently unverified attribution of shelter figures",
+    "sudan": "Use the joint UNHCR/IOM November 6 evidence, clarify agency estimates, no new displacement event",
+    "florida": "Use existing Brevard County November 4–5 recovery reports, not a new November 9 flood",
+    "ukraine": "Use original November 3 UNICEF first-hand release and accurate school disruption characterization"
+  },
+  "approved_for": [
+    "Prepare private finalized recording brief",
+    "Prepare dated Public Sources & Verification sheet",
+    "Generate private Monday weekly intercession graphic using layout safeguards",
+    "Prepare verified weekly archive materials"
+  ],
+  "not_authorized_by_this_statement": [
+    "Publish social media posts",
+    "Upload to public website before final assets and release gates are checked",
+    "Invent or replace verified location map artwork",
+    "Treat material design signoff as permission to ignore research gate"
+  ],
+  "research_caveat": "Latest Monday email states facts and source caveats; sources must be rechecked at point of actual publication if changed.",
+  "approval_state": "USER-APPROVED CONTENT",
+  "publication_performed": false
+}
