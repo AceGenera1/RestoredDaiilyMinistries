@@ -56,7 +56,9 @@ def make_base(ref):
     d.line((849,724,1063,724),fill="#b78134",width=2)
     for x in (273,535,803):
         d.line((x,746,x,1038 if x!=803 else 1131),fill="#b78134",width=2)
-    d.rectangle((32,1048,803,1124),fill="#f6e4c6",outline="#b78134",width=2)
+    # The Scripture strip is deliberately wider vertically than the old draft
+    # to keep BOTH verse lines inside the framed region.
+    d.rectangle((32,1044,803,1131),fill="#f6e4c6",outline="#b78134",width=2)
     base.paste(original.crop((45,1054,137,1126)),(42,1052))
     # The approved remembrance globe and source-document emblems must
     # survive independent text changes, just like the four prayer icons.
@@ -112,12 +114,19 @@ def build(data,out):
         yy=add(title,l+10,837,r-l-20,size=17,maxlines=3,leading=21,weight="bold",fill=bronze)
         end=add(data["prayer_focus"][i]["focus"],l+11,yy+15,r-l-22,size=18,maxlines=12 if i==3 else 8,leading=21)
         if end>(1132 if i==3 else 1038):raise ValueError("Prayer column overflow "+str(i+1))
-    add(data["scripture"]["reference"],162,1074,610,size=19,maxlines=1,weight="bold",fill=bronze)
-    add(data["scripture"]["text"],162,1093,610,size=16,maxlines=2,leading=19)
-    add("REMEMBER THE PERSECUTED CHURCH",111,1152,605,size=19,maxlines=1,weight="bold",fill=bronze)
-    add("Keep lifting up our brothers and sisters in Christ.",113,1177,597,size=16,maxlines=2,leading=18)
-    add("SOURCES: "+" • ".join(data["source_names"]),782,1157,278,size=13,maxlines=2,leading=17,weight="bold")
-    add("Full references: weekly archive.",782,1193,278,size=12,maxlines=1)
+    # Keep Scripture and the remembrance appeal IN THEIR OWN FIXED PANELS.
+    # Fail the build rather than clipping full WEB text or drawing over art.
+    reference_end=add(data["scripture"]["reference"],158,1070,618,size=18,maxlines=1,weight="bold",fill=bronze)
+    if reference_end>1089:raise ValueError("Scripture reference exceeds approved strip")
+    scripture_end=add(data["scripture"]["text"],158,1092,620,size=15,maxlines=2,leading=19)
+    if scripture_end>1127:raise ValueError("Full Scripture extends beyond approved strip")
+    remembrance_end=add("REMEMBER THE PERSECUTED CHURCH",111,1150,604,size=18,maxlines=1,weight="bold",fill=bronze)
+    if remembrance_end>1170:raise ValueError("Remembrance heading overflows")
+    appeal_end=add("Keep lifting up our brothers and sisters in Christ.",113,1177,593,size=15,maxlines=2,leading=18)
+    if appeal_end>1210:raise ValueError("Remembrance text overflows the footer buffer")
+    source_end=add("SOURCES: "+" • ".join(data["source_names"]),782,1163,278,size=12,maxlines=2,leading=16,weight="bold")
+    if source_end>1194:raise ValueError("Source attribution overflows")
+    add("Full references: weekly archive.",782,1207,278,size=11,maxlines=1)
     # Layer group labels work in Inkscape; editable text and permanent artwork
     # are separate. A visible draft banner is intentionally non-removable.
     svg=f'''<?xml version="1.0" encoding="UTF-8"?>
