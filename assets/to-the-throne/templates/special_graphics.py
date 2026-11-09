@@ -149,7 +149,7 @@ def persecuted(im,d,data):
     banner=original.crop((252,704,849,742))
     # Keep the masthead above y=166 and signed original mountain/footer
     # artwork below y=1233 completely identical to the approved image.
-    im.paste(textured_panel(1050,1068),(35,167))
+    im.paste(textured_panel(1066,1080),(35,167))
     d=ImageDraw.Draw(im)
     country=data["country"].upper()
     size=57
@@ -210,7 +210,11 @@ def persecuted(im,d,data):
     # three-column scripture/closing content.
     d.line((727,1142,1069,1142),fill=GOLD,width=1)
     t(d,"SOURCES: "+" • ".join(data["source_names"]),732,1151,335,15,NAVY,2,19,True)
-    t(d,"Full verification: this week's To The Throne archive.",732,1190,331,13,NAVY,2,16)
+    t(d,"Full references: weekly archive.",732,1182,331,13,NAVY,1,16)
+    # Original artwork is flattened, so uneditable old body/footer words
+    # survive just above the permanent signoff. Erase only this narrow,
+    # field-specific strip; preserve the authentic In Christ and signature.
+    im.paste(textured_panel(989,34),(110,1213))
 
 def faith(im,d,data):
     # Preserve approved FAITH FRIDAY masthead/banner and scenic lower/footer block.
