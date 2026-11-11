@@ -54,21 +54,23 @@ body:has(.site-header) .ttt-approved-image{max-width:1050px!important}
 /* Faith Friday: a distinct letter presentation using the established To The Throne palette. */
 body:has(.faith-friday-letter) {background:linear-gradient(180deg,#eaf0f1 0%,#fff8ea 42%,#e7eeee 100%)}
 .faith-friday-letter {width:min(100% - 28px,980px);margin:32px auto 70px}
-.faith-friday-letter .intro {position:relative;overflow:hidden;background:radial-gradient(ellipse at top,rgba(215,168,79,.19),transparent 61%),linear-gradient(155deg,#172e4c,#101a2e 76%);color:#fff8ea;border:1px solid rgba(215,168,79,.68);border-radius:24px 24px 8px 8px;padding:54px 28px 43px;box-shadow:0 16px 42px rgba(16,26,46,.16)}
+.faith-friday-letter .intro {position:relative;overflow:hidden;background:linear-gradient(180deg,#fffaf0,#f7ecd6);color:#142845;border:1px solid rgba(215,168,79,.58);border-radius:24px 24px 8px 8px;padding:54px 28px 43px;box-shadow:0 16px 42px rgba(16,26,46,.16)}
 .faith-friday-letter .intro:before {content:"";position:absolute;top:19px;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(248,217,135,.7),transparent)}
-.faith-friday-letter .intro .kicker {color:#f8d987;letter-spacing:2.6px}
-.faith-friday-letter .intro h1 {color:#fff8ea;font-size:clamp(34px,5.7vw,58px);margin:17px auto;max-width:760px}
-.faith-friday-letter .intro p {color:#e9e2d0;font-size:19px}
-.faith-friday-letter .intro .tag {display:inline-block;color:#f8d987;font:800 12px/1.6 Arial,sans-serif;letter-spacing:1.6px;text-transform:uppercase;border-top:1px solid rgba(215,168,79,.48);margin-top:15px;padding-top:16px}
+.faith-friday-letter .intro .kicker {color:#92651f;letter-spacing:2.6px}
+.faith-friday-letter .intro h1 {color:#13233f;font-size:clamp(34px,5.7vw,58px);margin:17px auto;max-width:760px}
+.faith-friday-letter .intro p {color:#384c65;font-size:19px}
+.faith-friday-letter .intro .tag {display:inline-block;color:#8a621d;font:800 12px/1.6 Arial,sans-serif;letter-spacing:1.6px;text-transform:uppercase;border-top:1px solid rgba(215,168,79,.48);margin-top:15px;padding-top:16px}
 .faith-friday-letter .transcript {margin:-1px 0 0;max-width:none;border:1px solid #d5b778;border-top:0;border-radius:0 0 24px 24px;background:linear-gradient(180deg,#fffcf5,#fff9eb);padding:clamp(27px,5vw,61px);box-shadow:0 22px 45px rgba(16,26,46,.10)}
 .faith-friday-letter .transcript .kicker {text-align:left;color:#976a2a;letter-spacing:1.9px}
 .faith-friday-letter .transcript h2 {color:#142845;font-size:clamp(28px,4vw,38px);margin:12px 0 26px;padding-bottom:19px;border-bottom:1px solid #e6d9bc}
 .faith-friday-letter .transcript p {font-size:18px;line-height:1.88;margin:19px 0;color:#273954}
 .faith-friday-letter .transcript a {color:#815819;text-decoration-thickness:1px;text-underline-offset:3px;font-weight:700}
-.faith-friday-letter .scripture-panel {margin:34px 0;padding:27px clamp(20px,4vw,39px);background:linear-gradient(135deg,#10233c,#1b3858);border-left:5px solid #d7a84f;border-radius:8px 18px 18px 8px;box-shadow:0 12px 30px rgba(16,26,46,.12)}
-.faith-friday-letter .scripture-panel h3 {margin:0 0 10px;color:#f8d987;font:800 13px/1.6 Arial,sans-serif;letter-spacing:1.6px;text-transform:uppercase}
-.faith-friday-letter .scripture-panel .scripture {margin:0;color:#fff8ea;font-size:clamp(23px,3vw,31px);font-style:italic;border:0;padding:0;line-height:1.55}
+.faith-friday-letter .scripture-panel {margin:34px 0;padding:27px clamp(20px,4vw,39px);background:linear-gradient(135deg,#f4eedf,#e9f0ef);border:1px solid #e2cfaa;border-left:5px solid #c79b4d;border-radius:8px 18px 18px 8px;box-shadow:0 8px 22px rgba(16,26,46,.06)}
+.faith-friday-letter .scripture-panel h3 {margin:0 0 10px;color:#79551f;font:800 13px/1.6 Arial,sans-serif;letter-spacing:1.6px;text-transform:uppercase}
+.faith-friday-letter .scripture-panel .scripture {margin:0;color:#213a55;font-size:clamp(23px,3vw,31px);font-style:italic;border:0;padding:0;line-height:1.55}
 .faith-friday-letter .final-call {text-align:center;border-top:1px solid #e2cc9d;border-bottom:1px solid #e2cc9d;padding:25px 12px;margin-top:30px;color:#76521d!important;font-size:clamp(19px,2.8vw,24px)!important;line-height:1.6!important}
+.faith-friday-letter .letter-signature {margin:27px 0 0;font-size:17px;line-height:1.8;color:#273954}
+.faith-friday-letter .letter-signature strong {color:#142845}
 .faith-friday-letter .actions {margin:26px auto 0}
 @media(max-width:550px){.faith-friday-letter{width:min(100% - 16px,980px);margin-top:18px}.faith-friday-letter .intro{padding:38px 19px 32px;border-radius:18px 18px 5px 5px}.faith-friday-letter .intro p{font-size:17px}.faith-friday-letter .transcript{padding:26px 20px;border-radius:0 0 18px 18px}.faith-friday-letter .transcript p{font-size:17px;line-height:1.75}.faith-friday-letter .scripture-panel{margin:26px 0;padding:23px 20px}}
 </style></head>
@@ -130,6 +132,7 @@ body:has(.faith-friday-letter) {background:linear-gradient(180deg,#eaf0f1 0%,#ff
     <p class="scripture">“Pray without ceasing.”</p></div>
     <p>Whether in quiet moments, with family, or alongside fellow believers, let us remain faithful in prayer and trust the Lord with what we cannot see.</p>
     <p class="final-call"><strong><em>The news cycle may move on, but prayer never ceases.</em></strong></p>
+    <p class="letter-signature">In Christ,<br><strong>Brother Kris</strong><br>Restored Daily Ministries</p>
     
   </section>
   <div class="actions"><a href="to-the-throne-weekly.html#week-0002">Back to weekly archive</a><button type="button" data-ttt-share aria-label="Share this Faith Friday prayer invitation">Share this invitation</button></div>
