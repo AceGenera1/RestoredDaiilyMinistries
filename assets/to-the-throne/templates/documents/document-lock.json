@@ -115,5 +115,32 @@
     "Render each PDF page and visually compare with reference",
     "Confirm edition/week/status and matching five matters across graphics and PDFs",
     "Get explicit publication authorization"
-  ]
+  ],
+  "current_authority": {
+    "approved_on": "2026-11-17",
+    "scope": "Future Weekly Intercession private Recording Brief PDFs. Do not change approved TTT-0004 content or retroactively alter historical issues.",
+    "recording_brief_visual": {
+      "status": "USER LOCKED — November 17, 2026",
+      "reference_filename": "TTT-0004_Restored_Daily_Recording_Brief_Final.pdf",
+      "source_note": "Approved final PDF delivered in conversation; if exact bytes not available in an automation environment, obtain the reference rather than claiming pixel-perfect reproduction.",
+      "format": "US Letter; one entire numbered matter per page (five pages for five matters); do not split headings, details, prayer focus, or Scripture across pages",
+      "branding": "Restored Daily Ministries text-only wordmark and To The Throne identity; no logo required; original ministry design, not borrowed imagery or another publication's branding",
+      "visual": "Warm cream background; bold, high-contrast, easy-to-read navy typography with restrained gold accents; sharp embedded vector fonts, professional letterhead, generous margins and spacing; avoid blurry text, washed-out gray, tiny labels, excessive decoration, revision/status notes, and internal/private-use banners",
+      "content": "Keep naturally spoken Key Verified Details paragraph, specific Prayer Focus prose or approved bullet treatment, full Scripture, English-ordinal dates, and concise pronunciation breakdowns immediately below unfamiliar place/name headings. No scripted prayers or coaching.",
+      "privacy": "Brief is for Brother Kris only; never publicly link it in the website archive."
+    },
+    "scripture_selection": {
+      "status": "USER LOCKED — November 17, 2026",
+      "overriding_principle": "The living Word of God spans all 66 books. Choose Scripture because the passage faithfully speaks to this specific situation, not because it is familiar, popular, easy to find, or from Psalms.",
+      "method": [
+        "First understand the factual situation, who needs prayer, and what spiritual or pastoral emphasis actually fits: grief, protection, aid, hope, repentance, justice, healing, hospitality, peace, endurance, etc.",
+        "Search and compare relevant passages throughout BOTH Old and New Testaments. Include the Law, History, Wisdom, Prophets, Gospels, Acts, Letters and Revelation where appropriate. Do not default to Psalms or reuse common verses automatically.",
+        "Read the surrounding passage before deciding; preserve its authorial context and meaning, avoiding proof-texting, forced connections, or using a verse simply because it has a matching keyword.",
+        "Select the strongest contextually faithful passage for each of five distinct matters. Distinct relevant passages take precedence over artificial book quotas; Psalms remain appropriate when genuinely the best fit, but should not dominate due to habit.",
+        "Audit current issue and recent editions for unnecessary book and verse repetition; explain/review internally any proposed reuse and choose a stronger alternative where one exists.",
+        "Quote the full selected verse(s) verbatim from official WEB or WEB Updated (WEBU), identify the actual edition and exact reference; never edit Scripture to replace Yahweh with LORD, never truncate to fit layout.",
+        "Keep the public letter and private recording brief synchronized on each selected Scripture passage and preserve the user's final approval gate."
+      ]
+    }
+  }
 }
